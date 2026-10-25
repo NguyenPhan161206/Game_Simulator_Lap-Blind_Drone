@@ -25,11 +25,17 @@ class MotionCommand:
             raise ValueError("Invalid operator command fields")
         if packet["kind"] != "motion":
             raise ValueError("Invalid command kind")
-        from math import isfinite
+        from math import hypot, isfinite
         values = [float(packet[name]) for name in
                   ("forward_m_s", "left_m_s", "up_m_s", "yaw_rate_rad_s")]
         if not all(isfinite(value) for value in values):
             raise ValueError("Non-finite command")
         caps = [limits["horizontal_speed_m_s"], limits["horizontal_speed_m_s"],
                 limits["vertical_speed_m_s"], limits["yaw_rate_rad_s"]]
-        return cls(*(max(-cap, min(cap, value)) for cap, value in zip(caps, values)))
+        values = [max(-cap, min(cap, value)) for cap, value in zip(caps, values)]
+        horizontal = hypot(values[0], values[1])
+        if horizontal > limits["horizontal_speed_m_s"]:
+            scale = limits["horizontal_speed_m_s"] / horizontal
+            values[0] *= scale
+            values[1] *= scale
+        return cls(*values)

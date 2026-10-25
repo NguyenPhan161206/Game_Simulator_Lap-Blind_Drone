@@ -80,6 +80,10 @@ class LabCoreTests(unittest.TestCase):
         self.assertNotIn("start_m", public)
         self.assertEqual(set(public), {"vehicle", "control", "sensors", "world", "sensor_period_ms", "goal_m", "sensor_names"})
 
+    def test_diagonal_keyboard_command_respects_horizontal_speed_limit(self):
+        command = keyboard_command({ord("W"), ord("A")}, self.config["vehicle"])
+        self.assertAlmostEqual(math.hypot(command.forward_m_s, command.left_m_s), 0.8)
+
     def test_ten_nonimage_measurements_and_no_remote_assets(self):
         self.assertEqual(len(device_specs(self.config)), 10)
         for text in outputs(self.config).values():

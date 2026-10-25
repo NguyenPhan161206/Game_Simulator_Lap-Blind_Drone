@@ -47,7 +47,8 @@ def main():
             temporary.replace(archive)
         except (OSError, urllib.error.URLError) as error:
             raise SystemExit(f"Download failed; no simulator validation was performed: {error}")
-    digest = hashlib.file_digest(archive.open("rb"), "sha256").hexdigest()
+    with archive.open("rb") as source:
+        digest = hashlib.file_digest(source, "sha256").hexdigest()
     INSTALL.mkdir(parents=True, exist_ok=True)
     with tarfile.open(archive, "r:bz2") as bundle:
         bundle.extractall(INSTALL, filter="data")

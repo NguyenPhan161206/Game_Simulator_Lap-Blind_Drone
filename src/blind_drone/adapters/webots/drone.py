@@ -48,6 +48,9 @@ def main():
                     previous_position = None
                     filtered_velocity = [0.0, 0.0, 0.0]
                     remote, remote_until = MotionCommand(), -1.0
+                    for device in ranges.values():
+                        device.disable()
+                        device.enable(config["sensor_period_ms"])
                     range_packet = None
                     next_range_time = now + config["sensor_period_ms"] / 1000.0
                 else:

@@ -27,6 +27,8 @@ jobs:
       - name: Install official pinned Webots archive
         run: python3 tools/install_webots.py
       - name: Run actual simulator checks
+        env:
+          QT_DEBUG_PLUGINS: "1"
         run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_webots.py --smoke --software-rendering --output artifacts/webots-smoke --timeout 180
       - name: Save simulator evidence
         if: always()
