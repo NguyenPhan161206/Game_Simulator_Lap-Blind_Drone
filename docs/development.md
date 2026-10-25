@@ -17,7 +17,7 @@ python3 tools/run_codex.py --dry-run
 
 Checkout bình thường dùng Git như thường lệ. Trong phiên AI_Lap hiện tại, .git là thư mục rỗng được quản lý đặt chỉ đọc; không sửa quyền hoặc xóa nó.
 
-[tools/git.sh](../tools/git.sh) dùng repo chuẩn nếu có; nếu đã khởi tạo metadata cục bộ trong .local/git thì dùng metadata đó với cùng worktree. Lệnh helper không tự khởi tạo hoặc thay thế repository.
+[tools/git.sh](../tools/git.sh) ưu tiên metadata cục bộ đã khởi tạo trong .local/git; nếu không có thì dùng repo chuẩn. Cách này giữ đúng lịch sử của workspace khi môi trường managed tạo thêm .git rỗng/chỉ đọc. Lệnh helper không tự khởi tạo hoặc thay thế repository.
 
 ```bash
 bash tools/git.sh status --short --branch

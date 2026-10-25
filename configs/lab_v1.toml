@@ -1,0 +1,87 @@
+schema_version = 1
+name = "minimal_webots_lab_v1"
+status = "engineering_prototype"
+runtime_ready = true
+validation_status = "pending_webots_execution"
+webots_version = "R2025a"
+coordinate_frame = "ENU"
+runtime_camera_enabled = false
+runtime_privileged_state_enabled = false
+physical_radar_claim = false
+basic_time_step_ms = 16
+sensor_period_ms = 32
+
+[world]
+size_m = [20.0, 20.0]
+wall_height_m = 6.0
+wall_thickness_m = 0.2
+floor_thickness_m = 0.1
+gravity_m_s2 = 9.81
+start_m = [-4.0, 0.0, 1.5]
+goal_m = [5.0, 4.0, 1.5]
+goal_radius_m = 0.5
+
+[[world.obstacles]]
+id = "BLOCK_NEAR"
+center_m = [2.0, 0.0, 1.0]
+size_m = [0.6, 2.0, 2.0]
+
+[[world.obstacles]]
+id = "BLOCK_HIDDEN"
+center_m = [4.0, 0.0, 1.0]
+size_m = [0.6, 1.0, 2.0]
+
+[[world.obstacles]]
+id = "BLOCK_SIDE"
+center_m = [0.0, 4.0, 1.5]
+size_m = [2.0, 0.8, 3.0]
+
+[vehicle]
+mass_kg = 1.0
+body_size_m = [0.6, 0.6, 0.16]
+inertia_kg_m2 = [0.03, 0.03, 0.05]
+arm_offset_m = 0.25
+thrust_coefficient_n_s2 = 0.00001
+torque_to_thrust_m = 0.02
+motor_max_rad_s = 1000.0
+horizontal_speed_m_s = 0.8
+vertical_speed_m_s = 0.4
+yaw_rate_rad_s = 0.5
+altitude_bounds_m = [0.4, 5.0]
+
+[control]
+velocity_gain_s_inv = 1.8
+acceleration_limit_m_s2 = 2.0
+tilt_limit_rad = 0.22
+altitude_p_s_inv2 = 5.0
+altitude_d_s_inv = 3.5
+attitude_p_nm_rad = 0.45
+attitude_d_nm_s_rad = 0.18
+yaw_p_nm_rad = 0.25
+yaw_d_nm_s_rad = 0.14
+
+[sensors]
+model = "geometric_single_ray_generic_distance_sensor"
+range_max_m = 8.0
+horizontal_directions_deg = [0.0, 45.0, 90.0, 135.0, 180.0, 225.0, 270.0, 315.0]
+horizontal_origin_radius_m = 0.33
+vertical_origin_offset_m = 0.12
+noise_fraction = 0.0
+latency_s = 0.0
+localization = "Webots GPS, ideal local Cartesian coordinates"
+attitude = "Webots InertialUnit, ideal simulator attitude; no fusion model"
+angular_velocity = "Webots Gyro, ideal"
+
+[smoke]
+hover_duration_s = 4.0
+hover_position_tolerance_m = 0.18
+hover_altitude_tolerance_m = 0.15
+motion_duration_s = 2.0
+minimum_motion_m = 0.5
+brake_duration_s = 3.0
+stop_speed_tolerance_m_s = 0.18
+sensor_fixture_m = [0.0, 0.0, 1.5]
+sensor_tolerance_m = 0.08
+collision_timeout_s = 8.0
+reset_duration_s = 3.0
+total_timeout_s = 50.0

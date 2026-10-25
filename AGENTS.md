@@ -9,9 +9,9 @@
 - Delegate only when the user or a higher-priority instruction explicitly authorizes delegation.
 
 ## Project boundaries
-- Current milestone: repository foundation, architecture, configuration and development tooling.
+- Current milestone: minimal Webots environment, manual flight, sensors, collision and reset validation. See docs/plans/0002-webots-minimal-lab.md.
 - First research task: one simulated drone reaches a supplied goal while avoiding static obstacles (level B).
-- Webots is the first simulator to evaluate. Its installation, world, controller and training are not implemented by this scaffold.
+- Webots is the first simulator. Keep local execution, CI execution and GUI inspection evidence separate; training remains a later milestone.
 - Runtime navigation must use camera-free observations. Training-only camera supervision is optional and must stay outside the deployed observation path.
 - Ground truth belongs to world generation, evaluation and observer visualization. Never pass hidden obstacles, object IDs/tags, full-world state or oracle paths into the evaluated navigation/controller.
 - Keep sensor output, policy input and stored data volumes separate. Geometric ranges are not automatically physical radar measurements.
@@ -24,11 +24,12 @@
 - Report scaffold validation, simulator execution, model quality and real-world validation as separate evidence.
 - Keep training, validation and final evaluation scenarios disjoint. Compare methods on the same scenarios and report failures alongside success-only metrics.
 - Record meaningful changes in assumptions in docs/decisions/ and research evidence in docs/research/.
-- Runtime preset numeric parameters and success thresholds remain open until specified. Keep draft presets non-runnable.
+- Research preset numeric parameters and success thresholds remain open until specified. Keep draft research presets non-runnable. configs/lab_v1.toml contains provisional engineering parameters for simulator validation.
 - Before adding third-party code/assets, record origin, version and license in THIRD_PARTY.md; asset terms may differ from engine terms.
 
 ## Work and verification
 - Use python3 tools/check_scaffold.py for foundation changes. No Webots, ML framework or GPU is required for this check.
+- For lab changes run python3 tools/build_lab.py --check and python3 -m unittest discover -s tests -p 'test_*.py' -v. Real simulator verification uses python3 tools/run_webots.py --smoke with Webots R2025a; a missing executable must fail rather than skip silently.
 - Add behavior tests when implementing consequential logic; do not invent simulator smoke tests that merely import stubs.
 - Keep generated logs, datasets, models, credentials and large downloaded assets out of Git.
 - Do not reset, clean, stash, rewrite history or force-push as routine cleanup.

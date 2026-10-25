@@ -119,7 +119,7 @@ def main() -> int:
             print(f"FAIL: {error}", file=sys.stderr)
         return 1
     print(f"PASS: foundation layout, {count} TOML files, declared information boundaries and local links")
-    print("Scope: scaffold validation only; Webots/runtime/training have not been tested.")
+    print("Scope: scaffold validation only; simulator execution requires the separate Webots smoke check.")
     return 0
 
 

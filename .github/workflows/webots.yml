@@ -1,0 +1,37 @@
+name: Webots minimal lab
+on:
+  push:
+    branches: ["main", "feat/webots-lab-v1"]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  simulator:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate source and generated world
+        run: |
+          python3 tools/check_scaffold.py
+          python3 tools/build_lab.py --check
+          python3 -m unittest discover -s tests -p 'test_*.py' -v
+      - name: Install display dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb libglu1-mesa libegl1 libopengl0 libnss3 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0
+      - name: Install official pinned Webots archive
+        run: python3 tools/install_webots.py
+      - name: Run actual simulator checks
+        run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_webots.py --smoke --software-rendering --output artifacts/webots-smoke --timeout 180
+      - name: Save simulator evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: webots-smoke-evidence
+          path: artifacts/webots-smoke/
+          if-no-files-found: warn
