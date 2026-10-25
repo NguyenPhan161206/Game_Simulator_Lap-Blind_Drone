@@ -49,9 +49,9 @@ def main():
                 "PYTHONUNBUFFERED": "1"})
     if args.software_rendering:
         env["LIBGL_ALWAYS_SOFTWARE"] = "1"
+    for variable in ("XDG_CONFIG_HOME", "XDG_CACHE_HOME"):
+        Path(env[variable]).mkdir(parents=True, exist_ok=True)
     command = [executable, "--batch", "--stdout", "--stderr", "--mode=" + ("fast" if args.smoke else "realtime")]
-    if args.smoke:
-        command.append("--minimize")
     command.append(str(ROOT / "simulation/webots/worlds/minimal_lab.wbt"))
     print("Output:", output, flush=True)
     print("Launching:", " ".join(command), flush=True)
@@ -73,6 +73,7 @@ def main():
     print((output / "console.log").read_text(encoding="utf-8", errors="replace"))
     result_file = output / "result.json"
     if returncode or not result_file.exists():
+        print("Webots exit code:", returncode, "; output files:", sorted(path.name for path in output.iterdir()), file=sys.stderr)
         print("Webots failed or produced no result; simulation checks have not passed.", file=sys.stderr)
         return 1
     result = json.loads(result_file.read_text())

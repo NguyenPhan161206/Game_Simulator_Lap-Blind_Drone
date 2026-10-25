@@ -57,6 +57,8 @@ def main():
 
     def require(name, condition, details):
         result["checks"][name] = {"passed": bool(condition), **details}
+        (output / "progress.json").write_text(json.dumps(result, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        print("BLIND_DRONE_CHECK " + name + " " + json.dumps(result["checks"][name]), flush=True)
         if not condition:
             raise AssertionError(f"{name}: {details}")
 
