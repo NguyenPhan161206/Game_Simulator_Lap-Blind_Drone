@@ -23,7 +23,7 @@ jobs:
       - name: Install display dependencies
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y xvfb libglu1-mesa libegl1 libopengl0 libnss3 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0
+          sudo apt-get install -y xvfb libglu1-mesa libegl1 libopengl0 libnss3 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libsndio7.0 libpulse0 libasound2 libzip4
       - name: Install official pinned Webots archive
         run: python3 tools/install_webots.py
       - name: Run actual simulator checks
