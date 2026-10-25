@@ -11,7 +11,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from blind_drone.contracts.runtime import MotionCommand, VehicleState
 from blind_drone.control.manual import keyboard_command
 from blind_drone.control.stabilizer import Stabilizer
-from blind_drone.world.minimal_lab import controller_config, device_specs, load_config, outputs
+from blind_drone.world.minimal_lab import controller_config, device_specs, load_config, outputs, view_rotation
 
 
 class LabCoreTests(unittest.TestCase):
@@ -99,6 +99,17 @@ class LabCoreTests(unittest.TestCase):
         names |= {node.attr for node in ast.walk(tree) if isinstance(node, ast.Attribute)}
         names |= {alias.name for node in ast.walk(tree) if isinstance(node, ast.ImportFrom) for alias in node.names}
         self.assertFalse(names & banned, names & banned)
+
+    def test_observer_forward_axis_points_to_lab(self):
+        rotation = view_rotation([12,-16,14], [0,0,1])
+        ux, uy, uz, angle = rotation
+        c, s = math.cos(angle), math.sin(angle)
+        # Rodrigues rotation of the Webots forward basis vector (+1,0,0).
+        direction = [c + ux*ux*(1-c), uz*s + uy*ux*(1-c), -uy*s + uz*ux*(1-c)]
+        expected = [-12,16,-13]
+        length = math.sqrt(sum(value*value for value in expected))
+        for actual, target in zip(direction, expected):
+            self.assertAlmostEqual(actual, target/length, places=8)
 
 
 if __name__ == "__main__":

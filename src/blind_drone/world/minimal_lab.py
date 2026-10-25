@@ -137,8 +137,11 @@ def view_rotation(position, target):
     forward = norm([b - a for a, b in zip(position, target)])
     right = norm(cross(forward, [0, 0, 1]))
     up = cross(right, forward)
-    m = [[right[i], up[i], -forward[i]] for i in range(3)]
+    # Webots Viewpoint uses FLU (+X forward), not OpenGL's -Z camera basis.
+    m = [[forward[i], -right[i], up[i]] for i in range(3)]
     angle = acos(max(-1, min(1, (sum(m[i][i] for i in range(3)) - 1) / 2)))
+    if angle < 1e-10:
+        return [0, 0, 1, 0]
     axis = norm([m[2][1]-m[1][2], m[0][2]-m[2][0], m[1][0]-m[0][1]])
     return [*axis, angle]
 
@@ -167,7 +170,7 @@ WorldInfo {{
   gravity {w["gravity_m_s2"]}
   randomSeed 11
 }}
-Viewpoint {{ position 12 -16 14 orientation {vector(view_rotation([12,-16,14], [0,0,1]))} }}
+Viewpoint {{ position 12 -16 14 orientation {vector(view_rotation([12,-16,14], [0,0,1]))} fieldOfView 1.1 }}
 Background {{ skyColor [ 0.08 0.11 0.16 ] }}
 DirectionalLight {{ direction -0.4 -0.5 -1 ambientIntensity 0.6 intensity 1 castShadows TRUE }}
 {chr(10).join(solids)}

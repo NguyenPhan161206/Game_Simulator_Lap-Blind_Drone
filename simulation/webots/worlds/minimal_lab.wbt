@@ -8,7 +8,7 @@ WorldInfo {
   gravity 9.81
   randomSeed 11
 }
-Viewpoint { position 12 -16 14 orientation 0.8196754398 0.2732251466 0.5034681645 1.169633063 }
+Viewpoint { position 12 -16 14 orientation -0.2813879948 0.1406939974 0.9492238911 2.255329311 fieldOfView 1.1 }
 Background { skyColor [ 0.08 0.11 0.16 ] }
 DirectionalLight { direction -0.4 -0.5 -1 ambientIntensity 0.6 intensity 1 castShadows TRUE }
 DEF FLOOR Solid {
