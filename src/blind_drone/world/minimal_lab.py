@@ -85,7 +85,7 @@ def proto_text(config):
       centerOfThrust {x} {y} 0
       thrustConstants {v["thrust_coefficient_n_s2"]} 0
       torqueConstants {q1} 0
-      device RotationalMotor {{ name "motor_{index}" maxVelocity {v["motor_max_rad_s"]} maxTorque 10 }}
+      device RotationalMotor {{ name "motor_{index}" maxVelocity {v["motor_max_rad_s"]} acceleration {v["motor_acceleration_rad_s2"]} maxTorque {v["motor_max_torque_nm"]} }}
     }}''', f'''Pose {{ translation {x} {y} 0.03 rotation 1 0 0 {pi / 2}
       children [ Shape {{ appearance {appearance("0.12 0.15 0.2")} geometry Cylinder {{ radius 0.14 height 0.01 }} }} ]
     }}''']

@@ -98,7 +98,7 @@ def main():
             "kind": "telemetry", "time_s": now,
             "position_m": position, "velocity_m_s": filtered_velocity,
             "attitude_rad": attitude, "angular_velocity_rad_s": angular_velocity,
-            "ranges": range_packet, "motor_rad_s": speeds,
+            "ranges": range_packet, "motor_target_rad_s": speeds,
             "devices": device_names,
             "sources": {"position": "ideal_Webots_GPS", "attitude": "ideal_Webots_InertialUnit", "rates": "ideal_Webots_Gyro"},
         }

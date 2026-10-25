@@ -8,6 +8,8 @@ Trạng thái trước kiểm chứng: world, robot, controller bàn phím và s
 
 Drone có body va chạm dạng hộp 0.6×0.6×0.16 m, khối lượng 1 kg, quán tính khai báo và bốn Propeller. Đĩa cánh quạt và mũi chỉ hướng là hiển thị đơn giản; v1 chỉ xét va chạm của hộp thân, chưa mô phỏng va chạm cánh quạt, cản khí hoặc pin. Đây là giới hạn mô hình cần giữ rõ khi tạo lối hẹp.
 
+Actuator là mô hình tốc độ phản hồi nhanh với acceleration/maxTorque rộng, chưa hiệu chỉnh theo motor thật. Webots dùng cả authority của motor trong bước điều khiển tốc độ kinematic của Propeller; giới hạn quá nhỏ có thể làm rotor tăng tốc rất chậm. Telemetry motor_target_rad_s ghi mục tiêu gửi vào motor, không giả làm tốc độ đã đo bằng encoder.
+
 10 DistanceSensor một ray (8 ngang, 2 đứng), tối đa 8 m, chu kỳ 32 ms; vật lý/control 16 ms. Số đo khoảng cách lý tưởng không nhiễu; không mô phỏng RF/radar. GPS, gyro và InertialUnit cũng lý tưởng; InertialUnit trực tiếp phản ánh tư thế mô phỏng, không có bộ fusion hay sai số thực.
 
 ## Cài trong dự án
