@@ -18,8 +18,8 @@ if telemetry.exists():
     lines = telemetry.read_text().splitlines()
     if lines:
         print("LAST_TELEMETRY " + lines[-1])
-image = output / "scene.png"
+image = output / "scene.jpg"
 if image.exists() and image.stat().st_size <= 1024 * 1024:
     encoded = base64.b64encode(image.read_bytes()).decode()
     for index, offset in enumerate(range(0, len(encoded), 16000)):
-        print(f"OBSERVER_PNG_CHUNK {index}:" + encoded[offset:offset+16000])
+        print(f"OBSERVER_JPEG_CHUNK {index}:" + encoded[offset:offset+16000])

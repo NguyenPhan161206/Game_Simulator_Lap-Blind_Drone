@@ -115,6 +115,7 @@ def main():
                             {"position_error_m": drift, "altitude_m": position[2], "attitude_rad": latest["attitude_rad"]})
                     require("camera_free_devices", not any("camera" in name.lower() for name in latest["devices"]), {"device_names": latest["devices"]})
                     supervisor.exportImage(str(output / "scene.png"), 100)
+                    supervisor.exportImage(str(output / "scene.jpg"), 85)
                     stage, stage_start, stage_origin = "forward", now, list(position)
             elif stage == "forward":
                 move(forward=config["vehicle"]["horizontal_speed_m_s"])
@@ -174,7 +175,11 @@ def main():
                 move(forward=0.8)
                 contacts = drone.getContactPoints(True)
                 if contacts:
-                    require("physical_collision", position[0] < 1.7, {"contact_count": len(contacts), "position_m": position})
+                    near = next(item for item in config["world"]["obstacles"] if item["id"] == "BLOCK_NEAR")
+                    expected_x = near["center_m"][0] - near["size_m"][0]/2 - config["vehicle"]["body_size_m"][0]/2
+                    require("physical_collision", abs(position[0] - expected_x) < 0.2 and position[2] > 0.5,
+                            {"contact_count": len(contacts), "position_m": position, "expected_contact_center_x_m": expected_x,
+                             "contact_node_ids": [getattr(point, "node_id", None) for point in contacts]})
                     reset_world()
                     stage, stage_start = "reset", now
                 elif elapsed > limits["collision_timeout_s"]:
