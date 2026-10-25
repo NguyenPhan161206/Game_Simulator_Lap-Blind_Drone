@@ -1,0 +1,8 @@
+schema_version = 1
+status = "draft"
+runtime_ready = false
+proposed_model = "local_geometric_ranges"
+camera_enabled = false
+privileged_state_enabled = false
+physical_radar_claim = false
+pending = ["sensor_choice", "ray_directions_rad", "range_bounds_m", "sampling_period_s", "noise_model", "latency_s", "missing_return_encoding", "localization_source", "state_estimation"]

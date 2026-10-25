@@ -1,0 +1,27 @@
+schema_version = 1
+name = "blind-drone-lab"
+milestone = "foundation"
+simulator_candidate = "webots"
+task_level = "B"
+vehicle_count = 1
+runtime_camera_enabled = false
+runtime_privileged_state_enabled = false
+
+[paths]
+source = "src/blind_drone"
+simulator = "simulation/webots"
+artifacts = "artifacts"
+
+[modules]
+contracts = "src/blind_drone/contracts"
+world = "src/blind_drone/world"
+vehicle = "src/blind_drone/vehicle"
+sensors = "src/blind_drone/sensors"
+observation = "src/blind_drone/observation"
+navigation = "src/blind_drone/navigation"
+control = "src/blind_drone/control"
+evaluation = "src/blind_drone/evaluation"
+experiments = "src/blind_drone/experiments"
+visualization = "src/blind_drone/visualization"
+webots_adapter = "src/blind_drone/adapters/webots"
+training = "src/blind_drone/training"

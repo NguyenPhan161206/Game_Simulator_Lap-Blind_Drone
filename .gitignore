@@ -1,0 +1,41 @@
+# Python and local environments
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local machine state / credentials
+.local/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.DS_Store
+.vscode/
+.idea/
+
+# Managed runtime metadata is never source
+.codex/*
+.agents/*
+.aws/*
+!.codex/config.toml.example
+
+# Generated experiment outputs
+artifacts/*
+!artifacts/README.md
+data/*
+!data/README.md
+models/*
+!models/README.md
+simulation/webots/**/*.wbproj
+simulation/webots/**/.wbproj
+simulation/webots/**/build/
+simulation/webots/**/lib/

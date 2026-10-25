@@ -1,0 +1,7 @@
+schema_version = 1
+status = "draft"
+runtime_ready = false
+vehicle_type = "multirotor"
+vehicle_count = 1
+controller_interface = "to_be_specified"
+pending = ["robot_model_and_license", "collision_shape_m", "dynamics_fidelity", "speed_limit_m_s", "acceleration_limit_m_s2", "yaw_rate_limit_rad_s", "initial_state"]

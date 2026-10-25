@@ -1,0 +1,4 @@
+# Portable project options, loaded by tools/run_codex.py.
+# Do not put credentials, model/account defaults or permission overrides here.
+project_doc_max_bytes = 32768
+project_root_markers = ["AGENTS.md", "pyproject.toml", ".git"]

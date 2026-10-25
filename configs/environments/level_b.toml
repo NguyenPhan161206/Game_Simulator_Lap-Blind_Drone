@@ -1,0 +1,9 @@
+schema_version = 1
+status = "draft"
+runtime_ready = false
+task_level = "B"
+dimension = 3
+obstacles = "static"
+full_map_available_to_navigation = false
+proposed_scenario_families = ["open", "single_block", "multiple_blocks", "dead_end", "altitude_choice"]
+pending = ["world_dimensions_m", "altitude_bounds_m", "obstacle_sizes_m", "clearance_m", "start_goal_sampling", "feasibility_check"]

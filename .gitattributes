@@ -1,0 +1,11 @@
+* text=auto eol=lf
+*.md text
+*.toml text
+*.py text
+*.sh text
+*.wbt text
+*.proto text
+*.png binary
+*.jpg binary
+*.npy binary
+*.onnx binary

@@ -1,0 +1,10 @@
+schema_version = 1
+status = "draft"
+runtime_ready = false
+task_level = "B"
+training_camera_supervision = "optional_future_experiment"
+runtime_camera_enabled = false
+runtime_privileged_state_enabled = false
+proposed_terminal_priority = ["collision", "out_of_bounds", "success", "timeout"]
+proposed_metrics = ["success_rate", "collision_rate", "timeout_rate", "path_length_m", "elapsed_time_s", "sensor_values_per_s", "policy_input_bytes_per_s", "decision_latency_s"]
+pending = ["success_radius_m", "stop_speed_m_s", "goal_dwell_time_s", "episode_timeout_s", "quality_thresholds", "train_validation_test_manifests", "training_seeds", "paired_evaluation_scenarios"]
