@@ -1,6 +1,6 @@
 # Kiến trúc hệ thống
 
-Trạng thái: kiến trúc nền cho milestone khởi tạo. Chưa có runtime mô phỏng hoặc kết quả huấn luyện.
+Trạng thái: đã có bản thử Webots v1 cho điều khiển thủ công, cảm biến, va chạm và reset. Xem [hướng dẫn](../lab-v1.md) và [kế hoạch/bằng chứng](../plans/0002-webots-minimal-lab.md). Chưa có kết quả huấn luyện hoặc điều hướng tự động.
 
 ## Mục tiêu và nguyên tắc
 

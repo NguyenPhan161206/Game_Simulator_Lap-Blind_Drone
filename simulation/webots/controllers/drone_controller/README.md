@@ -1,5 +1,5 @@
-# drone_controller
+# Drone controller
 
-Entry point điều khiển drone. Chỉ nhận thiết bị/quan sát hợp lệ, không dùng supervisor để đọc vật cản ẩn.
+Entry point drone_controller.py nạp adapter Robot. Thiết bị đo và cấu hình công khai tạo trạng thái cho stabilizer. Phím W/S, A/D, T/G, Q/E, SPACE và R được mô tả trong [hướng dẫn](../../../../docs/lab-v1.md).
 
-Trạng thái: scaffold; không có thành phần Webots chạy được trong thư mục này.
+Không có Supervisor, truy vấn scene hoặc camera. Command từ supervisor chỉ có ý nghĩa operator/reset trong smoke fixture.

@@ -1,5 +1,3 @@
-# protos
+# Robot models
 
-Robot/cảm biến .proto; ghi nguồn và license trước khi nhập asset.
-
-Trạng thái: scaffold; không có thành phần Webots chạy được trong thư mục này.
+[BlindDrone.proto](BlindDrone.proto) là mô hình primitive gốc của dự án, được tạo bằng tools/build_lab.py. Va chạm hiện xét hộp thân; cánh quạt hiển thị chưa có va chạm riêng. Không sử dụng mesh/model Mavic.

@@ -1,8 +1,11 @@
 # Development tools
 
-- `python3 tools/check_scaffold.py`: validate layout, TOML, declared information restrictions and local Markdown links.
-- `python3 tools/run_codex.py --dry-run`: preview the portable Codex invocation.
-- `python3 tools/run_codex.py`: start Codex with repository options and the existing user/host permissions.
-- `bash tools/git.sh status --short --branch`: normal Git or the already-created local metadata fallback.
+- python3 tools/check_scaffold.py: cấu trúc, TOML, ràng buộc khai báo và link nội bộ.
+- python3 tools/build_lab.py [--check]: tạo hoặc kiểm tra world/PROTO từ cấu hình v1.
+- python3 tools/install_webots.py [--check]: tarball chính thức R2025a trong .local/; không dùng sudo.
+- python3 tools/run_webots.py [--smoke]: mở world hoặc kiểm tra simulator thật, có timeout và output riêng.
+- python3 tools/report_webots_evidence.py artifacts/<run>: báo dữ liệu kiểm chứng nhỏ; ảnh observer là đầu ra, không vào controller.
+- python3 tools/run_codex.py [--dry-run]: launcher Codex với cấu hình dự án.
+- bash tools/git.sh status --short --branch: metadata Git của workspace managed hoặc repo thường.
 
-These tools do not install Webots, train a model, alter global agent settings or automatically publish changes.
+Các công cụ không huấn luyện model hoặc sửa cấu hình agent toàn máy.

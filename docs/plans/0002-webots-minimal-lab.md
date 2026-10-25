@@ -34,11 +34,13 @@ Mỗi bước chỉ được đánh dấu đạt khi có bằng chứng tương 
 - [x] Ghi kế hoạch trước khi triển khai.
 - [x] Bước 1: xác định đường chạy Webots và ghi giới hạn local. Shell không phân giải github.com nên tarball chưa tải được local; chọn kiểm chứng bổ sung trên CI Ubuntu/Xvfb.
 - [x] Bước 2: đặc tả v1, ghi ADR 0002 và configs/lab_v1.toml.
-- [ ] Bước 3: world và robot đã tạo; chờ Webots load thực tế.
-- [ ] Bước 4: controller thủ công đã viết; chờ đáp ứng trong simulator.
-- [ ] Bước 5: cảm biến và ranh giới quan sát đã viết; 11 kiểm tra Python đạt, số đo thực chờ simulator.
-- [ ] Bước 6: kiểm tra simulator và reset.
-- [ ] Bước 7: hiển thị và hướng dẫn.
-- [ ] Bước 8: kiểm tra cuối và báo cáo.
+- [x] Bước 3: world và robot đã load trên Webots R2025a trong CI.
+- [x] Bước 4: mapping phím được kiểm tra bằng Python; đáp ứng tiến/phanh/sang ngang/yaw/lên cao đã đo qua operator command trong simulator. Chưa bấm phím GUI local.
+- [x] Bước 5: phép đo 1.37 m phía trước, 1.38 m phía dưới khớp fixture; không có Camera và không cấp layout cho drone. 13 kiểm tra Python đạt.
+- [x] Bước 6: 12 mục smoke đạt, gồm che khuất, contact vật lý đúng vị trí và reset xóa contact.
+- [x] Bước 7: đã xem ảnh observer đúng world, sửa hướng nhìn; có docs/lab-v1.md hướng dẫn. GUI local chưa được mở/thao tác trong phiên.
+- [x] Bước 8: bằng chứng và giới hạn được lưu ở docs/research/2026-10-25-webots-v1-smoke.md cùng JSON.
+
+Kết luận mốc: bản thử môi trường đã được triển khai và kiểm chứng qua CI có simulator thật. Việc cài/chạy GUI local còn phụ thuộc môi trường máy; không báo nó là đã hoàn thành. Không huấn luyện AI trong mốc này.
 
 Nguồn bản phát hành: https://github.com/cyberbotics/webots/releases/tag/R2025a

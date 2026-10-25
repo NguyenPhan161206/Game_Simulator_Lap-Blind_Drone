@@ -1,11 +1,13 @@
-# Webots adapter workspace
+# Webots lab v1
 
-Trạng thái: chưa có world hoặc controller thực thi. Webots là nền tảng khảo sát đầu tiên, chưa cài/chốt phiên bản trong scaffold.
+World và robot được tạo từ [configs/lab_v1.toml](../../configs/lab_v1.toml), không phụ thuộc tải asset lúc mở. Xem [hướng dẫn chạy, phím và giới hạn](../../docs/lab-v1.md).
 
-- worlds/: các world .wbt của thí nghiệm.
-- protos/: cấu hình robot và cảm biến; ghi license trước khi nhập asset.
-- controllers/drone_controller/: entry point gắn với drone, chuyển dữ liệu thiết bị sang hợp đồng quan sát.
-- controllers/lab_supervisor/: tạo/reset tình huống, chấm điểm và ghi log. Trạng thái thật không được chảy vào controller điều hướng.
-- plugins/: phần mở rộng chỉ thêm khi thiết bị có sẵn không đáp ứng mô hình cần nghiên cứu.
+- worlds/minimal_lab.wbt: bãi 3D, ba vật cản, điểm đích và supervisor.
+- protos/BlindDrone.proto: thân primitive, bốn Propeller, GPS/IMU/gyro và 10 DistanceSensor, không camera.
+- controllers/drone_controller/: entry point Robot không có quyền Supervisor.
+- controllers/lab_supervisor/: quản lý/reset, nhãn hiển thị, fixture kiểm tra và kết quả.
+- plugins/: chưa cần plugin riêng.
 
-Khởi đầu bằng world tối thiểu và điều khiển thủ công, kiểm tra cảm biến và va chạm trước huấn luyện. Hướng dẫn phát triển ở [docs/development.md](../../docs/development.md).
+Dùng python3 tools/build_lab.py để cập nhật world/PROTO sau thay đổi cấu hình, rồi python3 tools/build_lab.py --check. Không sửa file generated bằng tay.
+
+Bản này là điều khiển thủ công qua bộ ổn định. Kiểm tra smoke dùng chuỗi operator command để xác minh mô phỏng, không phải AI điều hướng.

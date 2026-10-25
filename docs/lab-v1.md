@@ -1,6 +1,6 @@
 # Bãi thử Webots v1
 
-Trạng thái trước kiểm chứng: world, robot, controller bàn phím và smoke runner đã được triển khai; kết quả Webots/GUI sẽ được ghi riêng sau chạy. Bản này kiểm tra cơ chế mô phỏng, chưa có AI tự tránh vật cản.
+Trạng thái: world, robot, controller bàn phím và smoke runner đã được triển khai. [Kiểm chứng Webots trong CI và ảnh observer](research/2026-10-25-webots-v1-smoke.md) đã đạt; GUI local chưa được thao tác trong phiên. Bản này kiểm tra cơ chế mô phỏng, chưa có AI tự tránh vật cản.
 
 ## Cấu hình
 

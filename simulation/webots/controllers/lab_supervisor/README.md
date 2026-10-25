@@ -1,5 +1,3 @@
-# lab_supervisor
+# Lab supervisor
 
-Entry point quản lý/reset/chấm điểm; giữ ground truth ngoài luồng điều hướng.
-
-Trạng thái: scaffold; không có thành phần Webots chạy được trong thư mục này.
+Entry point lab_supervisor.py quản lý reset, hiển thị và ghi bằng chứng. Trong smoke, nó tạo fixture đo khoảng cách/va chạm và chuỗi operator command. Trạng thái thật dùng để chấm, không được đưa vào đầu vào điều hướng. Đây không phải thuật toán điều hướng tự động.

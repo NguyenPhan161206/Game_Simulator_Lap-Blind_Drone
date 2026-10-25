@@ -1,13 +1,7 @@
 # Kiểm tra
 
-Hiện dùng python3 tools/check_scaffold.py để kiểm tra foundation.
+Chạy make check cho foundation, file generated và các kiểm tra Python. tests/test_lab_core.py kiểm tra cân bằng lực/mô-men, dấu điều khiển, đổi frame, dữ liệu không hợp lệ, giới hạn command, phím và ranh giới cấu hình/scene.
 
-Khi triển khai runtime, thêm kiểm tra hành vi vào các nhóm phù hợp:
-- Hợp đồng: đơn vị, frame, validity, timestamp.
-- Quan sát: vật cản ẩn/ngoài tầm không được lộ vào policy.
-- Cảm biến: tầm, góc, nhiễu, trễ và phép đo thiếu.
-- Nhiệm vụ: va chạm, tới đích, dừng, timeout và ưu tiên kết thúc.
-- Webots: world load, thiết bị, reset và controller thực sự hoạt động.
-- Đánh giá: chia tập, chạy ghép cặp và tính cả thất bại.
+Chạy python3 tools/run_webots.py --smoke với Webots R2025a cho kiểm chứng simulator thật: hover, chuyển động, phanh, cảm biến, che khuất, va chạm và reset. Missing Webots trả lỗi, không bỏ qua rồi báo đạt.
 
-Không có kết quả simulator/training nào được tạo bởi scaffold này.
+Chưa có kiểm tra chất lượng mô hình học hoặc thực nghiệm ngoài đời. Thao tác GUI bằng tay phải báo riêng với chuỗi operator script của smoke.

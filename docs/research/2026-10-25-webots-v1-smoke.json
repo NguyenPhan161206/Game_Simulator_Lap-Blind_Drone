@@ -1,0 +1,121 @@
+{
+  "source_commit": "e1bca4947f169479b578dac8ae3a872971aa59a2",
+  "ci_run_id": 40205694685,
+  "ci_run_url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40205694685",
+  "platform": "GitHub Actions ubuntu-22.04, Xvfb, software OpenGL, Webots R2025a",
+  "result": {
+    "status": "passed",
+    "mode": "smoke",
+    "webots_version": "R2025a",
+    "checks": {
+      "hover": {
+        "passed": true,
+        "position_error_m": 0.0024094836205035275,
+        "altitude_m": 1.4975905163794965,
+        "attitude_rad": [
+          0,
+          0,
+          0
+        ]
+      },
+      "camera_free_devices": {
+        "passed": true,
+        "device_names": [
+          "gps",
+          "gyro",
+          "imu",
+          "operator",
+          "telemetry",
+          "motor_0",
+          "motor_1",
+          "motor_2",
+          "motor_3",
+          "range_000",
+          "range_045",
+          "range_090",
+          "range_135",
+          "range_180",
+          "range_225",
+          "range_270",
+          "range_315",
+          "range_up",
+          "range_down"
+        ]
+      },
+      "forward_motion": {
+        "passed": true,
+        "delta_x_m": 1.1577886808403153
+      },
+      "brake": {
+        "passed": true,
+        "speed_m_s": 0.05770740587008271
+      },
+      "strafe_motion": {
+        "passed": true,
+        "delta_y_m": 0.5069096069482676
+      },
+      "yaw_motion": {
+        "passed": true,
+        "delta_yaw_rad": 0.7169843660537445
+      },
+      "vertical_motion": {
+        "passed": true,
+        "delta_z_m": 0.5738737790272568
+      },
+      "range_geometry": {
+        "passed": true,
+        "front_m": 1.3699999999999999,
+        "expected_front_m": 1.3699999999999999,
+        "down_m": 1.38,
+        "expected_down_m": 1.38,
+        "up_at_limit": true
+      },
+      "nearest_surface_occlusion": {
+        "passed": true,
+        "front_before_m": 1.3699999999999999,
+        "front_after_hidden_object_moved_m": 1.3699999999999999
+      },
+      "physical_collision": {
+        "passed": true,
+        "contact_count": 2,
+        "position_m": [
+          1.3862121984491926,
+          -1.4865107847716847e-15,
+          1.5
+        ],
+        "expected_contact_center_x_m": 1.4,
+        "contact_node_ids": [
+          49,
+          49
+        ]
+      },
+      "reset": {
+        "passed": true,
+        "position_error_m": 0.013718731379859905,
+        "speed_m_s": 0.0017001172133112971,
+        "remaining_contacts": 0
+      },
+      "reset_clears_collision": {
+        "passed": true
+      }
+    },
+    "assumptions": [
+      "ideal GPS/attitude/gyro",
+      "geometric ranges without noise",
+      "operator-scripted motion, no autonomous navigation"
+    ],
+    "elapsed_simulation_s": 23.296,
+    "telemetry_packets": 1455
+  },
+  "observer_preview": {
+    "reviewed": true,
+    "source": "scene.jpg exported by the Webots supervisor; retrieved from the same CI job",
+    "finding": "Floor, walls, three obstacles, drone and goal are visible; labels are present."
+  },
+  "limits": {
+    "local_webots_execution": false,
+    "local_keyboard_gui_exercised": false,
+    "autonomous_navigation": false,
+    "trained_model": false
+  }
+}

@@ -8,6 +8,8 @@ Camera có thể hỗ trợ tạo dữ liệu/huấn luyện ở nhánh nghiên 
 
 Đã có bộ khung, world Webots v1 bằng primitive, drone không camera, controller bàn phím và bộ kiểm tra. Việc chạy Webots được kiểm chứng riêng với các kiểm tra Python; xem [kế hoạch và tiến độ](docs/plans/0002-webots-minimal-lab.md). Chưa có model học hoặc kết quả điều hướng tự động. Cấu hình v1 là prototype kỹ thuật; các ngưỡng nghiên cứu vẫn cần đặc tả.
 
+[Báo cáo kiểm chứng](docs/research/2026-10-25-webots-v1-smoke.md): 13 kiểm tra Python và 12 mục smoke trên Webots thật trong CI đạt; đã xem ảnh observer. Cài/chạy GUI local chưa được xác nhận.
+
 ## Bắt đầu
 
 Python 3.11+; kiểm tra nền dùng thư viện chuẩn, không cần cài dependency:

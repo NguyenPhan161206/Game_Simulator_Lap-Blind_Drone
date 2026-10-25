@@ -1,5 +1,3 @@
 # Hợp đồng dữ liệu
 
-Cấu trúc bản tin, đơn vị, frame, thời gian và tính hợp lệ. Không phụ thuộc API Webots hoặc framework học máy.
-
-Trạng thái: thư mục trách nhiệm; chưa triển khai logic runtime. Xem [kiến trúc hệ thống](../../../docs/architecture/system.md).
+runtime.py hiện có VehicleState và MotionCommand, quy ước world ENU/body FLU. Operator packet có danh sách trường cho phép, kiểm tra hữu hạn và giới hạn vận tốc. Các hợp đồng đầy đủ cho policy/huấn luyện còn cần phát triển theo [đặc tả](../../../docs/architecture/data-contracts.md).

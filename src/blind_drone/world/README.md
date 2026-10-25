@@ -1,5 +1,5 @@
 # Môi trường
 
-Đặc tả, sinh và kiểm tra khả thi tình huống. Trạng thái scene thực thuộc simulator; không cung cấp bản đồ ẩn cho điều hướng.
+minimal_lab.py tạo world và robot từ cấu hình v1. controller_config chỉ cấp các trường công khai cho drone; layout và smoke fixture ở phía supervisor. Webots giữ trạng thái vật lý duy nhất.
 
-Trạng thái: thư mục trách nhiệm; chưa triển khai logic runtime. Xem [kiến trúc hệ thống](../../../docs/architecture/system.md).
+Kiểm tra file generated bằng python3 tools/build_lab.py --check; kiểm tra hình học/số đo thực bằng smoke Webots.

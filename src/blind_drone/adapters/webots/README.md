@@ -1,5 +1,5 @@
 # Adapter Webots
 
-Biên truy cập thiết bị, scene và actuator của Webots. Tách quyền controller phương tiện và supervisor; chuyển đổi frame/đơn vị theo hợp đồng.
+drone.py là Robot adapter không camera; lab.py là Supervisor adapter cho observer, kiểm tra và reset. Quyền và dữ liệu của hai phần được tách riêng.
 
-Trạng thái: thư mục trách nhiệm; chưa triển khai logic runtime. Xem [kiến trúc hệ thống](../../../../docs/architecture/system.md).
+Kịch bản smoke gửi operator command, không cung cấp layout cho drone. Chỉ supervisor đặt pose ở fixture/reset đã khai báo. Hướng dẫn ở [docs/lab-v1.md](../../../../docs/lab-v1.md).
