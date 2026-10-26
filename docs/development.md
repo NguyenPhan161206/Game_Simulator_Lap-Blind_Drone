@@ -6,6 +6,8 @@ Bản thử Webots v1 có world primitive, điều khiển thủ công, cảm bi
 
 Mốc hiện tại mở rộng sang [môi trường có seed và protocol khóa](seeded-environments-v1.md). make check kiểm tra cả manifest/checksum. Các case test đã đọc không được dùng để tune rồi báo lại là unseen. [Quy tắc Git](../AGENTS.md#standing-git-authorization-for-this-workspace) cho phép tự commit/push theo milestone, với kiểm tra phù hợp và bảo toàn thay đổi khác.
 
+[Giai đoạn v2](navigation-v2.md) đã kiểm chứng observation grid/guard/planner với lock riêng, 64 unit test và 108 lượt chính thức. make check kiểm tra cả v1/v2; launcher mới là tools/run_navigation_v2.py. Sau exposure không sửa runtime/config đã khóa để tune rồi dùng lại cùng test như unseen.
+
 ```bash
 python3 tools/check_scaffold.py
 python3 tools/build_lab.py --check

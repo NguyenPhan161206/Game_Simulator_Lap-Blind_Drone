@@ -39,5 +39,7 @@ Phân tích ba U collision của reactive v1, triển khai quan sát có bộ nh
 - Development đầu: CI 40253447132 (source 5d1500b, có render) và 40254520825 (source f2b054b, numeric/no-render) đều đủ 36 lượt, guarded/mapped 10/10, reactive 8/10 ca khả thi; giữ mọi outcome trong [development evidence](../research/2026-10-26-v2-development.json). Sau đó thêm recovery cho trường hợp synthetic contract bị kẹt vì inflation; chưa chạy fresh split.
 - [x] Bước 5: ba pilot development đủ 36 lượt mỗi đợt. Source 69d6712 gồm recovery vẫn guarded/mapped 10/10, cả hai U, zero collision; reactive 8/10. Kết quả giữ trong development evidence; chưa dùng fresh validation/test để chỉnh.
 - [x] Bước 6: khóa v2 sau xác nhận current candidate checksum khớp pilot 3. Protocol 0825b3b219fbf6a7f939b3076b79b1c82888c02d71a8ffea36d2e7d5bde1e395; cả v1/v2 lock hợp lệ. CI kiểm tra tiêu chí development trước khi mở fresh split.
-- [ ] Bước 7.
-- [ ] Bước 8.
+- [x] Bước 7: CI 40255492790, source 2f422e2, đủ 108 lượt cùng lock/source; 64 unit test đạt. Development gate qua trước fresh splits. Guarded/mapped dev/validation/test đều 10/10 ca khả thi, reactive 8/10 mỗi split với hai U collision. Negative controls giữ riêng.
+- [x] Bước 8: đã xem observer pilot 1, đọc trace/failure, recheck integrity JSON trích xuất; [báo cáo/giới hạn](../research/2026-10-26-navigation-v2.md) và hướng dẫn tái hiện được lưu. V1 và v2 lock nguyên trạng; bàn giao theo standing Git policy.
+
+Kết luận giai đoạn: mục tiêu kỹ thuật đạt trong miền mô phỏng được khảo sát. V2 dùng thêm bộ nhớ/CPU, chưa là dữ liệu tối thiểu hoặc bảo đảm riêng tư/an toàn. Chưa train, chưa thử GUI local thành công. Validation/test v2 đã exposed; thay đổi tiếp theo cần protocol/test mới.

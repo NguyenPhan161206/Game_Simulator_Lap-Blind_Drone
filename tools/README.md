@@ -12,4 +12,6 @@
 
 Các công cụ không huấn luyện model hoặc sửa cấu hình agent toàn máy.
 
+V2 độc lập: build_navigation_v2.py [--check | --freeze] tạo/check world/manifest/lock; run_navigation_v2.py chạy development/frozen splits; check_navigation_v2.py kiểm tra ba result đủ 108 lượt; report_navigation_v2.py đưa evidence nhỏ và failure snapshot ra CI log. --realtime để xem, --no-rendering để đánh giá số không xuất ảnh. [Chi tiết](../docs/navigation-v2.md).
+
 Seed suite: python3 tools/run_webots.py --navigation --suite seeded --split development (hoặc validation/test). [Protocol và giới hạn](../docs/seeded-environments-v1.md).

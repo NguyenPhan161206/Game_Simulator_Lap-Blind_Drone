@@ -2,6 +2,8 @@
 
 Mốc này nghiên cứu lỗi chữ U của v1 bằng ba gói thuật toán không học. [Kế hoạch/tiến độ](plans/0005-observation-and-navigation-v2.md) ghi điều kiện hoàn thành. V1 được giữ nguyên với lock cũ; v2 có adapter, world, launcher và lock riêng.
 
+Đã hoàn thành [108 lượt chính thức và báo cáo](research/2026-10-26-navigation-v2.md), source 2f422e2, protocol đã khóa. Guarded/mapped đạt 10/10 ca khả thi mỗi split trong đợt này. Không coi test nhỏ hoặc việc không ghi nhận collision là bảo đảm an toàn; v2 test đã exposed.
+
 ## Luồng dữ liệu
 
 ```mermaid

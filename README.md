@@ -6,13 +6,11 @@ Camera có thể hỗ trợ tạo dữ liệu/huấn luyện ở nhánh nghiên 
 
 ## Trạng thái hiện tại
 
-Đã có world Webots v1, điều khiển thủ công, hai baseline không học và bộ đánh giá. Giai đoạn [môi trường có seed/protocol khóa](docs/seeded-environments-v1.md) đã hoàn tất kiểm chứng CI; [kế hoạch](docs/plans/0004-seeded-environments.md) ghi từng bước. Chưa có model học. Protocol v1 khóa các ngưỡng kỹ thuật của suite, chưa xác định chất lượng sản phẩm giao hàng.
+Đã kiểm chứng Webots v1 và [điều hướng v2](docs/navigation-v2.md) không camera: reactive, guarded và mapped từ grid tự đo. [Báo cáo giai đoạn 0005](docs/research/2026-10-26-navigation-v2.md) có 64 unit test và 108 lượt chính thức, protocol khóa trước validation/test mới. Guarded/mapped đạt 10/10 ca khả thi mỗi split; reactive 8/10 với hai U collision.
 
-[Báo cáo kiểm chứng](docs/research/2026-10-25-webots-v1-smoke.md): 13 kiểm tra Python và 12 mục smoke trên Webots thật trong CI đạt; đã xem ảnh observer. Cài/chạy GUI local chưa được xác nhận.
+Đây là kết quả mô phỏng lý tưởng, điều hướng ngang trong tập hữu hạn; chưa ANN/RL, chưa giảm dữ liệu hoặc bảo đảm an toàn/riêng tư. V2 dùng thêm bộ nhớ/CPU. GUI local chưa được xác nhận do phiên managed không kết nối được display.
 
-[Navigation v1 đã chạy trên Webots CI](docs/research/2026-10-26-navigation-v1.md): 29 unit test và 12 mục smoke đạt; tám lượt ghép cặp trên bốn fixture công khai. Reactive hoàn thành ba ca khả thi, direct hoàn thành một; đối chứng âm được báo riêng. Chưa có kết luận khái quát hóa hoặc model học.
-
-[Giai đoạn môi trường có seed/đánh giá đã hoàn thành](docs/research/2026-10-26-seeded-environments.md): 36 case có chứng cứ hình học, split/protocol khóa, 42 unit test và 48 lượt Webots ghép cặp. Reactive dev 8/10, validation 4/5, test 5/5 ca khả thi; ba U collision vẫn được báo. [Cách chạy thử](docs/seeded-environments-v1.md). Chưa huấn luyện, chưa kết luận vững/an toàn hoặc bảo mật.
+V1 được giữ để tái lập: [môi trường](docs/research/2026-10-25-webots-v1-smoke.md), [baseline](docs/research/2026-10-26-navigation-v1.md), [seeded suite](docs/research/2026-10-26-seeded-environments.md). Test v1 và v2 đều đã exposed; thay thuật toán cần protocol/test mới.
 
 ## Bắt đầu
 
@@ -26,6 +24,8 @@ python3 tools/run_codex.py --dry-run
 ```
 
 Agent bắt đầu tại [AGENTS.md](AGENTS.md). Đọc [hướng dẫn phát triển](docs/development.md) để dùng Git và cấu hình Codex trong môi trường managed.
+
+Chạy thử khi đã cài Webots: python3 tools/run_navigation_v2.py --policy mapped --case development-u_trap-s21001 --realtime. [Hướng dẫn cài/màn hình](docs/navigation-v2.md) và [kế hoạch từng bước](docs/plans/0005-observation-and-navigation-v2.md).
 
 ## Bản đồ tài liệu
 

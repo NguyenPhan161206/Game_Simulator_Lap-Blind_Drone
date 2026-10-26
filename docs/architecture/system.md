@@ -2,6 +2,8 @@
 
 Trạng thái: Webots v1, baseline và đánh giá nhiệm vụ đã chạy thực. Giai đoạn [môi trường có seed/protocol khóa](../seeded-environments-v1.md) hoàn tất 48 lượt paired trên CI; xem [báo cáo và giới hạn](../research/2026-10-26-seeded-environments.md). Chưa huấn luyện model.
 
+Giai đoạn [v2](../navigation-v2.md) thêm grid từ phép đo, hull guard và planner trên grid tự đo, kiểm chứng 108 lượt theo protocol riêng. World thật/witness không cấp cho planner. V1 runtime giữ nguyên; v2 là các module versioned cạnh nó. [Bằng chứng và chi phí](../research/2026-10-26-navigation-v2.md).
+
 ## Mục tiêu và nguyên tắc
 
 Một drone mô phỏng thực hiện nhiệm vụ mức B: đến đích được cấp, tránh vật cản tĩnh, quan sát không camera. Webots là nền tảng khảo sát đầu tiên. Các chi tiết dừng ở đích, chuyển động, cảm biến và ngưỡng chất lượng vẫn là dự thảo.

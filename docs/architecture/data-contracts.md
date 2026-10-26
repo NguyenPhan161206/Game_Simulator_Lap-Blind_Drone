@@ -16,6 +16,8 @@ Trạng thái: runtime.py có VehicleState/MotionCommand; navigation.py có Navi
 
 Chỉ chứa thông tin có nguồn đo/ước lượng hoặc thông tin nhiệm vụ đã khai báo. Vị trí/vận tốc lý tưởng có thể dùng làm baseline mô phỏng nếu ghi rõ là nguồn đo lý tưởng. Không che việc đọc trạng thái thật bằng cách gọi nó là GPS/IMU.
 
+V2 dùng cùng NavigationObservation, thêm MissionV2 với whitelist goal_m/policy. Grid là trạng thái suy ra từ ray/pose, không phải bản sao scene; free/occupied/unknown và counters được khai báo trong [v2](../navigation-v2.md). Whitelist và kiểm tra code là hợp đồng luồng dữ liệu, chưa phải sandbox quyền OS: controller kế thừa môi trường launcher, còn navigation class không đọc metadata thí nghiệm từ đó.
+
 ## Thông tin đặc quyền
 
 Toàn bộ danh sách vật cản, ID/tag vật thể, vật cản ngoài tầm hoặc sau che khuất, đường chuẩn và ảnh camera không thuộc Observation runtime. GroundTruthSnapshot không được truyền vào điều hướng hay bộ lọc lệnh của phương tiện.
