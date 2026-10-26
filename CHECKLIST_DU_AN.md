@@ -1,6 +1,7 @@
 # Checklist tổng thể — Blind Drone Lab
 
-**Cập nhật:** 2026-10-26, múi giờ Asia/Ho_Chi_Minh.  
+**Cập nhật:** 2026-10-27, múi giờ Asia/Ho_Chi_Minh.
+
 **Mốc repo được đối chiếu:** `d7018cb187e6ce9268baa34a5e2fd6f7ab200078`, trước khi thêm checklist này.  
 **Audit bổ sung nhánh L/GitHub:** source collector `b32410595b26f8ef2d0f8d99dca469797278366b`; xem [cây phiên bản](docs/version-history.md) và evidence liên kết ở mục 8.
 **Mục đích:** theo dõi từ ý tưởng ban đầu, các phần đã triển khai/kiểm chứng, phần còn mở và roadmap tương lai trong một file.
@@ -194,13 +195,13 @@ Tách riêng phần này để không đánh đồng CI có simulator với GUI 
 - [ ] LOC-06 — Chạy mapped trên development-u_trap-s21001 ở realtime, thấy chuyển động và kết quả kết thúc.
 - [x] LOC-07 — Lưu console/result/source/telemetry/trajectory và JPG của lượt mapped laptop 064328; đã xem ảnh, hash trong evidence rút gọn.
 - [x] LOC-08 — Đối chiếu mapped với CI cùng protocol: cùng success/0 contact, path +3.421 mm, pose đầu khác; ghi riêng khác biệt/giới hạn, chưa quy nguyên nhân.
-- [ ] LOC-09 — Kiểm tra hiệu năng/độ phản hồi trên laptop, giữ giới hạn về realtime nếu chưa đạt.
+- [x] LOC-09 — Đã ghi thời gian/CPU của mapped và phiếu manual mới chọn smooth/unchanged; CPU max 48.68 ms vượt tick 16 ms, chưa chứng minh deadline realtime. Phản ứng riêng T/G còn thuộc LOC-05.
 
 Đã có [audit lượt laptop và JSON bằng chứng](docs/research/2026-10-26-local-acceptance.md), [kế hoạch nhánh L](docs/plans/0006-local-acceptance.md) và [hướng dẫn nghiệm thu](docs/local-acceptance.md). Phiếu manual all-yes chưa khớp command toàn 0; mapped chưa có phiếu quan sát, ghi chú độ phản hồi chưa đủ. LOC-05/06/09 giữ mở. Helper có CI riêng theo [kế hoạch tích hợp GitHub](docs/plans/0007-github-integration.md); CI không đóng gate desktop. Hai protocol giữ nguyên.
 
 **Mốc kết nối GitHub đã hoàn tất:** GH-01…14 trong kế hoạch tích hợp; main 63298d7 đã qua cả bốn workflow (75 unit test và hồi quy simulator v1/v2). [Báo cáo, source và artifact](docs/research/2026-10-26-github-integration.md). Các nhánh lịch sử đã đồng bộ an toàn; không gộp mốc này với việc hoàn thành ba LOC còn mở hoặc roadmap dưới đây.
 
-**Công cụ nghiệm thu tiếp theo:** source ea13295 đã qua 82 test và CI Webots/khóa chống chạy chồng. Lệnh accept chạy tuần tự, hỏi rõ độ phản hồi và kiểm tra phiếu trước khi mở lượt kế tiếp. [Bằng chứng công cụ](docs/research/2026-10-26-sequential-acceptance.md); chưa có lượt accept desktop mới để đóng LOC-05/06/09.
+**Công cụ nghiệm thu tiếp theo:** source ea13295 đã qua 82 test và CI Webots/khóa chống chạy chồng. Lệnh accept chạy tuần tự, hỏi rõ độ phản hồi và kiểm tra phiếu trước khi mở lượt kế tiếp. [Bằng chứng công cụ](docs/research/2026-10-26-sequential-acceptance.md). [Audit ngày 27/10](docs/research/2026-10-27-local-acceptance-followup.md) ghi nhận batch mới: ngang/yaw có command, up_m_s vẫn zero dù T/G được đánh yes; collector dừng trước mapped. LOC-09 đã có ghi nhận hiệu năng/giới hạn; LOC-05/06 còn mở. [Kế hoạch sửa launcher và thông báo](docs/plans/0009-local-launcher-followup.md).
 
 Chạy từ terminal desktop khi Webots đã cài:
 
@@ -445,5 +446,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | Ngày | Nội dung | Mốc đối chiếu |
 |---|---|---|
 | 2026-10-26 | Tạo checklist tổng thể theo yêu cầu người dùng; đối chiếu lịch sử, plan, ADR và evidence, tách roadmap đề xuất khỏi phần đã kiểm chứng | Runtime/bàn giao trước checklist: `d7018cb`; v2 tested source: `2f422e2` |
+
+| 2026-10-27 | Audit batch mới: thiếu lệnh T/G, mapped chưa mở; đóng LOC-09 theo số đo và phiếu smooth/unchanged. Preflight 82 test/locks/dependencies đạt; probe display của phiên sửa lỗi exit 1, được ghi riêng | Source audit `c012ab8`; [evidence](docs/research/2026-10-27-local-acceptance-followup.md) |
 
 Khi cập nhật tiếp, thêm dòng nhật ký, điều chỉnh checkbox và dẫn bằng chứng. Không sửa ngược báo cáo lịch sử hoặc đánh dấu hàng loạt tương lai chỉ vì đã có roadmap này.

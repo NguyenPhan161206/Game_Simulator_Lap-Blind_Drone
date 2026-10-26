@@ -63,6 +63,9 @@ jobs:
               return json.loads((pathlib.Path('artifacts/ci-collector-'+mode)/name).read_text())
           mapped=read('mapped','review.json'); manual=read('manual','review.json')
           ms=read('mapped','session.json'); hs=read('manual','session.json')
+          for mode in ('mapped','manual'):
+              console=(pathlib.Path('artifacts/ci-collector-'+mode)/'console.log').read_text()
+              assert 'Webots has not been started regularly' not in console, 'Launcher temp environment missing'
           assert mapped['comparison']['identity_valid'] and mapped['comparison']['same_outcome']
           assert ms['exit_code']==0 and ms['status']=='process_exited'
           assert hs['status']=='timeout' and hs['exit_code'] is not None

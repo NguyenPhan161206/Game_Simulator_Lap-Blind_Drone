@@ -93,13 +93,18 @@ class LocalEvidenceTests(unittest.TestCase):
             (home / "bin/webots-bin").touch()  # Path fixture only; never executed.
             (home / "resources/version.txt").write_text("R2025a")
             with patch.dict(local.os.environ, {"BLIND_DRONE_CASE": "stale", "GITHUB_SHA": "stale",
-                                               "GITHUB_RUN_ID": "stale", "BLIND_DRONE_MODE": "smoke"}):
+                                               "GITHUB_RUN_ID": "stale", "BLIND_DRONE_MODE": "smoke",
+                                               "LD_LIBRARY_PATH": "/fixture/original-libraries"}):
                 binary, env = local.desktop_environment(home / "webots", True)
             self.assertEqual(binary, str(home / "bin/webots-bin"))
             self.assertFalse(any(k.startswith("BLIND_DRONE_") for k in env))
             self.assertNotIn("GITHUB_SHA", env)
             self.assertNotIn("GITHUB_RUN_ID", env)
             self.assertEqual(env["LIBGL_ALWAYS_SOFTWARE"], "1")
+            self.assertEqual(env["WEBOTS_ORIGINAL_LD_LIBRARY_PATH"], "/fixture/original-libraries")
+            self.assertEqual(env["TMPDIR"], env["WEBOTS_TMPDIR"])
+            self.assertTrue(Path(env["WEBOTS_TMPDIR"]).is_dir())
+            self.assertLess(len(env["WEBOTS_TMPDIR"]), 32)
             (home / "resources/version.txt").write_text("R2023b")
             with self.assertRaisesRegex(ValueError, "R2025a"):
                 local.desktop_environment(home / "webots", False)
@@ -244,7 +249,10 @@ class LocalEvidenceTests(unittest.TestCase):
             with patch.object(local.sys.stdin, "isatty", return_value=True), patch.object(local, "launch", side_effect=launch_fixture):
                 self.assertEqual(local.accept(args), 1)
             self.assertEqual(calls, ["manual"])
-            self.assertFalse(json.loads((root / "acceptance.json").read_text())["ready_for_review"])
+            result = json.loads((root / "acceptance.json").read_text())
+            self.assertFalse(result["ready_for_review"])
+            self.assertEqual(result["sessions"]["mapped"]["state"], "not_started")
+            self.assertFalse(any('No such file' in gap for gap in result["gaps"]))
 
 
 if __name__ == "__main__":

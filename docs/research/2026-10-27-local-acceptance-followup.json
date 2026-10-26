@@ -1,0 +1,119 @@
+{
+  "kind": "local_acceptance_partial_evidence_audit",
+  "audited_utc": "2026-10-26T22:48:28.113878+00:00",
+  "auditor_source": "c012ab85085d22b7bf4e6eaa3d5812633ec485bc",
+  "batch": "artifacts/local-acceptance-20261026T224307533989Z",
+  "session_source": "c012ab85085d22b7bf4e6eaa3d5812633ec485bc",
+  "session_dirty": false,
+  "session_started_utc": "2026-10-26T22:43:07.596841+00:00",
+  "session_ended_utc": "2026-10-26T22:44:29.972448+00:00",
+  "exit_code": 0,
+  "wall_s": 82.33799675699265,
+  "telemetry_packets": 1202,
+  "simulated_time_s": [
+    0.016,
+    77.52
+  ],
+  "sampled_command_counts": {
+    "forward_m_s": {
+      "zero": 566,
+      "positive": 500,
+      "negative": 136
+    },
+    "left_m_s": {
+      "zero": 979,
+      "negative": 106,
+      "positive": 117
+    },
+    "up_m_s": {
+      "zero": 1202
+    },
+    "yaw_rate_rad_s": {
+      "zero": 1038,
+      "positive": 138,
+      "negative": 26
+    }
+  },
+  "altitude_extent_m": [
+    1.41445809709335,
+    1.503628962036234
+  ],
+  "operator_record": {
+    "recorded_utc": "2026-10-26T22:44:29.998728+00:00",
+    "kind": "operator_self_report",
+    "answers": {
+      "gui_opened": "yes",
+      "correct_world_controllers": "yes",
+      "key_W": "yes",
+      "key_S": "yes",
+      "key_A": "yes",
+      "key_D": "yes",
+      "key_T": "yes",
+      "key_G": "yes",
+      "key_Q": "yes",
+      "key_E": "yes",
+      "key_SPACE": "yes",
+      "key_release": "yes",
+      "key_R": "yes"
+    },
+    "responsiveness": "smooth",
+    "simulation_control_changes": "unchanged",
+    "responsiveness_notes": "",
+    "other_notes": ""
+  },
+  "manual_warnings": [
+    "Operator reports T passed, but no matching sampled command; check focus/run identity or brief key presses",
+    "Operator reports G passed, but no matching sampled command; check focus/run identity or brief key presses"
+  ],
+  "batch_gaps": [
+    "manual: Operator reports T passed, but no matching sampled command; check focus/run identity or brief key presses",
+    "manual: Operator reports G passed, but no matching sampled command; check focus/run identity or brief key presses",
+    "mapped: cannot review evidence: [Errno 2] No such file or directory: '/home/binhnguyen/Documents/AI_Lap/artifacts/local-acceptance-20261026T224307533989Z/mapped/session.json'"
+  ],
+  "ready_for_review": false,
+  "mapped_session_present": false,
+  "console_warnings": [
+    "ERROR: Webots has not been started regularly. Some features may not work. Please start Webots from its launcher."
+  ],
+  "files_sha256": {
+    "acceptance.json": "42a430174685d31714422b93e93a329e3e894f07cb1a434ba4eb56d2fa04eb9d",
+    "manual/console.log": "e792f1b8ead21400b54790a68494521c62ac609082127d2d407a730cce3e2282",
+    "manual/operator.json": "e3dca3b31b6ee0470c534348c5ed46b6c95568f1a638b9be38933856d69365d9",
+    "manual/review.json": "071b9d86872af898fb1a8b561e7c632ac48f284af350a410d963582c399118fc",
+    "manual/review.md": "c1b6304b5193fe6145d5e90451ab6f0db45614a47429e1f5fcf2b578644a0763",
+    "manual/run/telemetry.jsonl": "7e1e4a62612d30d7c27f6a21407651291592549048b43e7aa1f2d65c4c967415",
+    "manual/session.json": "307086ab96974c6f4813e83fa49747e739ebe6fb95603b5f14fc51a6e1285761"
+  },
+  "protocol_lock_files_sha256": {
+    "configs/scenarios/protocol_v1.lock.json": "73ce35a23b6eae3121e61eb797be9338fe243f58379d25026d238b5a393a3407",
+    "configs/scenarios/protocol_v2.lock.json": "a748382e1bdcdd544ae1ffd9410590f122556c4a31d15a53db72c793d2077ca6"
+  },
+  "current_turn_checks": {
+    "make_check_exit_code": 0,
+    "unit_tests": 82,
+    "binary_dependencies_missing": [],
+    "collector_lock_available_before_audit": true,
+    "xdpyinfo_connected": true,
+    "display": ":0"
+  },
+  "limits": [
+    "Command telemetry does not prove which physical key was pressed.",
+    "No cause for missing vertical commands has been established.",
+    "Display connectivity is not operator GUI or key evidence.",
+    "No new simulator episode was launched for this audit; no new CI run or learned model result is claimed.",
+    "LOC-05/06/09 remain open; operator smoothness report applies only to this manual session."
+  ],
+  "followup_diagnosis": {
+    "diagnostic_base_source": "c012ab85085d22b7bf4e6eaa3d5812633ec485bc",
+    "launcher_warning_cause": "WEBOTS_TMPDIR missing or nonexistent, confirmed against pinned upstream source",
+    "launcher_temp_base_after_fix": "/tmp",
+    "source_url": "https://github.com/cyberbotics/webots/blob/R2025a/src/webots/core/WbStandardPaths.cpp#L234-L242",
+    "current_display_probe_exit_code": 1,
+    "local_tests_after_fix": 82,
+    "open_LOC": [
+      "LOC-05",
+      "LOC-06"
+    ],
+    "LOC_09_scope": "Measured performance and operator smooth/unchanged report; no FPS/input latency/hardware realtime proof"
+  }
+}

@@ -78,6 +78,10 @@ def desktop_environment(executable, software):
         if key.startswith("BLIND_DRONE_") or key in {"GITHUB_SHA", "GITHUB_RUN_ID"}:
             env.pop(key)
     env.update(WEBOTS_HOME=str(home), QT_QPA_PLATFORM="xcb", PYTHONUNBUFFERED="1",
+               WEBOTS_ORIGINAL_LD_LIBRARY_PATH=env.get("LD_LIBRARY_PATH", ""),
+               # Match the official Linux launcher's short temp base. Controller
+               # Unix sockets can exceed path limits under long CI workspaces.
+               WEBOTS_TMPDIR="/tmp", TMPDIR="/tmp",
                LD_LIBRARY_PATH=str(home / "lib/webots") +
                (":" + env["LD_LIBRARY_PATH"] if env.get("LD_LIBRARY_PATH") else ""))
     if software:
@@ -142,7 +146,7 @@ def compare_mapped(report, session, reference):
             "policy_cpu": local.get("diagnostics", {})}
 
 
-def review(directory):
+def review(directory, *, quiet=False):
     session = json.loads((directory / "session.json").read_text())
     run = directory / "run"
     report_path = run / "result.json"
@@ -205,9 +209,10 @@ def review(directory):
         "GUI/keys require the separate operator record. See session.json, console.log and run/.\n\n"
         "The sim/wall ratio includes startup, shutdown and pauses; it does not establish FPS or hardware realtime.\n\n"
         "```json\n" + json.dumps(result, indent=2, ensure_ascii=False) + "\n```\n")
-    print("Review:", directory / "review.md")
-    for warning in result.get("manual_evidence_warnings", []):
-        print("REVIEW REQUIRED:", warning)
+    if not quiet:
+        print("Review:", directory / "review.md")
+        for warning in result.get("manual_evidence_warnings", []):
+            print("REVIEW REQUIRED:", warning)
     return result
 
 
@@ -295,9 +300,14 @@ def audit_batch(directory):
     sessions = {}
     for mode in ("manual", "mapped"):
         folder = directory / mode
+        if not folder.exists():
+            gap = "Chưa khởi chạy; cần hoàn thành bước manual trước" if mode == "mapped" else "Chưa khởi chạy manual"
+            summary["sessions"][mode] = {"state": "not_started", "gaps": [gap]}
+            summary["gaps"].append(mode + ": " + gap)
+            continue
         try:
             session = json.loads((folder / "session.json").read_text())
-            reviewed = review(folder)
+            reviewed = review(folder, quiet=True)
             operator_path = folder / "operator.json"
             operator = json.loads(operator_path.read_text()) if operator_path.is_file() else {}
             if session.get("mode") != mode:
@@ -347,7 +357,7 @@ def accept(args):
         folder = directory / mode
         operator_path = folder / "operator.json"
         operator = json.loads(operator_path.read_text()) if operator_path.is_file() else {}
-        gaps = evidence_gaps(json.loads((folder / "session.json").read_text()), review(folder), operator)
+        gaps = evidence_gaps(json.loads((folder / "session.json").read_text()), review(folder, quiet=True), operator)
         if code or gaps:
             audit_batch(directory)
             print("Bước này còn thiếu bằng chứng; xem PENDING, không chuyển sang lượt tiếp theo.")
@@ -394,7 +404,7 @@ def launch(args):
     if args.mode == "mapped":
         env.update(BLIND_DRONE_POLICY="mapped", BLIND_DRONE_SPLIT="development",
                    BLIND_DRONE_CASE=CASE, BLIND_DRONE_RENDERING="true")
-    for key in ("XDG_CONFIG_HOME", "XDG_CACHE_HOME"):
+    for key in ("XDG_CONFIG_HOME", "XDG_CACHE_HOME", "WEBOTS_TMPDIR"):
         Path(env[key]).mkdir(parents=True, exist_ok=True)
     command = [binary, "--batch", "--stdout", "--stderr", "--mode=realtime",
                str(ROOT / "simulation/webots/worlds" / world)]

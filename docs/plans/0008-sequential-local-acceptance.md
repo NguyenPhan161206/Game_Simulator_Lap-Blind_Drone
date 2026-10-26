@@ -18,3 +18,7 @@ Trạng thái ban đầu: đã xác nhận repo sạch tại main 955378e và đ
 - make check đạt 82 test, gồm fixture gate và kiểm tra khóa giữa hai process; hai protocol vẫn hợp lệ. Test fixture không phải thao tác GUI.
 - CI 40290684935 tại source ea13295 đã success: mapped tới đích; manual có telemetry/timeout; launcher thứ hai bị khóa từ chối trước khi tạo output. Artifact 12636202161; xem [báo cáo và JSON evidence](../research/2026-10-26-sequential-acceptance.md).
 - LOC-05/06/09 vẫn mở cho đến khi có dữ liệu người thao tác tương ứng.
+
+## Đối chiếu ngày 27/10/2026
+
+Batch desktop mới tại source c012ab8 đã có chuyển động ngang/yaw và phiếu smooth/unchanged. Còn thiếu sampled up command cho T/G nên accept dừng đúng ở manual; chưa có mapped của batch này. Xem [audit và bước thử tiếp](../research/2026-10-27-local-acceptance-followup.md). Preflight đạt 82 test, cả hai lock và dependencies; probe display trong phiên sửa lỗi exit 1, tách khỏi bản preflight trước ghi kết nối được :0. LOC-09 đã được ghi nhận kèm giới hạn realtime; LOC-05/06 còn mở. [Kế hoạch sửa launcher/thông báo](0009-local-launcher-followup.md).
