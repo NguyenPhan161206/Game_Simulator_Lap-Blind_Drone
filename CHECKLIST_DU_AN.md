@@ -2,7 +2,7 @@
 
 **Cập nhật:** 2026-10-26, múi giờ Asia/Ho_Chi_Minh.  
 **Mốc repo được đối chiếu:** `d7018cb187e6ce9268baa34a5e2fd6f7ab200078`, trước khi thêm checklist này.  
-**Audit bổ sung nhánh L/GitHub:** source collector `b32410595b26f8ef2d0f8d99dca469797278366b`; xem [cây phiên bản](docs/version-history.md) và evidence liên kết ở mục 8.  
+**Audit bổ sung nhánh L/GitHub:** source collector `b32410595b26f8ef2d0f8d99dca469797278366b`; xem [cây phiên bản](docs/version-history.md) và evidence liên kết ở mục 8.
 **Mục đích:** theo dõi từ ý tưởng ban đầu, các phần đã triển khai/kiểm chứng, phần còn mở và roadmap tương lai trong một file.
 
 ## Cách đọc và cập nhật

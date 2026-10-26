@@ -20,7 +20,7 @@ Ngày: 2026-10-26. Yêu cầu: lập kế hoạch, thực hiện từng giai đo
 ## Giai đoạn 3 — cây phiên bản và tích hợp
 
 - [x] GH-10 — Có cây phiên bản và bảng source kiểm chứng/tài liệu/nhánh; remote seeded/v2 đã fast-forward lên 2568f07/d7018cb sau kiểm tra ancestry. Không xóa nhánh hoặc viết lại lịch sử.
-- [ ] GH-11 — Đọc mới remote main và kiểm tra khả năng fast-forward, các check phù hợp đã đạt. Nếu protection yêu cầu PR thì dùng PR, không bypass.
+- [x] GH-11 — Đọc mới remote main tại 1df11fd, ancestry cho phép fast-forward; helper b324105 đã qua CI thật, evidence/docs qua scaffold và kiểm tra hash. Sửa whitespace ở checklist trước tích hợp. Nếu server yêu cầu PR thì dùng PR, không bypass.
 - [ ] GH-12 — Tích hợp phần công cụ đã kiểm chứng vào main, đồng bộ local/remote bằng tree/commit hash; giữ trạng thái LOC chưa đủ bằng chứng.
 - [ ] GH-13 — Kiểm tra CI sau tích hợp và bảo toàn hai protocol; ghi evidence của đúng source, không coi một test đã exposed là unseen.
 - [ ] GH-14 — Kiểm tra tài liệu/checklist, commit/push bàn giao, xác nhận không đưa raw logs/downloads/credential vào Git và worktree sạch.
