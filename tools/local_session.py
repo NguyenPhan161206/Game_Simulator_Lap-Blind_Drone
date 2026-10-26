@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import argparse
+from contextlib import contextmanager
 from datetime import datetime, timezone
+import fcntl
 import hashlib
 import json
 from math import dist, isfinite
@@ -23,10 +25,30 @@ from run_webots import find_webots
 CASE = "development-u_trap-s21001"
 REFERENCE = ROOT / "docs/research/2026-10-26-navigation-v2.json"
 KEYS = ("W", "S", "A", "D", "T", "G", "Q", "E", "SPACE", "release", "R")
+RESPONSIVENESS = ("smooth", "minor_lag", "major_lag", "not_observed")
+CONTROL_CHANGES = ("unchanged", "paused", "changed_speed", "both", "unknown")
 
 
-def write_json(path, value):
-    path.write_text(json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False) + "\n")
+@contextmanager
+def exclusive_session(path=None):
+    """One collector per workspace; keep the inode so stale files are harmless."""
+    path = path or ROOT / ".local/local-session/active.lock"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a+") as stream:
+        try:
+            fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as error:
+            raise RuntimeError("Another local-session collector is active; finish its Webots window and interview first") from error
+        try:
+            yield
+        finally:
+            fcntl.flock(stream, fcntl.LOCK_UN)
+
+
+def write_json(path, value, *, exclusive=False):
+    content = json.dumps(value, indent=2, ensure_ascii=False, allow_nan=False) + "\n"
+    with path.open("x" if exclusive else "w", encoding="utf-8") as stream:
+        stream.write(content)
 
 
 def git(*args):
@@ -174,7 +196,7 @@ def review(directory):
             "Operator reports " + key + " passed, but no matching sampled command; check focus/run identity or brief key presses"
             for key, (axis, sign) in requirements.items()
             if operator.get("answers", {}).get("key_" + key) == "yes" and sign not in signs.get(axis, [])]
-        if operator.get("responsiveness_notes", "").strip().lower() in {"", "y", "yes", "n", "no"}:
+        if operator.get("responsiveness") not in RESPONSIVENESS[:-1] and operator.get("responsiveness_notes", "").strip().lower() in {"", "y", "yes", "n", "no"}:
             result["manual_evidence_warnings"].append("Responsiveness note does not describe lag, pauses or speed changes")
     result["files_sha256"] = {str(p.relative_to(directory)): sha(p) for p in sorted(directory.rglob("*"))
                               if p.is_file() and p.name not in {"review.json", "review.md"}}
@@ -207,10 +229,133 @@ def attest(directory):
             if answer in {"y", "n", ""}:
                 record["answers"][key] = {"y": "yes", "n": "no", "": "untested"}[answer]
                 break
-    record["responsiveness_notes"] = input("Độ mượt, trễ phím, pause/chỉnh speed trong lượt; chưa quan sát thì ghi rõ: ")
+    def choice(prompt, choices, labels):
+        print(prompt)
+        for i, label in enumerate(labels, 1):
+            print(f"  {i}. {label}")
+        while True:
+            answer = input("Chọn số (Enter = chưa quan sát/không rõ): ").strip()
+            if not answer:
+                return choices[-1]
+            if answer in {str(i) for i in range(1, len(choices) + 1)}:
+                return choices[int(answer) - 1]
+
+    record["responsiveness"] = choice("Độ phản hồi bạn thực sự quan sát:", RESPONSIVENESS,
+        ("Mượt, phản hồi phù hợp", "Có trễ/giật nhẹ", "Trễ/giật nhiều", "Chưa quan sát"))
+    record["simulation_control_changes"] = choice("Trong lượt vừa rồi bạn có pause hoặc đổi tốc độ simulation?", CONTROL_CHANGES,
+        ("Không thay đổi", "Có pause", "Có đổi tốc độ", "Cả hai", "Không rõ"))
+    record["responsiveness_notes"] = input("Mô tả thêm về giật/trễ (có thể để trống nếu đã chọn rõ ở trên): ")
     record["other_notes"] = input("Lỗi/ghi chú khác (có thể để trống): ")
-    write_json(directory / "operator.json", record)
+    write_json(directory / "operator.json", record, exclusive=True)
     review(directory)
+
+
+def evidence_gaps(session, reviewed, operator):
+    """Evidence readiness, not automatic proof that a human pressed a physical key."""
+    gaps = []
+    mode = session.get("mode")
+    if mode not in {"manual", "mapped"}:
+        return ["Invalid session mode"]
+    if session.get("status") != "process_exited" or session.get("exit_code") != 0:
+        gaps.append("Simulator did not finish normally")
+    if not session.get("source_commit") or not session.get("protocol_sha256"):
+        gaps.append("Missing source/protocol identity")
+    if session.get("working_tree_dirty") is not False:
+        gaps.append("Dirty or unknown source needs a separate code review")
+    telemetry = reviewed.get("telemetry", {})
+    if telemetry.get("packets", 0) <= 0 or telemetry.get("invalid_lines", 0):
+        gaps.append("Missing or malformed telemetry")
+    if operator.get("kind") != "operator_self_report":
+        gaps.append("Missing operator record")
+    required = ["gui_opened", "correct_world_controllers"]
+    required += ["key_" + key for key in KEYS] if mode == "manual" else ["motion_seen", "completion_seen"]
+    for key in required:
+        if operator.get("answers", {}).get(key) != "yes":
+            gaps.append("Not confirmed: " + key)
+    if operator.get("responsiveness") not in RESPONSIVENESS[:-1]:
+        gaps.append("Responsiveness not explicitly described")
+    changes = operator.get("simulation_control_changes")
+    if changes not in CONTROL_CHANGES[:-1]:
+        gaps.append("Pause/speed changes not explicitly recorded")
+    if mode == "mapped" and changes != "unchanged":
+        gaps.append("Mapped timing requires a run without pause/speed changes")
+    if mode == "manual":
+        gaps.extend(reviewed.get("manual_evidence_warnings", []))
+    else:
+        comparison = reviewed.get("comparison", {})
+        if not comparison.get("identity_valid") or not comparison.get("same_outcome"):
+            gaps.append("Mapped result did not match the frozen reference outcome/identity")
+    return gaps
+
+
+def audit_batch(directory):
+    summary = {"kind": "sequential_local_evidence_review", "sessions": {}, "gaps": [],
+               "ready_for_review": False, "project_checklist_modified": False,
+               "limits": "Operator self-report plus telemetry; no automatic GUI, key-latency or hardware realtime proof"}
+    sessions = {}
+    for mode in ("manual", "mapped"):
+        folder = directory / mode
+        try:
+            session = json.loads((folder / "session.json").read_text())
+            reviewed = review(folder)
+            operator_path = folder / "operator.json"
+            operator = json.loads(operator_path.read_text()) if operator_path.is_file() else {}
+            if session.get("mode") != mode:
+                raise ValueError("Session mode does not match directory")
+            sessions[mode] = session
+            gaps = evidence_gaps(session, reviewed, operator)
+            summary["sessions"][mode] = {"source_commit": session.get("source_commit"), "gaps": gaps,
+                "responsiveness": operator.get("responsiveness"), "review": str(folder / "review.json")}
+            summary["gaps"].extend(mode + ": " + gap for gap in gaps)
+        except (OSError, ValueError, KeyError, TypeError, AttributeError) as error:
+            summary["gaps"].append(mode + ": cannot review evidence: " + str(error))
+    if len(sessions) == 2:
+        manual, mapped = sessions["manual"], sessions["mapped"]
+        for key in ("source_commit", "protocol_sha256", "helper_sha256"):
+            if not manual.get(key) or manual.get(key) != mapped.get(key):
+                summary["gaps"].append("Different/missing identity across sessions: " + key)
+        try:
+            times = [datetime.fromisoformat(s[k]) for s in (manual, mapped) for k in ("started_utc", "ended_utc")]
+            if any(t.utcoffset() is None for t in times) or not times[0] <= times[1] <= times[2] <= times[3]:
+                raise ValueError("Sessions overlap or timestamps are invalid")
+        except (KeyError, TypeError, ValueError) as error:
+            summary["gaps"].append(str(error))
+    summary["ready_for_review"] = not summary["gaps"]
+    write_json(directory / "acceptance.json", summary)
+    print("Acceptance review:", directory / "acceptance.json")
+    for gap in summary["gaps"]:
+        print("PENDING:", gap)
+    return summary
+
+
+def accept(args):
+    if not sys.stdin.isatty():
+        raise ValueError("accept requires an interactive desktop terminal for real operator answers")
+    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
+    directory = (args.output or ROOT / "artifacts" / ("local-acceptance-" + stamp)).resolve()
+    directory.mkdir(parents=True, exist_ok=False)
+    print("Acceptance batch:", directory, flush=True)
+    print("Một cửa sổ Webots mỗi lần. Manual: chọn vùng 3D; thử W/S A/D T/G Q/E, SPACE, thả phím; R sau khi đã di chuyển. Đóng cửa sổ bằng nút đóng rồi trả lời phiếu.", flush=True)
+    for mode, timeout in (("manual", args.manual_timeout), ("mapped", args.mapped_timeout)):
+        run_args = argparse.Namespace(mode=mode, output=directory / mode, webots=args.webots,
+            software_rendering=args.software_rendering, timeout=timeout, no_interview=False)
+        try:
+            code = launch(run_args)
+        except (OSError, ValueError, RuntimeError, subprocess.CalledProcessError, EOFError, KeyboardInterrupt):
+            audit_batch(directory)
+            raise
+        folder = directory / mode
+        operator_path = folder / "operator.json"
+        operator = json.loads(operator_path.read_text()) if operator_path.is_file() else {}
+        gaps = evidence_gaps(json.loads((folder / "session.json").read_text()), review(folder), operator)
+        if code or gaps:
+            audit_batch(directory)
+            print("Bước này còn thiếu bằng chứng; xem PENDING, không chuyển sang lượt tiếp theo.")
+            return 1
+    complete = audit_batch(directory)["ready_for_review"]
+    if complete:
+        print("Đã đủ dữ liệu và phiếu để review checklist; không tự đánh dấu checklist dự án.")
+    return 0 if complete else 1
 
 
 def launch(args):
@@ -315,7 +460,13 @@ def main():
         p.add_argument("--software-rendering", action="store_true")
         p.add_argument("--timeout", type=float, default=600 if name == "manual" else 180)
         p.add_argument("--no-interview", action="store_true")
-    for name in ("review", "attest"):
+    p = sub.add_parser("accept", help="Interactive manual then mapped, with evidence gates")
+    p.add_argument("--webots")
+    p.add_argument("--output", type=Path)
+    p.add_argument("--software-rendering", action="store_true")
+    p.add_argument("--manual-timeout", type=float, default=600)
+    p.add_argument("--mapped-timeout", type=float, default=180)
+    for name in ("review", "attest", "audit-batch"):
         sub.add_parser(name).add_argument("directory", type=Path)
     args = parser.parse_args()
     try:
@@ -325,10 +476,18 @@ def main():
         if args.mode == "attest":
             attest(args.directory.resolve())
             return 0
+        if args.mode == "audit-batch":
+            return 0 if audit_batch(args.directory.resolve())["ready_for_review"] else 1
+        if args.mode == "accept":
+            if any(not isfinite(t) or t <= 0 for t in (args.manual_timeout, args.mapped_timeout)):
+                parser.error("timeouts must be finite and positive")
+            with exclusive_session():
+                return accept(args)
         if not isfinite(args.timeout) or args.timeout <= 0:
             parser.error("--timeout must be finite and positive")
-        return launch(args)
-    except (OSError, ValueError, RuntimeError, subprocess.CalledProcessError, EOFError) as error:
+        with exclusive_session():
+            return launch(args)
+    except (OSError, ValueError, RuntimeError, subprocess.CalledProcessError, EOFError, KeyboardInterrupt) as error:
         print(str(error), file=sys.stderr)
         return 2
 

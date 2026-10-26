@@ -11,3 +11,10 @@ Ngày 2026-10-26. Tiếp tục LOC-05/06/09 sau audit ở source 534b83a. Phiên
 7. Chỉ tích hợp khi check phù hợp đạt; cập nhật hướng dẫn một lệnh, source/evidence/checklist. LOC-05/06/09 giữ mở cho tới khi người dùng thực hiện lượt có bằng chứng nhất quán.
 
 Trạng thái ban đầu: đã xác nhận repo sạch tại main 955378e và đồng bộ feat/local-acceptance bằng fast-forward. Chưa có operator record mới so với audit trước.
+
+## Tiến độ triển khai
+
+- Đã thêm khóa OS, accept tuần tự, audit-batch và lựa chọn độ phản hồi/pause rõ nghĩa; phiếu được tạo độc quyền để bảo toàn bản có sẵn.
+- make check đạt 82 test, gồm fixture gate và kiểm tra khóa giữa hai process; hai protocol vẫn hợp lệ. Test fixture không phải thao tác GUI.
+- CI bổ sung việc thử khởi chạy mapped trong lúc collector manual đang giữ khóa; phải từ chối trước khi tạo output. Chờ kết quả CI của source triển khai trước tích hợp.
+- LOC-05/06/09 vẫn mở cho đến khi có dữ liệu người thao tác tương ứng.

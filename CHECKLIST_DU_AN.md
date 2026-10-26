@@ -203,8 +203,7 @@ Tách riêng phần này để không đánh đồng CI có simulator với GUI 
 Chạy từ terminal desktop khi Webots đã cài:
 
 ```bash
-python3 tools/local_session.py manual
-python3 tools/local_session.py mapped
+python3 tools/local_session.py accept
 ```
 
 **Gate:** có bằng chứng local riêng, không lấy CI hoặc lần tải thành công thay cho việc đã mở/chạy GUI.

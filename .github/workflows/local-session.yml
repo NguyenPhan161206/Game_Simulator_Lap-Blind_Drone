@@ -25,13 +25,36 @@ jobs:
         run: python3 tools/install_webots.py
       - name: Run mapped collector in real Webots under virtual display
         run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/local_session.py mapped --no-interview --software-rendering --output artifacts/ci-collector-mapped --timeout 180
-      - name: Check manual collector telemetry and timeout cleanup without keyboard automation
+      - name: Check manual telemetry, concurrent-launch rejection and timeout cleanup
         run: |
-          set +e
-          xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/local_session.py manual --no-interview --software-rendering --output artifacts/ci-collector-manual --timeout 20
-          code=$?
-          set -e
-          test "$code" -eq 1
+          python3 - <<'PY'
+          import fcntl, json, pathlib, subprocess, sys, time
+          with pathlib.Path('artifacts/ci-collector-manual-launch.log').open('w') as log:
+              process=subprocess.Popen(['xvfb-run','-a','-s','-screen 0 1280x960x24',sys.executable,
+                  'tools/local_session.py','manual','--no-interview','--software-rendering',
+                  '--output','artifacts/ci-collector-manual','--timeout','20'],stdout=log,stderr=subprocess.STDOUT)
+              try:
+                  deadline=time.monotonic()+10
+                  with pathlib.Path('.local/local-session/active.lock').open('a+') as probe:
+                      while True:
+                          assert process.poll() is None, 'Manual launcher stopped before lock probe'
+                          try:
+                              fcntl.flock(probe,fcntl.LOCK_EX|fcntl.LOCK_NB)
+                              fcntl.flock(probe,fcntl.LOCK_UN)
+                          except BlockingIOError:
+                              break
+                          assert time.monotonic()<deadline, 'Collector did not acquire lock'
+                          time.sleep(.1)
+                  blocked=subprocess.run([sys.executable,'tools/local_session.py','mapped','--no-interview',
+                      '--output','artifacts/ci-collector-rejected'],capture_output=True,text=True,timeout=10)
+                  assert blocked.returncode==2 and 'Another local-session collector' in blocked.stderr
+                  assert not pathlib.Path('artifacts/ci-collector-rejected').exists()
+                  pathlib.Path('artifacts/collector-concurrency.json').write_text(json.dumps({
+                      'second_exit_code':blocked.returncode,'output_created':False,'lock_rejected_second_launch':True})+'\n')
+              finally:
+                  code=process.wait(timeout=60)
+              assert code==1, 'Manual timeout must remain a non-successful run'
+          PY
       - name: Verify collector evidence and report exact source
         run: |
           python3 - <<'PY'
@@ -48,7 +71,8 @@ jobs:
           for review in (mapped,manual):
               assert not review['gui_verified_automatically'] and not review['operator_record_present']
           evidence={'source_commit':ms['source_commit'],'kind':'CI_Xvfb_collector_integration_not_desktop_acceptance',
-                    'mapped':mapped,'manual':manual}
+                    'mapped':mapped,'manual':manual,
+                    'concurrency':json.loads(pathlib.Path('artifacts/collector-concurrency.json').read_text())}
           pathlib.Path('artifacts/collector-evidence.json').write_text(json.dumps(evidence,indent=2)+'\n')
           print('LOCAL_HELPER_EVIDENCE '+json.dumps(evidence,separators=(',',':')))
           PY
@@ -58,5 +82,7 @@ jobs:
           name: local-session-collector-evidence
           path: |
             artifacts/ci-collector-*/
+            artifacts/ci-collector-*.log
             artifacts/collector-evidence.json
+            artifacts/collector-concurrency.json
           if-no-files-found: warn

@@ -2,6 +2,25 @@
 
 Các lệnh dưới chạy trong **terminal desktop của bạn**, tại thư mục dự án. Phiên managed chưa truy cập được desktop; CI không thay thế việc quan sát GUI và thao tác bàn phím. [Kế hoạch](plans/0006-local-acceptance.md) và [checklist LOC](../CHECKLIST_DU_AN.md) giữ phần đó riêng.
 
+## Cách khuyến nghị: một lệnh, hai lượt tuần tự
+
+Đóng các cửa sổ Webots cũ, rồi chạy:
+
+```bash
+python3 tools/local_session.py accept
+```
+
+1. Chọn vùng 3D của Webots, thử đủ phím trong bảng dưới, mỗi phím giữ khoảng 0.5–1 giây và quan sát phản ứng. Thử R sau khi drone đã di chuyển. Đóng cửa sổ Webots bằng nút đóng khi xong.
+2. Trả lời phiếu manual trong terminal. Phần độ phản hồi và pause/đổi tốc độ dùng lựa chọn đánh số; Enter giữ trạng thái chưa quan sát/không rõ. Nếu phiếu không khớp telemetry hoặc còn thiếu, công cụ dừng và in PENDING; mapped chưa được mở.
+3. Khi manual đủ bằng chứng, mapped tự mở. Quan sát tới lúc kết thúc, giữ nguyên tốc độ simulation và trả lời phiếu mapped.
+4. Gửi đường dẫn `Acceptance batch:` để agent đọc cả hai lượt và `acceptance.json`. Trạng thái `ready_for_review=true` nghĩa là đã đủ dữ liệu/phiếu theo gate của công cụ để review; checklist dự án vẫn được đối chiếu riêng.
+
+Thư mục cha là artifacts/local-acceptance-… với hai thư mục manual/ và mapped/. Khóa tại .local/local-session/active.lock ngăn các collector trong workspace chạy chồng nhau, kể cả lúc đang trả lời phiếu; OS giải phóng khóa khi tiến trình kết thúc. File khóa còn tồn tại là bình thường. Các cửa sổ mở ngoài local_session.py không thuộc khóa này.
+
+Nếu cần giới hạn dài hơn, dùng `--manual-timeout 900 --mapped-timeout 360`. `accept` yêu cầu terminal tương tác. Đánh giá lại batch đã có bằng `python3 tools/local_session.py audit-batch /duong/dan/batch`; source dirty/khác nhau, các lượt chồng thời gian, thiếu xác nhận hoặc mapped bị pause/đổi speed sẽ yêu cầu review/chạy lại phù hợp. Trễ nhiều được ghi nhận như hạn chế hiệu năng, không bị đổi thành “mượt”. SPACE/thả phím/R vẫn cần xác nhận người thao tác; telemetry command không tự chứng minh từng phím vật lý.
+
+Các lệnh chạy riêng bên dưới vẫn dùng được. [Kế hoạch cải thiện quy trình](plans/0008-sequential-local-acceptance.md) giữ tách test công cụ với bằng chứng desktop.
+
 ## 1. Manual: mở world và thử phím (LOC-04/05)
 
 Đóng Webots đang mở để tránh nhầm cửa sổ/lượt. Chạy:
