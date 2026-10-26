@@ -15,6 +15,7 @@
 - This stage is validated in CI at source 373b002d0ada514c95ce409cbb87d4bc3d68a388; see docs/research/2026-10-26-seeded-environments.md. Test v1 is now exposed. Baseline failures remain; do not treat pipeline completion as trained-model quality or reuse test v1 as unseen after tuning.
 - First research task: one simulated drone reaches a supplied goal while avoiding static obstacles (level B).
 - Webots is the first simulator. Keep local execution, CI execution and GUI inspection evidence separate; training remains a later milestone.
+- GitHub/local collector handoff is verified on main source 63298d7f93aa2371de6aee5ae7205ee64501a5dd (75 unit tests and all four workflows passed). See docs/plans/0007-github-integration.md and docs/research/2026-10-26-github-integration.md. Laptop evidence closes LOC-04/07/08 only; LOC-05/06/09 still need consistent manual/observer evidence. Do not infer them from CI or the conflicting all-yes manual form.
 - Runtime navigation must use camera-free observations. Training-only camera supervision is optional and must stay outside the deployed observation path.
 - Ground truth belongs to world generation, evaluation and observer visualization. Never pass hidden obstacles, object IDs/tags, full-world state or oracle paths into the evaluated navigation/controller.
 - Keep sensor output, policy input and stored data volumes separate. Geometric ranges are not automatically physical radar measurements.

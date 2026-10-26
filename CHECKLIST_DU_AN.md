@@ -198,6 +198,8 @@ Tách riêng phần này để không đánh đồng CI có simulator với GUI 
 
 Đã có [audit lượt laptop và JSON bằng chứng](docs/research/2026-10-26-local-acceptance.md), [kế hoạch nhánh L](docs/plans/0006-local-acceptance.md) và [hướng dẫn nghiệm thu](docs/local-acceptance.md). Phiếu manual all-yes chưa khớp command toàn 0; mapped chưa có phiếu quan sát, ghi chú độ phản hồi chưa đủ. LOC-05/06/09 giữ mở. Helper có CI riêng theo [kế hoạch tích hợp GitHub](docs/plans/0007-github-integration.md); CI không đóng gate desktop. Hai protocol giữ nguyên.
 
+**Mốc kết nối GitHub đã hoàn tất:** GH-01…14 trong kế hoạch tích hợp; main 63298d7 đã qua cả bốn workflow (75 unit test và hồi quy simulator v1/v2). [Báo cáo, source và artifact](docs/research/2026-10-26-github-integration.md). Các nhánh lịch sử đã đồng bộ an toàn; không gộp mốc này với việc hoàn thành ba LOC còn mở hoặc roadmap dưới đây.
+
 Chạy từ terminal desktop khi Webots đã cài:
 
 ```bash

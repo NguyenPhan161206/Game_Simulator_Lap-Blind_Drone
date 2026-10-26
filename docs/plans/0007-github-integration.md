@@ -21,9 +21,11 @@ Ngày: 2026-10-26. Yêu cầu: lập kế hoạch, thực hiện từng giai đo
 
 - [x] GH-10 — Có cây phiên bản và bảng source kiểm chứng/tài liệu/nhánh; remote seeded/v2 đã fast-forward lên 2568f07/d7018cb sau kiểm tra ancestry. Không xóa nhánh hoặc viết lại lịch sử.
 - [x] GH-11 — Đọc mới remote main tại 1df11fd, ancestry cho phép fast-forward; helper b324105 đã qua CI thật, evidence/docs qua scaffold và kiểm tra hash. Sửa whitespace ở checklist trước tích hợp. Nếu server yêu cầu PR thì dùng PR, không bypass.
-- [ ] GH-12 — Tích hợp phần công cụ đã kiểm chứng vào main, đồng bộ local/remote bằng tree/commit hash; giữ trạng thái LOC chưa đủ bằng chứng.
-- [ ] GH-13 — Kiểm tra CI sau tích hợp và bảo toàn hai protocol; ghi evidence của đúng source, không coi một test đã exposed là unseen.
-- [ ] GH-14 — Kiểm tra tài liệu/checklist, commit/push bàn giao, xác nhận không đưa raw logs/downloads/credential vào Git và worktree sạch.
+- [x] GH-12 — Đã fast-forward main từ 1df11fd lên 63298d7, khớp tree/commit local/remote; giữ LOC-05/06/09 mở.
+- [x] GH-13 — Cả bốn workflow main tại 63298d7 đã success: 75 unit test, 12 smoke checks, 8 diagnostic, 48 seeded v1, 108 v2 và collector. Hai protocol giữ nguyên, có evidence đúng source; đây là regression trên tập exposed.
+- [x] GH-14 — Tài liệu/checklist và evidence đã được kiểm tra scaffold/link/diff/hash; commit/push bàn giao là mốc chứa checklist này. Chỉ thêm source/docs/evidence nhỏ, không đưa raw logs/downloads/credential vào Git; kiểm tra refs/worktree sau push.
+
+[Báo cáo bàn giao và CI evidence](../research/2026-10-26-github-integration.md) ghi source kiểm chứng, các workflow/artifact và phạm vi chưa hoàn thành. GH-01…14 hoàn tất không đồng nghĩa toàn bộ checklist nghiên cứu hoặc ba LOC còn lại đã đạt.
 
 ## Gate desktop còn độc lập
 
