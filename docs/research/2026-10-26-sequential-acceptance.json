@@ -1,0 +1,154 @@
+{
+  "run_id": 40290684935,
+  "job_id": 121464759216,
+  "unit_tests": 82,
+  "artifacts": [
+    {
+      "id": 12636202161,
+      "name": "local-session-collector-evidence",
+      "size_in_bytes": 259536,
+      "url": "https://api.github.com/repos/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/artifacts/12636202161",
+      "archive_download_url": "https://api.github.com/repos/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/artifacts/12636202161/zip",
+      "expired": false,
+      "created_at": "2026-10-26T08:15:10Z",
+      "expires_at": "2027-01-24T08:12:42Z",
+      "updated_at": "2026-10-26T08:15:10Z",
+      "digest": "sha256:ddba975d300e6dcbf86bfa66b27ecd7fe976a8fd1a2144148110b068787fbf19",
+      "workflow_run": {
+        "id": 40290684935,
+        "repository_id": 1433047833,
+        "head_repository_id": 1433047833,
+        "head_branch": "feat/local-acceptance",
+        "head_sha": "ea1329520137487b11491304f1f5b421b9f6d1d5"
+      }
+    }
+  ],
+  "evidence": {
+    "source_commit": "ea1329520137487b11491304f1f5b421b9f6d1d5",
+    "kind": "CI_Xvfb_collector_integration_not_desktop_acceptance",
+    "mapped": {
+      "mode": "mapped",
+      "process_exit_code": 0,
+      "wall_s_including_startup_shutdown": 61.94085738,
+      "gui_verified_automatically": false,
+      "operator_record_present": false,
+      "comparison": {
+        "identity_valid": true,
+        "ci_url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790",
+        "ci_source": "2f422e253376b589e478ac10f3eee8efa970dc74",
+        "local_outcome": "success",
+        "ci_outcome": "success",
+        "same_outcome": true,
+        "local": {
+          "elapsed_s": 41.216,
+          "path_length_m": 14.858754976240316,
+          "final_distance_m": 0.04615167023142617,
+          "final_speed_m_s": 0.016381392651168995,
+          "contact_count": 0
+        },
+        "ci": {
+          "elapsed_s": 41.21600000000001,
+          "path_length_m": 14.855333972072696,
+          "final_distance_m": 0.04615166647376634,
+          "final_speed_m_s": 0.01638140827271698,
+          "contact_count": 0
+        },
+        "local_minus_ci": {
+          "elapsed_s": -7.105427357601002e-15,
+          "path_length_m": 0.0034210041676203673,
+          "final_distance_m": 3.757659829128901e-09,
+          "final_speed_m_s": -1.5621547985733564e-08,
+          "contact_count": 0,
+          "final_position_distance_m": 1.0217507480304592e-08,
+          "initial_position_distance_m": 0.002156186406045091,
+          "initial_yaw_rad": 0
+        },
+        "classification": "numeric_difference_review_required",
+        "note": "1e-6 is a diagnostic label, not a research acceptance threshold; no cause inferred",
+        "policy_cpu": {
+          "decisions": 2575,
+          "range_samples": 1288,
+          "range_values": 12880,
+          "map_updates": 1288,
+          "free_cells": 4926,
+          "occupied_cells": 252,
+          "peak_cells": 5178,
+          "derived_blocked_cells": 2185,
+          "budget_exhausted": false,
+          "guard_events": 0,
+          "scan_decisions": 157,
+          "plans": 76,
+          "cpu_mean_ms": 0.9599842640776699,
+          "cpu_max_ms": 39.41601
+        }
+      },
+      "sim_s_over_total_wall_s": 0.6976978012247205,
+      "telemetry": {
+        "packets": 668,
+        "invalid_lines": 0,
+        "first_sim_s": 0.016,
+        "last_sim_s": 43.184,
+        "command_signs": {
+          "forward_m_s": [
+            "negative",
+            "positive"
+          ],
+          "left_m_s": [
+            "negative",
+            "positive"
+          ],
+          "up_m_s": [
+            "negative",
+            "positive"
+          ],
+          "yaw_rate_rad_s": [
+            "positive"
+          ]
+        },
+        "note": "Commands support motion evidence; they do not prove physical key presses/reset or GUI responsiveness"
+      },
+      "files_sha256": {
+        "console.log": "a5ffb7307a62ba1c9fff6e426821efbef4f1cab0751c6707627b84711403f062",
+        "run/cases.json": "c5b8046cd97d0e63cb32a6b7c1dde363b08c1b9dd8a4c85d841c65d1e908eeb7",
+        "run/development-u_trap-s21001-mapped.jpg": "4dbf7c089d51a0d4302170e62141bab4f1f0ef27bf3381d1a05fb4cfcf327e2f",
+        "run/manifest.json": "329a6522e9e3a1c89a389f00dbc558a8099a06192a151f32c4ab3529ab52a426",
+        "run/progress.json": "4c2881638db123e09411d1debad14f0f20758315ff8691d5b28e697718d19e30",
+        "run/result.json": "e1df4d0607452ecd7b83ef9ecb728c32c4598b625372f9c69f0c412ff6ab3c24",
+        "run/scene.jpg": "4dbf7c089d51a0d4302170e62141bab4f1f0ef27bf3381d1a05fb4cfcf327e2f",
+        "run/telemetry.jsonl": "7a2ecb554e6db628738186fc3e6573f5cdbe44b245364d3a9379afcaa5e1c81a",
+        "run/trajectories.json": "8a0433237ab04ae3cace6680d7552195fab30a193430196a5a8ca7721407ed85",
+        "session.json": "db4628de005ab1f82f61d5420c0182e66d55e8ead0a15c22ebd592f5b28a03d9"
+      }
+    },
+    "manual": {
+      "mode": "manual",
+      "process_exit_code": 0,
+      "wall_s_including_startup_shutdown": 20.065604613999994,
+      "gui_verified_automatically": false,
+      "operator_record_present": false,
+      "telemetry": {
+        "packets": 204,
+        "invalid_lines": 0,
+        "first_sim_s": 0.016,
+        "last_sim_s": 13.280000000000001,
+        "command_signs": {
+          "forward_m_s": [],
+          "left_m_s": [],
+          "up_m_s": [],
+          "yaw_rate_rad_s": []
+        },
+        "note": "Commands support motion evidence; they do not prove physical key presses/reset or GUI responsiveness"
+      },
+      "files_sha256": {
+        "console.log": "e792f1b8ead21400b54790a68494521c62ac609082127d2d407a730cce3e2282",
+        "run/telemetry.jsonl": "ba7ee2742b3ad77673248e945b926122f30e23b0e7f2f665451f0f7cc0406684",
+        "session.json": "c91756cee93621f83d186804ac9655808e510abc0ec91eded801def9e2341f0b"
+      }
+    },
+    "concurrency": {
+      "second_exit_code": 2,
+      "output_created": false,
+      "lock_rejected_second_launch": true
+    }
+  }
+}

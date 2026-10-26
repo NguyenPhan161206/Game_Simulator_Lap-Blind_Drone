@@ -27,6 +27,8 @@ Agent bắt đầu tại [AGENTS.md](AGENTS.md). Đọc [hướng dẫn phát tr
 
 Chạy thử khi đã cài Webots: python3 tools/run_navigation_v2.py --policy mapped --case development-u_trap-s21001 --realtime. [Hướng dẫn cài/màn hình](docs/navigation-v2.md) và [kế hoạch từng bước](docs/plans/0005-observation-and-navigation-v2.md).
 
+Nghiệm thu desktop bằng một lệnh: `python3 tools/local_session.py accept`. Công cụ chạy manual → phiếu → mapped → phiếu tuần tự, chặn chạy chồng và ghi phần thiếu. [Hướng dẫn](docs/local-acceptance.md), [82 test và CI collector](docs/research/2026-10-26-sequential-acceptance.md).
+
 ## Bản đồ tài liệu
 
 - [Checklist tổng thể từ ý tưởng đến roadmap tương lai](CHECKLIST_DU_AN.md)

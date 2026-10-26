@@ -16,5 +16,5 @@ Trạng thái ban đầu: đã xác nhận repo sạch tại main 955378e và đ
 
 - Đã thêm khóa OS, accept tuần tự, audit-batch và lựa chọn độ phản hồi/pause rõ nghĩa; phiếu được tạo độc quyền để bảo toàn bản có sẵn.
 - make check đạt 82 test, gồm fixture gate và kiểm tra khóa giữa hai process; hai protocol vẫn hợp lệ. Test fixture không phải thao tác GUI.
-- CI bổ sung việc thử khởi chạy mapped trong lúc collector manual đang giữ khóa; phải từ chối trước khi tạo output. Chờ kết quả CI của source triển khai trước tích hợp.
+- CI 40290684935 tại source ea13295 đã success: mapped tới đích; manual có telemetry/timeout; launcher thứ hai bị khóa từ chối trước khi tạo output. Artifact 12636202161; xem [báo cáo và JSON evidence](../research/2026-10-26-sequential-acceptance.md).
 - LOC-05/06/09 vẫn mở cho đến khi có dữ liệu người thao tác tương ứng.

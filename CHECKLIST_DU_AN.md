@@ -200,6 +200,8 @@ Tách riêng phần này để không đánh đồng CI có simulator với GUI 
 
 **Mốc kết nối GitHub đã hoàn tất:** GH-01…14 trong kế hoạch tích hợp; main 63298d7 đã qua cả bốn workflow (75 unit test và hồi quy simulator v1/v2). [Báo cáo, source và artifact](docs/research/2026-10-26-github-integration.md). Các nhánh lịch sử đã đồng bộ an toàn; không gộp mốc này với việc hoàn thành ba LOC còn mở hoặc roadmap dưới đây.
 
+**Công cụ nghiệm thu tiếp theo:** source ea13295 đã qua 82 test và CI Webots/khóa chống chạy chồng. Lệnh accept chạy tuần tự, hỏi rõ độ phản hồi và kiểm tra phiếu trước khi mở lượt kế tiếp. [Bằng chứng công cụ](docs/research/2026-10-26-sequential-acceptance.md); chưa có lượt accept desktop mới để đóng LOC-05/06/09.
+
 Chạy từ terminal desktop khi Webots đã cài:
 
 ```bash

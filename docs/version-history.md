@@ -20,7 +20,9 @@ flowchart TD
   P --> T["b324105 · CI collector và kiểm tra evidence"]
   T --> A["0dd9de9 · audit laptop / cây phiên bản"]
   A --> I["63298d7 · tích hợp main, CI đạt"]
-  I --> H["Tài liệu bàn giao: xem log hiện tại"]
+  I --> H["955378e · bàn giao GitHub"]
+  H --> P8["b46dc5d · kế hoạch nghiệm thu tuần tự"]
+  P8 --> L8["ea13295 · collector tuần tự / khóa / 82 test"]
 ```
 
 | Nhánh/mốc | Tip được đồng bộ hoặc source kiểm chứng | Ý nghĩa |
@@ -29,7 +31,7 @@ flowchart TD
 | feat/navigation-v1 | 555f59fd856f73a3f44018ce334c0faa2ef7c0b6 | Baseline và báo cáo |
 | feat/seeded-environments | 2568f0771c5e591df0089ed3ce2f272637928b64 | Tip tài liệu đã đồng bộ fast-forward từ source chạy 373b002 |
 | feat/navigation-v2 | d7018cb187e6ce9268baa34a5e2fd6f7ab200078 | Tip tài liệu đã đồng bộ fast-forward từ source chạy 2f422e2 |
-| feat/local-acceptance | b32410595b26f8ef2d0f8d99dca469797278366b và commit tài liệu sau đó | Collector đã kiểm chứng CI; trạng thái desktop còn gate riêng |
+| feat/local-acceptance | ea1329520137487b11491304f1f5b421b9f6d1d5 và commit tài liệu sau đó | Collector tuần tự đã kiểm chứng CI; trạng thái desktop còn gate riêng |
 | main | Đã fast-forward 1df11fd → 63298d7; có thêm commit tài liệu bàn giao | Cả bốn CI tại 63298d7 đạt; tip hiện tại xem GitHub/log |
 
 Nhánh lịch sử không bị xóa hoặc force-push. Source chạy và commit tài liệu khác nhau là có chủ ý; mỗi báo cáo giữ SHA đã chạy. Bảng là snapshot có ngày, không là cơ chế tự động theo dõi remote.
@@ -41,5 +43,6 @@ Nhánh lịch sử không bị xóa hoặc force-push. Source chạy và commit 
 - [CI collector 40284088405](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40284088405), source b324105, 75 unit test và hai lượt Webots thật: mapped success, manual telemetry/timeout. [JSON evidence](research/2026-10-26-local-collector-ci.json). Đây là Xvfb, không xác nhận phím laptop.
 - [Kế hoạch và checklist tích hợp](plans/0007-github-integration.md) phân biệt commit kế hoạch, công cụ, kết quả CI và handoff; mỗi mốc phải qua check phù hợp trước push/tích hợp.
 - [Bàn giao tích hợp main](research/2026-10-26-github-integration.md) có bốn workflow đạt tại source 63298d7, gồm 75 unit test và hồi quy Webots v1/v2; ba gate desktop còn thiếu vẫn giữ mở.
+- [Nghiệm thu tuần tự](research/2026-10-26-sequential-acceptance.md) tại ea13295 có 82 test và CI kiểm tra mapped/manual/khóa chống chạy chồng; tiếp tục giữ gate desktop riêng.
 
 Trong workspace managed dùng `tools/git.sh` vì .git gốc chỉ đọc và là metadata rỗng; lịch sử có thật nằm ở .local/git. Clone bình thường dùng .git chuẩn. SSH managed hiện lỗi quyền cấu hình hệ thống; connector GitHub dùng làm kênh xuất bản được cho phép, kiểm tra khớp tree/commit và không đổi remote SSH. Xem [hướng dẫn Git](development.md).
