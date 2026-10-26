@@ -1,13 +1,16 @@
 """Privileged, paired diagnostic episodes. Never sends motion commands or paths."""
 import hashlib
 import json
+from math import dist, pi, sqrt
 import os
 from pathlib import Path
 import traceback
 import tomllib
 
 from blind_drone.evaluation.episode import EpisodeEvaluator, summarize
+from blind_drone.experiments.protocol import select_suite
 from blind_drone.world.minimal_lab import NAV_CONFIG, ROOT, load_config
+from blind_drone.world.scenarios import digest
 
 
 def main():
@@ -18,12 +21,23 @@ def main():
     specification = tomllib.loads(NAV_CONFIG.read_text())
     output = Path(os.environ["BLIND_DRONE_OUTPUT"])
     output.mkdir(parents=True, exist_ok=True)
-    config = specification["evaluation"]
+    config = dict(specification["evaluation"])
     selection = os.environ.get("BLIND_DRONE_POLICY", "both")
     policies = ["direct", "reactive"] if selection == "both" else [selection]
     cases = specification["cases"]
     requested = os.environ.get("BLIND_DRONE_CASE")
-    if requested:
+    suite = os.environ.get("BLIND_DRONE_SUITE", "diagnostic")
+    protocol_hash = manifest_hash = None
+    if suite == "seeded":
+        manifest,cases,protocol_hash = select_suite(os.environ.get("BLIND_DRONE_SPLIT","development"),requested)
+        config.update({k:manifest["specification"][k] for k in ("warmup_s","timeout_s")})
+        manifest_hash = digest(manifest)
+        specification = {"split":cases[0]["split"],"evaluation":config,
+                         "manifest_sha256":manifest_hash,"case_ids":[c["id"] for c in cases]}
+        (output / "cases.json").write_text(json.dumps(cases,indent=2)+"\n")
+    elif suite != "diagnostic":
+        raise ValueError("Unknown suite")
+    elif requested:
         cases = [case for case in cases if case["id"] == requested]
     if not cases or any(policy not in {"direct", "reactive"} for policy in policies):
         raise ValueError("Unknown case/policy")
@@ -35,16 +49,20 @@ def main():
     blocks = [supervisor.getFromDef(item["id"]) for item in lab_config["world"]["obstacles"]]
     goal_node = supervisor.getFromDef("GOAL")
     report = {"status": "running", "mode": "navigation", "webots_version": "R2025a",
-              "source_commit": os.environ.get("GITHUB_SHA"), "ci_run_id": os.environ.get("GITHUB_RUN_ID"),
+              "source_commit": os.environ.get("GITHUB_SHA") or os.environ.get("BLIND_DRONE_SOURCE_COMMIT"),
+              "working_tree_dirty":os.environ.get("BLIND_DRONE_DIRTY")!="false","ci_run_id": os.environ.get("GITHUB_RUN_ID"),
               "algorithm_version": "range_tangent_v1", "lab_config": lab_config,
+              "suite":suite,"protocol_sha256":protocol_hash,"manifest_sha256":manifest_hash,
+              "complete_split":not requested and selection=="both",
               "split": specification["split"], "specification_sha256": hashlib.sha256(NAV_CONFIG.read_bytes()).hexdigest(),
               "specification": specification, "episodes": [], "checks": {},
               "assumptions": ["ideal localization and ranges", "horizontal detours at goal altitude",
-                              "public development fixtures; not held-out evaluation", "no learned model"]}
+                              "public fixtures; split isolation relies on frozen protocol, not secrecy", "no learned model"]}
     (output / "manifest.json").write_text(json.dumps(report, indent=2) + "\n")
     log = (output / "telemetry.jsonl").open("w", buffering=1)
     next_log = 0.0
     latest = None
+    trajectories = []
 
     def send(packet):
         emitter.send(json.dumps(packet, allow_nan=False).encode())
@@ -83,7 +101,7 @@ def main():
                     shape.getField("geometry").getSFNode().getField("size").setSFVec3f(item["size_m"])
                 goal_node.getField("translation").setSFVec3f(case["goal_m"])
                 drone.getField("translation").setSFVec3f(case["start_m"])
-                drone.getField("rotation").setSFRotation([0, 0, 1, 0])
+                drone.getField("rotation").setSFRotation([0, 0, 1, case.get("start_yaw_rad",0.0)])
                 drone.resetPhysics()
                 send({"kind": "reset"})
                 warmup_start = supervisor.getTime()
@@ -95,25 +113,45 @@ def main():
                     raise RuntimeError("No telemetry after warmup")
                 if any("camera" in name.lower() for name in latest["devices"]):
                     raise RuntimeError("Image device in evaluated drone")
+                actual_start = drone.getPosition()
+                initial_speed = sqrt(sum(v*v for v in drone.getVelocity()[:3]))
+                if dist(actual_start,case["start_m"]) > 0.18 or initial_speed > 0.18:
+                    raise RuntimeError("Reset did not settle at the requested start pose")
+                initial_yaw = latest["attitude_rad"][2]
+                yaw_error = (initial_yaw-case.get("start_yaw_rad",0.0)+pi)%(2*pi)-pi
+                if abs(yaw_error) > 0.1:
+                    raise RuntimeError("Reset yaw did not settle")
                 send({"kind": "mission", "goal_m": case["goal_m"], "policy": policy})
                 start = supervisor.getTime()
                 evaluator = EpisodeEvaluator(case["goal_m"], config)
+                evaluator.update(0.0,actual_start,drone.getVelocity()[:3],0)
+                trajectory = {"case_id":case["id"],"policy":policy,"frame":"world_ENU",
+                              "source":"privileged_observer_only","points_txyz":[[0.0,*[round(v,4) for v in actual_start]]]}
+                next_trace = 0.5
                 while True:
                     now = step()
                     position = drone.getPosition()
                     velocity = drone.getVelocity()[:3]
                     contacts = drone.getContactPoints(True)
                     result = evaluator.update(now - start, position, velocity, len(contacts))
+                    if now-start >= next_trace or result:
+                        trajectory["points_txyz"].append([round(now-start,3),*[round(v,4) for v in position]])
+                        next_trace = now-start+0.5
                     supervisor.setLabel(0, f"{case['id']} | {policy} | {now-start:.1f}s", 0.02, 0.02, 0.05, 0xFFFFFF, 0, "Arial")
-                    supervisor.setLabel(1, f"{latest['navigation']['state']} | goal distance={evaluator.min_goal_distance_m:.2f}m", 0.02, 0.09, 0.035, 0x77FFAA, 0, "Arial")
+                    supervisor.setLabel(1, f"{latest['navigation']['state']} | distance={dist(position,case['goal_m']):.2f}m", 0.02, 0.09, 0.035, 0x77FFAA, 0, "Arial")
                     if result:
                         episode = {"case_id": case["id"], "policy": policy, "feasible": case["feasible"],
+                                   "family":case.get("family",case["id"]),"seed":case.get("seed"),
+                                   "geometry_sha256":case.get("geometry_sha256"),"initial_position_m":actual_start,
+                                   "initial_yaw_rad":initial_yaw,
                                    "final_position_m": position, **result}
+                        trajectories.append(trajectory)
+                        (output / "trajectories.json").write_text(json.dumps(trajectories,separators=(",",":"))+"\n")
                         report["episodes"].append(episode)
                         (output / "progress.json").write_text(json.dumps(report, indent=2, allow_nan=False) + "\n")
                         print("NAVIGATION_EPISODE " + json.dumps(episode), flush=True)
                         supervisor.exportImage(str(output / f"{case['id']}-{policy}.jpg"), 85)
-                        if case["id"] == "single_block" and policy == "reactive":
+                        if (case["id"] == "single_block" or case.get("family")=="u_trap") and policy == "reactive":
                             supervisor.exportImage(str(output / "scene.jpg"), 85)
                         break
         # Only integration sanity checks are pass/fail gates. Every episode,
@@ -123,16 +161,17 @@ def main():
             report["checks"][name] = {"passed": bool(condition)}
         check("all_requested_episodes_recorded", len(episodes) == len(cases) * len(policies))
         check("negative_controls_never_succeed", all(e["outcome"] != "success" for e in episodes if not e["feasible"]))
-        empty = [e for e in episodes if e["case_id"] == "empty"]
+        empty = [e for e in episodes if e["family"] == "empty"]
         if empty:
             check("empty_goal_and_dwell", all(e["outcome"] == "success" for e in empty))
-        blocked = [e for e in episodes if e["case_id"] == "single_block" and e["policy"] == "direct"]
+        blocked = [e for e in episodes if e["family"] == "single_block" and e["policy"] == "direct"]
         if blocked:
             check("direct_collision_is_detected", all(e["outcome"] == "collision" for e in blocked))
         detours = [e for e in episodes if e["case_id"] == "single_block" and e["policy"] == "reactive"]
-        if detours:
+        if detours and suite=="diagnostic":
             check("reactive_basic_detour", all(e["outcome"] == "success" for e in detours))
         report["summary"] = summarize(episodes)
+        report["by_family"] = {family:summarize([e for e in episodes if e["family"]==family]) for family in sorted({e["family"] for e in episodes})}
         report["status"] = "passed" if all(c["passed"] for c in report["checks"].values()) else "failed"
     except Exception as error:
         traceback.print_exc()

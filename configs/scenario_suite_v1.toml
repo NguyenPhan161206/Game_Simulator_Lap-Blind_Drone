@@ -1,0 +1,16 @@
+schema_version = 1
+name = "seeded_horizontal_v1"
+generator_version = "sha256_parameterized_v1"
+families = ["empty", "single_block", "staggered_blocks", "narrow_gap", "u_trap", "blocked_goal"]
+policies = ["direct", "reactive"]
+reference_step_m = 0.25
+reference_margin_m = 0.12
+reference_bounds_m = [-9.0, 9.0]
+timeout_s = 75.0
+warmup_s = 2.0
+
+[splits]
+train_reserved = [11001, 11002]
+development = [21001, 21002]
+validation = [31001]
+test = [41001]

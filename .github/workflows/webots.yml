@@ -1,7 +1,7 @@
 name: Webots minimal lab
 on:
   push:
-    branches: ["main", "feat/webots-lab-v1", "feat/navigation-v1"]
+    branches: ["main", "feat/webots-lab-v1", "feat/navigation-v1", "feat/seeded-environments"]
   pull_request:
   workflow_dispatch:
 permissions:
@@ -9,7 +9,7 @@ permissions:
 jobs:
   simulator:
     runs-on: ubuntu-22.04
-    timeout-minutes: 20
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -19,6 +19,7 @@ jobs:
         run: |
           python3 tools/check_scaffold.py
           python3 tools/build_lab.py --check
+          python3 tools/build_scenarios.py --check
           python3 -m unittest discover -s tests -p 'test_*.py' -v
       - name: Install display dependencies
         run: |
@@ -36,6 +37,20 @@ jobs:
       - name: Report navigation diagnostics
         if: always()
         run: python3 tools/report_webots_evidence.py artifacts/navigation
+      - name: Run frozen development split
+        run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_webots.py --navigation --suite seeded --split development --software-rendering --output artifacts/seeded-development --timeout 900
+      - name: Run frozen validation split
+        run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_webots.py --navigation --suite seeded --split validation --software-rendering --output artifacts/seeded-validation --timeout 600
+      - name: Run frozen test split without tuning
+        run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_webots.py --navigation --suite seeded --split test --software-rendering --output artifacts/seeded-test --timeout 600
+      - name: Validate full paired study
+        run: python3 tools/check_study.py artifacts/seeded-development/result.json artifacts/seeded-validation/result.json artifacts/seeded-test/result.json
+      - name: Report seeded evidence including failures
+        if: always()
+        run: |
+          python3 tools/report_webots_evidence.py artifacts/seeded-development
+          python3 tools/report_webots_evidence.py artifacts/seeded-validation
+          python3 tools/report_webots_evidence.py artifacts/seeded-test
       - name: Save simulator evidence
         if: always()
         uses: actions/upload-artifact@v4
@@ -44,4 +59,6 @@ jobs:
           path: |
             artifacts/webots-smoke/
             artifacts/navigation/
+            artifacts/seeded-*/
+            artifacts/seeded-study.json
           if-no-files-found: warn

@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "name": "seeded_horizontal_v1_frozen_protocol",
+  "baseline_source_commit": "555f59fd856f73a3f44018ce334c0faa2ef7c0b6",
+  "rule": "No tuning on validation/test outcomes; changed frozen files require a new protocol version.",
+  "files_sha256": {
+    "configs/lab_v1.toml": "2edb24e7173cbafcc8cee9ba4e25c208d0026815504daf645945b20ffa2ea37f",
+    "configs/navigation_v1.toml": "db1976440900674232a386601929e9f9fb1156a5e73160b60a5382c99622f3e4",
+    "configs/scenario_suite_v1.toml": "e2d9f26bea047b96ac19e3497f9719b7ad792fb221d6cad52e1361df3967bb56",
+    "configs/scenarios/seeded_v1.json": "61edc7a62ed269e9f6e97f728062e9d6db3271a0128ebe80dde13484ec1079c3",
+    "src/blind_drone/navigation/baseline.py": "79a7c91b9b6946ec4fcabf7e1ee6e5c857805608b4f27f2f2a6b633f15791a8e",
+    "src/blind_drone/contracts/navigation.py": "fba22fb88f7dd1aa0afe3a6ec1fe1a838ef6013edcf6a41c554477f11db3965d",
+    "src/blind_drone/contracts/runtime.py": "e4ce7350f23d1c4045dbb6f8d60c62232c01ba587359163f88fa9edc02496766",
+    "src/blind_drone/control/stabilizer.py": "e4a6c658a6e026c55e6c7c381fd302fa25f4a96a345e4886f41005d0f512878b",
+    "src/blind_drone/adapters/webots/drone.py": "6c13a0971cb7895ec675e4cf511e4b3ff00e317b21a566e2b50be31c1a6c3110",
+    "src/blind_drone/adapters/webots/navigation_lab.py": "3ba533af6ecef7baf92ba4955c784f2a927f350a36d4e640b1ce173b02e1ef4d",
+    "src/blind_drone/evaluation/episode.py": "729a22fc36be752a521f5d922bcb83fa71e65a7e71f53dbbaa43acb9667258bc",
+    "src/blind_drone/evaluation/study.py": "e99a29b5ec1734196746b81cfc75590322613e22439ea233a49eed0f6e64ddb9",
+    "src/blind_drone/world/geometry.py": "f40a8fe3cace7f453fc10c9f45d4930019268a5b1f34b5a4d3258d822842c434",
+    "src/blind_drone/world/scenarios.py": "16e43e6b03d7ff6077dfcde97c6004538580f17bcad3a0467571bee2abce443f",
+    "src/blind_drone/world/minimal_lab.py": "b895ab59c46f2ac80e56b2f479114878d1b1721653ea018f6c4d1556f9ac928e",
+    "src/blind_drone/experiments/protocol.py": "2d2f372b8341740f66a8b3d84fbbbc5556bbc9da85e3d4a0a1855414798566d0",
+    "tools/run_webots.py": "806a0aafcd31d48cc38220286ca1a0e1c0c71548866fab0851f8b924749678d1",
+    "tools/check_study.py": "5d7e2ae84d563e5d3e9b1b760724a739b15932ebdf914ba3dd49fe5439952473",
+    "simulation/webots/worlds/minimal_lab.wbt": "08c8e7671c0989b5999db50440f5b7673bf864d471137762c44ba8576075efea",
+    "simulation/webots/protos/BlindDrone.proto": "5a179734bd4bf80ae4f8c7552291347d04b4645c681a91131616548ab93a69fd"
+  }
+}

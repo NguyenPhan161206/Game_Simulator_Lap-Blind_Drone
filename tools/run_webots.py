@@ -27,12 +27,24 @@ def main():
     modes.add_argument("--navigation", action="store_true")
     parser.add_argument("--policy", choices=("both", "direct", "reactive"), default="both")
     parser.add_argument("--case", help="One development diagnostic case ID; defaults to all")
+    parser.add_argument("--suite",choices=("diagnostic","seeded"),default="diagnostic")
+    parser.add_argument("--split",choices=("development","validation","test"),default="development")
     parser.add_argument("--webots")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--timeout", type=float, default=600)
     parser.add_argument("--software-rendering", action="store_true")
     parser.add_argument("--realtime", action="store_true", help="Observe autonomous runs at realtime speed")
     args = parser.parse_args()
+    if args.suite == "seeded":
+        if not args.navigation:
+            parser.error("--suite seeded requires --navigation")
+        sys.path.insert(0,str(ROOT/"src"))
+        from blind_drone.experiments.protocol import select_suite
+        try:
+            select_suite(args.split,args.case)
+        except (ValueError,OSError) as error:
+            print(error,file=sys.stderr)
+            return 2
     executable = find_webots(args.webots)
     if not executable:
         print("Webots R2025a not found. Run python3 tools/install_webots.py or specify --webots.", file=sys.stderr)
@@ -54,6 +66,13 @@ def main():
                 "XDG_CACHE_HOME": str(ROOT / ".local/webots-user/cache"),
                 "PYTHONUNBUFFERED": "1"})
     env["BLIND_DRONE_POLICY"] = args.policy
+    env["BLIND_DRONE_SUITE"],env["BLIND_DRONE_SPLIT"] = args.suite,args.split
+    env.pop("BLIND_DRONE_CASE",None)
+    source = subprocess.run(["bash",str(ROOT/"tools/git.sh"),"rev-parse","HEAD"],cwd=ROOT,capture_output=True,text=True)
+    if source.returncode==0:
+        env["BLIND_DRONE_SOURCE_COMMIT"] = source.stdout.strip()
+    status = subprocess.run(["bash",str(ROOT/"tools/git.sh"),"status","--porcelain"],cwd=ROOT,capture_output=True,text=True)
+    env["BLIND_DRONE_DIRTY"] = "true" if status.returncode or status.stdout.strip() else "false"
     if args.case:
         env["BLIND_DRONE_CASE"] = args.case
     if args.software_rendering:

@@ -9,7 +9,7 @@
 - Delegate only when the user or a higher-priority instruction explicitly authorizes delegation.
 
 ## Project boundaries
-- Current milestone: camera-free navigation baselines and paired task evaluation on the validated Webots v1 environment. See docs/plans/0003-navigation-baseline.md and docs/navigation-v1.md.
+- Current milestone: seeded environments, geometric feasibility, frozen splits/protocol and paired Webots evaluation before training. See docs/plans/0004-seeded-environments.md and docs/seeded-environments-v1.md.
 - First research task: one simulated drone reaches a supplied goal while avoiding static obstacles (level B).
 - Webots is the first simulator. Keep local execution, CI execution and GUI inspection evidence separate; training remains a later milestone.
 - Runtime navigation must use camera-free observations. Training-only camera supervision is optional and must stay outside the deployed observation path.
@@ -31,6 +31,7 @@
 - Use python3 tools/check_scaffold.py for foundation changes. No Webots, ML framework or GPU is required for this check.
 - For lab changes run python3 tools/build_lab.py --check and python3 -m unittest discover -s tests -p 'test_*.py' -v. Real simulator verification uses python3 tools/run_webots.py --smoke with Webots R2025a; a missing executable must fail rather than skip silently.
 - Navigation changes also require python3 tools/run_webots.py --navigation on real Webots. Keep direct/reactive paired development results, impossible negative controls and later held-out research results distinct.
+- Seed-suite changes require python3 tools/build_scenarios.py --check and the frozen protocol. Do not tune after validation/test exposure or replace the v1 lock silently. Only world/evaluation may read witness paths. A baseline failure is an outcome, not permission to drop a case.
 - Add behavior tests when implementing consequential logic; do not invent simulator smoke tests that merely import stubs.
 - Keep generated logs, datasets, models, credentials and large downloaded assets out of Git.
 - Do not reset, clean, stash, rewrite history or force-push as routine cleanup.
