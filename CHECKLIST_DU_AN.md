@@ -195,11 +195,13 @@ Tách riêng phần này để không đánh đồng CI có simulator với GUI 
 - [ ] LOC-08 — So sánh outcome với CI cùng protocol; phân biệt sai số số học, cấu hình máy và lỗi thực sự.
 - [ ] LOC-09 — Kiểm tra hiệu năng/độ phản hồi trên laptop, giữ giới hạn về realtime nếu chưa đạt.
 
-Lệnh tham khảo khi Webots đã cài:
+Đã chuẩn bị [kế hoạch nhánh L](docs/plans/0006-local-acceptance.md), [hướng dẫn và bộ thu bằng chứng local](docs/local-acceptance.md). Helper lưu console/source/wall time, phiếu người thao tác và so sánh CI; không tự đóng LOC. 73 unit test đạt ở mốc bổ sung helper; hai lock giữ nguyên. Tool desktop hiện không có app/browser khả dụng, nên LOC-04…09 vẫn chờ lượt từ terminal desktop, chưa có bằng chứng GUI mới.
+
+Chạy từ terminal desktop khi Webots đã cài:
 
 ```bash
-python3 tools/run_webots.py
-python3 tools/run_navigation_v2.py --policy mapped --case development-u_trap-s21001 --realtime
+python3 tools/local_session.py manual
+python3 tools/local_session.py mapped
 ```
 
 **Gate:** có bằng chứng local riêng, không lấy CI hoặc lần tải thành công thay cho việc đã mở/chạy GUI.

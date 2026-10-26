@@ -30,6 +30,7 @@ Chạy thử khi đã cài Webots: python3 tools/run_navigation_v2.py --policy m
 ## Bản đồ tài liệu
 
 - [Checklist tổng thể từ ý tưởng đến roadmap tương lai](CHECKLIST_DU_AN.md)
+- [Nghiệm thu GUI local, bàn phím và so sánh CI — nhánh L](docs/local-acceptance.md)
 - [Ý tưởng và quyết định từ cuộc trao đổi](docs/01-y-tuong-va-quyet-dinh.md)
 - [Dự thảo thí nghiệm mức B](docs/02-du-thao-thi-nghiem-muc-b.md)
 - [Kiến trúc hệ thống](docs/architecture/system.md)
