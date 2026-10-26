@@ -34,8 +34,20 @@
 - Add behavior tests when implementing consequential logic; do not invent simulator smoke tests that merely import stubs.
 - Keep generated logs, datasets, models, credentials and large downloaded assets out of Git.
 - Do not reset, clean, stash, rewrite history or force-push as routine cleanup.
-- Stage explicit paths and inspect the staged diff. Commit/push when requested or already authorized; this initial foundation commit/push is explicitly authorized.
+- Stage explicit paths and inspect the staged diff. Follow the standing Git authorization below.
 - Final reports should state what changed, checks actually run, and remaining limitations.
+
+## Standing Git authorization for this workspace
+
+The user explicitly authorized Codex to commit and push at appropriate project milestones on 2026-10-26. This applies to ongoing authorized project work and future sessions in this repository; no repeated confirmation is needed for routine commits, feature-branch pushes or a verified fast-forward to main. A later user instruction overrides this policy.
+
+- Use small, coherent commits: accepted plan/protocol, a working module with its checks, a validated integration/fix, and the evidence/docs handoff. Combine adjacent steps when that makes review clearer; do not commit every file or tool call.
+- Run checks appropriate to the change, inspect diff/status, stage only task-owned paths and use descriptive messages (docs/feat/fix/test/ci as appropriate). Preserve unrelated user changes and existing authorship.
+- Push a feature branch when local checks pass and remote CI is needed, at a useful recovery checkpoint, and before handing off a completed milestone. A CI-fix commit may precede simulator success, but describe its unverified state honestly. Do not push logs, downloads, credentials, datasets or model outputs; small reviewed research evidence belongs in docs/research.
+- Promote to main only when the milestone's relevant checks have passed, required simulator evidence exists, and a fresh remote read confirms a safe fast-forward. For docs-only evidence added after the verified source commit, rerun documentation checks and retain the exact tested source SHA. Respect repository protection rules and use a PR if required.
+- Never force-push, rewrite published history, reset/clean/stash other work, change remotes/access controls or bypass approval/network restrictions as part of this authorization. On a non-fast-forward or new remote work, inspect it and integrate safely without overwriting it.
+- Prefer normal Git/SSH when available. In the managed workspace use tools/git.sh; if shell network is unavailable, an authorized GitHub connector may publish the same reviewed tree. Verify matching tree/commit hashes and synchronize local refs without discarding files.
+- Report the branch, commit, push/CI status and any remaining limitation at handoff. A failed push/CI is not a successful publication or completed validation.
 
 ## Code review rules
 - Flag any runtime path that reads privileged state or images.
