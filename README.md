@@ -10,6 +10,8 @@ Camera có thể hỗ trợ tạo dữ liệu/huấn luyện ở nhánh nghiên 
 
 [Báo cáo kiểm chứng](docs/research/2026-10-25-webots-v1-smoke.md): 13 kiểm tra Python và 12 mục smoke trên Webots thật trong CI đạt; đã xem ảnh observer. Cài/chạy GUI local chưa được xác nhận.
 
+[Navigation v1 đã chạy trên Webots CI](docs/research/2026-10-26-navigation-v1.md): 29 unit test và 12 mục smoke đạt; tám lượt ghép cặp trên bốn fixture công khai. Reactive hoàn thành ba ca khả thi, direct hoàn thành một; đối chứng âm được báo riêng. Chưa có kết luận khái quát hóa hoặc model học.
+
 ## Bắt đầu
 
 Python 3.11+; kiểm tra nền dùng thư viện chuẩn, không cần cài dependency:

@@ -1,6 +1,6 @@
 # Điều hướng tham chiếu v1
 
-Mốc này thêm hai thuật toán không học và bộ chấm nhiệm vụ trên Webots v1. Trạng thái kiểm chứng simulator được ghi trong [kế hoạch](plans/0003-navigation-baseline.md); kiểm tra Python không thay thế chạy simulator.
+Mốc này thêm hai thuật toán không học và bộ chấm nhiệm vụ trên Webots v1. [Báo cáo kiểm chứng simulator](research/2026-10-26-navigation-v1.md): reactive đạt 3/3 ca khả thi trong tám lượt ghép cặp; xem giới hạn và mọi outcome trong báo cáo. [Kế hoạch](plans/0003-navigation-baseline.md) ghi trạng thái từng bước; kiểm tra Python không thay thế chạy simulator.
 
 ## Đường chạy
 

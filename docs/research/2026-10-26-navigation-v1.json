@@ -1,0 +1,538 @@
+{
+  "status": "passed",
+  "mode": "navigation",
+  "webots_version": "R2025a",
+  "source_commit": "cda58590a23471a7738fe1a09332ffb0cc0f9e71",
+  "ci_run_id": "40249783714",
+  "algorithm_version": "range_tangent_v1",
+  "lab_config": {
+    "schema_version": 1,
+    "name": "minimal_webots_lab_v1",
+    "status": "engineering_prototype",
+    "runtime_ready": true,
+    "validation_status": "verified_in_ci; see docs/research/2026-10-25-webots-v1-smoke.json",
+    "webots_version": "R2025a",
+    "coordinate_frame": "ENU",
+    "runtime_camera_enabled": false,
+    "runtime_privileged_state_enabled": false,
+    "physical_radar_claim": false,
+    "basic_time_step_ms": 16,
+    "sensor_period_ms": 32,
+    "world": {
+      "size_m": [
+        20,
+        20
+      ],
+      "wall_height_m": 6,
+      "wall_thickness_m": 0.2,
+      "floor_thickness_m": 0.1,
+      "gravity_m_s2": 9.81,
+      "start_m": [
+        -4,
+        0,
+        1.5
+      ],
+      "goal_m": [
+        5,
+        4,
+        1.5
+      ],
+      "goal_radius_m": 0.5,
+      "obstacles": [
+        {
+          "id": "BLOCK_NEAR",
+          "center_m": [
+            2,
+            0,
+            1
+          ],
+          "size_m": [
+            0.6,
+            2,
+            2
+          ]
+        },
+        {
+          "id": "BLOCK_HIDDEN",
+          "center_m": [
+            4,
+            0,
+            1
+          ],
+          "size_m": [
+            0.6,
+            1,
+            2
+          ]
+        },
+        {
+          "id": "BLOCK_SIDE",
+          "center_m": [
+            0,
+            4,
+            1.5
+          ],
+          "size_m": [
+            2,
+            0.8,
+            3
+          ]
+        }
+      ]
+    },
+    "vehicle": {
+      "mass_kg": 1,
+      "body_size_m": [
+        0.6,
+        0.6,
+        0.16
+      ],
+      "inertia_kg_m2": [
+        0.03,
+        0.03,
+        0.05
+      ],
+      "arm_offset_m": 0.25,
+      "thrust_coefficient_n_s2": 0.00001,
+      "torque_to_thrust_m": 0.02,
+      "motor_max_rad_s": 1000,
+      "motor_acceleration_rad_s2": 10000,
+      "motor_max_torque_nm": 10000,
+      "actuator_assumption": "fast ideal velocity actuator; authority limits are not real motor ratings",
+      "horizontal_speed_m_s": 0.8,
+      "vertical_speed_m_s": 0.4,
+      "yaw_rate_rad_s": 0.5,
+      "altitude_bounds_m": [
+        0.4,
+        5
+      ]
+    },
+    "control": {
+      "velocity_gain_s_inv": 1.8,
+      "acceleration_limit_m_s2": 2,
+      "tilt_limit_rad": 0.22,
+      "altitude_p_s_inv2": 5,
+      "altitude_d_s_inv": 3.5,
+      "attitude_p_nm_rad": 0.45,
+      "attitude_d_nm_s_rad": 0.18,
+      "yaw_p_nm_rad": 0.25,
+      "yaw_d_nm_s_rad": 0.14
+    },
+    "sensors": {
+      "model": "geometric_single_ray_generic_distance_sensor",
+      "range_max_m": 8,
+      "horizontal_directions_deg": [
+        0,
+        45,
+        90,
+        135,
+        180,
+        225,
+        270,
+        315
+      ],
+      "horizontal_origin_radius_m": 0.33,
+      "vertical_origin_offset_m": 0.12,
+      "noise_fraction": 0,
+      "latency_s": 0,
+      "localization": "Webots GPS, ideal local Cartesian coordinates",
+      "attitude": "Webots InertialUnit, ideal simulator attitude; no fusion model",
+      "angular_velocity": "Webots Gyro, ideal"
+    },
+    "smoke": {
+      "hover_duration_s": 4,
+      "hover_position_tolerance_m": 0.18,
+      "hover_altitude_tolerance_m": 0.15,
+      "motion_duration_s": 2,
+      "minimum_motion_m": 0.5,
+      "brake_duration_s": 3,
+      "stop_speed_tolerance_m_s": 0.18,
+      "sensor_fixture_m": [
+        0,
+        0,
+        1.5
+      ],
+      "sensor_tolerance_m": 0.08,
+      "collision_timeout_s": 8,
+      "reset_duration_s": 3,
+      "total_timeout_s": 50
+    },
+    "navigation": {
+      "speed_m_s": 0.55,
+      "goal_gain_s_inv": 0.65,
+      "range_max_age_s": 0.12,
+      "avoid_distance_m": 2.2,
+      "follow_distance_m": 1,
+      "brake_margin_m": 0.55,
+      "brake_acceleration_m_s2": 0.6,
+      "leave_progress_m": 0.3
+    }
+  },
+  "split": "development_diagnostic",
+  "specification_sha256": "db1976440900674232a386601929e9f9fb1156a5e73160b60a5382c99622f3e4",
+  "specification": {
+    "schema_version": 1,
+    "status": "engineering_diagnostic",
+    "split": "development_diagnostic",
+    "runtime_camera_enabled": false,
+    "navigation": {
+      "speed_m_s": 0.55,
+      "goal_gain_s_inv": 0.65,
+      "range_max_age_s": 0.12,
+      "avoid_distance_m": 2.2,
+      "follow_distance_m": 1,
+      "brake_margin_m": 0.55,
+      "brake_acceleration_m_s2": 0.6,
+      "leave_progress_m": 0.3
+    },
+    "evaluation": {
+      "warmup_s": 1,
+      "goal_radius_m": 0.5,
+      "stop_speed_m_s": 0.18,
+      "dwell_s": 1,
+      "timeout_s": 65,
+      "position_bounds_min_m": [
+        -9.5,
+        -9.5,
+        0.4
+      ],
+      "position_bounds_max_m": [
+        9.5,
+        9.5,
+        5
+      ]
+    },
+    "cases": [
+      {
+        "id": "empty",
+        "feasible": true,
+        "start_m": [
+          -4,
+          0,
+          1.5
+        ],
+        "goal_m": [
+          5,
+          0,
+          1.5
+        ],
+        "obstacles": []
+      },
+      {
+        "id": "single_block",
+        "feasible": true,
+        "start_m": [
+          -4,
+          0,
+          1.5
+        ],
+        "goal_m": [
+          5,
+          0,
+          1.5
+        ],
+        "obstacles": [
+          {
+            "center_m": [
+              0,
+              0,
+              1.5
+            ],
+            "size_m": [
+              0.8,
+              3,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "id": "staggered_blocks",
+        "feasible": true,
+        "start_m": [
+          -4,
+          0,
+          1.5
+        ],
+        "goal_m": [
+          5,
+          0,
+          1.5
+        ],
+        "obstacles": [
+          {
+            "center_m": [
+              -0.5,
+              0,
+              1.5
+            ],
+            "size_m": [
+              0.8,
+              2,
+              3
+            ]
+          },
+          {
+            "center_m": [
+              2.5,
+              1.5,
+              1.5
+            ],
+            "size_m": [
+              0.8,
+              2,
+              3
+            ]
+          }
+        ]
+      },
+      {
+        "id": "blocked_goal",
+        "feasible": false,
+        "start_m": [
+          -4,
+          0,
+          1.5
+        ],
+        "goal_m": [
+          0,
+          0,
+          1.5
+        ],
+        "obstacles": [
+          {
+            "center_m": [
+              0,
+              0,
+              1.5
+            ],
+            "size_m": [
+              2,
+              2,
+              3
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "episodes": [
+    {
+      "case_id": "empty",
+      "policy": "direct",
+      "feasible": true,
+      "final_position_m": [
+        4.943041062795807,
+        2.2121552060067428e-16,
+        1.5000000291376565
+      ],
+      "outcome": "success",
+      "elapsed_s": 18.064,
+      "path_length_m": 8.958148388176628,
+      "final_distance_m": 0.05695893720420066,
+      "min_goal_distance_m": 0.05695893720420066,
+      "final_speed_m_s": 0.0033324269647969124,
+      "contact_count": 0
+    },
+    {
+      "case_id": "empty",
+      "policy": "reactive",
+      "feasible": true,
+      "final_position_m": [
+        4.942999545680804,
+        -6.970202271639993e-17,
+        1.500000000000007
+      ],
+      "outcome": "success",
+      "elapsed_s": 18.048,
+      "path_length_m": 8.942999545680797,
+      "final_distance_m": 0.05700045431919598,
+      "min_goal_distance_m": 0.05700045431919598,
+      "final_speed_m_s": 0.003331206050644383,
+      "contact_count": 0
+    },
+    {
+      "case_id": "single_block",
+      "policy": "direct",
+      "feasible": true,
+      "final_position_m": [
+        -0.6997969673184872,
+        -6.0798038323443794e-15,
+        1.5000000000208566
+      ],
+      "outcome": "collision",
+      "elapsed_s": 6.527999999999999,
+      "path_length_m": 3.300203032681515,
+      "final_distance_m": 5.699796967318488,
+      "min_goal_distance_m": 5.699796967318488,
+      "final_speed_m_s": 0.5501721613430234,
+      "contact_count": 4
+    },
+    {
+      "case_id": "single_block",
+      "policy": "reactive",
+      "feasible": true,
+      "final_position_m": [
+        4.949529796606047,
+        0.026468385269209495,
+        1.4999999999996516
+      ],
+      "outcome": "success",
+      "elapsed_s": 22.064,
+      "path_length_m": 11.192348289009471,
+      "final_distance_m": 0.056989620540816854,
+      "min_goal_distance_m": 0.056989620540816854,
+      "final_speed_m_s": 0.0033735073858126505,
+      "contact_count": 0
+    },
+    {
+      "case_id": "staggered_blocks",
+      "policy": "direct",
+      "feasible": true,
+      "final_position_m": [
+        -1.1999066817402246,
+        -8.328893168985515e-15,
+        1.5
+      ],
+      "outcome": "collision",
+      "elapsed_s": 5.616,
+      "path_length_m": 2.800093318259777,
+      "final_distance_m": 6.199906681740225,
+      "min_goal_distance_m": 6.199906681740225,
+      "final_speed_m_s": 0.5469804735210976,
+      "contact_count": 4
+    },
+    {
+      "case_id": "staggered_blocks",
+      "policy": "reactive",
+      "feasible": true,
+      "final_position_m": [
+        4.975124703608472,
+        0.05139425629818026,
+        1.4999999999999944
+      ],
+      "outcome": "success",
+      "elapsed_s": 28.560000000000002,
+      "path_length_m": 14.837701454229226,
+      "final_distance_m": 0.057097722818072225,
+      "min_goal_distance_m": 0.057097722818072225,
+      "final_speed_m_s": 0.003211351468980729,
+      "contact_count": 0
+    },
+    {
+      "case_id": "blocked_goal",
+      "policy": "direct",
+      "feasible": false,
+      "final_position_m": [
+        -1.2961991777683999,
+        -6.735278183731234e-15,
+        1.5
+      ],
+      "outcome": "collision",
+      "elapsed_s": 5.439999999999998,
+      "path_length_m": 2.7038008222316012,
+      "final_distance_m": 1.2961991777683999,
+      "min_goal_distance_m": 1.2961991777683999,
+      "final_speed_m_s": 0.5474076994998902,
+      "contact_count": 4
+    },
+    {
+      "case_id": "blocked_goal",
+      "policy": "reactive",
+      "feasible": false,
+      "final_position_m": [
+        -1.044020057066976,
+        2.2717723426690055,
+        1.4999999999999947
+      ],
+      "outcome": "timeout",
+      "elapsed_s": 65.008,
+      "path_length_m": 35.92623355754847,
+      "final_distance_m": 2.500185484413897,
+      "min_goal_distance_m": 2.2006906855262747,
+      "final_speed_m_s": 0.5350322299197409,
+      "contact_count": 0
+    }
+  ],
+  "checks": {
+    "all_requested_episodes_recorded": {
+      "passed": true
+    },
+    "negative_controls_never_succeed": {
+      "passed": true
+    },
+    "empty_goal_and_dwell": {
+      "passed": true
+    },
+    "direct_collision_is_detected": {
+      "passed": true
+    },
+    "reactive_basic_detour": {
+      "passed": true
+    }
+  },
+  "assumptions": [
+    "ideal localization and ranges",
+    "horizontal detours at goal altitude",
+    "public development fixtures; not held-out evaluation",
+    "no learned model"
+  ],
+  "summary": {
+    "direct": {
+      "feasible": {
+        "episodes": 3,
+        "successes": 1,
+        "success_rate": 0.3333333333333333,
+        "outcomes": {
+          "success": 1,
+          "collision": 2,
+          "out_of_bounds": 0,
+          "timeout": 0
+        },
+        "success_only_mean_time_s": 18.064,
+        "success_only_mean_path_m": 8.958148388176628
+      },
+      "negative_control": {
+        "episodes": 1,
+        "successes": 0,
+        "success_rate": 0,
+        "outcomes": {
+          "success": 0,
+          "collision": 1,
+          "out_of_bounds": 0,
+          "timeout": 0
+        },
+        "success_only_mean_time_s": null,
+        "success_only_mean_path_m": null
+      }
+    },
+    "reactive": {
+      "feasible": {
+        "episodes": 3,
+        "successes": 3,
+        "success_rate": 1,
+        "outcomes": {
+          "success": 3,
+          "collision": 0,
+          "out_of_bounds": 0,
+          "timeout": 0
+        },
+        "success_only_mean_time_s": 22.890666666666664,
+        "success_only_mean_path_m": 11.6576830963065
+      },
+      "negative_control": {
+        "episodes": 1,
+        "successes": 0,
+        "success_rate": 0,
+        "outcomes": {
+          "success": 0,
+          "collision": 0,
+          "out_of_bounds": 0,
+          "timeout": 1
+        },
+        "success_only_mean_time_s": null,
+        "success_only_mean_path_m": null
+      }
+    }
+  }
+}

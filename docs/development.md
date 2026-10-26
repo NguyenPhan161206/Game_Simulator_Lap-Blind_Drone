@@ -2,7 +2,7 @@
 
 ## Milestone hiện tại
 
-Bản thử Webots v1 có world primitive, điều khiển thủ công, cảm biến và smoke runner. Python 3.11+ đủ cho các kiểm tra core; chưa cần pip install. Webots là dependency riêng khi chạy simulator. Huấn luyện model chưa thuộc mốc này.
+Bản thử Webots v1 có world primitive, điều khiển thủ công, cảm biến và smoke runner. Mốc kế tiếp là [navigation baseline và evaluator](navigation-v1.md), với [kế hoạch từng bước](plans/0003-navigation-baseline.md). Python 3.11+ đủ cho các kiểm tra core; chưa cần pip install. Webots là dependency riêng khi chạy simulator. Huấn luyện model chưa thuộc mốc này.
 
 ```bash
 python3 tools/check_scaffold.py

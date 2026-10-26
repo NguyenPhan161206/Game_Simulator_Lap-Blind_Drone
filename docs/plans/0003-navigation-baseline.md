@@ -28,8 +28,10 @@ Ngày: 2026-10-26. Phạm vi: baseline không học, chỉ cảm biến/đích h
 
 - [x] Bước 1: main tại 686681f, worktree sạch; không có Webots local, shell không phân giải github.com. GitHub connector đọc được repo; dùng CI để chạy simulator thật.
 - [x] Bước 2: ghi kế hoạch trước triển khai. Các bước còn lại chỉ đánh dấu sau khi kiểm tra tương ứng.
-- [ ] Bước 3.
-- [ ] Bước 4.
-- [ ] Bước 5.
-- [ ] Bước 6.
-- [ ] Bước 7.
+- [x] Bước 3: hai baseline, schema quan sát/mission và kiểm tra hành vi đã triển khai; dữ liệu thiếu/cũ/sai frame trả lệnh zero.
+- [x] Bước 4: evaluator và test thứ tự ưu tiên, dwell, tốc độ, deadline, quãng đường/tổng hợp thất bại đạt.
+- [x] Bước 5: tích hợp mode navigation, runner/CI, giữ manual mapping; smoke Webots cũ 12 mục vẫn đạt. Không bấm phím GUI local.
+- [x] Bước 6: 29 unit test đạt; CI 40249783714 chạy đủ 8 lượt, 5 gate tích hợp đạt. Reactive 3/3 ca khả thi success; direct 1/3 success, 2 collision; đối chứng âm direct collision, reactive timeout.
+- [x] Bước 7: đã xem ảnh CI và lưu [báo cáo/JSON/giới hạn](../research/2026-10-26-navigation-v1.md). Không chốt chất lượng nghiên cứu bằng ba fixture.
+
+Kết luận: baseline/evaluator kỹ thuật đã được kiểm chứng trên simulator CI. Local chưa có Webots; không huấn luyện model. Cần bộ tình huống đa dạng và protocol chia tập trước mốc nghiên cứu tiếp theo.

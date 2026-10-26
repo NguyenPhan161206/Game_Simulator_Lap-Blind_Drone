@@ -1,6 +1,6 @@
 # Hợp đồng dữ liệu dự kiến
 
-Trạng thái: runtime.py đã có VehicleState và MotionCommand; telemetry/sensor packets v1 là JSON có timestamp và validity. Bảng bên dưới là hợp đồng đích cho các mốc tiếp theo, chưa phải toàn bộ class/API đã triển khai. V1 dùng ENU cho thế giới và FLU cho thân; mét, giây, radian. Các thiết bị được đặt theo cùng frame ở Webots, vận tốc thân được đổi từ GPS ENU theo yaw.
+Trạng thái: runtime.py có VehicleState/MotionCommand; navigation.py có NavigationMission, NavigationObservation và RangeReading. EpisodeEvaluator xuất kết quả dưới dạng dict/JSON. Bảng bên dưới còn gồm các hợp đồng đích cho mốc sau, chưa phải toàn bộ class đã triển khai. V1 dùng ENU cho thế giới và FLU cho thân; mét, giây, radian. Các thiết bị được đặt theo cùng frame ở Webots, vận tốc thân được đổi từ GPS ENU theo yaw. Xem [schema runtime/tiêu chí cụ thể](../navigation-v1.md).
 
 | Bản tin | Nội dung cần có | Bên nhận |
 |---|---|---|

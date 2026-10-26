@@ -1,6 +1,6 @@
 # Kiến trúc hệ thống
 
-Trạng thái: đã có bản thử Webots v1 cho điều khiển thủ công, cảm biến, va chạm và reset. Xem [hướng dẫn](../lab-v1.md) và [kế hoạch/bằng chứng](../plans/0002-webots-minimal-lab.md). Chưa có kết quả huấn luyện hoặc điều hướng tự động.
+Trạng thái: Webots v1 đã kiểm chứng môi trường, điều khiển thủ công, cảm biến, va chạm và reset. Mốc hiện tại thêm baseline không học và đánh giá nhiệm vụ; xem [navigation v1](../navigation-v1.md) và [trạng thái bằng chứng](../plans/0003-navigation-baseline.md). Chưa huấn luyện model.
 
 ## Mục tiêu và nguyên tắc
 
@@ -52,7 +52,7 @@ Luồng từ trạng thái thật sang bộ đánh giá/hiển thị không đư
 - adapter là biên API simulator; controller drone và supervisor có quyền khác nhau.
 - experiments kết nối các phần nhưng không đưa dữ liệu đặc quyền vào policy.
 - training có thể dùng teacher/nhãn riêng; student runtime nhận cùng hợp đồng quan sát được đánh giá.
-- Những ràng buộc này hiện là thiết kế; cần kiểm tra tự động luồng dữ liệu khi có runtime.
+- Runtime baseline đã có whitelist cấu hình/mission, NavigationObservation tường minh và kiểm tra phụ thuộc API/scene. Đây không thay thế audit toàn bộ đường dữ liệu khi mở rộng module hoặc thêm model.
 
 ## Các bước bằng chứng
 
