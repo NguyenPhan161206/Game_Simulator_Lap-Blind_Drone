@@ -1,0 +1,147 @@
+{
+  "ci_run_id": 40284088405,
+  "ci_job_id": 121443592619,
+  "ci_url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40284088405",
+  "artifact": {
+    "id": 12633900122,
+    "name": "local-session-collector-evidence",
+    "size_in_bytes": 258644,
+    "url": "https://api.github.com/repos/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/artifacts/12633900122",
+    "archive_download_url": "https://api.github.com/repos/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/artifacts/12633900122/zip",
+    "expired": false,
+    "created_at": "2026-10-26T07:12:16Z",
+    "expires_at": "2027-01-24T07:09:46Z",
+    "updated_at": "2026-10-26T07:12:16Z",
+    "digest": "sha256:73c391dd7d34e477079a5e3c321678dd47c18d97f39b337d73e9e01d0bba88ed",
+    "workflow_run": {
+      "id": 40284088405,
+      "repository_id": 1433047833,
+      "head_repository_id": 1433047833,
+      "head_branch": "feat/local-acceptance",
+      "head_sha": "b32410595b26f8ef2d0f8d99dca469797278366b"
+    }
+  },
+  "evidence": {
+    "source_commit": "b32410595b26f8ef2d0f8d99dca469797278366b",
+    "kind": "CI_Xvfb_collector_integration_not_desktop_acceptance",
+    "mapped": {
+      "mode": "mapped",
+      "process_exit_code": 0,
+      "wall_s_including_startup_shutdown": 63.305823188000005,
+      "gui_verified_automatically": false,
+      "operator_record_present": false,
+      "comparison": {
+        "identity_valid": true,
+        "ci_url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790",
+        "ci_source": "2f422e253376b589e478ac10f3eee8efa970dc74",
+        "local_outcome": "success",
+        "ci_outcome": "success",
+        "same_outcome": true,
+        "local": {
+          "elapsed_s": 41.216,
+          "path_length_m": 14.858754976240316,
+          "final_distance_m": 0.04615167023142617,
+          "final_speed_m_s": 0.016381392651168995,
+          "contact_count": 0
+        },
+        "ci": {
+          "elapsed_s": 41.21600000000001,
+          "path_length_m": 14.855333972072696,
+          "final_distance_m": 0.04615166647376634,
+          "final_speed_m_s": 0.01638140827271698,
+          "contact_count": 0
+        },
+        "local_minus_ci": {
+          "elapsed_s": -7.105427357601002e-15,
+          "path_length_m": 0.0034210041676203673,
+          "final_distance_m": 3.757659829128901e-09,
+          "final_speed_m_s": -1.5621547985733564e-08,
+          "contact_count": 0,
+          "final_position_distance_m": 1.0217507480304592e-08,
+          "initial_position_distance_m": 0.002156186406045091,
+          "initial_yaw_rad": 0
+        },
+        "classification": "numeric_difference_review_required",
+        "note": "1e-6 is a diagnostic label, not a research acceptance threshold; no cause inferred",
+        "policy_cpu": {
+          "decisions": 2575,
+          "range_samples": 1288,
+          "range_values": 12880,
+          "map_updates": 1288,
+          "free_cells": 4926,
+          "occupied_cells": 252,
+          "peak_cells": 5178,
+          "derived_blocked_cells": 2185,
+          "budget_exhausted": false,
+          "guard_events": 0,
+          "scan_decisions": 157,
+          "plans": 76,
+          "cpu_mean_ms": 0.9750622982524272,
+          "cpu_max_ms": 35.735856
+        }
+      },
+      "sim_s_over_total_wall_s": 0.6826544198258186,
+      "telemetry": {
+        "packets": 668,
+        "invalid_lines": 0,
+        "first_sim_s": 0.016,
+        "last_sim_s": 43.184,
+        "command_signs": {
+          "forward_m_s": [
+            "negative",
+            "positive"
+          ],
+          "left_m_s": [
+            "negative",
+            "positive"
+          ],
+          "up_m_s": [
+            "negative",
+            "positive"
+          ],
+          "yaw_rate_rad_s": [
+            "positive"
+          ]
+        },
+        "note": "Commands support motion evidence; they do not prove physical key presses/reset or GUI responsiveness"
+      },
+      "files_sha256": {
+        "console.log": "a5ffb7307a62ba1c9fff6e426821efbef4f1cab0751c6707627b84711403f062",
+        "run/cases.json": "c5b8046cd97d0e63cb32a6b7c1dde363b08c1b9dd8a4c85d841c65d1e908eeb7",
+        "run/development-u_trap-s21001-mapped.jpg": "4dbf7c089d51a0d4302170e62141bab4f1f0ef27bf3381d1a05fb4cfcf327e2f",
+        "run/manifest.json": "2c0dc440e9d1e70ee1246e2e6d59f6462d0feaf45c6d717d455a6151a134c046",
+        "run/progress.json": "9e526e061a49d1c81cbf588b3722f47b9a39fdb42b85ad311dbf05d9e1443eb5",
+        "run/result.json": "da7370546c7314cf4f77033cde327dd0e843e07a2dd8e73747250cbec1f7a9f9",
+        "run/scene.jpg": "4dbf7c089d51a0d4302170e62141bab4f1f0ef27bf3381d1a05fb4cfcf327e2f",
+        "run/telemetry.jsonl": "8d356385462ea376abee351759fa8438c705390097bdcdb69597eb7093d0c8b3",
+        "run/trajectories.json": "8a0433237ab04ae3cace6680d7552195fab30a193430196a5a8ca7721407ed85",
+        "session.json": "1ff6b3f1ac31765823e2e85d859ac3105a2ee409a61ffcba17615b66a3a5d1c2"
+      }
+    },
+    "manual": {
+      "mode": "manual",
+      "process_exit_code": 0,
+      "wall_s_including_startup_shutdown": 20.11639432199999,
+      "gui_verified_automatically": false,
+      "operator_record_present": false,
+      "telemetry": {
+        "packets": 202,
+        "invalid_lines": 0,
+        "first_sim_s": 0.016,
+        "last_sim_s": 13.152000000000001,
+        "command_signs": {
+          "forward_m_s": [],
+          "left_m_s": [],
+          "up_m_s": [],
+          "yaw_rate_rad_s": []
+        },
+        "note": "Commands support motion evidence; they do not prove physical key presses/reset or GUI responsiveness"
+      },
+      "files_sha256": {
+        "console.log": "89b967f81aee9ff621bf697bff47e27e3c20dbf5ab21e805d7ea4e710d67c681",
+        "run/telemetry.jsonl": "0e2467ffd4650fbfee62dcb42e0524de2cf70e46860cb06bebdf2286b66f2f3e",
+        "session.json": "e01648dc71d290118bfa8346f98b9675674ddba7fbac1f2782d20949960af9f8"
+      }
+    }
+  }
+}

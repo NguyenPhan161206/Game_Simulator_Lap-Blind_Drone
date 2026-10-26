@@ -8,7 +8,7 @@ Camera có thể hỗ trợ tạo dữ liệu/huấn luyện ở nhánh nghiên 
 
 Đã kiểm chứng Webots v1 và [điều hướng v2](docs/navigation-v2.md) không camera: reactive, guarded và mapped từ grid tự đo. [Báo cáo giai đoạn 0005](docs/research/2026-10-26-navigation-v2.md) có 64 unit test và 108 lượt chính thức, protocol khóa trước validation/test mới. Guarded/mapped đạt 10/10 ca khả thi mỗi split; reactive 8/10 với hai U collision.
 
-Đây là kết quả mô phỏng lý tưởng, điều hướng ngang trong tập hữu hạn; chưa ANN/RL, chưa giảm dữ liệu hoặc bảo đảm an toàn/riêng tư. V2 dùng thêm bộ nhớ/CPU. GUI local chưa được xác nhận do phiên managed không kết nối được display.
+Đây là kết quả mô phỏng lý tưởng, điều hướng ngang trong tập hữu hạn; chưa ANN/RL, chưa giảm dữ liệu hoặc bảo đảm an toàn/riêng tư. V2 dùng thêm bộ nhớ/CPU. [Lượt laptop](docs/research/2026-10-26-local-acceptance.md) đã có GUI được người thao tác xác nhận và mapped success; phần thử đủ phím, quan sát mapped và mô tả độ phản hồi còn cần bổ sung. Phiên managed vẫn không kết nối được display.
 
 V1 được giữ để tái lập: [môi trường](docs/research/2026-10-25-webots-v1-smoke.md), [baseline](docs/research/2026-10-26-navigation-v1.md), [seeded suite](docs/research/2026-10-26-seeded-environments.md). Test v1 và v2 đều đã exposed; thay thuật toán cần protocol/test mới.
 
@@ -30,6 +30,7 @@ Chạy thử khi đã cài Webots: python3 tools/run_navigation_v2.py --policy m
 ## Bản đồ tài liệu
 
 - [Checklist tổng thể từ ý tưởng đến roadmap tương lai](CHECKLIST_DU_AN.md)
+- [Cây phiên bản GitHub, source kiểm chứng và nhánh tích hợp](docs/version-history.md)
 - [Nghiệm thu GUI local, bàn phím và so sánh CI — nhánh L](docs/local-acceptance.md)
 - [Ý tưởng và quyết định từ cuộc trao đổi](docs/01-y-tuong-va-quyet-dinh.md)
 - [Dự thảo thí nghiệm mức B](docs/02-du-thao-thi-nghiem-muc-b.md)

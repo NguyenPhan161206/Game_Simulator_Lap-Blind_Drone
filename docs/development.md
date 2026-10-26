@@ -32,6 +32,8 @@ bash tools/git.sh diff --check
 
 Khi clone repo từ GitHub vào thư mục thông thường, helper tự dùng .git bình thường. .local/ không được push.
 
+[Cây phiên bản và nguồn kiểm chứng](version-history.md) ghi các mốc đã xuất bản. Nhánh feat/local-acceptance có CI kiểm tra collector bằng Webots thật dưới Xvfb, tách khỏi xác nhận GUI/bàn phím laptop. [Kế hoạch tích hợp](plans/0007-github-integration.md) yêu cầu kiểm tra từng mốc rồi commit/push; chỉ fast-forward main khi gate phù hợp đạt. Các nhánh lịch sử được giữ, không force-push hoặc xóa để làm graph trông gọn hơn.
+
 ## Bước triển khai tiếp theo
 
 Theo [kế hoạch thực hiện](plans/0002-webots-minimal-lab.md) và [hướng dẫn lab v1](lab-v1.md). Các mốc sau vẫn giữ thứ tự:

@@ -19,3 +19,7 @@ Trạng thái ban đầu: công cụ computer-use báo không có app/browser; p
 - make check đạt, gồm 73 unit test (9 kiểm tra mới cho bằng chứng/environment). CLI help hoạt động; ldd với bundled library path không còn dòng not found trong lần kiểm tra này.
 - Chưa thực hiện được bước tương tác desktop 3–6 trong phiên managed. Đã yêu cầu người dùng chạy manual/mapped từ terminal desktop và trả đường dẫn Session. LOC-04…09 giữ mở cho đến khi đọc bằng chứng thật.
 - Công cụ được bàn giao trên nhánh riêng feat/local-acceptance; kiểm tra helper không thay cho nghiệm thu local.
+
+## Cập nhật sau khi người dùng chạy desktop
+
+[Audit lượt mới](../research/2026-10-26-local-acceptance.md) đã đóng LOC-04/07/08. LOC-05 còn mâu thuẫn giữa phiếu và command; LOC-06 thiếu xác nhận đã xem chuyển động/kết thúc; LOC-09 thiếu mô tả độ phản hồi. [Kế hoạch tích hợp GitHub](0007-github-integration.md) đã thêm collector CI thực tại source b324105, 75 test và Webots mapped/manual-timeout đều đạt; không dùng CI để đóng ba gate desktop còn lại.

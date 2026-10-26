@@ -1,0 +1,310 @@
+{
+  "kind": "local_desktop_files_audit_not_agent_GUI_control",
+  "recorded_run_source": "534b83a20ae6f87ad3ce8aaa4a55aaed921338de",
+  "auditor_source": "b32410595b26f8ef2d0f8d99dca469797278366b",
+  "manual": {
+    "directory": "artifacts/local-manual-20261026T064254652516Z",
+    "session": {
+      "mode": "manual",
+      "source_commit": "534b83a20ae6f87ad3ce8aaa4a55aaed921338de",
+      "working_tree_dirty": false,
+      "protocol_sha256": "0825b3b219fbf6a7f939b3076b79b1c82888c02d71a8ffea36d2e7d5bde1e395",
+      "world": "minimal_lab.wbt",
+      "controllers": [
+        "drone_controller",
+        "lab_supervisor"
+      ],
+      "distribution": "Ubuntu 26.04.1 LTS",
+      "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+      "logical_cpus": 16,
+      "display": ":0",
+      "software_rendering": false,
+      "started_utc": "2026-10-26T06:42:54.652897+00:00",
+      "ended_utc": "2026-10-26T06:45:26.776112+00:00",
+      "status": "process_exited",
+      "exit_code": 0,
+      "wall_s": 152.06701074600278,
+      "webots_binary_sha256": "c12c65e8680b579d0f33c34be452f100a302bdecc6d9344becf356db4a675a1a"
+    },
+    "operator": {
+      "recorded_utc": "2026-10-26T06:45:26.849050+00:00",
+      "kind": "operator_self_report",
+      "answers": {
+        "gui_opened": "yes",
+        "correct_world_controllers": "yes",
+        "key_W": "yes",
+        "key_S": "yes",
+        "key_A": "yes",
+        "key_D": "yes",
+        "key_T": "yes",
+        "key_G": "yes",
+        "key_Q": "yes",
+        "key_E": "yes",
+        "key_SPACE": "yes",
+        "key_release": "yes",
+        "key_R": "yes"
+      },
+      "responsiveness_notes": "y",
+      "other_notes": ""
+    },
+    "telemetry": {
+      "packets": 2239,
+      "invalid_lines": 0,
+      "first_sim_s": 0.016,
+      "last_sim_s": 143.888,
+      "command_signs": {
+        "forward_m_s": [],
+        "left_m_s": [],
+        "up_m_s": [],
+        "yaw_rate_rad_s": []
+      },
+      "note": "Commands support motion evidence; they do not prove physical key presses/reset or GUI responsiveness"
+    },
+    "warnings": [
+      "Operator reports W passed, but no matching sampled command; check focus/run identity or brief key presses",
+      "Operator reports S passed, but no matching sampled command; check focus/run identity or brief key presses",
+      "Operator reports A passed, but no matching sampled command; check focus/run identity or brief key presses",
+      "Operator reports D passed, but no matching sampled command; check focus/run identity or brief key presses",
+      "Operator reports T passed, but no matching sampled command; check focus/run identity or brief key presses",
+      "Operator reports G passed, but no matching sampled command; check focus/run identity or brief key presses",
+      "Operator reports Q passed, but no matching sampled command; check focus/run identity or brief key presses",
+      "Operator reports E passed, but no matching sampled command; check focus/run identity or brief key presses",
+      "Responsiveness note does not describe lag, pauses or speed changes"
+    ],
+    "axis_span_m": [
+      0.0,
+      0.0,
+      0.08363735425565544
+    ],
+    "files_sha256": {
+      "console.log": "e9e190358097ee7a1674689e26d98dda5c74b510a3a5187c25930c3bd681dc29",
+      "operator.json": "2d062dff671c39061c88d94b23d7468ffeab774a233cc6945f8a2d0903b2979b",
+      "run/telemetry.jsonl": "1fdf5fac0a39633fc15ca632169f92e124b2a0438083ad9ce6d3a1bca3f311da",
+      "session.json": "280b686365eb6ffc3d71ebc439eddff912b40ed22dd7882420dad0e75fed449d"
+    }
+  },
+  "mapped": {
+    "directory": "artifacts/local-mapped-20261026T064328483395Z",
+    "session": {
+      "mode": "mapped",
+      "source_commit": "534b83a20ae6f87ad3ce8aaa4a55aaed921338de",
+      "working_tree_dirty": false,
+      "protocol_sha256": "0825b3b219fbf6a7f939b3076b79b1c82888c02d71a8ffea36d2e7d5bde1e395",
+      "world": "observed_v2.wbt",
+      "controllers": [
+        "drone_v2",
+        "lab_v2"
+      ],
+      "distribution": "Ubuntu 26.04.1 LTS",
+      "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+      "logical_cpus": 16,
+      "display": ":0",
+      "software_rendering": false,
+      "started_utc": "2026-10-26T06:43:28.483885+00:00",
+      "ended_utc": "2026-10-26T06:44:17.449107+00:00",
+      "status": "process_exited",
+      "exit_code": 0,
+      "wall_s": 48.91331650799839,
+      "webots_binary_sha256": "c12c65e8680b579d0f33c34be452f100a302bdecc6d9344becf356db4a675a1a"
+    },
+    "episode": {
+      "case_id": "development-u_trap-s21001",
+      "policy": "mapped",
+      "feasible": true,
+      "family": "u_trap",
+      "seed": 21001,
+      "geometry_sha256": "27621836e2d218d860329de871a0ce8a0cef54b9c6af20cc133981aa3051a61c",
+      "initial_position_m": [
+        -1.064808,
+        0.10064599999999996,
+        1.497843813593955
+      ],
+      "initial_yaw_rad": -0.7185606399999999,
+      "diagnostics": {
+        "decisions": 2575,
+        "range_samples": 1288,
+        "range_values": 12880,
+        "map_updates": 1288,
+        "free_cells": 4926,
+        "occupied_cells": 252,
+        "peak_cells": 5178,
+        "derived_blocked_cells": 2185,
+        "budget_exhausted": false,
+        "guard_events": 0,
+        "scan_decisions": 157,
+        "plans": 76,
+        "cpu_mean_ms": 1.4669457161165047,
+        "cpu_max_ms": 48.679893
+      },
+      "final_position_m": [
+        5.282776513523633,
+        0.2952858910273458,
+        1.4999999999999947
+      ],
+      "outcome": "success",
+      "elapsed_s": 41.216,
+      "path_length_m": 14.858754976240306,
+      "final_distance_m": 0.046151670231428264,
+      "min_goal_distance_m": 0.046151670231428264,
+      "final_speed_m_s": 0.016381392651167736,
+      "contact_count": 0
+    },
+    "checks": {
+      "all_requested_episodes_recorded": {
+        "passed": true
+      },
+      "negative_controls_never_succeed": {
+        "passed": true
+      }
+    },
+    "manifest_sha256": "14ea5519eea62321c66c21d752834d94e6a9ff08ed189e9a23c9b93430b8477f",
+    "comparison": {
+      "identity_valid": true,
+      "ci_url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790",
+      "ci_source": "2f422e253376b589e478ac10f3eee8efa970dc74",
+      "local_outcome": "success",
+      "ci_outcome": "success",
+      "same_outcome": true,
+      "local": {
+        "elapsed_s": 41.216,
+        "path_length_m": 14.858754976240306,
+        "final_distance_m": 0.046151670231428264,
+        "final_speed_m_s": 0.016381392651167736,
+        "contact_count": 0
+      },
+      "ci": {
+        "elapsed_s": 41.21600000000001,
+        "path_length_m": 14.855333972072696,
+        "final_distance_m": 0.04615166647376634,
+        "final_speed_m_s": 0.01638140827271698,
+        "contact_count": 0
+      },
+      "local_minus_ci": {
+        "elapsed_s": -7.105427357601002e-15,
+        "path_length_m": 0.003421004167609709,
+        "final_distance_m": 3.75766192467486e-09,
+        "final_speed_m_s": -1.5621549245142807e-08,
+        "contact_count": 0.0,
+        "final_position_distance_m": 1.0217509795075862e-08,
+        "initial_position_distance_m": 0.002156186406045091,
+        "initial_yaw_rad": 0.0
+      },
+      "classification": "numeric_difference_review_required",
+      "note": "1e-6 is a diagnostic label, not a research acceptance threshold; no cause inferred",
+      "policy_cpu": {
+        "decisions": 2575,
+        "range_samples": 1288,
+        "range_values": 12880,
+        "map_updates": 1288,
+        "free_cells": 4926,
+        "occupied_cells": 252,
+        "peak_cells": 5178,
+        "derived_blocked_cells": 2185,
+        "budget_exhausted": false,
+        "guard_events": 0,
+        "scan_decisions": 157,
+        "plans": 76,
+        "cpu_mean_ms": 1.4669457161165047,
+        "cpu_max_ms": 48.679893
+      }
+    },
+    "sim_s_over_total_wall_s": 0.8835221793421685,
+    "files_sha256": {
+      "console.log": "d33e0e3821c21db44cd06ce4fa859a548d3d2ee87151af4877ee46f0dfbfcd57",
+      "run/cases.json": "c5b8046cd97d0e63cb32a6b7c1dde363b08c1b9dd8a4c85d841c65d1e908eeb7",
+      "run/development-u_trap-s21001-mapped.jpg": "9b32f2bddab46b45ddacff181e72a69fb7eac32809190c62b122348335e2c95f",
+      "run/manifest.json": "9f09c8cdc5609463d680ca2a4b5318a072966f2d3c8824a46c9ed3f0a0f88090",
+      "run/progress.json": "b9c44e23e985e5850df95a0a6e85e704efb1e1f174afc481b5ebce8f51dc3cc5",
+      "run/result.json": "7cbc8dae85c702b6e458187c2c762c838144773af541ad8d90521423ea93cd75",
+      "run/scene.jpg": "6b9516c487d5bd752907d3846b2eb76867389a3238311977c275ae3e32ad0bcc",
+      "run/telemetry.jsonl": "677272a9cf934bc0befe8aecca6d7bd611d77023d5a44e3f1b8b905a2833a95b",
+      "run/trajectories.json": "8a0433237ab04ae3cace6680d7552195fab30a193430196a5a8ca7721407ed85",
+      "session.json": "e23e865e9f6ef34113ea0a371e86cd1781883ece9adf9d659b27445bdf5d4f49"
+    },
+    "operator_record_present": false,
+    "image_inspected": true
+  },
+  "ci_reference": {
+    "url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790",
+    "source_commit": "2f422e253376b589e478ac10f3eee8efa970dc74",
+    "episode": {
+      "case_id": "development-u_trap-s21001",
+      "policy": "mapped",
+      "feasible": true,
+      "family": "u_trap",
+      "seed": 21001,
+      "geometry_sha256": "27621836e2d218d860329de871a0ce8a0cef54b9c6af20cc133981aa3051a61c",
+      "initial_position_m": [
+        -1.064808,
+        0.10064600000000289,
+        1.5
+      ],
+      "initial_yaw_rad": -0.7185606399999999,
+      "diagnostics": {
+        "decisions": 2575,
+        "range_samples": 1288,
+        "range_values": 12880,
+        "map_updates": 1288,
+        "free_cells": 4926,
+        "occupied_cells": 252,
+        "peak_cells": 5178,
+        "derived_blocked_cells": 2185,
+        "budget_exhausted": false,
+        "guard_events": 0,
+        "scan_decisions": 157,
+        "plans": 76,
+        "cpu_mean_ms": 0.8587000209708737,
+        "cpu_max_ms": 34.984393
+      },
+      "final_position_m": [
+        5.2827765227634,
+        0.29528589538902084,
+        1.4999999999999942
+      ],
+      "outcome": "success",
+      "elapsed_s": 41.21600000000001,
+      "path_length_m": 14.855333972072696,
+      "final_distance_m": 0.04615166647376634,
+      "min_goal_distance_m": 0.04615166647376634,
+      "final_speed_m_s": 0.01638140827271698,
+      "contact_count": 0
+    }
+  },
+  "trajectory_saved_sample_comparison": {
+    "matched_times": 82,
+    "xy_differing_samples": 4,
+    "maximum_xy_delta_m": 0.00010000000000021103,
+    "maximum_xyz_delta_m": 0.0021999999999999797,
+    "first_ci_txyz": [
+      0,
+      -1.0648,
+      0.1006,
+      1.5
+    ],
+    "first_local_txyz": [
+      0.0,
+      -1.0648,
+      0.1006,
+      1.4978
+    ],
+    "last_ci_txyz": [
+      41.216,
+      5.2828,
+      0.2953,
+      1.5
+    ],
+    "last_local_txyz": [
+      41.216,
+      5.2828,
+      0.2953,
+      1.5
+    ],
+    "note": "Saved coordinates rounded to 4 decimals and sampled about every 0.512s; not a full-step equivalence proof"
+  },
+  "limits": [
+    "manual all-yes operator record conflicts with zero sampled commands; do not close LOC-05",
+    "mapped operator record absent; observing movement/completion remains unconfirmed",
+    "initial-state and vertical transient differences observed; no demonstrated root cause",
+    "wall ratio includes startup/shutdown; no FPS or key-latency measurement; CPU max exceeds 16ms"
+  ]
+}

@@ -2,6 +2,7 @@
 
 **Cập nhật:** 2026-10-26, múi giờ Asia/Ho_Chi_Minh.  
 **Mốc repo được đối chiếu:** `d7018cb187e6ce9268baa34a5e2fd6f7ab200078`, trước khi thêm checklist này.  
+**Audit bổ sung nhánh L/GitHub:** source collector `b32410595b26f8ef2d0f8d99dca469797278366b`; xem [cây phiên bản](docs/version-history.md) và evidence liên kết ở mục 8.  
 **Mục đích:** theo dõi từ ý tưởng ban đầu, các phần đã triển khai/kiểm chứng, phần còn mở và roadmap tương lai trong một file.
 
 ## Cách đọc và cập nhật
@@ -188,14 +189,14 @@ Tách riêng phần này để không đánh đồng CI có simulator với GUI 
 - [x] LOC-01 — Có xác nhận installer tải/extract Webots R2025a vào workspace từ terminal người dùng.
 - [x] LOC-02 — Chẩn đoán libGLU.so.1/libsndio.so.7; lần audit sau với bundled library path không còn thiếu dependency.
 - [x] LOC-03 — Ghi lần chạy trong phiên managed không kết nối được display :0; không báo đó là chuyến bay local thành công.
-- [ ] LOC-04 — Mở Webots bằng terminal desktop có quyền truy cập display; xác nhận world/controller đúng.
+- [x] LOC-04 — Mở Webots bằng terminal desktop; phiếu người thao tác xác nhận GUI/world/controller, console và source khớp ở lượt manual 064254.
 - [ ] LOC-05 — Chạy manual, bấm các phím và reset trực tiếp; ghi việc đã thao tác thay vì chỉ có mapping test.
 - [ ] LOC-06 — Chạy mapped trên development-u_trap-s21001 ở realtime, thấy chuyển động và kết quả kết thúc.
-- [ ] LOC-07 — Lưu console/result/source và ảnh nếu có của đúng lần chạy local.
-- [ ] LOC-08 — So sánh outcome với CI cùng protocol; phân biệt sai số số học, cấu hình máy và lỗi thực sự.
+- [x] LOC-07 — Lưu console/result/source/telemetry/trajectory và JPG của lượt mapped laptop 064328; đã xem ảnh, hash trong evidence rút gọn.
+- [x] LOC-08 — Đối chiếu mapped với CI cùng protocol: cùng success/0 contact, path +3.421 mm, pose đầu khác; ghi riêng khác biệt/giới hạn, chưa quy nguyên nhân.
 - [ ] LOC-09 — Kiểm tra hiệu năng/độ phản hồi trên laptop, giữ giới hạn về realtime nếu chưa đạt.
 
-Đã chuẩn bị [kế hoạch nhánh L](docs/plans/0006-local-acceptance.md), [hướng dẫn và bộ thu bằng chứng local](docs/local-acceptance.md). Helper lưu console/source/wall time, phiếu người thao tác và so sánh CI; không tự đóng LOC. 73 unit test đạt ở mốc bổ sung helper; hai lock giữ nguyên. Tool desktop hiện không có app/browser khả dụng, nên LOC-04…09 vẫn chờ lượt từ terminal desktop, chưa có bằng chứng GUI mới.
+Đã có [audit lượt laptop và JSON bằng chứng](docs/research/2026-10-26-local-acceptance.md), [kế hoạch nhánh L](docs/plans/0006-local-acceptance.md) và [hướng dẫn nghiệm thu](docs/local-acceptance.md). Phiếu manual all-yes chưa khớp command toàn 0; mapped chưa có phiếu quan sát, ghi chú độ phản hồi chưa đủ. LOC-05/06/09 giữ mở. Helper có CI riêng theo [kế hoạch tích hợp GitHub](docs/plans/0007-github-integration.md); CI không đóng gate desktop. Hai protocol giữ nguyên.
 
 Chạy từ terminal desktop khi Webots đã cài:
 

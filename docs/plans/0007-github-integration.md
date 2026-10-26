@@ -14,12 +14,12 @@ Ngày: 2026-10-26. Yêu cầu: lập kế hoạch, thực hiện từng giai đo
 
 - [x] GH-06 — Đã thêm CI riêng cho helper: unit/core checks, mapped dưới Xvfb và manual timeout/telemetry, lưu artifact. Kết quả chạy chờ gate GH-09; không gọi đây là GUI laptop hoặc nhấn phím thật.
 - [x] GH-07 — Review chặn provenance sai, result thiếu, tiến trình lỗi và chênh outcome; đã bổ sung xử lý result malformed và cảnh báo phiếu manual không khớp sampled command. make check đạt 75 test; không sửa raw evidence/phiếu.
-- [ ] GH-08 — Kiểm tra telemetry/trajectory/ảnh của lượt laptop; báo delta, trạng thái ban đầu và CPU, không tự suy nguyên nhân do GPU hoặc sai số số học.
-- [ ] GH-09 — Chạy make check, review diff, commit/push công cụ/CI, đợi CI kết thúc và đọc log/artifact metadata của đúng SHA. Nếu lỗi thì sửa và kiểm tra lại trước tích hợp.
+- [x] GH-08 — Đã kiểm tra telemetry/82 sample trajectory/ảnh laptop và ghi audit riêng; báo delta/trạng thái đầu/CPU, không tự suy nguyên nhân.
+- [x] GH-09 — make check đạt 75 test; source b324105 đã push, CI collector 40284088405/job 121443592619 success; đã đọc log và artifact 12633900122. Mapped success và manual telemetry/timeout đạt, không có giả lập phím.
 
 ## Giai đoạn 3 — cây phiên bản và tích hợp
 
-- [ ] GH-10 — Ghi cây phiên bản và bảng source kiểm chứng/tài liệu/nhánh. Chỉ đồng bộ remote feature cũ bằng fast-forward khi ancestry đã xác nhận; không xóa nhánh hoặc viết lại lịch sử.
+- [x] GH-10 — Có cây phiên bản và bảng source kiểm chứng/tài liệu/nhánh; remote seeded/v2 đã fast-forward lên 2568f07/d7018cb sau kiểm tra ancestry. Không xóa nhánh hoặc viết lại lịch sử.
 - [ ] GH-11 — Đọc mới remote main và kiểm tra khả năng fast-forward, các check phù hợp đã đạt. Nếu protection yêu cầu PR thì dùng PR, không bypass.
 - [ ] GH-12 — Tích hợp phần công cụ đã kiểm chứng vào main, đồng bộ local/remote bằng tree/commit hash; giữ trạng thái LOC chưa đủ bằng chứng.
 - [ ] GH-13 — Kiểm tra CI sau tích hợp và bảo toàn hai protocol; ghi evidence của đúng source, không coi một test đã exposed là unseen.
