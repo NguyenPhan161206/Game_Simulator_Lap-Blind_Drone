@@ -8,12 +8,12 @@ Ngày: 2026-10-26. Yêu cầu: lập kế hoạch, thực hiện từng giai đo
 - [x] GH-02 — Xác nhận origin SSH đúng repo; connector đọc được branch và CI. SSH managed lỗi quyền của cấu hình hệ thống, không sửa quyền hoặc remote để né lỗi.
 - [x] GH-03 — Đối chiếu main, feature và ancestry. Hai remote feature cũ đang dừng ở source kiểm thử, trong khi local có thêm commit tài liệu đã nằm trong main.
 - [x] GH-04 — Đọc bằng chứng desktop mới: mapped có result/ảnh; manual có phiếu nhưng telemetry cần đối chiếu. Không ghi đè lượt hay phiếu cũ.
-- [ ] GH-05 — Chạy scaffold/link check và diff review, commit/push kế hoạch trên feat/local-acceptance.
+- [x] GH-05 — Scaffold/link check và diff review đạt; kế hoạch đã push ở 1bec854a924128ef004d5c98823ab04765a8e8cf trên feat/local-acceptance.
 
 ## Giai đoạn 2 — kiểm chứng công cụ và xử lý bằng chứng
 
-- [ ] GH-06 — Thêm CI riêng cho helper: unit/core checks và một lượt Webots mapped thật dưới Xvfb, realtime/rendering bật; lưu artifact. Không gọi đây là GUI laptop hoặc nhấn phím thật.
-- [ ] GH-07 — Kiểm tra review chặn provenance sai, result thiếu, tiến trình lỗi và chênh outcome; bổ sung kiểm tra việc đọc evidence/ghi file nếu phát hiện thiếu.
+- [x] GH-06 — Đã thêm CI riêng cho helper: unit/core checks, mapped dưới Xvfb và manual timeout/telemetry, lưu artifact. Kết quả chạy chờ gate GH-09; không gọi đây là GUI laptop hoặc nhấn phím thật.
+- [x] GH-07 — Review chặn provenance sai, result thiếu, tiến trình lỗi và chênh outcome; đã bổ sung xử lý result malformed và cảnh báo phiếu manual không khớp sampled command. make check đạt 75 test; không sửa raw evidence/phiếu.
 - [ ] GH-08 — Kiểm tra telemetry/trajectory/ảnh của lượt laptop; báo delta, trạng thái ban đầu và CPU, không tự suy nguyên nhân do GPU hoặc sai số số học.
 - [ ] GH-09 — Chạy make check, review diff, commit/push công cụ/CI, đợi CI kết thúc và đọc log/artifact metadata của đúng SHA. Nếu lỗi thì sửa và kiểm tra lại trước tích hợp.
 

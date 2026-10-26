@@ -99,6 +99,33 @@ class LocalEvidenceTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "R2025a"):
                 local.desktop_environment(home / "webots", False)
 
+    def test_review_preserves_malformed_result_without_accepting_it(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "run").mkdir()
+            local.write_json(root / "session.json", {**self.session, "mode": "mapped", "wall_s": 1})
+            for raw in ("{bad", "[]", '{"episodes":42}'):
+                with self.subTest(raw=raw):
+                    (root / "run/result.json").write_text(raw)
+                    result = local.review(root)
+                    self.assertFalse(result["comparison"]["identity_valid"])
+                    self.assertEqual((root / "run/result.json").read_text(), raw)
+                    self.assertNotIn("sim_s_over_total_wall_s", result)
+
+    def test_manual_attestation_with_zero_commands_requires_review(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "run").mkdir()
+            local.write_json(root / "session.json", {"mode": "manual"})
+            local.write_json(root / "operator.json", {"answers": {"key_W": "yes"}, "responsiveness_notes": "y"})
+            raw = json.dumps({"time_s": 0.016, "navigation": {"command": {"forward_m_s": 0.0}}}) + "\n"
+            (root / "run/telemetry.jsonl").write_text(raw)
+            before = (root / "operator.json").read_bytes()
+            result = local.review(root)
+            self.assertEqual(len(result["manual_evidence_warnings"]), 2)
+            self.assertEqual((root / "operator.json").read_bytes(), before)
+            self.assertFalse(result["gui_verified_automatically"])
+
 
 if __name__ == "__main__":
     unittest.main()

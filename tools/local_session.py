@@ -130,11 +130,15 @@ def review(directory):
               "operator_record_present": (directory / "operator.json").is_file()}
     if session["mode"] == "mapped":
         if report_path.is_file():
-            report = json.loads(report_path.read_text())
-            result["comparison"] = compare_mapped(report, session, json.loads(REFERENCE.read_text()))
+            try:
+                report = json.loads(report_path.read_text())
+                result["comparison"] = compare_mapped(report, session, json.loads(REFERENCE.read_text()))
+            except (ValueError, TypeError) as error:
+                report = None
+                result["comparison"] = {"identity_valid": False, "classification": "invalid_evidence", "errors": [str(error)]}
             # Includes warmup, startup/shutdown and possible user pauses. Not an FPS measurement.
-            episodes = report.get("episodes", [])
-            if len(episodes) == 1 and session.get("wall_s", 0) > 0:
+            episodes = report.get("episodes", []) if isinstance(report, dict) else []
+            if result["comparison"].get("identity_valid") and len(episodes) == 1 and session.get("wall_s", 0) > 0:
                 simulated = episodes[0].get("elapsed_s", 0) + report.get("specification", {}).get("evaluation", {}).get("warmup_s", 0)
                 result["sim_s_over_total_wall_s"] = simulated / session["wall_s"]
         else:
@@ -159,6 +163,19 @@ def review(directory):
         result["telemetry"] = {"packets": count, "invalid_lines": invalid, "first_sim_s": first,
                                "last_sim_s": last, "command_signs": {k: sorted(v) for k, v in signs.items()},
                                "note": "Commands support motion evidence; they do not prove physical key presses/reset or GUI responsiveness"}
+    if session["mode"] == "manual" and result["operator_record_present"]:
+        operator = json.loads((directory / "operator.json").read_text())
+        signs = result.get("telemetry", {}).get("command_signs", {})
+        requirements = {"W": ("forward_m_s", "positive"), "S": ("forward_m_s", "negative"),
+                        "A": ("left_m_s", "positive"), "D": ("left_m_s", "negative"),
+                        "T": ("up_m_s", "positive"), "G": ("up_m_s", "negative"),
+                        "Q": ("yaw_rate_rad_s", "positive"), "E": ("yaw_rate_rad_s", "negative")}
+        result["manual_evidence_warnings"] = [
+            "Operator reports " + key + " passed, but no matching sampled command; check focus/run identity or brief key presses"
+            for key, (axis, sign) in requirements.items()
+            if operator.get("answers", {}).get("key_" + key) == "yes" and sign not in signs.get(axis, [])]
+        if operator.get("responsiveness_notes", "").strip().lower() in {"", "y", "yes", "n", "no"}:
+            result["manual_evidence_warnings"].append("Responsiveness note does not describe lag, pauses or speed changes")
     result["files_sha256"] = {str(p.relative_to(directory)): sha(p) for p in sorted(directory.rglob("*"))
                               if p.is_file() and p.name not in {"review.json", "review.md"}}
     write_json(directory / "review.json", result)
@@ -167,6 +184,8 @@ def review(directory):
         "The sim/wall ratio includes startup, shutdown and pauses; it does not establish FPS or hardware realtime.\n\n"
         "```json\n" + json.dumps(result, indent=2, ensure_ascii=False) + "\n```\n")
     print("Review:", directory / "review.md")
+    for warning in result.get("manual_evidence_warnings", []):
+        print("REVIEW REQUIRED:", warning)
     return result
 
 
