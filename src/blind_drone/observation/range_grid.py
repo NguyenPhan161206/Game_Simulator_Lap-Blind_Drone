@@ -124,6 +124,39 @@ class RangeGrid:
         if not frontier:self.no_path_key=key
         return []
 
+    def escape_ok(self,start,end):
+        """Exit a newly inflated cell, never an occupied/unknown swept corridor.
+
+        Inflation is cell-quantized and can newly cover a physically clear
+        current pose. Check the measured-point swept disk directly for recovery.
+        """
+        if self.cell(start) not in self.blocked or self.cell(end) in self.blocked:return False
+        dx,dy=end[0]-start[0],end[1]-start[1]
+        length2=dx*dx+dy*dy
+        if length2<1e-10:return False
+        steps=max(1,ceil(sqrt(length2)/(self.cell_m*.3)))
+        for i in range(steps+1):
+            cell=self.cell((start[0]+dx*i/steps,start[1]+dy*i/steps))
+            if not self.inside(cell) or cell not in self.free:return False
+        nearest_start=nearest_end=float("inf")
+        for cell in self.occupied:
+            x,y=self.center(cell)
+            t=max(0,min(1,((x-start[0])*dx+(y-start[1])*dy)/length2))
+            if hypot(x-start[0]-t*dx,y-start[1]-t*dy)<self.guard_radius:return False
+            nearest_start=min(nearest_start,hypot(x-start[0],y-start[1]))
+            nearest_end=min(nearest_end,hypot(x-end[0],y-end[1]))
+        return nearest_end>=nearest_start
+
+    def escape_target(self,start,goal):
+        candidates=[]
+        for radius in (.25,.5,.75,1.0):
+            for index in range(16):
+                angle=index*pi/8
+                end=self.center(self.cell((start[0]+radius*cos(angle),start[1]+radius*sin(angle))))
+                if self.escape_ok(start,end):
+                    candidates.append((hypot(end[0]-start[0],end[1]-start[1])+.05*hypot(end[0]-goal[0],end[1]-goal[1]),end))
+        return min(candidates)[1] if candidates else None
+
     def guard(self,position,vx,vy):
         original=(vx,vy)
         nearby=[]

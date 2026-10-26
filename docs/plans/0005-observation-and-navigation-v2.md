@@ -35,7 +35,8 @@ Phân tích ba U collision của reactive v1, triển khai quan sát có bộ nh
 - [x] Bước 1: worktree sạch, remote main đúng 2568f07. Webots đã có local và ldd với thư viện bundled không còn thiếu dependency; chưa xác minh GUI/flight local trong giai đoạn này.
 - [x] Bước 2: ghi kế hoạch trước triển khai.
 - [x] Bước 3: triển khai v2 cạnh v1, không sửa file v1 đã khóa; grid tạo từ GPS/tư thế/range, unknown tách free, giữ ngân sách và lọc lệnh.
-- [x] Bước 4: 54 test Python đạt, v1 lock hợp lệ. Local dev lần đầu không kết nối được display :0, không có result.json/không báo đã bay. Chọn CI/Xvfb cho bước bay thật.
+- [x] Bước 4: 63 test Python đạt sau bổ sung kiểm tra protocol, sampling và recovery; v1 lock hợp lệ. Local dev lần đầu không kết nối được display :0, không có result.json/không báo đã bay. Chọn CI/Xvfb cho bước bay thật.
+- Development đầu: CI 40253447132 (source 5d1500b, có render) và 40254520825 (source f2b054b, numeric/no-render) đều đủ 36 lượt, guarded/mapped 10/10, reactive 8/10 ca khả thi; giữ mọi outcome trong [development evidence](../research/2026-10-26-v2-development.json). Sau đó thêm recovery cho trường hợp synthetic contract bị kẹt vì inflation; chưa chạy fresh split.
 - [ ] Bước 5.
 - [ ] Bước 6.
 - [ ] Bước 7.

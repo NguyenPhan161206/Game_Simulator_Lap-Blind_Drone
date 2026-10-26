@@ -38,6 +38,8 @@ Quét yaw ban đầu 2.5 s và tiếp tục khi di chuyển/không có đoạn �
 
 Guard chỉ xét những bề mặt đã đo và mô hình hull xấp xỉ, không chứng nhận toàn vùng giữa ray hoặc bảo đảm phanh của drone thật. Grid unknown và điểm mù vẫn là giới hạn. Chỉ điều hướng ngang ở goal altitude 1.5 m, cảm biến/actuator lý tưởng v1.
 
+Nếu phép đo mới làm ô hiện tại nằm trong vùng inflation, mapped chỉ lùi/thoát qua đoạn đã đo free và swept disk không chạm các điểm đã biết; endpoint phải ở ngoài vùng chặn và khoảng hở gần nhất không giảm. Recovery tối đa 0.2 m/s, không vô hiệu guard hoặc dùng geometry thật. Nhánh này được kiểm tra bằng unit/contract fixture trước khi chạy lại development; fixture động học tức thời không phải kết quả Webots.
+
 ## Chạy
 
 ```bash

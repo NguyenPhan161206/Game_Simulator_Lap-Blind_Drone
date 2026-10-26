@@ -83,22 +83,27 @@ class ObservedNavigator:
                 self.next_plan=state.time_s+self.params["replan_period_s"]
                 self.plans+=1
             target=None
+            recovering=False
             for point in self.path[1:]:
                 if hypot(point[0]-state.position_m[0],point[1]-state.position_m[1])>self.params["lookahead_m"]:
                     break
-                if self.grid.segment_ok(state.position_m,point,require_free=True):target=point
+                if self.grid.segment_ok(state.position_m,point,require_free=True):target=point;recovering=False
+                elif self.grid.escape_ok(state.position_m,point):target=point;recovering=True
                 else:break
             if distance<self.params["lookahead_m"] and self.grid.segment_ok(state.position_m,self.mission.goal_m,True):
                 target=self.mission.goal_m
+            if target is None and self.grid.cell(state.position_m) in self.grid.blocked:
+                target=self.grid.escape_target(state.position_m,self.mission.goal_m)
+                recovering=target is not None
             if target is None:
                 scan=True;self.status="scan_unknown_or_blocked"
             else:
                 tx,ty=target[0]-state.position_m[0],target[1]-state.position_m[1]
                 length=hypot(tx,ty)
                 if length>.03:
-                    speed=min(self.params["speed_m_s"],.65*distance)
+                    speed=min(.2 if recovering else self.params["speed_m_s"],.65*distance)
                     vx,vy=speed*tx/length,speed*ty/length
-                self.status="follow_observed_path"
+                self.status="recover_observed_clearance" if recovering else "follow_observed_path"
         vx,vy,changed=self.grid.guard(state.position_m,vx,vy)
         self.guard_events+=int(changed);self.scan_decisions+=int(scan)
         if changed:self.status+="_limited"

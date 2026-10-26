@@ -70,6 +70,24 @@ class NavigationV2Tests(unittest.TestCase):
         vx,vy,changed=grid.guard((0,0),-.4,0)
         self.assertFalse(changed);self.assertEqual(vx,-.4)
 
+    def test_recovery_exits_new_inflation_only_through_observed_clear_space(self):
+        grid=self.grid();grid.origin=(0,0)
+        grid.retain(grid.cell((.625,.125)),True)
+        for x in (-.49,-.6,-.7,-.8):grid.retain(grid.cell((x,.125)),False)
+        self.assertFalse(grid.segment_ok((-.49,.125),(-.7,.125),True))
+        self.assertTrue(grid.escape_ok((-.49,.125),(-.7,.125)))
+        self.assertFalse(grid.escape_ok((-.49,.125),(1,.125)))
+        self.assertFalse(grid.escape_ok((-.49,.125),(-2,.125)))
+
+    def test_recovery_navigation_uses_reduced_speed(self):
+        self.config["navigation_v2"]["initial_scan_s"]=0
+        nav=ObservedNavigator(MissionV2((-4,.125,1.5),"mapped"),self.config)
+        nav.grid.origin=(0,0);nav.grid.retain(nav.grid.cell((.625,.125)),True)
+        obs=replace(self.obs,state=replace(self.obs.state,position_m=(-.49,.125,1.5)))
+        command=nav.step(obs)
+        self.assertIn("recover",nav.status)
+        self.assertLessEqual(math.hypot(command.forward_m_s,command.left_m_s),.2+1e-9)
+
     def test_online_planner_can_route_back_out_of_u_in_known_grid(self):
         grid=self.grid();grid.origin=(0,0)
         for x in range(-20,21):
