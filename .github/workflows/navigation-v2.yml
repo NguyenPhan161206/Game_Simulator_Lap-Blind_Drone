@@ -28,26 +28,33 @@ jobs:
       - name: Install official pinned Webots archive
         run: python3 tools/install_webots.py
       - name: Candidate or frozen development
-        run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_navigation_v2.py --output artifacts/v2-development --software-rendering --timeout 1500
+        run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_navigation_v2.py --output artifacts/v2-development --software-rendering --no-rendering --timeout 1500
       - name: Frozen validation
         run: |
           if [ -f configs/scenarios/protocol_v2.lock.json ]; then
-            xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_navigation_v2.py --split validation --output artifacts/v2-validation --software-rendering --timeout 1500
+            xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_navigation_v2.py --split validation --output artifacts/v2-validation --software-rendering --no-rendering --timeout 1500
           fi
       - name: Frozen test without tuning
         run: |
           if [ -f configs/scenarios/protocol_v2.lock.json ]; then
-            xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_navigation_v2.py --split test --output artifacts/v2-test --software-rendering --timeout 1500
+            xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_navigation_v2.py --split test --output artifacts/v2-test --software-rendering --no-rendering --timeout 1500
           fi
       - name: Report all outcomes
         if: always()
         run: |
-          python3 tools/report_webots_evidence.py artifacts/v2-development
-          python3 tools/report_webots_evidence.py artifacts/v2-validation
-          python3 tools/report_webots_evidence.py artifacts/v2-test
+          python3 tools/report_navigation_v2.py artifacts/v2-development
+          python3 tools/report_navigation_v2.py artifacts/v2-validation
+          python3 tools/report_navigation_v2.py artifacts/v2-test
+      - name: Validate complete frozen study
+        run: |
+          if [ -f configs/scenarios/protocol_v2.lock.json ]; then
+            python3 tools/check_navigation_v2.py artifacts/v2-development/result.json artifacts/v2-validation/result.json artifacts/v2-test/result.json
+          fi
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: navigation-v2-evidence
-          path: artifacts/v2-*/
+          path: |
+            artifacts/v2-*/
+            artifacts/v2-study.json
           if-no-files-found: warn

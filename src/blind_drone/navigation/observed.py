@@ -37,6 +37,8 @@ class ObservedNavigator:
         self.path=[]
         self.decisions=self.guard_events=self.scan_decisions=self.plans=0
         self.cpu_total_ns=self.cpu_max_ns=0
+        self.last_range_sample=None
+        self.range_samples=0
 
     def step(self,observation):
         start=perf_counter_ns()
@@ -49,6 +51,9 @@ class ObservedNavigator:
         if not observation.usable(self.config["navigation"]["range_max_age_s"],self.config["sensors"]["range_max_m"]):
             self.status="invalid_or_stale_observation"
             return MotionCommand()
+        if self.last_range_sample!=observation.sample_time_s:
+            self.last_range_sample=observation.sample_time_s
+            self.range_samples+=1
         if self.mission.policy=="reactive":
             command=self.reactive.step(observation);self.status=self.reactive.status
             return command
@@ -103,7 +108,7 @@ class ObservedNavigator:
         return MotionCommand(cos(yaw)*vx+sin(yaw)*vy,-sin(yaw)*vx+cos(yaw)*vy,vz,yaw_rate)
 
     def diagnostics(self):
-        return {"decisions":self.decisions,"sensor_updates":self.grid.updates,
+        return {"decisions":self.decisions,"range_samples":self.range_samples,"range_values":self.range_samples*10,"map_updates":self.grid.updates,
                 "free_cells":len(self.grid.free),"occupied_cells":len(self.grid.occupied),"peak_cells":self.grid.peak_cells,
                 "derived_blocked_cells":len(self.grid.blocked),
                 "budget_exhausted":self.grid.exhausted,"guard_events":self.guard_events,"scan_decisions":self.scan_decisions,

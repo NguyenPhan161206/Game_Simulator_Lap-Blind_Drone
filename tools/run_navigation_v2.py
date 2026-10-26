@@ -21,6 +21,7 @@ def main():
     p.add_argument("--case");p.add_argument("--output",type=Path);p.add_argument("--webots")
     p.add_argument("--timeout",type=float,default=900);p.add_argument("--realtime",action="store_true")
     p.add_argument("--software-rendering",action="store_true")
+    p.add_argument("--no-rendering",action="store_true",help="Disable observer rendering for numeric evaluation")
     args=p.parse_args()
     try:select_suite_v2(args.split,args.case)
     except (ValueError,OSError) as error:print(error,file=sys.stderr);return 2
@@ -34,6 +35,7 @@ def main():
     env=os.environ.copy()
     env.update({"BLIND_DRONE_MODE":"navigation","BLIND_DRONE_OUTPUT":str(output),"BLIND_DRONE_POLICY":args.policy,
                 "BLIND_DRONE_SPLIT":args.split,"PYTHONUNBUFFERED":"1",
+                "BLIND_DRONE_RENDERING":str(not args.no_rendering).lower(),
                 "XDG_CONFIG_HOME":str(ROOT/".local/webots-v2/config"),"XDG_CACHE_HOME":str(ROOT/".local/webots-v2/cache")})
     for key in ("XDG_CONFIG_HOME","XDG_CACHE_HOME"):Path(env[key]).mkdir(parents=True,exist_ok=True)
     env.pop("BLIND_DRONE_CASE",None)
@@ -51,6 +53,7 @@ def main():
         env["LD_LIBRARY_PATH"]=str(home/"lib/webots")+(":"+env["LD_LIBRARY_PATH"] if env.get("LD_LIBRARY_PATH") else "")
         env["QT_QPA_PLATFORM"]="xcb"
     command=[executable,"--batch","--stdout","--stderr","--mode="+("realtime" if args.realtime else "fast"),str(ROOT/"simulation/webots/worlds/observed_v2.wbt")]
+    if args.no_rendering:command.insert(-1,"--no-rendering")
     print("Output:",output,flush=True)
     with (output/"console.log").open("w") as log:
         proc=subprocess.Popen(command,cwd=ROOT,env=env,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)

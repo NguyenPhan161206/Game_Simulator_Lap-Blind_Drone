@@ -11,7 +11,10 @@ sys.path.insert(0,str(ROOT/"src"))
 from blind_drone.contracts.navigation import NavigationObservation,RangeReading
 from blind_drone.contracts.runtime import MotionCommand,VehicleState
 from blind_drone.experiments.protocol import verify_lock
-from blind_drone.experiments.protocol_v2 import build_manifest,load_v2_config,select_suite_v2
+from blind_drone.experiments.protocol_v2 import LOCK,build_manifest,load_v2_config,select_suite_v2
+from blind_drone.evaluation.episode import summarize
+from blind_drone.evaluation.study_v2 import validate_v2
+from blind_drone.world.scenarios import digest
 from blind_drone.navigation.observed import MissionV2,ObservedNavigator
 from blind_drone.observation.range_grid import RangeGrid,rotate_rpy
 
@@ -78,6 +81,19 @@ class NavigationV2Tests(unittest.TestCase):
         self.assertTrue(any(p[0]< -2 for p in path))
         for a,b in zip(path,path[1:]):self.assertTrue(grid.segment_ok(a,b))
 
+    def test_search_budget_does_not_cache_failure_as_unreachable(self):
+        grid=self.grid(max_expansions=1);grid.origin=(0,0)
+        self.assertFalse(grid.plan((0,0),(3,0)))
+        grid.params["max_expansions"]=20000
+        self.assertTrue(grid.plan((0,0),(3,0)))
+
+    def test_cached_unreachable_goal_does_not_block_a_new_goal(self):
+        grid=self.grid();grid.origin=(0,0)
+        grid.blocked={(x,y) for x in range(-4,5) for y in range(-4,5) if abs(x)==4 or abs(y)==4}
+        self.assertFalse(grid.plan((-4,0),(0,0)))
+        self.assertFalse(grid.plan((-4,0),(0,0)))
+        self.assertTrue(grid.plan((-4,0),(-3,0)))
+
     def test_invalid_stale_samples_return_zero_before_mapping(self):
         nav=ObservedNavigator(MissionV2((5,0,1.5),"mapped"),self.config)
         self.assertEqual(nav.step(replace(self.obs,sample_time_s=0)),MotionCommand())
@@ -108,6 +124,66 @@ class NavigationV2Tests(unittest.TestCase):
         cases=build_manifest()["cases"]
         self.assertEqual(len(cases),36)
         self.assertEqual(len({c["geometry_sha256"] for c in cases}),36)
+
+    def test_fresh_splits_are_disabled_until_lock(self):
+        if not LOCK.exists():
+            with self.assertRaisesRegex(ValueError,"Freeze"):
+                select_suite_v2("test")
+
+    def test_v2_device_adapter_has_no_supervisor_scene_or_file_calls(self):
+        tree=ast.parse((ROOT/"src/blind_drone/adapters/webots/drone_v2.py").read_text())
+        names={n.id for n in ast.walk(tree) if isinstance(n,ast.Name)}|{n.attr for n in ast.walk(tree) if isinstance(n,ast.Attribute)}
+        names|={a.name for n in ast.walk(tree) if isinstance(n,ast.ImportFrom) for a in n.names}
+        self.assertFalse(names&{"Supervisor","getFromDef","getRoot","getSelf","getPosition","getField","load_config","open","read_text"})
+
+
+class V2StudyTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):cls.manifest=build_manifest()
+
+    def reports(self):
+        reports=[]
+        for split in ("development","validation","test"):
+            episodes=[]
+            for case in self.manifest["cases"]:
+                if case["split"]!=split:continue
+                for policy in ("reactive","guarded","mapped"):
+                    outcome="success" if case["feasible"] else "timeout"
+                    stats={"decisions":10,"range_samples":5,"range_values":50,"map_updates":5,"peak_cells":100,
+                           "derived_blocked_cells":150,"cpu_mean_ms":.1,"cpu_max_ms":.2,"guard_events":1,"plans":2}
+                    episodes.append({"case_id":case["id"],"policy":policy,**{k:case[k] for k in ("family","seed","feasible","geometry_sha256")},
+                                     "initial_position_m":case["start_m"],"initial_yaw_rad":case["start_yaw_rad"],
+                                     "outcome":outcome,"elapsed_s":20,"path_length_m":10,"diagnostics":stats})
+            reports.append({"suite":"observed_v2","split":split,"status":"passed","complete_split":True,"protocol_frozen":True,
+                            "checks":{"coverage":{"passed":True}},
+                            "source_commit":"0"*40,"protocol_sha256":"lock","manifest_sha256":digest(self.manifest),
+                            "episodes":episodes,"summary":summarize(episodes)})
+        return reports
+
+    def validate(self,reports):return validate_v2(reports,self.manifest,"lock",["reactive","guarded","mapped"],16000)
+
+    def test_frozen_comparison_counts_108_episodes_and_resource_budget(self):
+        result=self.validate(self.reports())
+        self.assertEqual(result["episodes"],108)
+        self.assertTrue(result["development_engineering_goal"]["met"])
+        self.assertEqual(result["resource_metrics"]["test"]["mapped"]["max_primary_cells"],100)
+
+    def test_candidate_partial_and_duplicate_results_are_rejected(self):
+        for mode in ("candidate","partial","duplicate","source"):
+            reports=self.reports()
+            if mode=="candidate":reports[0]["protocol_frozen"]=False
+            if mode=="partial":reports[0]["complete_split"]=False
+            if mode=="duplicate":reports[0]["episodes"].append(reports[0]["episodes"][0])
+            if mode=="source":reports[0]["source_commit"]="1"*40
+            with self.assertRaises(ValueError,msg=mode):self.validate(reports)
+
+    def test_memory_overflow_wrong_sampling_and_false_negative_success_fail(self):
+        for mode in ("memory","sampling","negative"):
+            reports=self.reports();episode=reports[0]["episodes"][0]
+            if mode=="memory":episode["diagnostics"]["peak_cells"]=16001
+            if mode=="sampling":episode["diagnostics"]["range_values"]=51
+            if mode=="negative":next(e for e in reports[0]["episodes"] if not e["feasible"])["outcome"]="success"
+            with self.assertRaises(ValueError,msg=mode):self.validate(reports)
 
 
 if __name__=="__main__":unittest.main()

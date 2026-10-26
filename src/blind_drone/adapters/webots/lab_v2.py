@@ -8,7 +8,7 @@ import traceback
 import tomllib
 
 from blind_drone.evaluation.episode import EpisodeEvaluator, summarize
-from blind_drone.experiments.protocol_v2 import CONFIG as NAV_CONFIG, load_v2_config as load_config, select_suite_v2
+from blind_drone.experiments.protocol_v2 import CONFIG as NAV_CONFIG, LOCK, load_v2_config as load_config, select_suite_v2
 from blind_drone.world.minimal_lab import ROOT
 from blind_drone.world.scenarios import digest
 
@@ -30,6 +30,7 @@ def main():
     manifest,cases,protocol_hash=select_suite_v2(split,requested)
     manifest_hash=digest(manifest)
     suite="observed_v2"
+    rendering=os.environ.get("BLIND_DRONE_RENDERING","true")=="true"
     specification={"split":split,"evaluation":config,"case_ids":[c["id"] for c in cases]}
     (output/"cases.json").write_text(json.dumps(cases,indent=2)+"\n")
     step_ms = int(supervisor.getBasicTimeStep())
@@ -44,6 +45,8 @@ def main():
               "working_tree_dirty":os.environ.get("BLIND_DRONE_DIRTY")!="false","ci_run_id": os.environ.get("GITHUB_RUN_ID"),
               "algorithm_version": "observed_grid_v2", "lab_config": lab_config,
               "suite":suite,"protocol_sha256":protocol_hash,"manifest_sha256":manifest_hash,
+              "protocol_frozen":LOCK.exists(),
+              "rendering_enabled":rendering,
               "complete_split":not requested and selection=="all",
               "split": specification["split"], "specification_sha256": hashlib.sha256(NAV_CONFIG.read_bytes()).hexdigest(),
               "specification": specification, "episodes": [], "checks": {},
@@ -52,8 +55,10 @@ def main():
     (output / "manifest.json").write_text(json.dumps(report, indent=2) + "\n")
     log = (output / "telemetry.jsonl").open("w", buffering=1)
     next_log = 0.0
+    next_label = 0.0
     latest = None
     trajectories = []
+    failures = []
 
     def send(packet):
         emitter.send(json.dumps(packet, allow_nan=False).encode())
@@ -128,9 +133,16 @@ def main():
                     if now-start >= next_trace or result:
                         trajectory["points_txyz"].append([round(now-start,3),*[round(v,4) for v in position]])
                         next_trace = now-start+0.5
-                    supervisor.setLabel(0, f"{case['id']} | {policy} | {now-start:.1f}s", 0.02, 0.02, 0.05, 0xFFFFFF, 0, "Arial")
-                    supervisor.setLabel(1, f"{latest['navigation']['state']} | distance={dist(position,case['goal_m']):.2f}m", 0.02, 0.09, 0.035, 0x77FFAA, 0, "Arial")
+                    if rendering and now>=next_label:
+                        supervisor.setLabel(0, f"{case['id']} | {policy} | {now-start:.1f}s", 0.02, 0.02, 0.05, 0xFFFFFF, 0, "Arial")
+                        supervisor.setLabel(1, f"{latest['navigation']['state']} | distance={dist(position,case['goal_m']):.2f}m", 0.02, 0.09, 0.035, 0x77FFAA, 0, "Arial")
+                        next_label=now+.25
                     if result:
+                        if result["outcome"]!="success":
+                            failures.append({"case_id":case["id"],"policy":policy,"time_s":now,"outcome":result["outcome"],
+                                             "public_observation":{k:latest[k] for k in ("time_s","position_m","attitude_rad","ranges","navigation")},
+                                             "ground_truth_position_m":position,"contact_count":len(contacts)})
+                            (output/"failures.json").write_text(json.dumps(failures,indent=2)+"\n")
                         episode = {"case_id": case["id"], "policy": policy, "feasible": case["feasible"],
                                    "family":case.get("family",case["id"]),"seed":case.get("seed"),
                                    "geometry_sha256":case.get("geometry_sha256"),"initial_position_m":actual_start,
@@ -141,8 +153,8 @@ def main():
                         report["episodes"].append(episode)
                         (output / "progress.json").write_text(json.dumps(report, indent=2, allow_nan=False) + "\n")
                         print("NAVIGATION_EPISODE " + json.dumps(episode), flush=True)
-                        supervisor.exportImage(str(output / f"{case['id']}-{policy}.jpg"), 85)
-                        if (case["id"] == "single_block" or case.get("family")=="u_trap") and policy == "mapped":
+                        if rendering:supervisor.exportImage(str(output / f"{case['id']}-{policy}.jpg"), 85)
+                        if rendering and (case["id"] == "single_block" or case.get("family")=="u_trap") and policy == "mapped":
                             supervisor.exportImage(str(output / "scene.jpg"), 85)
                         break
         # Only integration sanity checks are pass/fail gates. Every episode,

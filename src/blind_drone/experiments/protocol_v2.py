@@ -15,6 +15,7 @@ FILES = ("configs/navigation_v2.toml","configs/scenarios/observed_v2.json",
          "src/blind_drone/observation/range_grid.py","src/blind_drone/navigation/observed.py",
          "src/blind_drone/adapters/webots/drone_v2.py","src/blind_drone/adapters/webots/lab_v2.py",
          "src/blind_drone/experiments/protocol_v2.py","tools/run_navigation_v2.py",
+         "src/blind_drone/evaluation/study_v2.py","tools/check_navigation_v2.py",
          "simulation/webots/protos/BlindDroneV2.proto","simulation/webots/worlds/observed_v2.wbt")
 
 
@@ -57,7 +58,6 @@ def outputs():
 
 
 def candidate_hashes():
-    verify_v1()
     return {"v1_protocol":verify_v1(),"files":{name:hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in FILES}}
 
 

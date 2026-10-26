@@ -29,6 +29,8 @@ class RangeGrid:
         self.last_sample = None
         self.updates = self.peak_cells = 0
         self.exhausted = False
+        self.occupied_version=0
+        self.no_path_key=None
         count = ceil(self.plan_radius/self.cell_m)+1
         self.offsets = [(dx,dy) for dx in range(-count,count+1) for dy in range(-count,count+1)
                         if hypot(dx,dy)*self.cell_m <= self.plan_radius+self.cell_m/sqrt(2)]
@@ -49,6 +51,7 @@ class RangeGrid:
             self.exhausted = True
             return
         if hit and cell not in self.occupied:
+            self.occupied_version+=1
             self.occupied.add(cell)
             self.free.discard(cell)
             self.blocked.update((cell[0]+dx,cell[1]+dy) for dx,dy in self.offsets)
@@ -90,6 +93,8 @@ class RangeGrid:
 
     def plan(self,start,goal):
         first,last = self.cell(start),self.cell(goal)
+        key=(first,last,self.occupied_version)
+        if self.no_path_key==key:return []
         if not self.inside(first) or not self.inside(last) or last in self.blocked:
             return []
         frontier = [(hypot(last[0]-first[0],last[1]-first[1]),0,first)]
@@ -116,6 +121,7 @@ class RangeGrid:
                 if new<costs.get(nxt,float("inf")):
                     costs[nxt],parents[nxt]=new,cell
                     heappush(frontier,(new+hypot(last[0]-nxt[0],last[1]-nxt[1]),new,nxt))
+        if not frontier:self.no_path_key=key
         return []
 
     def guard(self,position,vx,vy):
