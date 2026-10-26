@@ -1,0 +1,33 @@
+schema_version = 2
+name = "observed_grid_navigation_v2"
+policies = ["reactive", "guarded", "mapped"]
+families = ["empty", "single_block", "staggered_blocks", "narrow_gap", "u_trap", "blocked_goal"]
+
+[navigation_v2]
+cell_m = 0.25
+map_radius_m = 12.0
+max_cells = 16000
+margin_m = 0.12
+planning_margin_m = 0.10
+speed_m_s = 0.4
+scan_yaw_rad_s = 0.35
+initial_scan_s = 2.5
+replan_period_s = 0.5
+lookahead_m = 0.8
+guard_horizon_s = 1.4
+unknown_cost = 1.8
+max_expansions = 20000
+
+[evaluation]
+warmup_s = 2.0
+goal_radius_m = 0.5
+stop_speed_m_s = 0.18
+dwell_s = 1.0
+timeout_s = 90.0
+position_bounds_min_m = [-9.5, -9.5, 0.4]
+position_bounds_max_m = [9.5, 9.5, 5.0]
+
+[splits]
+development = [21001, 21002]
+validation = [51001, 51002]
+test = [61001, 61002]

@@ -1,0 +1,2209 @@
+{
+  "schema_version": 2,
+  "name": "observed_grid_v2",
+  "cases": [
+    {
+      "id": "development-empty-s21001",
+      "family": "empty",
+      "seed": 21001,
+      "split": "development",
+      "feasible": true,
+      "start_m": [
+        0.567389,
+        -5.350073,
+        1.5
+      ],
+      "goal_m": [
+        0.680479,
+        4.287398,
+        1.5
+      ],
+      "start_yaw_rad": 1.98642825,
+      "obstacles": [],
+      "geometry_sha256": "8b58ebca81f7e146623d7d674de147e104b2f64589a7fa0e6b1c753d4ace05fe",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            0.567389,
+            -5.350073,
+            1.5
+          ],
+          [
+            0.680479,
+            4.287398,
+            1.5
+          ]
+        ],
+        "length_m": 9.63813449916222
+      }
+    },
+    {
+      "id": "development-single_block-s21001",
+      "family": "single_block",
+      "seed": 21001,
+      "split": "development",
+      "feasible": true,
+      "start_m": [
+        5.110801,
+        -0.525139,
+        1.5
+      ],
+      "goal_m": [
+        -5.039926,
+        -0.282739,
+        1.5
+      ],
+      "start_yaw_rad": -2.85070913,
+      "obstacles": [
+        {
+          "center_m": [
+            0.123955,
+            -0.628516,
+            1.5
+          ],
+          "size_m": [
+            0.928384,
+            3.890377,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "d55e4666b4c980b97e2e0ea21b08fd9f79142e7a9968dfef5eecb408140862fb",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            5.110801,
+            -0.525139,
+            1.5
+          ],
+          [
+            1.0,
+            2.0,
+            1.5
+          ],
+          [
+            -3.0,
+            1.75,
+            1.5
+          ],
+          [
+            -5.039926,
+            -0.282739,
+            1.5
+          ]
+        ],
+        "length_m": 11.7120366979118
+      }
+    },
+    {
+      "id": "development-staggered_blocks-s21001",
+      "family": "staggered_blocks",
+      "seed": 21001,
+      "split": "development",
+      "feasible": true,
+      "start_m": [
+        4.744618,
+        -0.216816,
+        1.5
+      ],
+      "goal_m": [
+        -5.910342,
+        -0.181049,
+        1.5
+      ],
+      "start_yaw_rad": -3.13769621,
+      "obstacles": [
+        {
+          "center_m": [
+            0.968406,
+            -0.198184,
+            1.5
+          ],
+          "size_m": [
+            0.8,
+            2.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -2.331594,
+            -1.533677,
+            1.5
+          ],
+          "size_m": [
+            0.8,
+            2.7,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "fee9390d7425a6744f2017f6b54533f1e0c879b55824e746e290cf84030a10e3",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            4.744618,
+            -0.216816,
+            1.5
+          ],
+          [
+            1.75,
+            1.75,
+            1.5
+          ],
+          [
+            -4.5,
+            1.25,
+            1.5
+          ],
+          [
+            -5.910342,
+            -0.181049,
+            1.5
+          ]
+        ],
+        "length_m": 11.861938937680753
+      }
+    },
+    {
+      "id": "development-narrow_gap-s21001",
+      "family": "narrow_gap",
+      "seed": 21001,
+      "split": "development",
+      "feasible": true,
+      "start_m": [
+        0.20201,
+        -4.866127,
+        1.5
+      ],
+      "goal_m": [
+        -0.058765,
+        5.417688,
+        1.5
+      ],
+      "start_yaw_rad": 1.46344538,
+      "obstacles": [
+        {
+          "center_m": [
+            2.879182,
+            0.514849,
+            1.5
+          ],
+          "size_m": [
+            4,
+            1,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -2.678801,
+            0.514849,
+            1.5
+          ],
+          "size_m": [
+            4,
+            1,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "1d438412643822445ff68205e4950a33a6e0da7de38207ff53db707ef4ef0d68",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            0.20201,
+            -4.866127,
+            1.5
+          ],
+          [
+            -0.058765,
+            5.417688,
+            1.5
+          ]
+        ],
+        "length_m": 10.287120809772286
+      }
+    },
+    {
+      "id": "development-u_trap-s21001",
+      "family": "u_trap",
+      "seed": 21001,
+      "split": "development",
+      "feasible": true,
+      "start_m": [
+        -1.064808,
+        0.100646,
+        1.5
+      ],
+      "goal_m": [
+        5.316446,
+        0.263721,
+        1.5
+      ],
+      "start_yaw_rad": -0.71856064,
+      "obstacles": [
+        {
+          "center_m": [
+            -0.452632,
+            -1.798197,
+            1.5
+          ],
+          "size_m": [
+            4.056134,
+            0.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -0.452632,
+            2.201803,
+            1.5
+          ],
+          "size_m": [
+            4.056134,
+            0.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            1.575436,
+            0.201803,
+            1.5
+          ],
+          "size_m": [
+            0.5,
+            4.5,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "27621836e2d218d860329de871a0ce8a0cef54b9c6af20cc133981aa3051a61c",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            -1.064808,
+            0.100646,
+            1.5
+          ],
+          [
+            -3.25,
+            -1.0,
+            1.5
+          ],
+          [
+            -3.25,
+            -2.5,
+            1.5
+          ],
+          [
+            -2.75,
+            -2.75,
+            1.5
+          ],
+          [
+            2.25,
+            -2.75,
+            1.5
+          ],
+          [
+            5.316446,
+            0.263721,
+            1.5
+          ]
+        ],
+        "length_m": 13.805235548206493
+      }
+    },
+    {
+      "id": "development-blocked_goal-s21001",
+      "family": "blocked_goal",
+      "seed": 21001,
+      "split": "development",
+      "feasible": false,
+      "start_m": [
+        5.06945,
+        0.416565,
+        1.5
+      ],
+      "goal_m": [
+        -0.523978,
+        0.416605,
+        1.5
+      ],
+      "start_yaw_rad": 0.86975768,
+      "obstacles": [
+        {
+          "center_m": [
+            -0.523978,
+            0.416605,
+            1.5
+          ],
+          "size_m": [
+            2,
+            2,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "4fb9ffdd916fc9d6acd6bcafbeca7a55789d40d9b362bf27731eaade4e4c0bec",
+      "certificate": {
+        "kind": "goal_inside_solid",
+        "radius_m": 0.551740662898458,
+        "waypoints_m": []
+      }
+    },
+    {
+      "id": "development-empty-s21002",
+      "family": "empty",
+      "seed": 21002,
+      "split": "development",
+      "feasible": true,
+      "start_m": [
+        4.644996,
+        -0.188952,
+        1.5
+      ],
+      "goal_m": [
+        -5.133532,
+        -0.089604,
+        1.5
+      ],
+      "start_yaw_rad": 2.6125493,
+      "obstacles": [],
+      "geometry_sha256": "ee9ee52b9e9674eef7278432293f7efe5d3a7d01ba35c7061aa8372312a58af2",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            4.644996,
+            -0.188952,
+            1.5
+          ],
+          [
+            -5.133532,
+            -0.089604,
+            1.5
+          ]
+        ],
+        "length_m": 9.779032665447437
+      }
+    },
+    {
+      "id": "development-single_block-s21002",
+      "family": "single_block",
+      "seed": 21002,
+      "split": "development",
+      "feasible": true,
+      "start_m": [
+        4.676702,
+        0.222052,
+        1.5
+      ],
+      "goal_m": [
+        -5.657184,
+        0.148306,
+        1.5
+      ],
+      "start_yaw_rad": -3.1132264,
+      "obstacles": [
+        {
+          "center_m": [
+            -0.144143,
+            -0.013067,
+            1.5
+          ],
+          "size_m": [
+            1.042279,
+            3.082585,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "8aec04c375517aab63a1b823c9a74d91675838681adc0e431b9aea9bf1cfb96b",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            4.676702,
+            0.222052,
+            1.5
+          ],
+          [
+            0.75,
+            2.25,
+            1.5
+          ],
+          [
+            -4.0,
+            2.0,
+            1.5
+          ],
+          [
+            -5.657184,
+            0.148306,
+            1.5
+          ]
+        ],
+        "length_m": 11.660987702847573
+      }
+    },
+    {
+      "id": "development-staggered_blocks-s21002",
+      "family": "staggered_blocks",
+      "seed": 21002,
+      "split": "development",
+      "feasible": true,
+      "start_m": [
+        -5.895235,
+        -0.422917,
+        1.5
+      ],
+      "goal_m": [
+        4.201185,
+        -0.129292,
+        1.5
+      ],
+      "start_yaw_rad": -2.57786849,
+      "obstacles": [
+        {
+          "center_m": [
+            -1.903613,
+            -0.364007,
+            1.5
+          ],
+          "size_m": [
+            0.8,
+            2.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            1.396387,
+            0.994765,
+            1.5
+          ],
+          "size_m": [
+            0.8,
+            2.7,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "283ffa0efeb944cd716760d080c4ea0d5a2c47ae2a336c9f3f670b366414ea04",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            -5.895235,
+            -0.422917,
+            1.5
+          ],
+          [
+            -2.75,
+            -2.25,
+            1.5
+          ],
+          [
+            2.25,
+            -2.25,
+            1.5
+          ],
+          [
+            4.201185,
+            -0.129292,
+            1.5
+          ]
+        ],
+        "length_m": 11.519165131569093
+      }
+    },
+    {
+      "id": "development-narrow_gap-s21002",
+      "family": "narrow_gap",
+      "seed": 21002,
+      "split": "development",
+      "feasible": true,
+      "start_m": [
+        -5.966558,
+        -0.800704,
+        1.5
+      ],
+      "goal_m": [
+        4.364461,
+        -0.514982,
+        1.5
+      ],
+      "start_yaw_rad": -1.22637043,
+      "obstacles": [
+        {
+          "center_m": [
+            -0.56196,
+            2.109096,
+            1.5
+          ],
+          "size_m": [
+            1,
+            4,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -0.56196,
+            -3.358768,
+            1.5
+          ],
+          "size_m": [
+            1,
+            4,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "a59ad7bc174c893f72dd94877d84ec60509bc351d2062696c68b151263eeb9a1",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            -5.966558,
+            -0.800704,
+            1.5
+          ],
+          [
+            4.364461,
+            -0.514982,
+            1.5
+          ]
+        ],
+        "length_m": 10.334969310048532
+      }
+    },
+    {
+      "id": "development-u_trap-s21002",
+      "family": "u_trap",
+      "seed": 21002,
+      "split": "development",
+      "feasible": true,
+      "start_m": [
+        -0.140618,
+        1.899918,
+        1.5
+      ],
+      "goal_m": [
+        -0.225902,
+        -4.628209,
+        1.5
+      ],
+      "start_yaw_rad": 2.34728468,
+      "obstacles": [
+        {
+          "center_m": [
+            1.908844,
+            1.545992,
+            1.5
+          ],
+          "size_m": [
+            0.5,
+            3.915385,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -2.091156,
+            1.545992,
+            1.5
+          ],
+          "size_m": [
+            0.5,
+            3.915385,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -0.091156,
+            -0.4117,
+            1.5
+          ],
+          "size_m": [
+            4.5,
+            0.5,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "4f62ce489d53aef80e4a21bc8e8aaeff8a2076a28a072d2c1d214529f78ff82d",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            -0.140618,
+            1.899918,
+            1.5
+          ],
+          [
+            -1.25,
+            4.25,
+            1.5
+          ],
+          [
+            -2.75,
+            4.25,
+            1.5
+          ],
+          [
+            -3.0,
+            4.0,
+            1.5
+          ],
+          [
+            -3.0,
+            -2.0,
+            1.5
+          ],
+          [
+            -0.225902,
+            -4.628209,
+            1.5
+          ]
+        ],
+        "length_m": 14.273725553321103
+      }
+    },
+    {
+      "id": "development-blocked_goal-s21002",
+      "family": "blocked_goal",
+      "seed": 21002,
+      "split": "development",
+      "feasible": false,
+      "start_m": [
+        -0.404057,
+        5.147841,
+        1.5
+      ],
+      "goal_m": [
+        -0.480969,
+        -0.209661,
+        1.5
+      ],
+      "start_yaw_rad": 1.96074275,
+      "obstacles": [
+        {
+          "center_m": [
+            -0.480969,
+            -0.209661,
+            1.5
+          ],
+          "size_m": [
+            2,
+            2,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "49ea55eb2cf059576cae04523de72004439d83572b3929b1f7dc4a7faf850608",
+      "certificate": {
+        "kind": "goal_inside_solid",
+        "radius_m": 0.551740662898458,
+        "waypoints_m": []
+      }
+    },
+    {
+      "id": "validation-empty-s51001",
+      "family": "empty",
+      "seed": 51001,
+      "split": "validation",
+      "feasible": true,
+      "start_m": [
+        0.600859,
+        4.699656,
+        1.5
+      ],
+      "goal_m": [
+        0.632147,
+        -5.088731,
+        1.5
+      ],
+      "start_yaw_rad": 2.80725636,
+      "obstacles": [],
+      "geometry_sha256": "23e3f608b1d080beee6ef3949d742832b5588426741e0e43e247a4aad505888e",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            0.600859,
+            4.699656,
+            1.5
+          ],
+          [
+            0.632147,
+            -5.088731,
+            1.5
+          ]
+        ],
+        "length_m": 9.78843700499283
+      }
+    },
+    {
+      "id": "validation-single_block-s51001",
+      "family": "single_block",
+      "seed": 51001,
+      "split": "validation",
+      "feasible": true,
+      "start_m": [
+        4.462708,
+        0.120763,
+        1.5
+      ],
+      "goal_m": [
+        -5.496927,
+        0.166322,
+        1.5
+      ],
+      "start_yaw_rad": -1.99734511,
+      "obstacles": [
+        {
+          "center_m": [
+            -0.770869,
+            0.076629,
+            1.5
+          ],
+          "size_m": [
+            0.714197,
+            3.915013,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "71a157c2fc4559d3237d5c39b3c29c5fe3e440ed2740bf5e3b1a24649e72cb43",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            4.462708,
+            0.120763,
+            1.5
+          ],
+          [
+            0.0,
+            2.75,
+            1.5
+          ],
+          [
+            -3.25,
+            2.5,
+            1.5
+          ],
+          [
+            -5.496927,
+            0.166322,
+            1.5
+          ]
+        ],
+        "length_m": 11.678796889044543
+      }
+    },
+    {
+      "id": "validation-staggered_blocks-s51001",
+      "family": "staggered_blocks",
+      "seed": 51001,
+      "split": "validation",
+      "feasible": true,
+      "start_m": [
+        0.17215,
+        -5.061625,
+        1.5
+      ],
+      "goal_m": [
+        0.432864,
+        4.66871,
+        1.5
+      ],
+      "start_yaw_rad": -2.50286146,
+      "obstacles": [
+        {
+          "center_m": [
+            0.40353,
+            -1.513923,
+            1.5
+          ],
+          "size_m": [
+            2.5,
+            0.8,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -1.058608,
+            1.786077,
+            1.5
+          ],
+          "size_m": [
+            2.7,
+            0.8,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "e7a4302a748637b116629ff97c4a1b5118a34478bb7c0df4767431119073009f",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            0.17215,
+            -5.061625,
+            1.5
+          ],
+          [
+            2.25,
+            -2.5,
+            1.5
+          ],
+          [
+            2.25,
+            3.0,
+            1.5
+          ],
+          [
+            0.432864,
+            4.66871,
+            1.5
+          ]
+        ],
+        "length_m": 11.265489774295085
+      }
+    },
+    {
+      "id": "validation-narrow_gap-s51001",
+      "family": "narrow_gap",
+      "seed": 51001,
+      "split": "validation",
+      "feasible": true,
+      "start_m": [
+        5.147619,
+        0.613875,
+        1.5
+      ],
+      "goal_m": [
+        -5.859714,
+        0.434163,
+        1.5
+      ],
+      "start_yaw_rad": 2.89760711,
+      "obstacles": [
+        {
+          "center_m": [
+            -0.435077,
+            3.217848,
+            1.5
+          ],
+          "size_m": [
+            1,
+            4,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -0.435077,
+            -2.250773,
+            1.5
+          ],
+          "size_m": [
+            1,
+            4,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "e5a8e29a7a8b4c1dd29b2195b64c406cc9f01a390f0eb94aea41c3a31736b54e",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            5.147619,
+            0.613875,
+            1.5
+          ],
+          [
+            -5.859714,
+            0.434163,
+            1.5
+          ]
+        ],
+        "length_m": 11.008799942583796
+      }
+    },
+    {
+      "id": "validation-u_trap-s51001",
+      "family": "u_trap",
+      "seed": 51001,
+      "split": "validation",
+      "feasible": true,
+      "start_m": [
+        -1.160524,
+        -0.62156,
+        1.5
+      ],
+      "goal_m": [
+        5.162351,
+        -0.441842,
+        1.5
+      ],
+      "start_yaw_rad": 2.05577641,
+      "obstacles": [
+        {
+          "center_m": [
+            -0.691644,
+            1.506346,
+            1.5
+          ],
+          "size_m": [
+            3.914224,
+            0.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -0.691644,
+            -2.493654,
+            1.5
+          ],
+          "size_m": [
+            3.914224,
+            0.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            1.265468,
+            -0.493654,
+            1.5
+          ],
+          "size_m": [
+            0.5,
+            4.5,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "0a9ab2949b88c70ba6b068c5a0c0ef9fce35339973d90804b99a98bb4e41527d",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            -1.160524,
+            -0.62156,
+            1.5
+          ],
+          [
+            -3.25,
+            -1.5,
+            1.5
+          ],
+          [
+            -3.25,
+            -3.25,
+            1.5
+          ],
+          [
+            -3.0,
+            -3.5,
+            1.5
+          ],
+          [
+            2.25,
+            -3.5,
+            1.5
+          ],
+          [
+            5.162351,
+            -0.441842,
+            1.5
+          ]
+        ],
+        "length_m": 13.843219654910364
+      }
+    },
+    {
+      "id": "validation-blocked_goal-s51001",
+      "family": "blocked_goal",
+      "seed": 51001,
+      "split": "validation",
+      "feasible": false,
+      "start_m": [
+        5.394369,
+        0.192933,
+        1.5
+      ],
+      "goal_m": [
+        0.416897,
+        0.229817,
+        1.5
+      ],
+      "start_yaw_rad": 2.53975311,
+      "obstacles": [
+        {
+          "center_m": [
+            0.416897,
+            0.229817,
+            1.5
+          ],
+          "size_m": [
+            2,
+            2,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "330382c86a86787b31774f56b10929de1dd49cdd526751249a629f393855841a",
+      "certificate": {
+        "kind": "goal_inside_solid",
+        "radius_m": 0.551740662898458,
+        "waypoints_m": []
+      }
+    },
+    {
+      "id": "validation-empty-s51002",
+      "family": "empty",
+      "seed": 51002,
+      "split": "validation",
+      "feasible": true,
+      "start_m": [
+        4.713889,
+        0.057923,
+        1.5
+      ],
+      "goal_m": [
+        -5.972476,
+        0.090359,
+        1.5
+      ],
+      "start_yaw_rad": -2.07835037,
+      "obstacles": [],
+      "geometry_sha256": "186d1efa23fadb5cb6a341c35e024c9576f661e5ce0603deb12f29dcc3ac02e3",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            4.713889,
+            0.057923,
+            1.5
+          ],
+          [
+            -5.972476,
+            0.090359,
+            1.5
+          ]
+        ],
+        "length_m": 10.686414225890788
+      }
+    },
+    {
+      "id": "validation-single_block-s51002",
+      "family": "single_block",
+      "seed": 51002,
+      "split": "validation",
+      "feasible": true,
+      "start_m": [
+        0.151659,
+        -5.825146,
+        1.5
+      ],
+      "goal_m": [
+        0.394301,
+        5.243963,
+        1.5
+      ],
+      "start_yaw_rad": 2.31844296,
+      "obstacles": [
+        {
+          "center_m": [
+            0.172936,
+            -0.140396,
+            1.5
+          ],
+          "size_m": [
+            3.874965,
+            0.707386,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "b003a3332c0ffcd59a4bf82cd9867832f4592cb15a698250aa3199200f8e56f2",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            0.151659,
+            -5.825146,
+            1.5
+          ],
+          [
+            2.75,
+            -1.0,
+            1.5
+          ],
+          [
+            2.75,
+            3.0,
+            1.5
+          ],
+          [
+            0.394301,
+            5.243963,
+            1.5
+          ]
+        ],
+        "length_m": 12.733686321889767
+      }
+    },
+    {
+      "id": "validation-staggered_blocks-s51002",
+      "family": "staggered_blocks",
+      "seed": 51002,
+      "split": "validation",
+      "feasible": true,
+      "start_m": [
+        5.417298,
+        0.495668,
+        1.5
+      ],
+      "goal_m": [
+        -4.465926,
+        0.298526,
+        1.5
+      ],
+      "start_yaw_rad": 1.31680713,
+      "obstacles": [
+        {
+          "center_m": [
+            1.907834,
+            0.66717,
+            1.5
+          ],
+          "size_m": [
+            0.8,
+            2.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -1.392166,
+            1.674632,
+            1.5
+          ],
+          "size_m": [
+            0.8,
+            2.7,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "b0c5579c09dce4b908a73cc75feb5501382d124200ae037a77aa17413f0856e9",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            5.417298,
+            0.495668,
+            1.5
+          ],
+          [
+            2.75,
+            -1.25,
+            1.5
+          ],
+          [
+            -3.25,
+            -1.0,
+            1.5
+          ],
+          [
+            -4.465926,
+            0.298526,
+            1.5
+          ]
+        ],
+        "length_m": 10.971914597619312
+      }
+    },
+    {
+      "id": "validation-narrow_gap-s51002",
+      "family": "narrow_gap",
+      "seed": 51002,
+      "split": "validation",
+      "feasible": true,
+      "start_m": [
+        0.152034,
+        5.327273,
+        1.5
+      ],
+      "goal_m": [
+        -0.121482,
+        -5.311683,
+        1.5
+      ],
+      "start_yaw_rad": 1.00575985,
+      "obstacles": [
+        {
+          "center_m": [
+            -2.724708,
+            0.275595,
+            1.5
+          ],
+          "size_m": [
+            4,
+            1,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            2.731856,
+            0.275595,
+            1.5
+          ],
+          "size_m": [
+            4,
+            1,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "e09ff8d6d7107f8b013c447caa897b510aea378fdb62335c9963d00ac8967164",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            0.152034,
+            5.327273,
+            1.5
+          ],
+          [
+            -0.121482,
+            -5.311683,
+            1.5
+          ]
+        ],
+        "length_m": 10.642471318833422
+      }
+    },
+    {
+      "id": "validation-u_trap-s51002",
+      "family": "u_trap",
+      "seed": 51002,
+      "split": "validation",
+      "feasible": true,
+      "start_m": [
+        -1.19344,
+        0.763951,
+        1.5
+      ],
+      "goal_m": [
+        5.774775,
+        0.763365,
+        1.5
+      ],
+      "start_yaw_rad": 3.00156647,
+      "obstacles": [
+        {
+          "center_m": [
+            -0.738385,
+            2.680595,
+            1.5
+          ],
+          "size_m": [
+            3.833746,
+            0.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -0.738385,
+            -1.319405,
+            1.5
+          ],
+          "size_m": [
+            3.833746,
+            0.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            1.178488,
+            0.680595,
+            1.5
+          ],
+          "size_m": [
+            0.5,
+            4.5,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "045b5f20a8c9585ec257a3fb3b20deb6982713d044f84b1a24e91903fe8d4cae",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            -1.19344,
+            0.763951,
+            1.5
+          ],
+          [
+            -3.25,
+            1.75,
+            1.5
+          ],
+          [
+            -3.25,
+            3.5,
+            1.5
+          ],
+          [
+            3.0,
+            3.5,
+            1.5
+          ],
+          [
+            5.774775,
+            0.763365,
+            1.5
+          ]
+        ],
+        "length_m": 14.177979210298348
+      }
+    },
+    {
+      "id": "validation-blocked_goal-s51002",
+      "family": "blocked_goal",
+      "seed": 51002,
+      "split": "validation",
+      "feasible": false,
+      "start_m": [
+        0.563196,
+        -5.823481,
+        1.5
+      ],
+      "goal_m": [
+        0.619801,
+        -0.45879,
+        1.5
+      ],
+      "start_yaw_rad": 1.37568161,
+      "obstacles": [
+        {
+          "center_m": [
+            0.619801,
+            -0.45879,
+            1.5
+          ],
+          "size_m": [
+            2,
+            2,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "dba8f948282ca7a68cc6008a2b410d46a39a558a87273829570451a11d1480c9",
+      "certificate": {
+        "kind": "goal_inside_solid",
+        "radius_m": 0.551740662898458,
+        "waypoints_m": []
+      }
+    },
+    {
+      "id": "test-empty-s61001",
+      "family": "empty",
+      "seed": 61001,
+      "split": "test",
+      "feasible": true,
+      "start_m": [
+        4.926726,
+        0.084843,
+        1.5
+      ],
+      "goal_m": [
+        -5.670277,
+        -0.05884,
+        1.5
+      ],
+      "start_yaw_rad": 0.45546139,
+      "obstacles": [],
+      "geometry_sha256": "8e1d8c087d4c57d7039ca2717eb2bd75166af89902a85fdedfac39428afe4df9",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            4.926726,
+            0.084843,
+            1.5
+          ],
+          [
+            -5.670277,
+            -0.05884,
+            1.5
+          ]
+        ],
+        "length_m": 10.5979770421764
+      }
+    },
+    {
+      "id": "test-single_block-s61001",
+      "family": "single_block",
+      "seed": 61001,
+      "split": "test",
+      "feasible": true,
+      "start_m": [
+        -4.261105,
+        0.484888,
+        1.5
+      ],
+      "goal_m": [
+        5.818172,
+        0.702125,
+        1.5
+      ],
+      "start_yaw_rad": -0.89387727,
+      "obstacles": [
+        {
+          "center_m": [
+            0.948107,
+            0.578987,
+            1.5
+          ],
+          "size_m": [
+            0.969561,
+            3.288472,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "156c67af22f0960d6194ab046bf600b4da6cba4630ba93b1def74dc90c40ffda",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            -4.261105,
+            0.484888,
+            1.5
+          ],
+          [
+            0.0,
+            -1.75,
+            1.5
+          ],
+          [
+            3.25,
+            -1.75,
+            1.5
+          ],
+          [
+            5.818172,
+            0.702125,
+            1.5
+          ]
+        ],
+        "length_m": 11.612459854809437
+      }
+    },
+    {
+      "id": "test-staggered_blocks-s61001",
+      "family": "staggered_blocks",
+      "seed": 61001,
+      "split": "test",
+      "feasible": true,
+      "start_m": [
+        4.857858,
+        0.245966,
+        1.5
+      ],
+      "goal_m": [
+        -5.331553,
+        0.27902,
+        1.5
+      ],
+      "start_yaw_rad": 1.40031121,
+      "obstacles": [
+        {
+          "center_m": [
+            0.783021,
+            0.397222,
+            1.5
+          ],
+          "size_m": [
+            0.8,
+            2.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -2.516979,
+            1.913969,
+            1.5
+          ],
+          "size_m": [
+            0.8,
+            2.7,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "657fae9b436829f9ded285c73e39749ba56b4454961af1afa1d5868469cbb2d3",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            4.857858,
+            0.245966,
+            1.5
+          ],
+          [
+            1.75,
+            -1.5,
+            1.5
+          ],
+          [
+            -3.75,
+            -1.25,
+            1.5
+          ],
+          [
+            -5.331553,
+            0.27902,
+            1.5
+          ]
+        ],
+        "length_m": 11.270212778867132
+      }
+    },
+    {
+      "id": "test-narrow_gap-s61001",
+      "family": "narrow_gap",
+      "seed": 61001,
+      "split": "test",
+      "feasible": true,
+      "start_m": [
+        0.210531,
+        -5.210143,
+        1.5
+      ],
+      "goal_m": [
+        0.108233,
+        5.192618,
+        1.5
+      ],
+      "start_yaw_rad": -1.52895343,
+      "obstacles": [
+        {
+          "center_m": [
+            2.932374,
+            -0.242261,
+            1.5
+          ],
+          "size_m": [
+            4,
+            1,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -2.814703,
+            -0.242261,
+            1.5
+          ],
+          "size_m": [
+            4,
+            1,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "2fe20021934472b4a1fb7dd7942434d2a9a264e08147b9f9157ef42b36e169ce",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            0.210531,
+            -5.210143,
+            1.5
+          ],
+          [
+            0.108233,
+            5.192618,
+            1.5
+          ]
+        ],
+        "length_m": 10.403263973576996
+      }
+    },
+    {
+      "id": "test-u_trap-s61001",
+      "family": "u_trap",
+      "seed": 61001,
+      "split": "test",
+      "feasible": true,
+      "start_m": [
+        -2.183358,
+        -0.286288,
+        1.5
+      ],
+      "goal_m": [
+        4.420912,
+        -0.442997,
+        1.5
+      ],
+      "start_yaw_rad": 1.01134169,
+      "obstacles": [
+        {
+          "center_m": [
+            -1.553042,
+            1.71597,
+            1.5
+          ],
+          "size_m": [
+            4.005388,
+            0.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -1.553042,
+            -2.28403,
+            1.5
+          ],
+          "size_m": [
+            4.005388,
+            0.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            0.449652,
+            -0.28403,
+            1.5
+          ],
+          "size_m": [
+            0.5,
+            4.5,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "6895e76ec57a0bf12d41b9cdb3bc4de9de1f63f88db930333ca848dd3e414043",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            -2.183358,
+            -0.286288,
+            1.5
+          ],
+          [
+            -4.25,
+            1.0,
+            1.5
+          ],
+          [
+            -4.25,
+            2.5,
+            1.5
+          ],
+          [
+            -2.25,
+            2.75,
+            1.5
+          ],
+          [
+            1.25,
+            2.75,
+            1.5
+          ],
+          [
+            4.420912,
+            -0.442997,
+            1.5
+          ]
+        ],
+        "length_m": 13.949799179223882
+      }
+    },
+    {
+      "id": "test-blocked_goal-s61001",
+      "family": "blocked_goal",
+      "seed": 61001,
+      "split": "test",
+      "feasible": false,
+      "start_m": [
+        -0.700656,
+        -5.300144,
+        1.5
+      ],
+      "goal_m": [
+        -0.608863,
+        -0.12549,
+        1.5
+      ],
+      "start_yaw_rad": 2.02739669,
+      "obstacles": [
+        {
+          "center_m": [
+            -0.608863,
+            -0.12549,
+            1.5
+          ],
+          "size_m": [
+            2,
+            2,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "41b2175d7224d13092672062f39ed27008d460c9409f7bfc8a3c4adf75ed6927",
+      "certificate": {
+        "kind": "goal_inside_solid",
+        "radius_m": 0.551740662898458,
+        "waypoints_m": []
+      }
+    },
+    {
+      "id": "test-empty-s61002",
+      "family": "empty",
+      "seed": 61002,
+      "split": "test",
+      "feasible": true,
+      "start_m": [
+        4.953819,
+        0.43336,
+        1.5
+      ],
+      "goal_m": [
+        -5.24312,
+        0.509313,
+        1.5
+      ],
+      "start_yaw_rad": 1.70760155,
+      "obstacles": [],
+      "geometry_sha256": "ca77e899a6ef63a0e3cea85af0c457b996e0609d90cbd24ff587d1b49ec4543a",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            4.953819,
+            0.43336,
+            1.5
+          ],
+          [
+            -5.24312,
+            0.509313,
+            1.5
+          ]
+        ],
+        "length_m": 10.197221868133006
+      }
+    },
+    {
+      "id": "test-single_block-s61002",
+      "family": "single_block",
+      "seed": 61002,
+      "split": "test",
+      "feasible": true,
+      "start_m": [
+        -0.282891,
+        -6.009405,
+        1.5
+      ],
+      "goal_m": [
+        -0.265437,
+        4.550686,
+        1.5
+      ],
+      "start_yaw_rad": -3.08342903,
+      "obstacles": [
+        {
+          "center_m": [
+            -0.555047,
+            -0.659458,
+            1.5
+          ],
+          "size_m": [
+            3.04152,
+            1.072275,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "56516d5683ea148e3599e1ebe613270cff13a218446635f61ca93aae1e1ef7de",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            -0.282891,
+            -6.009405,
+            1.5
+          ],
+          [
+            1.75,
+            -1.25,
+            1.5
+          ],
+          [
+            1.25,
+            3.0,
+            1.5
+          ],
+          [
+            -0.265437,
+            4.550686,
+            1.5
+          ]
+        ],
+        "length_m": 11.622912606602204
+      }
+    },
+    {
+      "id": "test-staggered_blocks-s61002",
+      "family": "staggered_blocks",
+      "seed": 61002,
+      "split": "test",
+      "feasible": true,
+      "start_m": [
+        -5.310025,
+        0.437214,
+        1.5
+      ],
+      "goal_m": [
+        4.680872,
+        0.419599,
+        1.5
+      ],
+      "start_yaw_rad": 2.85828146,
+      "obstacles": [
+        {
+          "center_m": [
+            -1.667368,
+            0.570882,
+            1.5
+          ],
+          "size_m": [
+            0.8,
+            2.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            1.632632,
+            -1.06377,
+            1.5
+          ],
+          "size_m": [
+            0.8,
+            2.7,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "3654294a703a610a5cdda07ec063ba0a94f647203815c1bb71b5be0e7a323a57",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            -5.310025,
+            0.437214,
+            1.5
+          ],
+          [
+            -2.5,
+            2.5,
+            1.5
+          ],
+          [
+            3.0,
+            2.25,
+            1.5
+          ],
+          [
+            4.680872,
+            0.419599,
+            1.5
+          ]
+        ],
+        "length_m": 11.476649452881244
+      }
+    },
+    {
+      "id": "test-narrow_gap-s61002",
+      "family": "narrow_gap",
+      "seed": 61002,
+      "split": "test",
+      "feasible": true,
+      "start_m": [
+        -0.234353,
+        5.936979,
+        1.5
+      ],
+      "goal_m": [
+        0.0743,
+        -4.733027,
+        1.5
+      ],
+      "start_yaw_rad": 0.9050809,
+      "obstacles": [
+        {
+          "center_m": [
+            -2.812784,
+            0.525833,
+            1.5
+          ],
+          "size_m": [
+            4,
+            1,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            2.696364,
+            0.525833,
+            1.5
+          ],
+          "size_m": [
+            4,
+            1,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "cf72bd3422c2eaa9371b46fec44aedd7b4d9d9cac2ada6f99e32fdca71de4a2e",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            -0.234353,
+            5.936979,
+            1.5
+          ],
+          [
+            0.0743,
+            -4.733027,
+            1.5
+          ]
+        ],
+        "length_m": 10.67446929427618
+      }
+    },
+    {
+      "id": "test-u_trap-s61002",
+      "family": "u_trap",
+      "seed": 61002,
+      "split": "test",
+      "feasible": true,
+      "start_m": [
+        -1.114778,
+        -0.127252,
+        1.5
+      ],
+      "goal_m": [
+        6.023394,
+        0.250253,
+        1.5
+      ],
+      "start_yaw_rad": -0.95703632,
+      "obstacles": [
+        {
+          "center_m": [
+            -0.414887,
+            2.089721,
+            1.5
+          ],
+          "size_m": [
+            4.170388,
+            0.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            -0.414887,
+            -1.910279,
+            1.5
+          ],
+          "size_m": [
+            4.170388,
+            0.5,
+            3.0
+          ]
+        },
+        {
+          "center_m": [
+            1.670307,
+            0.089721,
+            1.5
+          ],
+          "size_m": [
+            0.5,
+            4.5,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "d4ec0b7f5badaafb218d80134969d019e8d9277053ff454ddf7f9b9832d10f10",
+      "certificate": {
+        "kind": "conservative_horizontal_grid_witness",
+        "radius_m": 0.551740662898458,
+        "grid_step_m": 0.25,
+        "waypoints_m": [
+          [
+            -1.114778,
+            -0.127252,
+            1.5
+          ],
+          [
+            -3.0,
+            -1.0,
+            1.5
+          ],
+          [
+            -3.25,
+            -1.5,
+            1.5
+          ],
+          [
+            -3.25,
+            -2.75,
+            1.5
+          ],
+          [
+            3.0,
+            -2.75,
+            1.5
+          ],
+          [
+            6.023394,
+            0.250253,
+            1.5
+          ]
+        ],
+        "length_m": 14.395848648256969
+      }
+    },
+    {
+      "id": "test-blocked_goal-s61002",
+      "family": "blocked_goal",
+      "seed": 61002,
+      "split": "test",
+      "feasible": false,
+      "start_m": [
+        0.354968,
+        -4.908738,
+        1.5
+      ],
+      "goal_m": [
+        0.377493,
+        -0.20048,
+        1.5
+      ],
+      "start_yaw_rad": 0.67252912,
+      "obstacles": [
+        {
+          "center_m": [
+            0.377493,
+            -0.20048,
+            1.5
+          ],
+          "size_m": [
+            2,
+            2,
+            3.0
+          ]
+        }
+      ],
+      "geometry_sha256": "5ac4b0f3fd7061fceea9ed6b2e299fe14541381d8abc6598a79b75e00faeeb9d",
+      "certificate": {
+        "kind": "goal_inside_solid",
+        "radius_m": 0.551740662898458,
+        "waypoints_m": []
+      }
+    }
+  ]
+}
