@@ -40,6 +40,7 @@
 - Do not reset, clean, stash, rewrite history or force-push as routine cleanup.
 - Stage explicit paths and inspect the staged diff. Follow the standing Git authorization below.
 - Final reports should state what changed, checks actually run, and remaining limitations.
+- Keep CHECKLIST_DU_AN.md current at milestone handoff: mark only evidenced completion, retain local/CI/hardware distinctions and label future work as proposals. Update its date/evidence links without rewriting historical reports or exposed-test status.
 
 ## Standing Git authorization for this workspace
 
