@@ -5,13 +5,16 @@ import math
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import patch
+import tempfile
+import json
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/"src"))
 from blind_drone.contracts.navigation import NavigationObservation,RangeReading
 from blind_drone.contracts.runtime import MotionCommand,VehicleState
 from blind_drone.experiments.protocol import verify_lock
-from blind_drone.experiments.protocol_v2 import LOCK,build_manifest,load_v2_config,select_suite_v2
+from blind_drone.experiments.protocol_v2 import LOCK,build_manifest,load_v2_config,select_suite_v2,verify_v2
 from blind_drone.evaluation.episode import summarize
 from blind_drone.evaluation.study_v2 import validate_v2
 from blind_drone.world.scenarios import digest
@@ -144,9 +147,17 @@ class NavigationV2Tests(unittest.TestCase):
         self.assertEqual(len({c["geometry_sha256"] for c in cases}),36)
 
     def test_fresh_splits_are_disabled_until_lock(self):
-        if not LOCK.exists():
-            with self.assertRaisesRegex(ValueError,"Freeze"):
-                select_suite_v2("test")
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch("blind_drone.experiments.protocol_v2.LOCK",Path(tmp)/"missing.json"):
+                with self.assertRaisesRegex(ValueError,"Freeze"):select_suite_v2("test")
+
+    def test_tampered_v2_lock_is_rejected_without_changing_original(self):
+        original=LOCK.read_bytes() if LOCK.exists() else None
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/"wrong.json";path.write_text(json.dumps({"files":{}}))
+            with patch("blind_drone.experiments.protocol_v2.LOCK",path):
+                with self.assertRaisesRegex(ValueError,"mismatch"):verify_v2()
+        if original is not None:self.assertEqual(LOCK.read_bytes(),original)
 
     def test_v2_device_adapter_has_no_supervisor_scene_or_file_calls(self):
         tree=ast.parse((ROOT/"src/blind_drone/adapters/webots/drone_v2.py").read_text())

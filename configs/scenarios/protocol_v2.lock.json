@@ -1,0 +1,17 @@
+{
+  "v1_protocol": "96872282fc7df5029453ed684d0e73e9305137c3d6907736869b2e04bf64b90f",
+  "files": {
+    "configs/navigation_v2.toml": "6a1773106e680f6d525fe482960a6c4b243d28435d8abd56ffec9a7d00f439b7",
+    "configs/scenarios/observed_v2.json": "36788ce74edc20a1f02cd88554eab35b06fcdc09d11a635fafac1d7b772811a6",
+    "src/blind_drone/observation/range_grid.py": "b1b11978a100a3da97853c8a584ae051f575cdbcc7b20bdbed797085070b4a5c",
+    "src/blind_drone/navigation/observed.py": "fb96ea4f168ed590c5afa8d1a0a9602ab65e81160ecc73c6d8940837522d2a04",
+    "src/blind_drone/adapters/webots/drone_v2.py": "67bf31e20f7b1a9e45a434ee6fb4aa8ab7a4baad3219160e88272341c0462505",
+    "src/blind_drone/adapters/webots/lab_v2.py": "3d28a6624fde8b7f94777b55f816490898a6e475169381f131cb72be6f6aac9f",
+    "src/blind_drone/experiments/protocol_v2.py": "c195cd6b26a305a38edef1b77d4fd909c979bc2ea6fd94de1910d1710fb5577f",
+    "tools/run_navigation_v2.py": "09e9af418f4b21742d30c3070a4e9c1575a2f534065a9183548b609d4a051e57",
+    "src/blind_drone/evaluation/study_v2.py": "30569ca9834d6c5d0452b8394d2af428367e1e2a28c4b9c99c610e2b120104d9",
+    "tools/check_navigation_v2.py": "6a2c8d7238fba1727dfc7eacb03e1b74f10afe2d1c1c7dc1e579eafa46f59910",
+    "simulation/webots/protos/BlindDroneV2.proto": "1a607586e751cabab89cb392adaade160814078d6cff4fc5d4c7966460b8b064",
+    "simulation/webots/worlds/observed_v2.wbt": "ab8cc94c73a11e2711900b0953f7f7b87fedf66f339baa7065b87c1bc33206e4"
+  }
+}

@@ -1,7 +1,7 @@
 name: Navigation v2
 on:
   push:
-    branches: ["feat/navigation-v2"]
+    branches: ["main", "feat/navigation-v2"]
   workflow_dispatch:
 permissions:
   contents: read
@@ -29,6 +29,17 @@ jobs:
         run: python3 tools/install_webots.py
       - name: Candidate or frozen development
         run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_navigation_v2.py --output artifacts/v2-development --software-rendering --no-rendering --timeout 1500
+      - name: Check predeclared development criterion before fresh splits
+        run: |
+          python3 - <<'PY'
+          import json,sys
+          sys.path.insert(0,"src")
+          from blind_drone.evaluation.study_v2 import development_goal
+          result=json.load(open("artifacts/v2-development/result.json"))
+          goal=development_goal(result["episodes"])
+          print("V2_DEVELOPMENT_CRITERION",goal)
+          assert goal["met"], "Development criterion not met; fresh splits remain closed"
+          PY
       - name: Frozen validation
         run: |
           if [ -f configs/scenarios/protocol_v2.lock.json ]; then

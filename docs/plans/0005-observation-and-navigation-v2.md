@@ -37,7 +37,7 @@ Phân tích ba U collision của reactive v1, triển khai quan sát có bộ nh
 - [x] Bước 3: triển khai v2 cạnh v1, không sửa file v1 đã khóa; grid tạo từ GPS/tư thế/range, unknown tách free, giữ ngân sách và lọc lệnh.
 - [x] Bước 4: 63 test Python đạt sau bổ sung kiểm tra protocol, sampling và recovery; v1 lock hợp lệ. Local dev lần đầu không kết nối được display :0, không có result.json/không báo đã bay. Chọn CI/Xvfb cho bước bay thật.
 - Development đầu: CI 40253447132 (source 5d1500b, có render) và 40254520825 (source f2b054b, numeric/no-render) đều đủ 36 lượt, guarded/mapped 10/10, reactive 8/10 ca khả thi; giữ mọi outcome trong [development evidence](../research/2026-10-26-v2-development.json). Sau đó thêm recovery cho trường hợp synthetic contract bị kẹt vì inflation; chưa chạy fresh split.
-- [ ] Bước 5.
-- [ ] Bước 6.
+- [x] Bước 5: ba pilot development đủ 36 lượt mỗi đợt. Source 69d6712 gồm recovery vẫn guarded/mapped 10/10, cả hai U, zero collision; reactive 8/10. Kết quả giữ trong development evidence; chưa dùng fresh validation/test để chỉnh.
+- [x] Bước 6: khóa v2 sau xác nhận current candidate checksum khớp pilot 3. Protocol 0825b3b219fbf6a7f939b3076b79b1c82888c02d71a8ffea36d2e7d5bde1e395; cả v1/v2 lock hợp lệ. CI kiểm tra tiêu chí development trước khi mở fresh split.
 - [ ] Bước 7.
 - [ ] Bước 8.
