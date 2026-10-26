@@ -1,4 +1,4 @@
-.PHONY: check smoke
+.PHONY: check smoke navigation
 check:
 	python3 tools/check_scaffold.py
 	python3 tools/build_lab.py --check
@@ -6,3 +6,6 @@ check:
 
 smoke:
 	python3 tools/run_webots.py --smoke
+
+navigation:
+	python3 tools/run_webots.py --navigation

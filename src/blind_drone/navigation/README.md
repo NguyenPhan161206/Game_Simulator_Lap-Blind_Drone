@@ -1,5 +1,5 @@
 # Điều hướng
 
-Mục tiêu nhiệm vụ và Observation tạo MotionCommand. Hỗ trợ thay baseline bằng mô hình học sau; không đọc world, evaluator hoặc scene API.
+baseline.py nhận NavigationObservation và NavigationMission có schema cố định. Có direct và reactive tiếp tuyến trái; không truy cập scene, world, evaluator hoặc file cấu hình thế giới. Có thể thay baseline bằng mô hình học qua cùng hợp đồng sau.
 
-Trạng thái: thư mục trách nhiệm; chưa triển khai logic runtime. Xem [kiến trúc hệ thống](../../../docs/architecture/system.md).
+Xem [hợp đồng và giới hạn](../../../docs/navigation-v1.md).

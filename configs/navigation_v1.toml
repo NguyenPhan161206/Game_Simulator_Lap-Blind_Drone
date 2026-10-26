@@ -1,0 +1,52 @@
+schema_version = 1
+status = "engineering_diagnostic"
+split = "development_diagnostic"
+runtime_camera_enabled = false
+
+[navigation]
+speed_m_s = 0.55
+goal_gain_s_inv = 0.65
+range_max_age_s = 0.12
+avoid_distance_m = 2.2
+follow_distance_m = 1.0
+brake_margin_m = 0.55
+brake_acceleration_m_s2 = 0.6
+leave_progress_m = 0.3
+
+[evaluation]
+warmup_s = 1.0
+goal_radius_m = 0.5
+stop_speed_m_s = 0.18
+dwell_s = 1.0
+timeout_s = 65.0
+position_bounds_min_m = [-9.5, -9.5, 0.4]
+position_bounds_max_m = [9.5, 9.5, 5.0]
+
+# Fixed, public development fixtures, not a held-out research test split.
+[[cases]]
+id = "empty"
+feasible = true
+start_m = [-4.0, 0.0, 1.5]
+goal_m = [5.0, 0.0, 1.5]
+obstacles = []
+
+[[cases]]
+id = "single_block"
+feasible = true
+start_m = [-4.0, 0.0, 1.5]
+goal_m = [5.0, 0.0, 1.5]
+obstacles = [{center_m = [0.0, 0.0, 1.5], size_m = [0.8, 3.0, 3.0]}]
+
+[[cases]]
+id = "staggered_blocks"
+feasible = true
+start_m = [-4.0, 0.0, 1.5]
+goal_m = [5.0, 0.0, 1.5]
+obstacles = [{center_m = [-0.5, 0.0, 1.5], size_m = [0.8, 2.0, 3.0]}, {center_m = [2.5, 1.5, 1.5], size_m = [0.8, 2.0, 3.0]}]
+
+[[cases]]
+id = "blocked_goal"
+feasible = false
+start_m = [-4.0, 0.0, 1.5]
+goal_m = [0.0, 0.0, 1.5]
+obstacles = [{center_m = [0.0, 0.0, 1.5], size_m = [2.0, 2.0, 3.0]}]

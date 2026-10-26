@@ -8,12 +8,14 @@ import tomllib
 
 ROOT = Path(__file__).resolve().parents[3]
 CONFIG = ROOT / "configs/lab_v1.toml"
+NAV_CONFIG = ROOT / "configs/navigation_v1.toml"
 PROTO = ROOT / "simulation/webots/protos/BlindDrone.proto"
 WORLD = ROOT / "simulation/webots/worlds/minimal_lab.wbt"
 
 
 def load_config(path=CONFIG):
     config = tomllib.loads(Path(path).read_text(encoding="utf-8"))
+    config["navigation"] = tomllib.loads(NAV_CONFIG.read_text(encoding="utf-8"))["navigation"]
     if config["runtime_camera_enabled"] or config["runtime_privileged_state_enabled"]:
         raise ValueError("Runtime observation restrictions violated")
     if config["sensor_period_ms"] % config["basic_time_step_ms"]:
@@ -64,6 +66,7 @@ def controller_config(config):
         "world": {"gravity_m_s2": config["world"]["gravity_m_s2"]},
         "sensor_period_ms": config["sensor_period_ms"],
         "goal_m": config["world"]["goal_m"],
+        "navigation": config["navigation"],
         "sensor_names": [name for name, _, _ in device_specs(config)],
     }
 

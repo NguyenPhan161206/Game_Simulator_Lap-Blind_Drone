@@ -9,7 +9,7 @@
 - Delegate only when the user or a higher-priority instruction explicitly authorizes delegation.
 
 ## Project boundaries
-- Current milestone: minimal Webots environment, manual flight, sensors, collision and reset validation. See docs/plans/0002-webots-minimal-lab.md.
+- Current milestone: camera-free navigation baselines and paired task evaluation on the validated Webots v1 environment. See docs/plans/0003-navigation-baseline.md and docs/navigation-v1.md.
 - First research task: one simulated drone reaches a supplied goal while avoiding static obstacles (level B).
 - Webots is the first simulator. Keep local execution, CI execution and GUI inspection evidence separate; training remains a later milestone.
 - Runtime navigation must use camera-free observations. Training-only camera supervision is optional and must stay outside the deployed observation path.
@@ -30,6 +30,7 @@
 ## Work and verification
 - Use python3 tools/check_scaffold.py for foundation changes. No Webots, ML framework or GPU is required for this check.
 - For lab changes run python3 tools/build_lab.py --check and python3 -m unittest discover -s tests -p 'test_*.py' -v. Real simulator verification uses python3 tools/run_webots.py --smoke with Webots R2025a; a missing executable must fail rather than skip silently.
+- Navigation changes also require python3 tools/run_webots.py --navigation on real Webots. Keep direct/reactive paired development results, impossible negative controls and later held-out research results distinct.
 - Add behavior tests when implementing consequential logic; do not invent simulator smoke tests that merely import stubs.
 - Keep generated logs, datasets, models, credentials and large downloaded assets out of Git.
 - Do not reset, clean, stash, rewrite history or force-push as routine cleanup.

@@ -15,6 +15,9 @@ def norm(values):
 
 
 def main():
+    if os.environ.get("BLIND_DRONE_MODE") == "navigation":
+        from blind_drone.adapters.webots.navigation_lab import main as navigation_main
+        return navigation_main()
     from controller import Supervisor
 
     supervisor = Supervisor()

@@ -22,11 +22,16 @@ def find_webots(explicit=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--smoke", action="store_true")
+    modes = parser.add_mutually_exclusive_group()
+    modes.add_argument("--smoke", action="store_true")
+    modes.add_argument("--navigation", action="store_true")
+    parser.add_argument("--policy", choices=("both", "direct", "reactive"), default="both")
+    parser.add_argument("--case", help="One development diagnostic case ID; defaults to all")
     parser.add_argument("--webots")
     parser.add_argument("--output", type=Path)
-    parser.add_argument("--timeout", type=float, default=180)
+    parser.add_argument("--timeout", type=float, default=600)
     parser.add_argument("--software-rendering", action="store_true")
+    parser.add_argument("--realtime", action="store_true", help="Observe autonomous runs at realtime speed")
     args = parser.parse_args()
     executable = find_webots(args.webots)
     if not executable:
@@ -35,7 +40,8 @@ def main():
     check = subprocess.run([sys.executable, str(ROOT / "tools/build_lab.py"), "--check"], cwd=ROOT)
     if check.returncode:
         return check.returncode
-    mode = "smoke" if args.smoke else "manual"
+    mode = "navigation" if args.navigation else "smoke" if args.smoke else "manual"
+    automated = args.smoke or args.navigation
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     output = (args.output or ROOT / "artifacts" / f"webots-{mode}-{stamp}").resolve()
     if (output / "result.json").exists():
@@ -47,15 +53,18 @@ def main():
                 "XDG_CONFIG_HOME": str(ROOT / ".local/webots-user/config"),
                 "XDG_CACHE_HOME": str(ROOT / ".local/webots-user/cache"),
                 "PYTHONUNBUFFERED": "1"})
+    env["BLIND_DRONE_POLICY"] = args.policy
+    if args.case:
+        env["BLIND_DRONE_CASE"] = args.case
     if args.software_rendering:
         env["LIBGL_ALWAYS_SOFTWARE"] = "1"
     for variable in ("XDG_CONFIG_HOME", "XDG_CACHE_HOME"):
         Path(env[variable]).mkdir(parents=True, exist_ok=True)
-    command = [executable, "--batch", "--stdout", "--stderr", "--mode=" + ("fast" if args.smoke else "realtime")]
+    command = [executable, "--batch", "--stdout", "--stderr", "--mode=" + ("fast" if automated and not args.realtime else "realtime")]
     command.append(str(ROOT / "simulation/webots/worlds/minimal_lab.wbt"))
     print("Output:", output, flush=True)
     print("Launching:", " ".join(command), flush=True)
-    if not args.smoke:
+    if not automated:
         return subprocess.call(command, cwd=ROOT, env=env)
     with (output / "console.log").open("w", encoding="utf-8") as log:
         try:

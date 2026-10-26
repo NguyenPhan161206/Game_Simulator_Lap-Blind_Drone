@@ -1,16 +1,21 @@
 """Camera-free device adapter. No Supervisor or full-world configuration access."""
 import json
+import os
 from math import isfinite
 
 from blind_drone.contracts.runtime import MotionCommand, VehicleState
+from blind_drone.contracts.navigation import NavigationMission, NavigationObservation
 from blind_drone.control.manual import keyboard_command
 from blind_drone.control.stabilizer import Stabilizer
+from blind_drone.navigation.baseline import BaselineNavigator
 
 
 def main():
     from controller import Robot
 
     robot = Robot()
+    autonomous = os.environ.get("BLIND_DRONE_MODE") == "navigation"
+    navigator = None
     config = json.loads(robot.getCustomData())
     step_ms = int(robot.getBasicTimeStep())
     dt = step_ms / 1000.0
@@ -48,14 +53,19 @@ def main():
                     previous_position = None
                     filtered_velocity = [0.0, 0.0, 0.0]
                     remote, remote_until = MotionCommand(), -1.0
+                    navigator = None
                     for device in ranges.values():
                         device.disable()
                         device.enable(config["sensor_period_ms"])
                     range_packet = None
                     next_range_time = now + config["sensor_period_ms"] / 1000.0
-                else:
+                elif packet.get("kind") == "mission" and autonomous:
+                    navigator = BaselineNavigator(NavigationMission.from_packet(packet), config)
+                elif not autonomous:
                     remote = MotionCommand.from_operator(packet, config["vehicle"])
                     remote_until = now + 0.25
+                else:
+                    raise ValueError("Autonomous mode accepts reset and mission only")
             except (ValueError, TypeError, KeyError) as error:
                 print("REJECTED_OPERATOR_PACKET:", str(error), flush=True)
             finally:
@@ -68,7 +78,6 @@ def main():
         if ord("R") in keys and ord("R") not in previous_keys:
             emitter.send(json.dumps({"kind": "reset_request"}).encode())
         previous_keys = keys
-        command = remote if now < remote_until else keyboard_command(keys, config["vehicle"])
         position = tuple(gps.getValues())
         attitude = tuple(imu.getRollPitchYaw())
         angular_velocity = tuple(gyro.getValues())
@@ -79,9 +88,6 @@ def main():
             filtered_velocity = [0.35 * a + 0.65 * b for a, b in zip(raw_velocity, filtered_velocity)]
         previous_position = position
         state = VehicleState(now, position, tuple(filtered_velocity), attitude, angular_velocity)
-        speeds = stabilizer.step(state, command, dt)
-        for motor, speed in zip(motors, speeds):
-            motor.setVelocity(speed)
         if now + 1e-8 >= next_range_time:
             readings = {}
             for name, device in ranges.items():
@@ -94,12 +100,23 @@ def main():
                 }
             range_packet = {"sample_time_s": now, "frame": "body_FLU", "readings": readings}
             next_range_time = now + config["sensor_period_ms"] / 1000.0
+        if autonomous:
+            command = navigator.step(NavigationObservation.from_devices(state, range_packet)) if navigator else MotionCommand()
+        else:
+            command = remote if now < remote_until else keyboard_command(keys, config["vehicle"])
+        speeds = stabilizer.step(state, command, dt)
+        for motor, speed in zip(motors, speeds):
+            motor.setVelocity(speed)
         telemetry = {
             "kind": "telemetry", "time_s": now,
             "position_m": position, "velocity_m_s": filtered_velocity,
             "attitude_rad": attitude, "angular_velocity_rad_s": angular_velocity,
             "ranges": range_packet, "motor_target_rad_s": speeds,
             "devices": device_names,
+            "navigation": {"policy": navigator.mission.policy if navigator else None,
+                           "state": navigator.status if navigator else "inactive",
+                           "command": {"forward_m_s": command.forward_m_s, "left_m_s": command.left_m_s,
+                                       "up_m_s": command.up_m_s, "yaw_rate_rad_s": command.yaw_rate_rad_s}},
             "sources": {"position": "ideal_Webots_GPS", "attitude": "ideal_Webots_InertialUnit", "rates": "ideal_Webots_Gyro"},
         }
         emitter.send(json.dumps(telemetry, allow_nan=False, separators=(",", ":")).encode())

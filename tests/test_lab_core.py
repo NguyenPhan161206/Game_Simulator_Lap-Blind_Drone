@@ -78,7 +78,7 @@ class LabCoreTests(unittest.TestCase):
         self.assertEqual(set(public["world"]), {"gravity_m_s2"})
         self.assertNotIn("smoke", public)
         self.assertNotIn("start_m", public)
-        self.assertEqual(set(public), {"vehicle", "control", "sensors", "world", "sensor_period_ms", "goal_m", "sensor_names"})
+        self.assertEqual(set(public), {"vehicle", "control", "sensors", "world", "sensor_period_ms", "goal_m", "sensor_names", "navigation"})
 
     def test_diagonal_keyboard_command_respects_horizontal_speed_limit(self):
         command = keyboard_command({ord("W"), ord("A")}, self.config["vehicle"])

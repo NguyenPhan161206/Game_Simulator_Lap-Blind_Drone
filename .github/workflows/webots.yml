@@ -1,7 +1,7 @@
 name: Webots minimal lab
 on:
   push:
-    branches: ["main", "feat/webots-lab-v1"]
+    branches: ["main", "feat/webots-lab-v1", "feat/navigation-v1"]
   pull_request:
   workflow_dispatch:
 permissions:
@@ -9,7 +9,7 @@ permissions:
 jobs:
   simulator:
     runs-on: ubuntu-22.04
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -31,10 +31,17 @@ jobs:
       - name: Report generated observer evidence
         if: always()
         run: python3 tools/report_webots_evidence.py artifacts/webots-smoke
+      - name: Run paired navigation diagnostics in actual Webots
+        run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_webots.py --navigation --software-rendering --output artifacts/navigation --timeout 600
+      - name: Report navigation diagnostics
+        if: always()
+        run: python3 tools/report_webots_evidence.py artifacts/navigation
       - name: Save simulator evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: webots-smoke-evidence
-          path: artifacts/webots-smoke/
+          path: |
+            artifacts/webots-smoke/
+            artifacts/navigation/
           if-no-files-found: warn
