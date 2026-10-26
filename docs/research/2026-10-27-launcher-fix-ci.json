@@ -1,0 +1,160 @@
+{
+  "source": "b53f683f431bf5ba076099ebe8f33c9a2a70e5e9",
+  "unit_tests": 82,
+  "run_id": 40416478930,
+  "job_id": 121899976309,
+  "url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40416478930",
+  "artifacts": [
+    {
+      "id": 12696047038,
+      "name": "local-session-collector-evidence",
+      "size_in_bytes": 259323,
+      "url": "https://api.github.com/repos/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/artifacts/12696047038",
+      "archive_download_url": "https://api.github.com/repos/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/artifacts/12696047038/zip",
+      "expired": false,
+      "created_at": "2026-10-26T23:01:05Z",
+      "expires_at": "2027-01-24T22:58:46Z",
+      "updated_at": "2026-10-26T23:01:05Z",
+      "digest": "sha256:c0b26d926d6010ddf2009560569c092604b5fd047574e825f714b4f6bcde6441",
+      "workflow_run": {
+        "id": 40416478930,
+        "repository_id": 1433047833,
+        "head_repository_id": 1433047833,
+        "head_branch": "feat/local-acceptance",
+        "head_sha": "b53f683f431bf5ba076099ebe8f33c9a2a70e5e9"
+      }
+    }
+  ],
+  "evidence": {
+    "source_commit": "b53f683f431bf5ba076099ebe8f33c9a2a70e5e9",
+    "kind": "CI_Xvfb_collector_integration_not_desktop_acceptance",
+    "mapped": {
+      "mode": "mapped",
+      "process_exit_code": 0,
+      "wall_s_including_startup_shutdown": 64.40310891099998,
+      "gui_verified_automatically": false,
+      "operator_record_present": false,
+      "comparison": {
+        "identity_valid": true,
+        "ci_url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790",
+        "ci_source": "2f422e253376b589e478ac10f3eee8efa970dc74",
+        "local_outcome": "success",
+        "ci_outcome": "success",
+        "same_outcome": true,
+        "local": {
+          "elapsed_s": 41.216,
+          "path_length_m": 14.858754976240316,
+          "final_distance_m": 0.04615167023142617,
+          "final_speed_m_s": 0.016381392651168995,
+          "contact_count": 0
+        },
+        "ci": {
+          "elapsed_s": 41.21600000000001,
+          "path_length_m": 14.855333972072696,
+          "final_distance_m": 0.04615166647376634,
+          "final_speed_m_s": 0.01638140827271698,
+          "contact_count": 0
+        },
+        "local_minus_ci": {
+          "elapsed_s": -7.105427357601002e-15,
+          "path_length_m": 0.0034210041676203673,
+          "final_distance_m": 3.757659829128901e-09,
+          "final_speed_m_s": -1.5621547985733564e-08,
+          "contact_count": 0,
+          "final_position_distance_m": 1.0217507480304592e-08,
+          "initial_position_distance_m": 0.002156186406045091,
+          "initial_yaw_rad": 0
+        },
+        "classification": "numeric_difference_review_required",
+        "note": "1e-6 is a diagnostic label, not a research acceptance threshold; no cause inferred",
+        "policy_cpu": {
+          "decisions": 2575,
+          "range_samples": 1288,
+          "range_values": 12880,
+          "map_updates": 1288,
+          "free_cells": 4926,
+          "occupied_cells": 252,
+          "peak_cells": 5178,
+          "derived_blocked_cells": 2185,
+          "budget_exhausted": false,
+          "guard_events": 0,
+          "scan_decisions": 157,
+          "plans": 76,
+          "cpu_mean_ms": 0.9429319017475728,
+          "cpu_max_ms": 51.617579
+        }
+      },
+      "sim_s_over_total_wall_s": 0.6710235069509006,
+      "telemetry": {
+        "packets": 668,
+        "invalid_lines": 0,
+        "first_sim_s": 0.016,
+        "last_sim_s": 43.184,
+        "command_signs": {
+          "forward_m_s": [
+            "negative",
+            "positive"
+          ],
+          "left_m_s": [
+            "negative",
+            "positive"
+          ],
+          "up_m_s": [
+            "negative",
+            "positive"
+          ],
+          "yaw_rate_rad_s": [
+            "positive"
+          ]
+        },
+        "note": "Commands support motion evidence; they do not prove physical key presses/reset or GUI responsiveness"
+      },
+      "files_sha256": {
+        "console.log": "a46ac8556aeb9105deccc18709c5be5a642257dbe92ad2b77e9f3514cf878e3b",
+        "run/cases.json": "c5b8046cd97d0e63cb32a6b7c1dde363b08c1b9dd8a4c85d841c65d1e908eeb7",
+        "run/development-u_trap-s21001-mapped.jpg": "4dbf7c089d51a0d4302170e62141bab4f1f0ef27bf3381d1a05fb4cfcf327e2f",
+        "run/manifest.json": "250f15a35d70b53e02f10bfaa267c653dfdc183a8a02185d8b52df0c12f667ab",
+        "run/progress.json": "0662b694444306fb5237b54e61775e59ceeed888da48d8ff80d7f652949affb9",
+        "run/result.json": "9535120f1863519b8dc4da2ee170714ab16e003a3c694659c3142b6e6b7ff031",
+        "run/scene.jpg": "4dbf7c089d51a0d4302170e62141bab4f1f0ef27bf3381d1a05fb4cfcf327e2f",
+        "run/telemetry.jsonl": "5d8e6c94070f66ac2db5b13eea84c7d41d770ec003c1333c980e5e9ae5cbffc1",
+        "run/trajectories.json": "8a0433237ab04ae3cace6680d7552195fab30a193430196a5a8ca7721407ed85",
+        "session.json": "0f5c87a41790179e9fb790520f44b4a3453a18dfd24ce5388a2337752d437d23"
+      }
+    },
+    "manual": {
+      "mode": "manual",
+      "process_exit_code": 0,
+      "wall_s_including_startup_shutdown": 20.165419818999993,
+      "gui_verified_automatically": false,
+      "operator_record_present": false,
+      "telemetry": {
+        "packets": 202,
+        "invalid_lines": 0,
+        "first_sim_s": 0.016,
+        "last_sim_s": 13.152000000000001,
+        "command_signs": {
+          "forward_m_s": [],
+          "left_m_s": [],
+          "up_m_s": [],
+          "yaw_rate_rad_s": []
+        },
+        "note": "Commands support motion evidence; they do not prove physical key presses/reset or GUI responsiveness"
+      },
+      "files_sha256": {
+        "console.log": "fc64f47374f908d2f6ee4f9a1c149073042453e471eaefd13e8adcb17af8fd8f",
+        "run/telemetry.jsonl": "0e2467ffd4650fbfee62dcb42e0524de2cf70e46860cb06bebdf2286b66f2f3e",
+        "session.json": "575ea0fd18e6fbd454e284118ea01af0fba7abb97bd10d692fbf47ebcd3deb9e"
+      }
+    },
+    "concurrency": {
+      "second_exit_code": 2,
+      "output_created": false,
+      "lock_rejected_second_launch": true
+    }
+  },
+  "assertions_verified": {
+    "launcher_warning_absent_mapped": true,
+    "launcher_warning_absent_manual": true
+  }
+}

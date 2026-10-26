@@ -446,7 +446,6 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | Ngày | Nội dung | Mốc đối chiếu |
 |---|---|---|
 | 2026-10-26 | Tạo checklist tổng thể theo yêu cầu người dùng; đối chiếu lịch sử, plan, ADR và evidence, tách roadmap đề xuất khỏi phần đã kiểm chứng | Runtime/bàn giao trước checklist: `d7018cb`; v2 tested source: `2f422e2` |
-
 | 2026-10-27 | Audit batch mới: thiếu lệnh T/G, mapped chưa mở; đóng LOC-09 theo số đo và phiếu smooth/unchanged. Preflight 82 test/locks/dependencies đạt; probe display của phiên sửa lỗi exit 1, được ghi riêng | Source audit `c012ab8`; [evidence](docs/research/2026-10-27-local-acceptance-followup.md) |
 
 Khi cập nhật tiếp, thêm dòng nhật ký, điều chỉnh checkbox và dẫn bằng chứng. Không sửa ngược báo cáo lịch sử hoặc đánh dấu hàng loạt tương lai chỉ vì đã có roadmap này.

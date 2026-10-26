@@ -19,6 +19,8 @@ Collector dừng với PENDING, không mở mapped. Console có cảnh báo Webo
 
 Đối chiếu [WbStandardPaths.cpp tại R2025a](https://github.com/cyberbotics/webots/blob/R2025a/src/webots/core/WbStandardPaths.cpp#L234-L242) xác định cảnh báo xuất hiện khi WEBOTS_TMPDIR trống/không tồn tại. Local collector được sửa để đặt temp base /tmp và giữ WEBOTS_ORIGINAL_LD_LIBRARY_PATH tương tự launcher; không gọi wrapper có thao tác desktop-file ngoài workspace. Console cũ được giữ nguyên. [Kế hoạch sửa](../plans/0009-local-launcher-followup.md) yêu cầu CI xác nhận console mới không còn cảnh báo.
 
+Đã xác nhận bản sửa tại source b53f683f431bf5ba076099ebe8f33c9a2a70e5e9: [CI 40416478930](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40416478930) đạt 82 test, mapped success, manual telemetry/timeout và khóa chống chạy chồng. Bước verify kiểm tra cả hai console mới đều không còn chuỗi cảnh báo launcher; artifact 12696047038 và [JSON evidence](2026-10-27-launcher-fix-ci.json) giữ đúng source. Đây không phải lượt nhấn T/G trên desktop và không tự đóng LOC-05.
+
 Trong nguồn R2025a đã kiểm tra, [3D key handler](https://github.com/cyberbotics/webots/blob/R2025a/src/webots/gui/WbView3D.cpp#L2183-L2214) chuyển key event cho robot; các shortcut T/G tìm thấy trong action manager đều có modifier. Chưa xác định được vì sao lượt này không nhận T/G. Mapping và stabilizer của dự án dùng up_m_s trực tiếp; không có thao tác xóa lệnh dọc trước telemetry.
 
 ## Kiểm tra hiện tại
