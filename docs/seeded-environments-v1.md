@@ -2,6 +2,8 @@
 
 Mục tiêu: hoàn thiện môi trường/đánh giá trước huấn luyện, mở rộng các trường hợp khó và kiểm tra toàn bộ luồng thực nghiệm. [Kế hoạch](plans/0004-seeded-environments.md) ghi trạng thái kiểm chứng; test Python không thay chạy Webots.
 
+Đã kiểm chứng đủ 48 lượt trên Webots CI: [báo cáo và bằng chứng](research/2026-10-26-seeded-environments.md). Giai đoạn pipeline hoàn thành; giữ nguyên ba reactive collision ở U và đánh dấu test v1 đã exposed.
+
 ## Bộ tình huống
 
 [scenario_suite_v1.toml](../configs/scenario_suite_v1.toml) định nghĩa empty, single_block, staggered_blocks, narrow_gap, u_trap và blocked_goal. Generator dùng SHA256 của family/seed/tên tham số, làm tròn tọa độ/kích thước để tái lập. [Manifest](../configs/scenarios/seeded_v1.json) chứa geometry và chứng cứ kiểm tra.

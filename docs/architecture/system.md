@@ -1,12 +1,12 @@
 # Kiến trúc hệ thống
 
-Trạng thái: Webots v1 đã kiểm chứng môi trường, điều khiển thủ công, cảm biến, va chạm và reset. Mốc hiện tại thêm baseline không học và đánh giá nhiệm vụ; xem [navigation v1](../navigation-v1.md) và [trạng thái bằng chứng](../plans/0003-navigation-baseline.md). Chưa huấn luyện model.
+Trạng thái: Webots v1, baseline và đánh giá nhiệm vụ đã chạy thực. Giai đoạn [môi trường có seed/protocol khóa](../seeded-environments-v1.md) hoàn tất 48 lượt paired trên CI; xem [báo cáo và giới hạn](../research/2026-10-26-seeded-environments.md). Chưa huấn luyện model.
 
 ## Mục tiêu và nguyên tắc
 
 Một drone mô phỏng thực hiện nhiệm vụ mức B: đến đích được cấp, tránh vật cản tĩnh, quan sát không camera. Webots là nền tảng khảo sát đầu tiên. Các chi tiết dừng ở đích, chuyển động, cảm biến và ngưỡng chất lượng vẫn là dự thảo.
 
-Webots sẽ giữ trạng thái vật lý có thẩm quyền khi tích hợp. Core Python chứa hợp đồng, thuật toán và logic thí nghiệm độc lập simulator; không nhân đôi trạng thái vật lý như một thế giới thật thứ hai.
+Webots giữ trạng thái vật lý có thẩm quyền. Core Python chứa hợp đồng, thuật toán và logic thí nghiệm độc lập simulator; không nhân đôi trạng thái vật lý như một thế giới thật thứ hai. World generator kiểm định geometry/witness offline; không tích phân chuyển động thứ hai hoặc cấp witness cho navigation.
 
 ## Luồng dữ liệu
 

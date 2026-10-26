@@ -6,11 +6,13 @@ Camera có thể hỗ trợ tạo dữ liệu/huấn luyện ở nhánh nghiên 
 
 ## Trạng thái hiện tại
 
-Đã có world Webots v1, drone không camera, điều khiển thủ công và bộ smoke kiểm chứng. Mốc hiện tại bổ sung hai baseline không học và đánh giá nhiệm vụ: xem [hướng dẫn](docs/navigation-v1.md) cùng [kế hoạch/trạng thái bằng chứng](docs/plans/0003-navigation-baseline.md). Chưa có model học. Các thông số là prototype kỹ thuật; ngưỡng nghiên cứu vẫn cần đặc tả.
+Đã có world Webots v1, điều khiển thủ công, hai baseline không học và bộ đánh giá. Giai đoạn [môi trường có seed/protocol khóa](docs/seeded-environments-v1.md) đã hoàn tất kiểm chứng CI; [kế hoạch](docs/plans/0004-seeded-environments.md) ghi từng bước. Chưa có model học. Protocol v1 khóa các ngưỡng kỹ thuật của suite, chưa xác định chất lượng sản phẩm giao hàng.
 
 [Báo cáo kiểm chứng](docs/research/2026-10-25-webots-v1-smoke.md): 13 kiểm tra Python và 12 mục smoke trên Webots thật trong CI đạt; đã xem ảnh observer. Cài/chạy GUI local chưa được xác nhận.
 
 [Navigation v1 đã chạy trên Webots CI](docs/research/2026-10-26-navigation-v1.md): 29 unit test và 12 mục smoke đạt; tám lượt ghép cặp trên bốn fixture công khai. Reactive hoàn thành ba ca khả thi, direct hoàn thành một; đối chứng âm được báo riêng. Chưa có kết luận khái quát hóa hoặc model học.
+
+[Giai đoạn môi trường có seed/đánh giá đã hoàn thành](docs/research/2026-10-26-seeded-environments.md): 36 case có chứng cứ hình học, split/protocol khóa, 42 unit test và 48 lượt Webots ghép cặp. Reactive dev 8/10, validation 4/5, test 5/5 ca khả thi; ba U collision vẫn được báo. [Cách chạy thử](docs/seeded-environments-v1.md). Chưa huấn luyện, chưa kết luận vững/an toàn hoặc bảo mật.
 
 ## Bắt đầu
 

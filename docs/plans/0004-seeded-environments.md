@@ -39,7 +39,9 @@ Sáu family: empty, single_block, staggered_blocks, narrow_gap, u_trap, blocked_
 - [x] Bước 2: kế hoạch được ghi trước triển khai.
 - [x] Bước 3: sinh đủ 36 case, mọi ca khả thi có witness đã kiểm tra đoạn; ca âm có đích trong solid. Không đưa witness vào controller.
 - [x] Bước 4: split/seed/geometry không trùng; đã khóa trước lần chạy Webots seeded đầu tiên. Protocol SHA256 96872282fc7df5029453ed684d0e73e9305137c3d6907736869b2e04bf64b90f. Baseline không thay đổi.
-- [ ] Bước 5: runner/supervisor đã triển khai; chờ kiểm chứng 48 lượt thật.
-- [ ] Bước 6: 42 unit test và make check đạt; chờ regression simulator cũ.
-- [ ] Bước 7.
-- [ ] Bước 8.
+- [x] Bước 5: runner/supervisor áp dụng fixture/yaw/reset; chạy đủ 48 lượt paired thật, không teleport/route leak trong lượt.
+- [x] Bước 6: 42 unit test đạt; 12 smoke checks và tám lượt diagnostic cũ đạt trên Webots CI.
+- [x] Bước 7: CI 40251251346 success, cùng runtime 373b002 và protocol/manifest cả ba split; không tune. Reactive dev 8/10, validation 4/5, test 5/5 ca khả thi; giữ ba U collision và mọi ca âm.
+- [x] Bước 8: đã xem ba ảnh U và sáu trace review; lưu [báo cáo đầy đủ/JSON](../research/2026-10-26-seeded-environments.md), hướng dẫn tái hiện và quy tắc test exposure. Bàn giao theo standing Git policy của workspace.
+
+Kết luận: giai đoạn môi trường/đánh giá trước huấn luyện hoàn thành trên CI. Baseline chưa đủ vững ở U; narrow_gap success không chứng minh đi xuyên khe. Chưa train, giảm cảm biến hoặc chạy GUI local. Không thay code/config đã khóa sau khi thấy test.

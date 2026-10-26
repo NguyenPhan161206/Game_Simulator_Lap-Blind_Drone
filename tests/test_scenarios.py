@@ -54,6 +54,11 @@ class ScenarioTests(unittest.TestCase):
                 self.assertEqual(case["family"],"blocked_goal")
                 self.assertEqual(certificate["kind"],"goal_inside_solid")
                 self.assertFalse(certificate["waypoints_m"])
+                # The task succeeds anywhere in a 0.5 m goal ball, not only at
+                # its centre. Every generated negative control encloses that
+                # entire ball in an actual solid, so its label is meaningful.
+                self.assertTrue(any(all(abs(case["goal_m"][i]-o["center_m"][i])+.5 <= o["size_m"][i]/2
+                                            for i in range(3)) for o in case["obstacles"]))
 
     def test_yaw_and_start_goal_vary(self):
         self.assertGreater(len({c["start_yaw_rad"] for c in self.cases}),30)

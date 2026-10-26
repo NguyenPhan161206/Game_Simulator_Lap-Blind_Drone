@@ -4,6 +4,8 @@
 
 Bản thử Webots v1 có world primitive, điều khiển thủ công, cảm biến và smoke runner. Mốc kế tiếp là [navigation baseline và evaluator](navigation-v1.md), với [kế hoạch từng bước](plans/0003-navigation-baseline.md). Python 3.11+ đủ cho các kiểm tra core; chưa cần pip install. Webots là dependency riêng khi chạy simulator. Huấn luyện model chưa thuộc mốc này.
 
+Mốc hiện tại mở rộng sang [môi trường có seed và protocol khóa](seeded-environments-v1.md). make check kiểm tra cả manifest/checksum. Các case test đã đọc không được dùng để tune rồi báo lại là unseen. [Quy tắc Git](../AGENTS.md#standing-git-authorization-for-this-workspace) cho phép tự commit/push theo milestone, với kiểm tra phù hợp và bảo toàn thay đổi khác.
+
 ```bash
 python3 tools/check_scaffold.py
 python3 tools/build_lab.py --check

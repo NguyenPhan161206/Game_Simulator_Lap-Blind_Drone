@@ -4,6 +4,7 @@ Các preset nghiên cứu trong environments/, vehicles/, sensors/ và experimen
 
 - [project.toml](project.toml): tên dự án, manifest module và các ràng buộc nền.
 - [navigation_v1.toml](navigation_v1.toml): tham số baseline, scoring và fixture development; chỉ bảng navigation được chuyển sang drone. [Kết quả kiểm chứng](../docs/research/2026-10-26-navigation-v1.md).
+- [scenario_suite_v1.toml](scenario_suite_v1.toml): seed/family/split và các tham số kỹ thuật của suite ngang. [Manifest](scenarios/seeded_v1.json) là fixture tái lập, không phải dữ liệu cảm biến; [protocol lock](scenarios/protocol_v1.lock.json) ghi checksum runtime/config. Xem [cách sử dụng](../docs/seeded-environments-v1.md).
 - [environments/level_b.toml](environments/level_b.toml): phạm vi môi trường.
 - [vehicles/drone.toml](vehicles/drone.toml): mô hình phương tiện cần xác định.
 - [sensors/local_ranges.toml](sensors/local_ranges.toml): hướng cảm biến khoảng cách đề xuất.

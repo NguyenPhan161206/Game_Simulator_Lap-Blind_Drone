@@ -1,0 +1,6576 @@
+{
+  "source_commit": "373b002d0ada514c95ce409cbb87d4bc3d68a388",
+  "ci_run_id": 40251251346,
+  "ci_job_id": 121343427924,
+  "ci_url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40251251346",
+  "artifact_id": 12621115818,
+  "extraction": "GitHub job logs: EVIDENCE_JSON result.json and SEEDED_STUDY_RESULT; original numbers preserved",
+  "study": {
+    "status": "passed",
+    "stage": "environment_and_evaluation_before_training",
+    "source_commit": "373b002d0ada514c95ce409cbb87d4bc3d68a388",
+    "protocol_sha256": "96872282fc7df5029453ed684d0e73e9305137c3d6907736869b2e04bf64b90f",
+    "manifest_sha256": "46336ca0e8f0fdc7c2d954457c790212e11a1b9f51a956a7ea9624f204bffafe",
+    "evaluated_episodes": 48,
+    "reserved_training_cases": 12,
+    "summary_by_split": {
+      "development": {
+        "direct": {
+          "feasible": {
+            "episodes": 10,
+            "successes": 4,
+            "success_rate": 0.4,
+            "outcomes": {
+              "success": 4,
+              "collision": 6,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": 19.892000000000003,
+            "success_only_mean_path_m": 9.95310651845687
+          },
+          "negative_control": {
+            "episodes": 2,
+            "successes": 0,
+            "success_rate": 0,
+            "outcomes": {
+              "success": 0,
+              "collision": 2,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": null,
+            "success_only_mean_path_m": null
+          }
+        },
+        "reactive": {
+          "feasible": {
+            "episodes": 10,
+            "successes": 8,
+            "success_rate": 0.8,
+            "outcomes": {
+              "success": 8,
+              "collision": 2,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": 27.581999999999987,
+            "success_only_mean_path_m": 14.160042743936472
+          },
+          "negative_control": {
+            "episodes": 2,
+            "successes": 0,
+            "success_rate": 0,
+            "outcomes": {
+              "success": 0,
+              "collision": 0,
+              "out_of_bounds": 0,
+              "timeout": 2
+            },
+            "success_only_mean_time_s": null,
+            "success_only_mean_path_m": null
+          }
+        }
+      },
+      "validation": {
+        "direct": {
+          "feasible": {
+            "episodes": 5,
+            "successes": 2,
+            "success_rate": 0.4,
+            "outcomes": {
+              "success": 2,
+              "collision": 3,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": 21.208,
+            "success_only_mean_path_m": 10.678763672703717
+          },
+          "negative_control": {
+            "episodes": 1,
+            "successes": 0,
+            "success_rate": 0,
+            "outcomes": {
+              "success": 0,
+              "collision": 1,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": null,
+            "success_only_mean_path_m": null
+          }
+        },
+        "reactive": {
+          "feasible": {
+            "episodes": 5,
+            "successes": 4,
+            "success_rate": 0.8,
+            "outcomes": {
+              "success": 4,
+              "collision": 1,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": 28.488000000000003,
+            "success_only_mean_path_m": 14.663755588733835
+          },
+          "negative_control": {
+            "episodes": 1,
+            "successes": 0,
+            "success_rate": 0,
+            "outcomes": {
+              "success": 0,
+              "collision": 0,
+              "out_of_bounds": 0,
+              "timeout": 1
+            },
+            "success_only_mean_time_s": null,
+            "success_only_mean_path_m": null
+          }
+        }
+      },
+      "test": {
+        "direct": {
+          "feasible": {
+            "episodes": 5,
+            "successes": 2,
+            "success_rate": 0.4,
+            "outcomes": {
+              "success": 2,
+              "collision": 3,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": 20.448,
+            "success_only_mean_path_m": 10.260272295562388
+          },
+          "negative_control": {
+            "episodes": 1,
+            "successes": 0,
+            "success_rate": 0,
+            "outcomes": {
+              "success": 0,
+              "collision": 1,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": null,
+            "success_only_mean_path_m": null
+          }
+        },
+        "reactive": {
+          "feasible": {
+            "episodes": 5,
+            "successes": 5,
+            "success_rate": 1,
+            "outcomes": {
+              "success": 5,
+              "collision": 0,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": 28.806400000000004,
+            "success_only_mean_path_m": 14.8374996463459
+          },
+          "negative_control": {
+            "episodes": 1,
+            "successes": 0,
+            "success_rate": 0,
+            "outcomes": {
+              "success": 0,
+              "collision": 0,
+              "out_of_bounds": 0,
+              "timeout": 1
+            },
+            "success_only_mean_time_s": null,
+            "success_only_mean_path_m": null
+          }
+        }
+      }
+    },
+    "by_family_by_split": {
+      "development": {
+        "blocked_goal": {
+          "direct": {
+            "feasible": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 2,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 2,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 2,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 2
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "empty": {
+          "direct": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 2,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 2,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 19.34399999999999,
+              "success_only_mean_path_m": 9.652148638596023
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 2,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 2,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 19.34399999999999,
+              "success_only_mean_path_m": 9.651584274218838
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "narrow_gap": {
+          "direct": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 2,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 2,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 20.440000000000012,
+              "success_only_mean_path_m": 10.25406439831772
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 2,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 2,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 35.391999999999996,
+              "success_only_mean_path_m": 18.388872602711817
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "single_block": {
+          "direct": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 2,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 2,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 2,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 25.75199999999998,
+              "success_only_mean_path_m": 13.24056165228075
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "staggered_blocks": {
+          "direct": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 2,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 2,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 2,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 29.839999999999982,
+              "success_only_mean_path_m": 15.359152446534484
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "u_trap": {
+          "direct": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 2,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 2,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        }
+      },
+      "validation": {
+        "blocked_goal": {
+          "direct": {
+            "feasible": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 1
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "empty": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 20.896,
+              "success_only_mean_path_m": 10.504694971897012
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 20.896,
+              "success_only_mean_path_m": 10.503566441909832
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "narrow_gap": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 21.519999999999996,
+              "success_only_mean_path_m": 10.852832373510424
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 37.872000000000014,
+              "success_only_mean_path_m": 19.839436669225204
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "single_block": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 25.823999999999998,
+              "success_only_mean_path_m": 13.224090776011886
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "staggered_blocks": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 29.36,
+              "success_only_mean_path_m": 15.08792846778842
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "u_trap": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        }
+      },
+      "test": {
+        "blocked_goal": {
+          "direct": {
+            "feasible": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 1
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "empty": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 20.016000000000002,
+              "success_only_mean_path_m": 10.021151247097489
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 20.016000000000002,
+              "success_only_mean_path_m": 10.020022715676857
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "narrow_gap": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 20.879999999999995,
+              "success_only_mean_path_m": 10.499393344027288
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 35.696,
+              "success_only_mean_path_m": 18.5425399763414
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "single_block": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 27.344,
+              "success_only_mean_path_m": 13.959735395111627
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "staggered_blocks": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 25.152,
+              "success_only_mean_path_m": 12.971673577691224
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "u_trap": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 35.82400000000001,
+              "success_only_mean_path_m": 18.693526566908403
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        }
+      }
+    },
+    "quality_claim": "Pipeline coverage/integrity passed; navigation capability must be read from every outcome.",
+    "test_reuse_rule": "Once viewed, these test results are exposed; do not tune and report on them as unseen again."
+  },
+  "reports": [
+    {
+      "status": "passed",
+      "mode": "navigation",
+      "webots_version": "R2025a",
+      "source_commit": "373b002d0ada514c95ce409cbb87d4bc3d68a388",
+      "working_tree_dirty": false,
+      "ci_run_id": "40251251346",
+      "algorithm_version": "range_tangent_v1",
+      "lab_config": {
+        "schema_version": 1,
+        "name": "minimal_webots_lab_v1",
+        "status": "engineering_prototype",
+        "runtime_ready": true,
+        "validation_status": "verified_in_ci; see docs/research/2026-10-25-webots-v1-smoke.json",
+        "webots_version": "R2025a",
+        "coordinate_frame": "ENU",
+        "runtime_camera_enabled": false,
+        "runtime_privileged_state_enabled": false,
+        "physical_radar_claim": false,
+        "basic_time_step_ms": 16,
+        "sensor_period_ms": 32,
+        "world": {
+          "size_m": [
+            20,
+            20
+          ],
+          "wall_height_m": 6,
+          "wall_thickness_m": 0.2,
+          "floor_thickness_m": 0.1,
+          "gravity_m_s2": 9.81,
+          "start_m": [
+            -4,
+            0,
+            1.5
+          ],
+          "goal_m": [
+            5,
+            4,
+            1.5
+          ],
+          "goal_radius_m": 0.5,
+          "obstacles": [
+            {
+              "id": "BLOCK_NEAR",
+              "center_m": [
+                2,
+                0,
+                1
+              ],
+              "size_m": [
+                0.6,
+                2,
+                2
+              ]
+            },
+            {
+              "id": "BLOCK_HIDDEN",
+              "center_m": [
+                4,
+                0,
+                1
+              ],
+              "size_m": [
+                0.6,
+                1,
+                2
+              ]
+            },
+            {
+              "id": "BLOCK_SIDE",
+              "center_m": [
+                0,
+                4,
+                1.5
+              ],
+              "size_m": [
+                2,
+                0.8,
+                3
+              ]
+            }
+          ]
+        },
+        "vehicle": {
+          "mass_kg": 1,
+          "body_size_m": [
+            0.6,
+            0.6,
+            0.16
+          ],
+          "inertia_kg_m2": [
+            0.03,
+            0.03,
+            0.05
+          ],
+          "arm_offset_m": 0.25,
+          "thrust_coefficient_n_s2": 0.00001,
+          "torque_to_thrust_m": 0.02,
+          "motor_max_rad_s": 1000,
+          "motor_acceleration_rad_s2": 10000,
+          "motor_max_torque_nm": 10000,
+          "actuator_assumption": "fast ideal velocity actuator; authority limits are not real motor ratings",
+          "horizontal_speed_m_s": 0.8,
+          "vertical_speed_m_s": 0.4,
+          "yaw_rate_rad_s": 0.5,
+          "altitude_bounds_m": [
+            0.4,
+            5
+          ]
+        },
+        "control": {
+          "velocity_gain_s_inv": 1.8,
+          "acceleration_limit_m_s2": 2,
+          "tilt_limit_rad": 0.22,
+          "altitude_p_s_inv2": 5,
+          "altitude_d_s_inv": 3.5,
+          "attitude_p_nm_rad": 0.45,
+          "attitude_d_nm_s_rad": 0.18,
+          "yaw_p_nm_rad": 0.25,
+          "yaw_d_nm_s_rad": 0.14
+        },
+        "sensors": {
+          "model": "geometric_single_ray_generic_distance_sensor",
+          "range_max_m": 8,
+          "horizontal_directions_deg": [
+            0,
+            45,
+            90,
+            135,
+            180,
+            225,
+            270,
+            315
+          ],
+          "horizontal_origin_radius_m": 0.33,
+          "vertical_origin_offset_m": 0.12,
+          "noise_fraction": 0,
+          "latency_s": 0,
+          "localization": "Webots GPS, ideal local Cartesian coordinates",
+          "attitude": "Webots InertialUnit, ideal simulator attitude; no fusion model",
+          "angular_velocity": "Webots Gyro, ideal"
+        },
+        "smoke": {
+          "hover_duration_s": 4,
+          "hover_position_tolerance_m": 0.18,
+          "hover_altitude_tolerance_m": 0.15,
+          "motion_duration_s": 2,
+          "minimum_motion_m": 0.5,
+          "brake_duration_s": 3,
+          "stop_speed_tolerance_m_s": 0.18,
+          "sensor_fixture_m": [
+            0,
+            0,
+            1.5
+          ],
+          "sensor_tolerance_m": 0.08,
+          "collision_timeout_s": 8,
+          "reset_duration_s": 3,
+          "total_timeout_s": 50
+        },
+        "navigation": {
+          "speed_m_s": 0.55,
+          "goal_gain_s_inv": 0.65,
+          "range_max_age_s": 0.12,
+          "avoid_distance_m": 2.2,
+          "follow_distance_m": 1,
+          "brake_margin_m": 0.55,
+          "brake_acceleration_m_s2": 0.6,
+          "leave_progress_m": 0.3
+        }
+      },
+      "suite": "seeded",
+      "protocol_sha256": "96872282fc7df5029453ed684d0e73e9305137c3d6907736869b2e04bf64b90f",
+      "manifest_sha256": "46336ca0e8f0fdc7c2d954457c790212e11a1b9f51a956a7ea9624f204bffafe",
+      "complete_split": true,
+      "split": "development",
+      "specification_sha256": "db1976440900674232a386601929e9f9fb1156a5e73160b60a5382c99622f3e4",
+      "specification": {
+        "split": "development",
+        "evaluation": {
+          "warmup_s": 2,
+          "goal_radius_m": 0.5,
+          "stop_speed_m_s": 0.18,
+          "dwell_s": 1,
+          "timeout_s": 75,
+          "position_bounds_min_m": [
+            -9.5,
+            -9.5,
+            0.4
+          ],
+          "position_bounds_max_m": [
+            9.5,
+            9.5,
+            5
+          ]
+        },
+        "manifest_sha256": "46336ca0e8f0fdc7c2d954457c790212e11a1b9f51a956a7ea9624f204bffafe",
+        "case_ids": [
+          "development-empty-s21001",
+          "development-single_block-s21001",
+          "development-staggered_blocks-s21001",
+          "development-narrow_gap-s21001",
+          "development-u_trap-s21001",
+          "development-blocked_goal-s21001",
+          "development-empty-s21002",
+          "development-single_block-s21002",
+          "development-staggered_blocks-s21002",
+          "development-narrow_gap-s21002",
+          "development-u_trap-s21002",
+          "development-blocked_goal-s21002"
+        ]
+      },
+      "episodes": [
+        {
+          "case_id": "development-empty-s21001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "empty",
+          "seed": 21001,
+          "geometry_sha256": "8b58ebca81f7e146623d7d674de147e104b2f64589a7fa0e6b1c753d4ace05fe",
+          "initial_position_m": [
+            0.567389000000004,
+            -5.350073,
+            1.497843813593955
+          ],
+          "initial_yaw_rad": 1.98642825,
+          "final_position_m": [
+            0.6797701610933452,
+            4.230405206134037,
+            1.4999999995009266
+          ],
+          "outcome": "success",
+          "elapsed_s": 19.216,
+          "path_length_m": 9.58226744843764,
+          "final_distance_m": 0.05699720173169623,
+          "min_goal_distance_m": 0.05699720173169623,
+          "final_speed_m_s": 0.0033422489123061303,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-empty-s21001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "empty",
+          "seed": 21001,
+          "geometry_sha256": "8b58ebca81f7e146623d7d674de147e104b2f64589a7fa0e6b1c753d4ace05fe",
+          "initial_position_m": [
+            0.5673890000000215,
+            -5.350073,
+            1.5
+          ],
+          "initial_yaw_rad": 1.98642825,
+          "final_position_m": [
+            0.6797701908860122,
+            4.2304064795640395,
+            1.4999999999872018
+          ],
+          "outcome": "success",
+          "elapsed_s": 19.216,
+          "path_length_m": 9.581138719683269,
+          "final_distance_m": 0.056995928029663065,
+          "min_goal_distance_m": 0.056995928029663065,
+          "final_speed_m_s": 0.003343062358843975,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-single_block-s21001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "single_block",
+          "seed": 21001,
+          "geometry_sha256": "d55e4666b4c980b97e2e0ea21b08fd9f79142e7a9968dfef5eecb408140862fb",
+          "initial_position_m": [
+            5.110801,
+            -0.5251389999999789,
+            1.5
+          ],
+          "initial_yaw_rad": -2.8507091299999994,
+          "final_position_m": [
+            0.957375963045426,
+            -0.4258170257688157,
+            1.4999999999998466
+          ],
+          "outcome": "collision",
+          "elapsed_s": 8.079999999999998,
+          "path_length_m": 4.154612516654732,
+          "final_distance_m": 5.999008431183142,
+          "min_goal_distance_m": 5.999008431183142,
+          "final_speed_m_s": 0.5498091252246253,
+          "contact_count": 2
+        },
+        {
+          "case_id": "development-single_block-s21001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "single_block",
+          "seed": 21001,
+          "geometry_sha256": "d55e4666b4c980b97e2e0ea21b08fd9f79142e7a9968dfef5eecb408140862fb",
+          "initial_position_m": [
+            5.139956461724855,
+            -0.5270694343608018,
+            1.5000004770551771
+          ],
+          "initial_yaw_rad": -2.8507034355953866,
+          "final_position_m": [
+            -4.9943960057492625,
+            -0.31708469324828736,
+            1.4999999999957452
+          ],
+          "outcome": "success",
+          "elapsed_s": 26.367999999999995,
+          "path_length_m": 13.59081040815683,
+          "final_distance_m": 0.05703163175973204,
+          "min_goal_distance_m": 0.05703163175973204,
+          "final_speed_m_s": 0.0033700457087068167,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-staggered_blocks-s21001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "staggered_blocks",
+          "seed": 21001,
+          "geometry_sha256": "fee9390d7425a6744f2017f6b54533f1e0c879b55824e746e290cf84030a10e3",
+          "initial_position_m": [
+            4.744618,
+            -0.2168160000000183,
+            1.5
+          ],
+          "initial_yaw_rad": -3.1376962099999997,
+          "final_position_m": [
+            1.6642013529937947,
+            -0.20647068370789884,
+            1.5000000000329865
+          ],
+          "outcome": "collision",
+          "elapsed_s": 6.128,
+          "path_length_m": 3.080434018965807,
+          "final_distance_m": 7.5745860130032865,
+          "min_goal_distance_m": 7.5745860130032865,
+          "final_speed_m_s": 0.5484964792686617,
+          "contact_count": 4
+        },
+        {
+          "case_id": "development-staggered_blocks-s21001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "staggered_blocks",
+          "seed": 21001,
+          "geometry_sha256": "fee9390d7425a6744f2017f6b54533f1e0c879b55824e746e290cf84030a10e3",
+          "initial_position_m": [
+            4.781962563817174,
+            -0.22020267456282674,
+            1.4999966488016794
+          ],
+          "initial_yaw_rad": -3.137677936293076,
+          "final_position_m": [
+            -5.875701520415688,
+            -0.2263233183781503,
+            1.4999999999971736
+          ],
+          "outcome": "success",
+          "elapsed_s": 30.92800000000001,
+          "path_length_m": 16.083501706132502,
+          "final_distance_m": 0.0570063744719595,
+          "min_goal_distance_m": 0.0570063744719595,
+          "final_speed_m_s": 0.0034531113889976735,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-narrow_gap-s21001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "narrow_gap",
+          "seed": 21001,
+          "geometry_sha256": "1d438412643822445ff68205e4950a33a6e0da7de38207ff53db707ef4ef0d68",
+          "initial_position_m": [
+            0.20201,
+            -4.866127,
+            1.5
+          ],
+          "initial_yaw_rad": 1.4634453799999998,
+          "final_position_m": [
+            -0.05730405733488723,
+            5.360743008681797,
+            1.5000000000000056
+          ],
+          "outcome": "success",
+          "elapsed_s": 20.400000000000006,
+          "path_length_m": 10.230157113296805,
+          "final_distance_m": 0.05696372872013369,
+          "min_goal_distance_m": 0.05696372872013369,
+          "final_speed_m_s": 0.003333441404560721,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-narrow_gap-s21001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "narrow_gap",
+          "seed": 21001,
+          "geometry_sha256": "1d438412643822445ff68205e4950a33a6e0da7de38207ff53db707ef4ef0d68",
+          "initial_position_m": [
+            0.20201,
+            -4.866127,
+            1.5
+          ],
+          "initial_yaw_rad": 1.4634453799999998,
+          "final_position_m": [
+            -0.10607053421589847,
+            5.3858043794770625,
+            1.5000000000012899
+          ],
+          "outcome": "success",
+          "elapsed_s": 35.66399999999999,
+          "path_length_m": 18.50851326719686,
+          "final_distance_m": 0.05704716316436978,
+          "min_goal_distance_m": 0.05704716316436978,
+          "final_speed_m_s": 0.003368038319389583,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-u_trap-s21001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "u_trap",
+          "seed": 21001,
+          "geometry_sha256": "27621836e2d218d860329de871a0ce8a0cef54b9c6af20cc133981aa3051a61c",
+          "initial_position_m": [
+            -1.064808,
+            0.10064600000000289,
+            1.5
+          ],
+          "initial_yaw_rad": -0.7185606399999999,
+          "final_position_m": [
+            0.9108897737303245,
+            0.15120657860725722,
+            1.5
+          ],
+          "outcome": "collision",
+          "elapsed_s": 4.128000000000014,
+          "path_length_m": 1.9763446429751705,
+          "final_distance_m": 4.406992756727069,
+          "min_goal_distance_m": 4.406992756727069,
+          "final_speed_m_s": 0.5595850796746737,
+          "contact_count": 2
+        },
+        {
+          "case_id": "development-u_trap-s21001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "u_trap",
+          "seed": 21001,
+          "geometry_sha256": "27621836e2d218d860329de871a0ce8a0cef54b9c6af20cc133981aa3051a61c",
+          "initial_position_m": [
+            -1.1266177291533956,
+            0.09864964179226725,
+            1.499988484529813
+          ],
+          "initial_yaw_rad": -0.718559145633405,
+          "final_position_m": [
+            -2.907490299996253,
+            1.968899124347311,
+            1.4999999999146398
+          ],
+          "outcome": "collision",
+          "elapsed_s": 13.935999999999979,
+          "path_length_m": 7.402959986955429,
+          "final_distance_m": 8.39885472562472,
+          "min_goal_distance_m": 5.130003652176352,
+          "final_speed_m_s": 0.6539311803116384,
+          "contact_count": 1
+        },
+        {
+          "case_id": "development-blocked_goal-s21001",
+          "policy": "direct",
+          "feasible": false,
+          "family": "blocked_goal",
+          "seed": 21001,
+          "geometry_sha256": "4fb9ffdd916fc9d6acd6bcafbeca7a55789d40d9b362bf27731eaade4e4c0bec",
+          "initial_position_m": [
+            5.068053419703414,
+            0.41686427792963715,
+            1.4999998762094389
+          ],
+          "initial_yaw_rad": 0.8696257962406291,
+          "final_position_m": [
+            0.8955912926201606,
+            0.4166716373068786,
+            1.4999999999336329
+          ],
+          "outcome": "collision",
+          "elapsed_s": 8.112000000000023,
+          "path_length_m": 4.172504171092909,
+          "final_distance_m": 1.4195692941842022,
+          "min_goal_distance_m": 1.4195692941842022,
+          "final_speed_m_s": 0.5497947575612273,
+          "contact_count": 2
+        },
+        {
+          "case_id": "development-blocked_goal-s21001",
+          "policy": "reactive",
+          "feasible": false,
+          "family": "blocked_goal",
+          "seed": 21001,
+          "geometry_sha256": "4fb9ffdd916fc9d6acd6bcafbeca7a55789d40d9b362bf27731eaade4e4c0bec",
+          "initial_position_m": [
+            5.0916208459162355,
+            0.4167364483790557,
+            1.5000003898220284
+          ],
+          "initial_yaw_rad": 0.8697546904909713,
+          "final_position_m": [
+            -2.710607064057503,
+            -0.8179734360057147,
+            1.4999999999999947
+          ],
+          "outcome": "timeout",
+          "elapsed_s": 75.00800000000001,
+          "path_length_m": 41.40244001574731,
+          "final_distance_m": 2.5110815555117494,
+          "min_goal_distance_m": 2.2365967887599685,
+          "final_speed_m_s": 0.5355726360188747,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-empty-s21002",
+          "policy": "direct",
+          "feasible": true,
+          "family": "empty",
+          "seed": 21002,
+          "geometry_sha256": "ee9ee52b9e9674eef7278432293f7efe5d3a7d01ba35c7061aa8372312a58af2",
+          "initial_position_m": [
+            4.644996,
+            -0.1889520000000124,
+            1.5
+          ],
+          "initial_yaw_rad": 2.6125492999999964,
+          "final_position_m": [
+            -5.076531567531127,
+            -0.09014213234645276,
+            1.499999999973521
+          ],
+          "outcome": "success",
+          "elapsed_s": 19.47199999999998,
+          "path_length_m": 9.722029828754405,
+          "final_distance_m": 0.05700297262477467,
+          "min_goal_distance_m": 0.05700297262477467,
+          "final_speed_m_s": 0.0033492813864429965,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-empty-s21002",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "empty",
+          "seed": 21002,
+          "geometry_sha256": "ee9ee52b9e9674eef7278432293f7efe5d3a7d01ba35c7061aa8372312a58af2",
+          "initial_position_m": [
+            4.644996,
+            -0.1889520000000124,
+            1.5
+          ],
+          "initial_yaw_rad": 2.6125492999999964,
+          "final_position_m": [
+            -5.076531567531127,
+            -0.09014213234645276,
+            1.499999999973521
+          ],
+          "outcome": "success",
+          "elapsed_s": 19.47199999999998,
+          "path_length_m": 9.722029828754405,
+          "final_distance_m": 0.05700297262477467,
+          "min_goal_distance_m": 0.05700297262477467,
+          "final_speed_m_s": 0.0033492813864429965,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-single_block-s21002",
+          "policy": "direct",
+          "feasible": true,
+          "family": "single_block",
+          "seed": 21002,
+          "geometry_sha256": "8aec04c375517aab63a1b823c9a74d91675838681adc0e431b9aea9bf1cfb96b",
+          "initial_position_m": [
+            4.67670200000002,
+            0.2220520000000177,
+            1.5
+          ],
+          "initial_yaw_rad": -3.1132263999999994,
+          "final_position_m": [
+            0.68069800942628,
+            0.1935475743597749,
+            1.4999999999885731
+          ],
+          "outcome": "collision",
+          "elapsed_s": 7.79200000000003,
+          "path_length_m": 3.9961056543100555,
+          "final_distance_m": 6.338043480874823,
+          "min_goal_distance_m": 6.338043480874823,
+          "final_speed_m_s": 0.5500286211742126,
+          "contact_count": 2
+        },
+        {
+          "case_id": "development-single_block-s21002",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "single_block",
+          "seed": 21002,
+          "geometry_sha256": "8aec04c375517aab63a1b823c9a74d91675838681adc0e431b9aea9bf1cfb96b",
+          "initial_position_m": [
+            4.709217679144988,
+            0.22007292822945704,
+            1.5000008509968112
+          ],
+          "initial_yaw_rad": -3.1132183288617243,
+          "final_position_m": [
+            -5.606712275333545,
+            0.12174779141961353,
+            1.499999999999485
+          ],
+          "outcome": "success",
+          "elapsed_s": 25.135999999999967,
+          "path_length_m": 12.89031289640467,
+          "final_distance_m": 0.05703274001664073,
+          "min_goal_distance_m": 0.05703274001664073,
+          "final_speed_m_s": 0.0033520230286079393,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-staggered_blocks-s21002",
+          "policy": "direct",
+          "feasible": true,
+          "family": "staggered_blocks",
+          "seed": 21002,
+          "geometry_sha256": "283ffa0efeb944cd716760d080c4ea0d5a2c47ae2a336c9f3f670b366414ea04",
+          "initial_position_m": [
+            -5.895235,
+            -0.4229170000000201,
+            1.5
+          ],
+          "initial_yaw_rad": -2.5778684900000006,
+          "final_position_m": [
+            -2.7104365572175535,
+            -0.3304527269272047,
+            1.500000000023584
+          ],
+          "outcome": "collision",
+          "elapsed_s": 6.32000000000005,
+          "path_length_m": 3.1861405095606936,
+          "final_distance_m": 6.9145482996543075,
+          "min_goal_distance_m": 6.9145482996543075,
+          "final_speed_m_s": 0.5493857663969625,
+          "contact_count": 2
+        },
+        {
+          "case_id": "development-staggered_blocks-s21002",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "staggered_blocks",
+          "seed": 21002,
+          "geometry_sha256": "283ffa0efeb944cd716760d080c4ea0d5a2c47ae2a336c9f3f670b366414ea04",
+          "initial_position_m": [
+            -5.944594863736584,
+            -0.4229069889463572,
+            1.4999970097875344
+          ],
+          "initial_yaw_rad": -2.5778786814876526,
+          "final_position_m": [
+            4.169755492399322,
+            -0.08200575473475122,
+            1.4999999999999942
+          ],
+          "outcome": "success",
+          "elapsed_s": 28.751999999999953,
+          "path_length_m": 14.634803186936468,
+          "final_distance_m": 0.05677854294807452,
+          "min_goal_distance_m": 0.05677854294807452,
+          "final_speed_m_s": 0.0033480733462608447,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-narrow_gap-s21002",
+          "policy": "direct",
+          "feasible": true,
+          "family": "narrow_gap",
+          "seed": 21002,
+          "geometry_sha256": "a59ad7bc174c893f72dd94877d84ec60509bc351d2062696c68b151263eeb9a1",
+          "initial_position_m": [
+            -5.966558,
+            -0.8007039999999729,
+            1.5
+          ],
+          "initial_yaw_rad": -1.22637043,
+          "final_position_m": [
+            4.307485092739803,
+            -0.5165568396415879,
+            1.4999999999135116
+          ],
+          "outcome": "success",
+          "elapsed_s": 20.480000000000018,
+          "path_length_m": 10.277971683338633,
+          "final_distance_m": 0.05699766774192877,
+          "min_goal_distance_m": 0.05699766774192877,
+          "final_speed_m_s": 0.003337552004984544,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-narrow_gap-s21002",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "narrow_gap",
+          "seed": 21002,
+          "geometry_sha256": "a59ad7bc174c893f72dd94877d84ec60509bc351d2062696c68b151263eeb9a1",
+          "initial_position_m": [
+            -5.966558,
+            -0.8007039999999729,
+            1.5
+          ],
+          "initial_yaw_rad": -1.22637043,
+          "final_position_m": [
+            4.3303579341233975,
+            -0.46933131851076093,
+            1.4999999999987328
+          ],
+          "outcome": "success",
+          "elapsed_s": 35.120000000000005,
+          "path_length_m": 18.269231938226774,
+          "final_distance_m": 0.0569824869816672,
+          "min_goal_distance_m": 0.0569824869816672,
+          "final_speed_m_s": 0.003337066001442276,
+          "contact_count": 0
+        },
+        {
+          "case_id": "development-u_trap-s21002",
+          "policy": "direct",
+          "feasible": true,
+          "family": "u_trap",
+          "seed": 21002,
+          "geometry_sha256": "4f62ce489d53aef80e4a21bc8e8aaeff8a2076a28a072d2c1d214529f78ff82d",
+          "initial_position_m": [
+            -0.14061800000001476,
+            1.899918,
+            1.5
+          ],
+          "initial_yaw_rad": 2.3472846799999965,
+          "final_position_m": [
+            -0.16210440399671106,
+            0.25846537565338257,
+            1.5
+          ],
+          "outcome": "collision",
+          "elapsed_s": 3.519999999999982,
+          "path_length_m": 1.6415932559487094,
+          "final_distance_m": 4.887090810177684,
+          "min_goal_distance_m": 4.887090810177684,
+          "final_speed_m_s": 0.5361586556176496,
+          "contact_count": 2
+        },
+        {
+          "case_id": "development-u_trap-s21002",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "u_trap",
+          "seed": 21002,
+          "geometry_sha256": "4f62ce489d53aef80e4a21bc8e8aaeff8a2076a28a072d2c1d214529f78ff82d",
+          "initial_position_m": [
+            -0.1402388220337142,
+            1.9318675599147783,
+            1.4999825822603923
+          ],
+          "initial_yaw_rad": 2.347283527125479,
+          "final_position_m": [
+            1.582496497077515,
+            3.8520084330757567,
+            1.4999999998236713
+          ],
+          "outcome": "collision",
+          "elapsed_s": 13.488,
+          "path_length_m": 7.162001755318936,
+          "final_distance_m": 8.670893427812048,
+          "min_goal_distance_m": 5.558280970560513,
+          "final_speed_m_s": 0.3864138852520931,
+          "contact_count": 1
+        },
+        {
+          "case_id": "development-blocked_goal-s21002",
+          "policy": "direct",
+          "feasible": false,
+          "family": "blocked_goal",
+          "seed": 21002,
+          "geometry_sha256": "49ea55eb2cf059576cae04523de72004439d83572b3929b1f7dc4a7faf850608",
+          "initial_position_m": [
+            -0.4249298669444141,
+            5.164500070321477,
+            1.500003301329121
+          ],
+          "initial_yaw_rad": 1.9607207244491531,
+          "final_position_m": [
+            -0.46664075583319053,
+            1.1773182837133325,
+            1.500000001664725
+          ],
+          "outcome": "collision",
+          "elapsed_s": 7.7760000000000105,
+          "path_length_m": 3.987794101169677,
+          "final_distance_m": 1.3870532909844715,
+          "min_goal_distance_m": 1.3870532909844715,
+          "final_speed_m_s": 0.5500487598098633,
+          "contact_count": 2
+        },
+        {
+          "case_id": "development-blocked_goal-s21002",
+          "policy": "reactive",
+          "feasible": false,
+          "family": "blocked_goal",
+          "seed": 21002,
+          "geometry_sha256": "49ea55eb2cf059576cae04523de72004439d83572b3929b1f7dc4a7faf850608",
+          "initial_position_m": [
+            -0.4024281049488552,
+            5.179383774742468,
+            1.500000844397325
+          ],
+          "initial_yaw_rad": 1.960746425794774,
+          "final_position_m": [
+            0.989533575114638,
+            -2.2722913446897874,
+            1.5000000000000058
+          ],
+          "outcome": "timeout",
+          "elapsed_s": 75.00799999999998,
+          "path_length_m": 41.2256830771674,
+          "final_distance_m": 2.533144639031473,
+          "min_goal_distance_m": 2.239499907437588,
+          "final_speed_m_s": 0.5537398818635947,
+          "contact_count": 0
+        }
+      ],
+      "checks": {
+        "all_requested_episodes_recorded": {
+          "passed": true
+        },
+        "negative_controls_never_succeed": {
+          "passed": true
+        },
+        "empty_goal_and_dwell": {
+          "passed": true
+        },
+        "direct_collision_is_detected": {
+          "passed": true
+        }
+      },
+      "assumptions": [
+        "ideal localization and ranges",
+        "horizontal detours at goal altitude",
+        "public fixtures; split isolation relies on frozen protocol, not secrecy",
+        "no learned model"
+      ],
+      "summary": {
+        "direct": {
+          "feasible": {
+            "episodes": 10,
+            "successes": 4,
+            "success_rate": 0.4,
+            "outcomes": {
+              "success": 4,
+              "collision": 6,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": 19.892000000000003,
+            "success_only_mean_path_m": 9.95310651845687
+          },
+          "negative_control": {
+            "episodes": 2,
+            "successes": 0,
+            "success_rate": 0,
+            "outcomes": {
+              "success": 0,
+              "collision": 2,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": null,
+            "success_only_mean_path_m": null
+          }
+        },
+        "reactive": {
+          "feasible": {
+            "episodes": 10,
+            "successes": 8,
+            "success_rate": 0.8,
+            "outcomes": {
+              "success": 8,
+              "collision": 2,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": 27.581999999999987,
+            "success_only_mean_path_m": 14.160042743936472
+          },
+          "negative_control": {
+            "episodes": 2,
+            "successes": 0,
+            "success_rate": 0,
+            "outcomes": {
+              "success": 0,
+              "collision": 0,
+              "out_of_bounds": 0,
+              "timeout": 2
+            },
+            "success_only_mean_time_s": null,
+            "success_only_mean_path_m": null
+          }
+        }
+      },
+      "by_family": {
+        "blocked_goal": {
+          "direct": {
+            "feasible": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 2,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 2,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 2,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 2
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "empty": {
+          "direct": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 2,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 2,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 19.34399999999999,
+              "success_only_mean_path_m": 9.652148638596023
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 2,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 2,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 19.34399999999999,
+              "success_only_mean_path_m": 9.651584274218838
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "narrow_gap": {
+          "direct": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 2,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 2,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 20.440000000000012,
+              "success_only_mean_path_m": 10.25406439831772
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 2,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 2,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 35.391999999999996,
+              "success_only_mean_path_m": 18.388872602711817
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "single_block": {
+          "direct": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 2,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 2,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 2,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 25.75199999999998,
+              "success_only_mean_path_m": 13.24056165228075
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "staggered_blocks": {
+          "direct": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 2,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 2,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 2,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 29.839999999999982,
+              "success_only_mean_path_m": 15.359152446534484
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "u_trap": {
+          "direct": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 2,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 2,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 2,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "mode": "navigation",
+      "webots_version": "R2025a",
+      "source_commit": "373b002d0ada514c95ce409cbb87d4bc3d68a388",
+      "working_tree_dirty": false,
+      "ci_run_id": "40251251346",
+      "algorithm_version": "range_tangent_v1",
+      "lab_config": {
+        "schema_version": 1,
+        "name": "minimal_webots_lab_v1",
+        "status": "engineering_prototype",
+        "runtime_ready": true,
+        "validation_status": "verified_in_ci; see docs/research/2026-10-25-webots-v1-smoke.json",
+        "webots_version": "R2025a",
+        "coordinate_frame": "ENU",
+        "runtime_camera_enabled": false,
+        "runtime_privileged_state_enabled": false,
+        "physical_radar_claim": false,
+        "basic_time_step_ms": 16,
+        "sensor_period_ms": 32,
+        "world": {
+          "size_m": [
+            20,
+            20
+          ],
+          "wall_height_m": 6,
+          "wall_thickness_m": 0.2,
+          "floor_thickness_m": 0.1,
+          "gravity_m_s2": 9.81,
+          "start_m": [
+            -4,
+            0,
+            1.5
+          ],
+          "goal_m": [
+            5,
+            4,
+            1.5
+          ],
+          "goal_radius_m": 0.5,
+          "obstacles": [
+            {
+              "id": "BLOCK_NEAR",
+              "center_m": [
+                2,
+                0,
+                1
+              ],
+              "size_m": [
+                0.6,
+                2,
+                2
+              ]
+            },
+            {
+              "id": "BLOCK_HIDDEN",
+              "center_m": [
+                4,
+                0,
+                1
+              ],
+              "size_m": [
+                0.6,
+                1,
+                2
+              ]
+            },
+            {
+              "id": "BLOCK_SIDE",
+              "center_m": [
+                0,
+                4,
+                1.5
+              ],
+              "size_m": [
+                2,
+                0.8,
+                3
+              ]
+            }
+          ]
+        },
+        "vehicle": {
+          "mass_kg": 1,
+          "body_size_m": [
+            0.6,
+            0.6,
+            0.16
+          ],
+          "inertia_kg_m2": [
+            0.03,
+            0.03,
+            0.05
+          ],
+          "arm_offset_m": 0.25,
+          "thrust_coefficient_n_s2": 0.00001,
+          "torque_to_thrust_m": 0.02,
+          "motor_max_rad_s": 1000,
+          "motor_acceleration_rad_s2": 10000,
+          "motor_max_torque_nm": 10000,
+          "actuator_assumption": "fast ideal velocity actuator; authority limits are not real motor ratings",
+          "horizontal_speed_m_s": 0.8,
+          "vertical_speed_m_s": 0.4,
+          "yaw_rate_rad_s": 0.5,
+          "altitude_bounds_m": [
+            0.4,
+            5
+          ]
+        },
+        "control": {
+          "velocity_gain_s_inv": 1.8,
+          "acceleration_limit_m_s2": 2,
+          "tilt_limit_rad": 0.22,
+          "altitude_p_s_inv2": 5,
+          "altitude_d_s_inv": 3.5,
+          "attitude_p_nm_rad": 0.45,
+          "attitude_d_nm_s_rad": 0.18,
+          "yaw_p_nm_rad": 0.25,
+          "yaw_d_nm_s_rad": 0.14
+        },
+        "sensors": {
+          "model": "geometric_single_ray_generic_distance_sensor",
+          "range_max_m": 8,
+          "horizontal_directions_deg": [
+            0,
+            45,
+            90,
+            135,
+            180,
+            225,
+            270,
+            315
+          ],
+          "horizontal_origin_radius_m": 0.33,
+          "vertical_origin_offset_m": 0.12,
+          "noise_fraction": 0,
+          "latency_s": 0,
+          "localization": "Webots GPS, ideal local Cartesian coordinates",
+          "attitude": "Webots InertialUnit, ideal simulator attitude; no fusion model",
+          "angular_velocity": "Webots Gyro, ideal"
+        },
+        "smoke": {
+          "hover_duration_s": 4,
+          "hover_position_tolerance_m": 0.18,
+          "hover_altitude_tolerance_m": 0.15,
+          "motion_duration_s": 2,
+          "minimum_motion_m": 0.5,
+          "brake_duration_s": 3,
+          "stop_speed_tolerance_m_s": 0.18,
+          "sensor_fixture_m": [
+            0,
+            0,
+            1.5
+          ],
+          "sensor_tolerance_m": 0.08,
+          "collision_timeout_s": 8,
+          "reset_duration_s": 3,
+          "total_timeout_s": 50
+        },
+        "navigation": {
+          "speed_m_s": 0.55,
+          "goal_gain_s_inv": 0.65,
+          "range_max_age_s": 0.12,
+          "avoid_distance_m": 2.2,
+          "follow_distance_m": 1,
+          "brake_margin_m": 0.55,
+          "brake_acceleration_m_s2": 0.6,
+          "leave_progress_m": 0.3
+        }
+      },
+      "suite": "seeded",
+      "protocol_sha256": "96872282fc7df5029453ed684d0e73e9305137c3d6907736869b2e04bf64b90f",
+      "manifest_sha256": "46336ca0e8f0fdc7c2d954457c790212e11a1b9f51a956a7ea9624f204bffafe",
+      "complete_split": true,
+      "split": "validation",
+      "specification_sha256": "db1976440900674232a386601929e9f9fb1156a5e73160b60a5382c99622f3e4",
+      "specification": {
+        "split": "validation",
+        "evaluation": {
+          "warmup_s": 2,
+          "goal_radius_m": 0.5,
+          "stop_speed_m_s": 0.18,
+          "dwell_s": 1,
+          "timeout_s": 75,
+          "position_bounds_min_m": [
+            -9.5,
+            -9.5,
+            0.4
+          ],
+          "position_bounds_max_m": [
+            9.5,
+            9.5,
+            5
+          ]
+        },
+        "manifest_sha256": "46336ca0e8f0fdc7c2d954457c790212e11a1b9f51a956a7ea9624f204bffafe",
+        "case_ids": [
+          "validation-empty-s31001",
+          "validation-single_block-s31001",
+          "validation-staggered_blocks-s31001",
+          "validation-narrow_gap-s31001",
+          "validation-u_trap-s31001",
+          "validation-blocked_goal-s31001"
+        ]
+      },
+      "episodes": [
+        {
+          "case_id": "validation-empty-s31001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "empty",
+          "seed": 31001,
+          "geometry_sha256": "d2bf2e8819ba0df57400e65b0e9253846b9d84a82b6f9ca6ff7a35b0afae17ea",
+          "initial_position_m": [
+            0.1279030000000002,
+            5.048675,
+            1.497843813593955
+          ],
+          "initial_yaw_rad": 0.79723734,
+          "final_position_m": [
+            0.4304157898489364,
+            -5.4505329113678505,
+            1.4999999997911702
+          ],
+          "outcome": "success",
+          "elapsed_s": 20.896,
+          "path_length_m": 10.504694971897012,
+          "final_distance_m": 0.057003533257849806,
+          "min_goal_distance_m": 0.057003533257849806,
+          "final_speed_m_s": 0.0033656397641145318,
+          "contact_count": 0
+        },
+        {
+          "case_id": "validation-empty-s31001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "empty",
+          "seed": 31001,
+          "geometry_sha256": "d2bf2e8819ba0df57400e65b0e9253846b9d84a82b6f9ca6ff7a35b0afae17ea",
+          "initial_position_m": [
+            0.1279030000000062,
+            5.048675,
+            1.5
+          ],
+          "initial_yaw_rad": 0.79723734,
+          "final_position_m": [
+            0.43041583194355754,
+            -5.450534193278893,
+            1.49999999999964
+          ],
+          "outcome": "success",
+          "elapsed_s": 20.896,
+          "path_length_m": 10.503566441909832,
+          "final_distance_m": 0.05700225066388637,
+          "min_goal_distance_m": 0.05700225066388637,
+          "final_speed_m_s": 0.003366579275758874,
+          "contact_count": 0
+        },
+        {
+          "case_id": "validation-single_block-s31001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "single_block",
+          "seed": 31001,
+          "geometry_sha256": "b8c1f921a08bbbfb37c157cebc3c349dfc4c170371a44333a153ae079fda5bf3",
+          "initial_position_m": [
+            -0.4427360000000056,
+            5.42716,
+            1.5
+          ],
+          "initial_yaw_rad": -2.1887102300000003,
+          "final_position_m": [
+            -0.31949472877861235,
+            1.1773460344838147,
+            1.5000000000021363
+          ],
+          "outcome": "collision",
+          "elapsed_s": 8.256,
+          "path_length_m": 4.251600594398016,
+          "final_distance_m": 6.524615208935322,
+          "min_goal_distance_m": 6.524615208935322,
+          "final_speed_m_s": 0.5497583679773542,
+          "contact_count": 2
+        },
+        {
+          "case_id": "validation-single_block-s31001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "single_block",
+          "seed": 31001,
+          "geometry_sha256": "b8c1f921a08bbbfb37c157cebc3c349dfc4c170371a44333a153ae079fda5bf3",
+          "initial_position_m": [
+            -0.44437052395054427,
+            5.466638590035501,
+            1.5000001593482781
+          ],
+          "initial_yaw_rad": -2.188710003325371,
+          "final_position_m": [
+            -0.10634693090061105,
+            -5.292993931007815,
+            1.5000000000025855
+          ],
+          "outcome": "success",
+          "elapsed_s": 25.823999999999998,
+          "path_length_m": 13.224090776011886,
+          "final_distance_m": 0.05697328311752839,
+          "min_goal_distance_m": 0.05697328311752839,
+          "final_speed_m_s": 0.003321806686623234,
+          "contact_count": 0
+        },
+        {
+          "case_id": "validation-staggered_blocks-s31001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "staggered_blocks",
+          "seed": 31001,
+          "geometry_sha256": "cde17a5926b71172d091511d68e2f2adf82ea18f51102dcfd096ff937a057bb1",
+          "initial_position_m": [
+            -5.476072,
+            -0.32381699999996727,
+            1.5
+          ],
+          "initial_yaw_rad": -2.8302513199999995,
+          "final_position_m": [
+            -2.597382542424143,
+            -0.2824705324825406,
+            1.5
+          ],
+          "outcome": "collision",
+          "elapsed_s": 5.760000000000005,
+          "path_length_m": 2.8789864558497795,
+          "final_distance_m": 6.807321242939659,
+          "min_goal_distance_m": 6.807321242939659,
+          "final_speed_m_s": 0.5470978191146076,
+          "contact_count": 2
+        },
+        {
+          "case_id": "validation-staggered_blocks-s31001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "staggered_blocks",
+          "seed": 31001,
+          "geometry_sha256": "cde17a5926b71172d091511d68e2f2adf82ea18f51102dcfd096ff937a057bb1",
+          "initial_position_m": [
+            -5.5032106803181495,
+            -0.3225573283151889,
+            1.4999983416417144
+          ],
+          "initial_yaw_rad": -2.8302460394922058,
+          "final_position_m": [
+            4.181498288305932,
+            -0.13448596134921173,
+            1.499999999999995
+          ],
+          "outcome": "success",
+          "elapsed_s": 29.36,
+          "path_length_m": 15.08792846778842,
+          "final_distance_m": 0.05690423808624725,
+          "min_goal_distance_m": 0.05690423808624725,
+          "final_speed_m_s": 0.0038546705599412697,
+          "contact_count": 0
+        },
+        {
+          "case_id": "validation-narrow_gap-s31001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "narrow_gap",
+          "seed": 31001,
+          "geometry_sha256": "4b54cf7919e7b581803a122ee1fa9bc4686fc36c908d22186a48dff299359e68",
+          "initial_position_m": [
+            -0.35422300000001505,
+            -5.414091,
+            1.5
+          ],
+          "initial_yaw_rad": -2.25244166,
+          "final_position_m": [
+            -0.6436863370905015,
+            5.434880405749257,
+            1.500000000034941
+          ],
+          "outcome": "success",
+          "elapsed_s": 21.519999999999996,
+          "path_length_m": 10.852832373510424,
+          "final_distance_m": 0.05703881258608337,
+          "min_goal_distance_m": 0.05703881258608337,
+          "final_speed_m_s": 0.0033662577149327546,
+          "contact_count": 0
+        },
+        {
+          "case_id": "validation-narrow_gap-s31001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "narrow_gap",
+          "seed": 31001,
+          "geometry_sha256": "4b54cf7919e7b581803a122ee1fa9bc4686fc36c908d22186a48dff299359e68",
+          "initial_position_m": [
+            -0.35422300000001505,
+            -5.414091,
+            1.5
+          ],
+          "initial_yaw_rad": -2.25244166,
+          "final_position_m": [
+            -0.6894768318547702,
+            5.455969908116135,
+            1.499999999995851
+          ],
+          "outcome": "success",
+          "elapsed_s": 37.872000000000014,
+          "path_length_m": 19.839436669225204,
+          "final_distance_m": 0.05698726292458032,
+          "min_goal_distance_m": 0.05698726292458032,
+          "final_speed_m_s": 0.003330260235482464,
+          "contact_count": 0
+        },
+        {
+          "case_id": "validation-u_trap-s31001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "u_trap",
+          "seed": 31001,
+          "geometry_sha256": "0d4a493b9ce9dfd1c42aaa10d31d4d95d7d42901fbd7588caaeb6b961d03f1ef",
+          "initial_position_m": [
+            -0.2570739999999696,
+            0.853711,
+            1.5
+          ],
+          "initial_yaw_rad": -2.627846779999999,
+          "final_position_m": [
+            -0.22115738461372075,
+            -1.0417528748886333,
+            1.5000000000014073
+          ],
+          "outcome": "collision",
+          "elapsed_s": 3.9839999999999804,
+          "path_length_m": 1.8958041558646894,
+          "final_distance_m": 5.118091519163582,
+          "min_goal_distance_m": 5.118091519163582,
+          "final_speed_m_s": 0.5567969107817475,
+          "contact_count": 2
+        },
+        {
+          "case_id": "validation-u_trap-s31001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "u_trap",
+          "seed": 31001,
+          "geometry_sha256": "0d4a493b9ce9dfd1c42aaa10d31d4d95d7d42901fbd7588caaeb6b961d03f1ef",
+          "initial_position_m": [
+            -0.2568451784403445,
+            0.8606787968248581,
+            1.499996516273084
+          ],
+          "initial_yaw_rad": -2.627844639832424,
+          "final_position_m": [
+            1.7695111281064302,
+            2.7249134788487868,
+            1.4999999999974525
+          ],
+          "outcome": "collision",
+          "elapsed_s": 17.360000000000014,
+          "path_length_m": 9.206638817777117,
+          "final_distance_m": 9.083349551408014,
+          "min_goal_distance_m": 5.448274034224397,
+          "final_speed_m_s": 0.5373422850149973,
+          "contact_count": 1
+        },
+        {
+          "case_id": "validation-blocked_goal-s31001",
+          "policy": "direct",
+          "feasible": false,
+          "family": "blocked_goal",
+          "seed": 31001,
+          "geometry_sha256": "5e18a2f8f26a0861fcf8299497f29d773e21cc3caadfdd43c014b65c0a5e7856",
+          "initial_position_m": [
+            5.807188614787402,
+            -0.34265179201928964,
+            1.4999999774414443
+          ],
+          "initial_yaw_rad": -2.633187308552778,
+          "final_position_m": [
+            1.9523661228169056,
+            -0.26724632233807444,
+            1.499999999991494
+          ],
+          "outcome": "collision",
+          "elapsed_s": 7.536000000000001,
+          "path_length_m": 3.8555657413300226,
+          "final_distance_m": 1.4012964339409846,
+          "min_goal_distance_m": 1.4012964339409846,
+          "final_speed_m_s": 0.5503413001013505,
+          "contact_count": 2
+        },
+        {
+          "case_id": "validation-blocked_goal-s31001",
+          "policy": "reactive",
+          "feasible": false,
+          "family": "blocked_goal",
+          "seed": 31001,
+          "geometry_sha256": "5e18a2f8f26a0861fcf8299497f29d773e21cc3caadfdd43c014b65c0a5e7856",
+          "initial_position_m": [
+            5.856424095689921,
+            -0.3450123471567773,
+            1.5000011800136681
+          ],
+          "initial_yaw_rad": -2.63326286318526,
+          "final_position_m": [
+            -1.5714420253623709,
+            -0.04097955603864949,
+            1.5000000000000797
+          ],
+          "outcome": "timeout",
+          "elapsed_s": 75.00799999999998,
+          "path_length_m": 41.59080572709571,
+          "final_distance_m": 2.132080446023557,
+          "min_goal_distance_m": 2.0240214694543726,
+          "final_speed_m_s": 0.6139722571016502,
+          "contact_count": 0
+        }
+      ],
+      "checks": {
+        "all_requested_episodes_recorded": {
+          "passed": true
+        },
+        "negative_controls_never_succeed": {
+          "passed": true
+        },
+        "empty_goal_and_dwell": {
+          "passed": true
+        },
+        "direct_collision_is_detected": {
+          "passed": true
+        }
+      },
+      "assumptions": [
+        "ideal localization and ranges",
+        "horizontal detours at goal altitude",
+        "public fixtures; split isolation relies on frozen protocol, not secrecy",
+        "no learned model"
+      ],
+      "summary": {
+        "direct": {
+          "feasible": {
+            "episodes": 5,
+            "successes": 2,
+            "success_rate": 0.4,
+            "outcomes": {
+              "success": 2,
+              "collision": 3,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": 21.208,
+            "success_only_mean_path_m": 10.678763672703717
+          },
+          "negative_control": {
+            "episodes": 1,
+            "successes": 0,
+            "success_rate": 0,
+            "outcomes": {
+              "success": 0,
+              "collision": 1,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": null,
+            "success_only_mean_path_m": null
+          }
+        },
+        "reactive": {
+          "feasible": {
+            "episodes": 5,
+            "successes": 4,
+            "success_rate": 0.8,
+            "outcomes": {
+              "success": 4,
+              "collision": 1,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": 28.488000000000003,
+            "success_only_mean_path_m": 14.663755588733835
+          },
+          "negative_control": {
+            "episodes": 1,
+            "successes": 0,
+            "success_rate": 0,
+            "outcomes": {
+              "success": 0,
+              "collision": 0,
+              "out_of_bounds": 0,
+              "timeout": 1
+            },
+            "success_only_mean_time_s": null,
+            "success_only_mean_path_m": null
+          }
+        }
+      },
+      "by_family": {
+        "blocked_goal": {
+          "direct": {
+            "feasible": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 1
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "empty": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 20.896,
+              "success_only_mean_path_m": 10.504694971897012
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 20.896,
+              "success_only_mean_path_m": 10.503566441909832
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "narrow_gap": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 21.519999999999996,
+              "success_only_mean_path_m": 10.852832373510424
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 37.872000000000014,
+              "success_only_mean_path_m": 19.839436669225204
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "single_block": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 25.823999999999998,
+              "success_only_mean_path_m": 13.224090776011886
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "staggered_blocks": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 29.36,
+              "success_only_mean_path_m": 15.08792846778842
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "u_trap": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "status": "passed",
+      "mode": "navigation",
+      "webots_version": "R2025a",
+      "source_commit": "373b002d0ada514c95ce409cbb87d4bc3d68a388",
+      "working_tree_dirty": false,
+      "ci_run_id": "40251251346",
+      "algorithm_version": "range_tangent_v1",
+      "lab_config": {
+        "schema_version": 1,
+        "name": "minimal_webots_lab_v1",
+        "status": "engineering_prototype",
+        "runtime_ready": true,
+        "validation_status": "verified_in_ci; see docs/research/2026-10-25-webots-v1-smoke.json",
+        "webots_version": "R2025a",
+        "coordinate_frame": "ENU",
+        "runtime_camera_enabled": false,
+        "runtime_privileged_state_enabled": false,
+        "physical_radar_claim": false,
+        "basic_time_step_ms": 16,
+        "sensor_period_ms": 32,
+        "world": {
+          "size_m": [
+            20,
+            20
+          ],
+          "wall_height_m": 6,
+          "wall_thickness_m": 0.2,
+          "floor_thickness_m": 0.1,
+          "gravity_m_s2": 9.81,
+          "start_m": [
+            -4,
+            0,
+            1.5
+          ],
+          "goal_m": [
+            5,
+            4,
+            1.5
+          ],
+          "goal_radius_m": 0.5,
+          "obstacles": [
+            {
+              "id": "BLOCK_NEAR",
+              "center_m": [
+                2,
+                0,
+                1
+              ],
+              "size_m": [
+                0.6,
+                2,
+                2
+              ]
+            },
+            {
+              "id": "BLOCK_HIDDEN",
+              "center_m": [
+                4,
+                0,
+                1
+              ],
+              "size_m": [
+                0.6,
+                1,
+                2
+              ]
+            },
+            {
+              "id": "BLOCK_SIDE",
+              "center_m": [
+                0,
+                4,
+                1.5
+              ],
+              "size_m": [
+                2,
+                0.8,
+                3
+              ]
+            }
+          ]
+        },
+        "vehicle": {
+          "mass_kg": 1,
+          "body_size_m": [
+            0.6,
+            0.6,
+            0.16
+          ],
+          "inertia_kg_m2": [
+            0.03,
+            0.03,
+            0.05
+          ],
+          "arm_offset_m": 0.25,
+          "thrust_coefficient_n_s2": 0.00001,
+          "torque_to_thrust_m": 0.02,
+          "motor_max_rad_s": 1000,
+          "motor_acceleration_rad_s2": 10000,
+          "motor_max_torque_nm": 10000,
+          "actuator_assumption": "fast ideal velocity actuator; authority limits are not real motor ratings",
+          "horizontal_speed_m_s": 0.8,
+          "vertical_speed_m_s": 0.4,
+          "yaw_rate_rad_s": 0.5,
+          "altitude_bounds_m": [
+            0.4,
+            5
+          ]
+        },
+        "control": {
+          "velocity_gain_s_inv": 1.8,
+          "acceleration_limit_m_s2": 2,
+          "tilt_limit_rad": 0.22,
+          "altitude_p_s_inv2": 5,
+          "altitude_d_s_inv": 3.5,
+          "attitude_p_nm_rad": 0.45,
+          "attitude_d_nm_s_rad": 0.18,
+          "yaw_p_nm_rad": 0.25,
+          "yaw_d_nm_s_rad": 0.14
+        },
+        "sensors": {
+          "model": "geometric_single_ray_generic_distance_sensor",
+          "range_max_m": 8,
+          "horizontal_directions_deg": [
+            0,
+            45,
+            90,
+            135,
+            180,
+            225,
+            270,
+            315
+          ],
+          "horizontal_origin_radius_m": 0.33,
+          "vertical_origin_offset_m": 0.12,
+          "noise_fraction": 0,
+          "latency_s": 0,
+          "localization": "Webots GPS, ideal local Cartesian coordinates",
+          "attitude": "Webots InertialUnit, ideal simulator attitude; no fusion model",
+          "angular_velocity": "Webots Gyro, ideal"
+        },
+        "smoke": {
+          "hover_duration_s": 4,
+          "hover_position_tolerance_m": 0.18,
+          "hover_altitude_tolerance_m": 0.15,
+          "motion_duration_s": 2,
+          "minimum_motion_m": 0.5,
+          "brake_duration_s": 3,
+          "stop_speed_tolerance_m_s": 0.18,
+          "sensor_fixture_m": [
+            0,
+            0,
+            1.5
+          ],
+          "sensor_tolerance_m": 0.08,
+          "collision_timeout_s": 8,
+          "reset_duration_s": 3,
+          "total_timeout_s": 50
+        },
+        "navigation": {
+          "speed_m_s": 0.55,
+          "goal_gain_s_inv": 0.65,
+          "range_max_age_s": 0.12,
+          "avoid_distance_m": 2.2,
+          "follow_distance_m": 1,
+          "brake_margin_m": 0.55,
+          "brake_acceleration_m_s2": 0.6,
+          "leave_progress_m": 0.3
+        }
+      },
+      "suite": "seeded",
+      "protocol_sha256": "96872282fc7df5029453ed684d0e73e9305137c3d6907736869b2e04bf64b90f",
+      "manifest_sha256": "46336ca0e8f0fdc7c2d954457c790212e11a1b9f51a956a7ea9624f204bffafe",
+      "complete_split": true,
+      "split": "test",
+      "specification_sha256": "db1976440900674232a386601929e9f9fb1156a5e73160b60a5382c99622f3e4",
+      "specification": {
+        "split": "test",
+        "evaluation": {
+          "warmup_s": 2,
+          "goal_radius_m": 0.5,
+          "stop_speed_m_s": 0.18,
+          "dwell_s": 1,
+          "timeout_s": 75,
+          "position_bounds_min_m": [
+            -9.5,
+            -9.5,
+            0.4
+          ],
+          "position_bounds_max_m": [
+            9.5,
+            9.5,
+            5
+          ]
+        },
+        "manifest_sha256": "46336ca0e8f0fdc7c2d954457c790212e11a1b9f51a956a7ea9624f204bffafe",
+        "case_ids": [
+          "test-empty-s41001",
+          "test-single_block-s41001",
+          "test-staggered_blocks-s41001",
+          "test-narrow_gap-s41001",
+          "test-u_trap-s41001",
+          "test-blocked_goal-s41001"
+        ]
+      },
+      "episodes": [
+        {
+          "case_id": "test-empty-s41001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "empty",
+          "seed": 41001,
+          "geometry_sha256": "5e190b940f99efac736e641cb75eef3e20350734983efadea67b7e06eb3e8970",
+          "initial_position_m": [
+            -4.945067,
+            0.3363010000000029,
+            1.497843813593955
+          ],
+          "initial_yaw_rad": 0.8360906,
+          "final_position_m": [
+            5.074010808722804,
+            0.473811584251407,
+            1.4999999998502298
+          ],
+          "outcome": "success",
+          "elapsed_s": 20.016000000000002,
+          "path_length_m": 10.021151247097489,
+          "final_distance_m": 0.05700620994070952,
+          "min_goal_distance_m": 0.05700620994070952,
+          "final_speed_m_s": 0.00336340421013745,
+          "contact_count": 0
+        },
+        {
+          "case_id": "test-empty-s41001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "empty",
+          "seed": 41001,
+          "geometry_sha256": "5e190b940f99efac736e641cb75eef3e20350734983efadea67b7e06eb3e8970",
+          "initial_position_m": [
+            -4.945067,
+            0.3363010000000156,
+            1.5
+          ],
+          "initial_yaw_rad": 0.8360906,
+          "final_position_m": [
+            5.074012091703541,
+            0.4738115990074739,
+            1.4999999999973015
+          ],
+          "outcome": "success",
+          "elapsed_s": 20.016000000000002,
+          "path_length_m": 10.020022715676857,
+          "final_distance_m": 0.057004926877123524,
+          "min_goal_distance_m": 0.057004926877123524,
+          "final_speed_m_s": 0.0033643428512959805,
+          "contact_count": 0
+        },
+        {
+          "case_id": "test-single_block-s41001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "single_block",
+          "seed": 41001,
+          "geometry_sha256": "735ecfefb02cb76326923a92be98d530d798dbb5b7f3a3c096de3ba095173bd4",
+          "initial_position_m": [
+            -5.591692,
+            -0.5159250000000112,
+            1.5
+          ],
+          "initial_yaw_rad": -1.31997026,
+          "final_position_m": [
+            -1.0685193344679216,
+            -0.6042473250842882,
+            1.4999999999877716
+          ],
+          "outcome": "collision",
+          "elapsed_s": 8.751999999999995,
+          "path_length_m": 4.52403493473509,
+          "final_distance_m": 6.345793786856542,
+          "min_goal_distance_m": 6.345793786856542,
+          "final_speed_m_s": 0.5498537730397983,
+          "contact_count": 2
+        },
+        {
+          "case_id": "test-single_block-s41001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "single_block",
+          "seed": 41001,
+          "geometry_sha256": "735ecfefb02cb76326923a92be98d530d798dbb5b7f3a3c096de3ba095173bd4",
+          "initial_position_m": [
+            -5.650089643087077,
+            -0.5123019622972462,
+            1.4999997471011821
+          ],
+          "initial_yaw_rad": -1.3199464875046505,
+          "final_position_m": [
+            5.227334275893907,
+            -0.6982826554313448,
+            1.4999999999978995
+          ],
+          "outcome": "success",
+          "elapsed_s": 27.344,
+          "path_length_m": 13.959735395111627,
+          "final_distance_m": 0.057044698871662906,
+          "min_goal_distance_m": 0.057044698871662906,
+          "final_speed_m_s": 0.003374777464724997,
+          "contact_count": 0
+        },
+        {
+          "case_id": "test-staggered_blocks-s41001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "staggered_blocks",
+          "seed": 41001,
+          "geometry_sha256": "b0c61a34179c60047a4de2e43dba10e7b6f5ae7293b421a8cb349f0db72f68b0",
+          "initial_position_m": [
+            0.375389,
+            -5.223379,
+            1.5
+          ],
+          "initial_yaw_rad": -0.08899535999999922,
+          "final_position_m": [
+            0.4135668274690893,
+            -1.7119392145092318,
+            1.5000000000003508
+          ],
+          "outcome": "collision",
+          "elapsed_s": 6.912000000000006,
+          "path_length_m": 3.511647326071756,
+          "final_distance_m": 7.499169628950178,
+          "min_goal_distance_m": 7.499169628950178,
+          "final_speed_m_s": 0.5508466895218997,
+          "contact_count": 2
+        },
+        {
+          "case_id": "test-staggered_blocks-s41001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "staggered_blocks",
+          "seed": 41001,
+          "geometry_sha256": "b0c61a34179c60047a4de2e43dba10e7b6f5ae7293b421a8cb349f0db72f68b0",
+          "initial_position_m": [
+            0.3778280188339998,
+            -5.263577597807016,
+            1.4999996439526186
+          ],
+          "initial_yaw_rad": -0.08900996239813411,
+          "final_position_m": [
+            0.4762442012142164,
+            5.732999377864538,
+            1.4999999999999947
+          ],
+          "outcome": "success",
+          "elapsed_s": 25.152,
+          "path_length_m": 12.971673577691224,
+          "final_distance_m": 0.05703180152450604,
+          "min_goal_distance_m": 0.05703180152450604,
+          "final_speed_m_s": 0.003345627110640312,
+          "contact_count": 0
+        },
+        {
+          "case_id": "test-narrow_gap-s41001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "narrow_gap",
+          "seed": 41001,
+          "geometry_sha256": "f4e263bfb6946f77b3b5d8a2543ca15cf743ac3e53e0828932a028fa5eb927a9",
+          "initial_position_m": [
+            0.09370099999999701,
+            5.984172,
+            1.5
+          ],
+          "initial_yaw_rad": -2.45915116,
+          "final_position_m": [
+            0.14105646293250199,
+            -4.515114544669694,
+            1.4999999999735356
+          ],
+          "outcome": "success",
+          "elapsed_s": 20.879999999999995,
+          "path_length_m": 10.499393344027288,
+          "final_distance_m": 0.05702913066306127,
+          "min_goal_distance_m": 0.05702913066306127,
+          "final_speed_m_s": 0.0033622701147613377,
+          "contact_count": 0
+        },
+        {
+          "case_id": "test-narrow_gap-s41001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "narrow_gap",
+          "seed": 41001,
+          "geometry_sha256": "f4e263bfb6946f77b3b5d8a2543ca15cf743ac3e53e0828932a028fa5eb927a9",
+          "initial_position_m": [
+            0.09370099999999701,
+            5.984172,
+            1.5
+          ],
+          "initial_yaw_rad": -2.45915116,
+          "final_position_m": [
+            0.1873463986108715,
+            -4.538527130652662,
+            1.5000000000041624
+          ],
+          "outcome": "success",
+          "elapsed_s": 35.696,
+          "path_length_m": 18.5425399763414,
+          "final_distance_m": 0.056983923152964716,
+          "min_goal_distance_m": 0.056983923152964716,
+          "final_speed_m_s": 0.003324762122704086,
+          "contact_count": 0
+        },
+        {
+          "case_id": "test-u_trap-s41001",
+          "policy": "direct",
+          "feasible": true,
+          "family": "u_trap",
+          "seed": 41001,
+          "geometry_sha256": "6653297f1730a4b083c349ebfd02ea5ffac9334fbaa254b0a9313d2001ea24f8",
+          "initial_position_m": [
+            -1.9404179999999907,
+            -0.509922,
+            1.5
+          ],
+          "initial_yaw_rad": -2.959413619999999,
+          "final_position_m": [
+            0.08766402874289718,
+            -0.4275531207006007,
+            1.5
+          ],
+          "outcome": "collision",
+          "elapsed_s": 4.2239999999999895,
+          "path_length_m": 2.029754037908815,
+          "final_distance_m": 5.155210204200944,
+          "min_goal_distance_m": 5.155210204200944,
+          "final_speed_m_s": 0.5604323600471557,
+          "contact_count": 2
+        },
+        {
+          "case_id": "test-u_trap-s41001",
+          "policy": "reactive",
+          "feasible": true,
+          "family": "u_trap",
+          "seed": 41001,
+          "geometry_sha256": "6653297f1730a4b083c349ebfd02ea5ffac9334fbaa254b0a9313d2001ea24f8",
+          "initial_position_m": [
+            -1.9786387478738048,
+            -0.5074154186464839,
+            1.499995371488168
+          ],
+          "initial_yaw_rad": -2.959396305331911,
+          "final_position_m": [
+            5.191808847686656,
+            -0.18543486868800732,
+            1.4999999999997902
+          ],
+          "outcome": "success",
+          "elapsed_s": 35.82400000000001,
+          "path_length_m": 18.693526566908403,
+          "final_distance_m": 0.05702738009166656,
+          "min_goal_distance_m": 0.05702738009166656,
+          "final_speed_m_s": 0.0033527062679233398,
+          "contact_count": 0
+        },
+        {
+          "case_id": "test-blocked_goal-s41001",
+          "policy": "direct",
+          "feasible": false,
+          "family": "blocked_goal",
+          "seed": 41001,
+          "geometry_sha256": "30c7afa0cd40a400fc24c28b21f7c3590753d506e61e71c71e6ea8a78f5802e9",
+          "initial_position_m": [
+            -5.434432,
+            0.3605479999999853,
+            1.5
+          ],
+          "initial_yaw_rad": -1.6651019400000004,
+          "final_position_m": [
+            -1.9866165621816771,
+            0.48252123369696215,
+            1.499999999996398
+          ],
+          "outcome": "collision",
+          "elapsed_s": 6.800000000000011,
+          "path_length_m": 3.44997229602259,
+          "final_distance_m": 1.3236809041654467,
+          "min_goal_distance_m": 1.3236809041654467,
+          "final_speed_m_s": 0.5507583488794424,
+          "contact_count": 2
+        },
+        {
+          "case_id": "test-blocked_goal-s41001",
+          "policy": "reactive",
+          "feasible": false,
+          "family": "blocked_goal",
+          "seed": 41001,
+          "geometry_sha256": "30c7afa0cd40a400fc24c28b21f7c3590753d506e61e71c71e6ea8a78f5802e9",
+          "initial_position_m": [
+            -5.462451426760865,
+            0.3576513814002338,
+            1.4999991453243626
+          ],
+          "initial_yaw_rad": -1.665118302501649,
+          "final_position_m": [
+            1.6145722172262627,
+            0.5818846194152563,
+            1.4999999999999942
+          ],
+          "outcome": "timeout",
+          "elapsed_s": 75.00800000000001,
+          "path_length_m": 41.54114899962029,
+          "final_distance_m": 2.2789412937038107,
+          "min_goal_distance_m": 2.171024595081737,
+          "final_speed_m_s": 0.5993449352340788,
+          "contact_count": 0
+        }
+      ],
+      "checks": {
+        "all_requested_episodes_recorded": {
+          "passed": true
+        },
+        "negative_controls_never_succeed": {
+          "passed": true
+        },
+        "empty_goal_and_dwell": {
+          "passed": true
+        },
+        "direct_collision_is_detected": {
+          "passed": true
+        }
+      },
+      "assumptions": [
+        "ideal localization and ranges",
+        "horizontal detours at goal altitude",
+        "public fixtures; split isolation relies on frozen protocol, not secrecy",
+        "no learned model"
+      ],
+      "summary": {
+        "direct": {
+          "feasible": {
+            "episodes": 5,
+            "successes": 2,
+            "success_rate": 0.4,
+            "outcomes": {
+              "success": 2,
+              "collision": 3,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": 20.448,
+            "success_only_mean_path_m": 10.260272295562388
+          },
+          "negative_control": {
+            "episodes": 1,
+            "successes": 0,
+            "success_rate": 0,
+            "outcomes": {
+              "success": 0,
+              "collision": 1,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": null,
+            "success_only_mean_path_m": null
+          }
+        },
+        "reactive": {
+          "feasible": {
+            "episodes": 5,
+            "successes": 5,
+            "success_rate": 1,
+            "outcomes": {
+              "success": 5,
+              "collision": 0,
+              "out_of_bounds": 0,
+              "timeout": 0
+            },
+            "success_only_mean_time_s": 28.806400000000004,
+            "success_only_mean_path_m": 14.8374996463459
+          },
+          "negative_control": {
+            "episodes": 1,
+            "successes": 0,
+            "success_rate": 0,
+            "outcomes": {
+              "success": 0,
+              "collision": 0,
+              "out_of_bounds": 0,
+              "timeout": 1
+            },
+            "success_only_mean_time_s": null,
+            "success_only_mean_path_m": null
+          }
+        }
+      },
+      "by_family": {
+        "blocked_goal": {
+          "direct": {
+            "feasible": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 1
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "empty": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 20.016000000000002,
+              "success_only_mean_path_m": 10.021151247097489
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 20.016000000000002,
+              "success_only_mean_path_m": 10.020022715676857
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "narrow_gap": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 20.879999999999995,
+              "success_only_mean_path_m": 10.499393344027288
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 35.696,
+              "success_only_mean_path_m": 18.5425399763414
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "single_block": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 27.344,
+              "success_only_mean_path_m": 13.959735395111627
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "staggered_blocks": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 25.152,
+              "success_only_mean_path_m": 12.971673577691224
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "u_trap": {
+          "direct": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 0,
+              "success_rate": 0,
+              "outcomes": {
+                "success": 0,
+                "collision": 1,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          },
+          "reactive": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 35.82400000000001,
+              "success_only_mean_path_m": 18.693526566908403
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        }
+      }
+    }
+  ],
+  "review_trajectories": [
+    {
+      "case_id": "development-u_trap-s21001",
+      "policy": "reactive",
+      "frame": "world_ENU",
+      "source": "privileged_observer_only",
+      "points_txyz": [
+        [
+          0,
+          -1.1266,
+          0.0986,
+          1.5
+        ],
+        [
+          0.512,
+          -1.1003,
+          0.0952,
+          1.5
+        ],
+        [
+          1.024,
+          -0.9356,
+          0.0679,
+          1.5
+        ],
+        [
+          1.536,
+          -0.6259,
+          0.0186,
+          1.5
+        ],
+        [
+          2.048,
+          -0.2904,
+          -0.028,
+          1.5
+        ],
+        [
+          2.56,
+          -0.0009,
+          -0.0513,
+          1.5
+        ],
+        [
+          3.072,
+          0.1695,
+          0.0473,
+          1.5
+        ],
+        [
+          3.584,
+          0.1694,
+          0.3296,
+          1.5
+        ],
+        [
+          4.096,
+          0.0903,
+          0.6776,
+          1.5
+        ],
+        [
+          4.608,
+          0.0229,
+          0.9688,
+          1.5
+        ],
+        [
+          5.12,
+          -0.1207,
+          1.0419,
+          1.5
+        ],
+        [
+          5.632,
+          -0.3862,
+          0.8872,
+          1.5
+        ],
+        [
+          6.144,
+          -0.6905,
+          0.6889,
+          1.5
+        ],
+        [
+          6.656,
+          -0.9766,
+          0.5852,
+          1.5
+        ],
+        [
+          7.168,
+          -1.2479,
+          0.5778,
+          1.5
+        ],
+        [
+          7.68,
+          -1.5223,
+          0.5986,
+          1.5
+        ],
+        [
+          8.192,
+          -1.8043,
+          0.5984,
+          1.5
+        ],
+        [
+          8.704,
+          -2.0884,
+          0.5755,
+          1.5
+        ],
+        [
+          9.216,
+          -2.3706,
+          0.5517,
+          1.5
+        ],
+        [
+          9.728,
+          -2.6383,
+          0.5598,
+          1.5
+        ],
+        [
+          10.24,
+          -2.8115,
+          0.7153,
+          1.5
+        ],
+        [
+          10.752,
+          -2.8976,
+          1.0096,
+          1.5
+        ],
+        [
+          11.264,
+          -3.0128,
+          1.2979,
+          1.5
+        ],
+        [
+          11.776,
+          -3.2307,
+          1.4775,
+          1.5
+        ],
+        [
+          12.288,
+          -3.499,
+          1.5735,
+          1.5
+        ],
+        [
+          12.8,
+          -3.5477,
+          1.6439,
+          1.5
+        ],
+        [
+          13.312,
+          -3.2789,
+          1.7311,
+          1.5
+        ],
+        [
+          13.824,
+          -2.9605,
+          1.9159,
+          1.5
+        ],
+        [
+          13.936,
+          -2.9075,
+          1.9689,
+          1.5
+        ]
+      ]
+    },
+    {
+      "case_id": "development-narrow_gap-s21001",
+      "policy": "reactive",
+      "frame": "world_ENU",
+      "source": "privileged_observer_only",
+      "points_txyz": [
+        [
+          0,
+          0.202,
+          -4.8661,
+          1.5
+        ],
+        [
+          0.512,
+          0.2014,
+          -4.844,
+          1.5
+        ],
+        [
+          1.024,
+          0.1971,
+          -4.6746,
+          1.5
+        ],
+        [
+          1.536,
+          0.189,
+          -4.3582,
+          1.5
+        ],
+        [
+          2.048,
+          0.1804,
+          -4.0193,
+          1.5
+        ],
+        [
+          2.56,
+          0.173,
+          -3.7253,
+          1.5
+        ],
+        [
+          3.072,
+          0.1663,
+          -3.4602,
+          1.5
+        ],
+        [
+          3.584,
+          0.1594,
+          -3.191,
+          1.5
+        ],
+        [
+          4.096,
+          0.1523,
+          -2.9087,
+          1.5
+        ],
+        [
+          4.608,
+          0.145,
+          -2.6221,
+          1.5
+        ],
+        [
+          5.12,
+          0.1378,
+          -2.3386,
+          1.5
+        ],
+        [
+          5.632,
+          0.1307,
+          -2.0582,
+          1.5
+        ],
+        [
+          6.144,
+          0.1188,
+          -1.7824,
+          1.5
+        ],
+        [
+          6.656,
+          0.0075,
+          -1.5995,
+          1.5
+        ],
+        [
+          7.168,
+          -0.2708,
+          -1.5845,
+          1.5
+        ],
+        [
+          7.68,
+          -0.613,
+          -1.6523,
+          1.5
+        ],
+        [
+          8.192,
+          -0.9227,
+          -1.6971,
+          1.5
+        ],
+        [
+          8.704,
+          -1.1881,
+          -1.6712,
+          1.5
+        ],
+        [
+          9.216,
+          -1.4271,
+          -1.5485,
+          1.5
+        ],
+        [
+          9.728,
+          -1.667,
+          -1.3862,
+          1.5
+        ],
+        [
+          10.24,
+          -1.9259,
+          -1.2606,
+          1.5
+        ],
+        [
+          10.752,
+          -2.2024,
+          -1.194,
+          1.5
+        ],
+        [
+          11.264,
+          -2.4853,
+          -1.1628,
+          1.5
+        ],
+        [
+          11.776,
+          -2.767,
+          -1.1388,
+          1.5
+        ],
+        [
+          12.288,
+          -3.0466,
+          -1.1122,
+          1.5
+        ],
+        [
+          12.8,
+          -3.3263,
+          -1.0878,
+          1.5
+        ],
+        [
+          13.312,
+          -3.6073,
+          -1.0713,
+          1.5
+        ],
+        [
+          13.824,
+          -3.8892,
+          -1.063,
+          1.5
+        ],
+        [
+          14.336,
+          -4.171,
+          -1.0591,
+          1.5
+        ],
+        [
+          14.848,
+          -4.4526,
+          -1.0565,
+          1.5
+        ],
+        [
+          15.36,
+          -4.7341,
+          -1.0542,
+          1.5
+        ],
+        [
+          15.872,
+          -5.0138,
+          -1.0489,
+          1.5
+        ],
+        [
+          16.384,
+          -5.2322,
+          -0.9544,
+          1.5
+        ],
+        [
+          16.896,
+          -5.3344,
+          -0.6984,
+          1.5
+        ],
+        [
+          17.408,
+          -5.4177,
+          -0.3913,
+          1.5
+        ],
+        [
+          17.92,
+          -5.5881,
+          -0.1573,
+          1.5
+        ],
+        [
+          18.432,
+          -5.8189,
+          0.0142,
+          1.5
+        ],
+        [
+          18.944,
+          -6.017,
+          0.1949,
+          1.5
+        ],
+        [
+          19.456,
+          -6.137,
+          0.312,
+          1.5
+        ],
+        [
+          19.968,
+          -6.1163,
+          0.4657,
+          1.5
+        ],
+        [
+          20.48,
+          -5.9987,
+          0.7326,
+          1.5
+        ],
+        [
+          20.992,
+          -5.8908,
+          1.0478,
+          1.5
+        ],
+        [
+          21.504,
+          -5.8405,
+          1.3454,
+          1.5
+        ],
+        [
+          22.016,
+          -5.7748,
+          1.5942,
+          1.5
+        ],
+        [
+          22.528,
+          -5.5841,
+          1.7677,
+          1.5
+        ],
+        [
+          23.04,
+          -5.3092,
+          1.8998,
+          1.5
+        ],
+        [
+          23.552,
+          -5.04,
+          2.0386,
+          1.5
+        ],
+        [
+          24.064,
+          -4.806,
+          2.1968,
+          1.5
+        ],
+        [
+          24.576,
+          -4.5863,
+          2.3623,
+          1.5
+        ],
+        [
+          25.088,
+          -4.3596,
+          2.5235,
+          1.5
+        ],
+        [
+          25.6,
+          -4.1239,
+          2.6796,
+          1.5
+        ],
+        [
+          26.112,
+          -3.8867,
+          2.8348,
+          1.5
+        ],
+        [
+          26.624,
+          -3.6524,
+          2.9917,
+          1.5
+        ],
+        [
+          27.136,
+          -3.42,
+          3.1498,
+          1.5
+        ],
+        [
+          27.648,
+          -3.1874,
+          3.3078,
+          1.5
+        ],
+        [
+          28.16,
+          -2.9539,
+          3.4654,
+          1.5
+        ],
+        [
+          28.672,
+          -2.7201,
+          3.6226,
+          1.5
+        ],
+        [
+          29.184,
+          -2.4865,
+          3.78,
+          1.5
+        ],
+        [
+          29.696,
+          -2.2531,
+          3.9375,
+          1.5
+        ],
+        [
+          30.208,
+          -2.0197,
+          4.095,
+          1.5
+        ],
+        [
+          30.72,
+          -1.7863,
+          4.2525,
+          1.5
+        ],
+        [
+          31.232,
+          -1.5528,
+          4.4099,
+          1.5
+        ],
+        [
+          31.744,
+          -1.3193,
+          4.5674,
+          1.5
+        ],
+        [
+          32.256,
+          -1.0859,
+          4.7249,
+          1.5
+        ],
+        [
+          32.768,
+          -0.8524,
+          4.8823,
+          1.5
+        ],
+        [
+          33.28,
+          -0.6191,
+          5.0397,
+          1.5
+        ],
+        [
+          33.792,
+          -0.3967,
+          5.1897,
+          1.5
+        ],
+        [
+          34.304,
+          -0.2258,
+          5.305,
+          1.5
+        ],
+        [
+          34.816,
+          -0.1352,
+          5.3662,
+          1.5
+        ],
+        [
+          35.328,
+          -0.1084,
+          5.3842,
+          1.5
+        ],
+        [
+          35.664,
+          -0.1061,
+          5.3858,
+          1.5
+        ]
+      ]
+    },
+    {
+      "case_id": "validation-u_trap-s31001",
+      "policy": "reactive",
+      "frame": "world_ENU",
+      "source": "privileged_observer_only",
+      "points_txyz": [
+        [
+          0,
+          -0.2568,
+          0.8607,
+          1.5
+        ],
+        [
+          0.512,
+          -0.2658,
+          0.8398,
+          1.5
+        ],
+        [
+          1.024,
+          -0.3334,
+          0.6846,
+          1.5
+        ],
+        [
+          1.536,
+          -0.4554,
+          0.3928,
+          1.5
+        ],
+        [
+          2.048,
+          -0.5704,
+          0.0744,
+          1.5
+        ],
+        [
+          2.56,
+          -0.6404,
+          -0.2113,
+          1.5
+        ],
+        [
+          3.072,
+          -0.6704,
+          -0.4746,
+          1.5
+        ],
+        [
+          3.584,
+          -0.5972,
+          -0.674,
+          1.5
+        ],
+        [
+          4.096,
+          -0.3431,
+          -0.7103,
+          1.5
+        ],
+        [
+          4.608,
+          -0.036,
+          -0.5881,
+          1.5
+        ],
+        [
+          5.12,
+          0.2303,
+          -0.4518,
+          1.5
+        ],
+        [
+          5.632,
+          0.4852,
+          -0.4391,
+          1.5
+        ],
+        [
+          6.144,
+          0.7566,
+          -0.5217,
+          1.5
+        ],
+        [
+          6.656,
+          1.0214,
+          -0.5894,
+          1.5
+        ],
+        [
+          7.168,
+          1.1227,
+          -0.4844,
+          1.5
+        ],
+        [
+          7.68,
+          0.986,
+          -0.2054,
+          1.5
+        ],
+        [
+          8.192,
+          0.7694,
+          0.1015,
+          1.5
+        ],
+        [
+          8.704,
+          0.6552,
+          0.3741,
+          1.5
+        ],
+        [
+          9.216,
+          0.6818,
+          0.6379,
+          1.5
+        ],
+        [
+          9.728,
+          0.7572,
+          0.9136,
+          1.5
+        ],
+        [
+          10.24,
+          0.7961,
+          1.1987,
+          1.5
+        ],
+        [
+          10.752,
+          0.7866,
+          1.4841,
+          1.5
+        ],
+        [
+          11.264,
+          0.7624,
+          1.7659,
+          1.5
+        ],
+        [
+          11.776,
+          0.752,
+          2.0461,
+          1.5
+        ],
+        [
+          12.288,
+          0.7575,
+          2.327,
+          1.5
+        ],
+        [
+          12.8,
+          0.767,
+          2.6088,
+          1.5
+        ],
+        [
+          13.312,
+          0.7754,
+          2.8889,
+          1.5
+        ],
+        [
+          13.824,
+          0.869,
+          3.0877,
+          1.5
+        ],
+        [
+          14.336,
+          1.1325,
+          3.1117,
+          1.5
+        ],
+        [
+          14.848,
+          1.4649,
+          3.0956,
+          1.5
+        ],
+        [
+          15.36,
+          1.7295,
+          3.213,
+          1.5
+        ],
+        [
+          15.872,
+          1.8943,
+          3.4167,
+          1.5
+        ],
+        [
+          16.384,
+          1.9207,
+          3.3846,
+          1.5
+        ],
+        [
+          16.896,
+          1.8402,
+          3.0577,
+          1.5
+        ],
+        [
+          17.36,
+          1.7695,
+          2.7249,
+          1.5
+        ]
+      ]
+    },
+    {
+      "case_id": "validation-narrow_gap-s31001",
+      "policy": "reactive",
+      "frame": "world_ENU",
+      "source": "privileged_observer_only",
+      "points_txyz": [
+        [
+          0,
+          -0.3542,
+          -5.4141,
+          1.5
+        ],
+        [
+          0.512,
+          -0.3548,
+          -5.3919,
+          1.5
+        ],
+        [
+          1.024,
+          -0.3594,
+          -5.2223,
+          1.5
+        ],
+        [
+          1.536,
+          -0.3679,
+          -4.9058,
+          1.5
+        ],
+        [
+          2.048,
+          -0.377,
+          -4.5669,
+          1.5
+        ],
+        [
+          2.56,
+          -0.3848,
+          -4.273,
+          1.5
+        ],
+        [
+          3.072,
+          -0.3918,
+          -4.0079,
+          1.5
+        ],
+        [
+          3.584,
+          -0.399,
+          -3.7386,
+          1.5
+        ],
+        [
+          4.096,
+          -0.4066,
+          -3.4564,
+          1.5
+        ],
+        [
+          4.608,
+          -0.4142,
+          -3.1698,
+          1.5
+        ],
+        [
+          5.12,
+          -0.4218,
+          -2.8863,
+          1.5
+        ],
+        [
+          5.632,
+          -0.4293,
+          -2.6059,
+          1.5
+        ],
+        [
+          6.144,
+          -0.4369,
+          -2.3256,
+          1.5
+        ],
+        [
+          6.656,
+          -0.4562,
+          -2.0457,
+          1.5
+        ],
+        [
+          7.168,
+          -0.5162,
+          -1.7715,
+          1.5
+        ],
+        [
+          7.68,
+          -0.6337,
+          -1.5138,
+          1.5
+        ],
+        [
+          8.192,
+          -0.8065,
+          -1.3,
+          1.5
+        ],
+        [
+          8.704,
+          -1.0155,
+          -1.289,
+          1.5
+        ],
+        [
+          9.216,
+          -1.2221,
+          -1.5249,
+          1.5
+        ],
+        [
+          9.728,
+          -1.4321,
+          -1.7891,
+          1.5
+        ],
+        [
+          10.24,
+          -1.69,
+          -1.8762,
+          1.5
+        ],
+        [
+          10.752,
+          -1.9856,
+          -1.8148,
+          1.5
+        ],
+        [
+          11.264,
+          -2.2818,
+          -1.7394,
+          1.5
+        ],
+        [
+          11.776,
+          -2.5644,
+          -1.7243,
+          1.5
+        ],
+        [
+          12.288,
+          -2.8406,
+          -1.7537,
+          1.5
+        ],
+        [
+          12.8,
+          -3.1192,
+          -1.7827,
+          1.5
+        ],
+        [
+          13.312,
+          -3.4014,
+          -1.7897,
+          1.5
+        ],
+        [
+          13.824,
+          -3.6845,
+          -1.7826,
+          1.5
+        ],
+        [
+          14.336,
+          -3.9665,
+          -1.7765,
+          1.5
+        ],
+        [
+          14.848,
+          -4.2477,
+          -1.7778,
+          1.5
+        ],
+        [
+          15.36,
+          -4.529,
+          -1.7834,
+          1.5
+        ],
+        [
+          15.872,
+          -4.8105,
+          -1.7881,
+          1.5
+        ],
+        [
+          16.384,
+          -5.0922,
+          -1.7903,
+          1.5
+        ],
+        [
+          16.896,
+          -5.3721,
+          -1.7882,
+          1.5
+        ],
+        [
+          17.408,
+          -5.6039,
+          -1.7044,
+          1.5
+        ],
+        [
+          17.92,
+          -5.7504,
+          -1.4709,
+          1.5
+        ],
+        [
+          18.432,
+          -5.8834,
+          -1.1902,
+          1.5
+        ],
+        [
+          18.944,
+          -6.0823,
+          -0.9825,
+          1.5
+        ],
+        [
+          19.456,
+          -6.3391,
+          -0.8531,
+          1.5
+        ],
+        [
+          19.968,
+          -6.5655,
+          -0.7009,
+          1.5
+        ],
+        [
+          20.48,
+          -6.6137,
+          -0.4702,
+          1.5
+        ],
+        [
+          20.992,
+          -6.511,
+          -0.1839,
+          1.5
+        ],
+        [
+          21.504,
+          -6.4552,
+          0.115,
+          1.5
+        ],
+        [
+          22.016,
+          -6.5041,
+          0.3996,
+          1.5
+        ],
+        [
+          22.528,
+          -6.5882,
+          0.6463,
+          1.5
+        ],
+        [
+          23.04,
+          -6.5569,
+          0.7957,
+          1.5
+        ],
+        [
+          23.552,
+          -6.3355,
+          0.9225,
+          1.5
+        ],
+        [
+          24.064,
+          -6.0453,
+          1.0853,
+          1.5
+        ],
+        [
+          24.576,
+          -5.795,
+          1.2748,
+          1.5
+        ],
+        [
+          25.088,
+          -5.5899,
+          1.4638,
+          1.5
+        ],
+        [
+          25.6,
+          -5.3901,
+          1.6425,
+          1.5
+        ],
+        [
+          26.112,
+          -5.175,
+          1.8164,
+          1.5
+        ],
+        [
+          26.624,
+          -4.9508,
+          1.9918,
+          1.5
+        ],
+        [
+          27.136,
+          -4.7282,
+          2.1698,
+          1.5
+        ],
+        [
+          27.648,
+          -4.5101,
+          2.3484,
+          1.5
+        ],
+        [
+          28.16,
+          -4.2934,
+          2.5264,
+          1.5
+        ],
+        [
+          28.672,
+          -4.0756,
+          2.7039,
+          1.5
+        ],
+        [
+          29.184,
+          -3.8567,
+          2.8813,
+          1.5
+        ],
+        [
+          29.696,
+          -3.6377,
+          3.0589,
+          1.5
+        ],
+        [
+          30.208,
+          -3.4192,
+          3.2366,
+          1.5
+        ],
+        [
+          30.72,
+          -3.2008,
+          3.4142,
+          1.5
+        ],
+        [
+          31.232,
+          -2.9824,
+          3.5919,
+          1.5
+        ],
+        [
+          31.744,
+          -2.7639,
+          3.7695,
+          1.5
+        ],
+        [
+          32.256,
+          -2.5453,
+          3.9471,
+          1.5
+        ],
+        [
+          32.768,
+          -2.3268,
+          4.1248,
+          1.5
+        ],
+        [
+          33.28,
+          -2.1083,
+          4.3024,
+          1.5
+        ],
+        [
+          33.792,
+          -1.8898,
+          4.4801,
+          1.5
+        ],
+        [
+          34.304,
+          -1.6713,
+          4.6577,
+          1.5
+        ],
+        [
+          34.816,
+          -1.4528,
+          4.8353,
+          1.5
+        ],
+        [
+          35.328,
+          -1.2343,
+          5.013,
+          1.5
+        ],
+        [
+          35.84,
+          -1.0202,
+          5.187,
+          1.5
+        ],
+        [
+          36.352,
+          -0.8416,
+          5.3323,
+          1.5
+        ],
+        [
+          36.864,
+          -0.7342,
+          5.4196,
+          1.5
+        ],
+        [
+          37.376,
+          -0.6951,
+          5.4514,
+          1.5
+        ],
+        [
+          37.872,
+          -0.6895,
+          5.456,
+          1.5
+        ]
+      ]
+    },
+    {
+      "case_id": "test-u_trap-s41001",
+      "policy": "reactive",
+      "frame": "world_ENU",
+      "source": "privileged_observer_only",
+      "points_txyz": [
+        [
+          0,
+          -1.9786,
+          -0.5074,
+          1.5
+        ],
+        [
+          0.512,
+          -1.9538,
+          -0.5084,
+          1.5
+        ],
+        [
+          1.024,
+          -1.7861,
+          -0.5142,
+          1.5
+        ],
+        [
+          1.536,
+          -1.4716,
+          -0.5248,
+          1.5
+        ],
+        [
+          2.048,
+          -1.1329,
+          -0.5347,
+          1.5
+        ],
+        [
+          2.56,
+          -0.8566,
+          -0.5208,
+          1.5
+        ],
+        [
+          3.072,
+          -0.7523,
+          -0.3583,
+          1.5
+        ],
+        [
+          3.584,
+          -0.818,
+          -0.0446,
+          1.5
+        ],
+        [
+          4.096,
+          -0.9243,
+          0.2889,
+          1.5
+        ],
+        [
+          4.608,
+          -1.0567,
+          0.4548,
+          1.5
+        ],
+        [
+          5.12,
+          -1.2856,
+          0.3416,
+          1.5
+        ],
+        [
+          5.632,
+          -1.5674,
+          0.1099,
+          1.5
+        ],
+        [
+          6.144,
+          -1.8481,
+          -0.0501,
+          1.5
+        ],
+        [
+          6.656,
+          -2.1216,
+          -0.0888,
+          1.5
+        ],
+        [
+          7.168,
+          -2.3981,
+          -0.0684,
+          1.5
+        ],
+        [
+          7.68,
+          -2.6801,
+          -0.0584,
+          1.5
+        ],
+        [
+          8.192,
+          -2.9633,
+          -0.0779,
+          1.5
+        ],
+        [
+          8.704,
+          -3.2347,
+          -0.0887,
+          1.5
+        ],
+        [
+          9.216,
+          -3.4308,
+          0.043,
+          1.5
+        ],
+        [
+          9.728,
+          -3.5564,
+          0.3181,
+          1.5
+        ],
+        [
+          10.24,
+          -3.7036,
+          0.5911,
+          1.5
+        ],
+        [
+          10.752,
+          -3.9325,
+          0.7577,
+          1.5
+        ],
+        [
+          11.264,
+          -4.2072,
+          0.8428,
+          1.5
+        ],
+        [
+          11.776,
+          -4.3244,
+          0.9798,
+          1.5
+        ],
+        [
+          12.288,
+          -4.1744,
+          1.2206,
+          1.5
+        ],
+        [
+          12.8,
+          -3.9865,
+          1.5111,
+          1.5
+        ],
+        [
+          13.312,
+          -4.0176,
+          1.7888,
+          1.5
+        ],
+        [
+          13.824,
+          -4.1844,
+          1.9943,
+          1.5
+        ],
+        [
+          14.336,
+          -4.1311,
+          2.0466,
+          1.5
+        ],
+        [
+          14.848,
+          -3.8353,
+          2.0843,
+          1.5
+        ],
+        [
+          15.36,
+          -3.5882,
+          2.2821,
+          1.5
+        ],
+        [
+          15.872,
+          -3.5203,
+          2.6051,
+          1.5
+        ],
+        [
+          16.384,
+          -3.4967,
+          2.9171,
+          1.5
+        ],
+        [
+          16.896,
+          -3.3399,
+          3.1035,
+          1.5
+        ],
+        [
+          17.408,
+          -3.0389,
+          3.1455,
+          1.5
+        ],
+        [
+          17.92,
+          -2.7075,
+          3.1457,
+          1.5
+        ],
+        [
+          18.432,
+          -2.415,
+          3.1753,
+          1.5
+        ],
+        [
+          18.944,
+          -2.1511,
+          3.2312,
+          1.5
+        ],
+        [
+          19.456,
+          -1.8842,
+          3.2809,
+          1.5
+        ],
+        [
+          19.968,
+          -1.6038,
+          3.3077,
+          1.5
+        ],
+        [
+          20.48,
+          -1.3177,
+          3.3176,
+          1.5
+        ],
+        [
+          20.992,
+          -1.0339,
+          3.3234,
+          1.5
+        ],
+        [
+          21.504,
+          -0.7532,
+          3.3312,
+          1.5
+        ],
+        [
+          22.016,
+          -0.4747,
+          3.333,
+          1.5
+        ],
+        [
+          22.528,
+          -0.2141,
+          3.2633,
+          1.5
+        ],
+        [
+          23.04,
+          0.0223,
+          3.1031,
+          1.5
+        ],
+        [
+          23.552,
+          0.2509,
+          2.9177,
+          1.5
+        ],
+        [
+          24.064,
+          0.4849,
+          2.7559,
+          1.5
+        ],
+        [
+          24.576,
+          0.718,
+          2.653,
+          1.5
+        ],
+        [
+          25.088,
+          0.9318,
+          2.6582,
+          1.5
+        ],
+        [
+          25.6,
+          1.1412,
+          2.6583,
+          1.5
+        ],
+        [
+          26.112,
+          1.3677,
+          2.5298,
+          1.5
+        ],
+        [
+          26.624,
+          1.6052,
+          2.3245,
+          1.5
+        ],
+        [
+          27.136,
+          1.8409,
+          2.1312,
+          1.5
+        ],
+        [
+          27.648,
+          2.0716,
+          1.9727,
+          1.5
+        ],
+        [
+          28.16,
+          2.3011,
+          1.8259,
+          1.5
+        ],
+        [
+          28.672,
+          2.532,
+          1.6709,
+          1.5
+        ],
+        [
+          29.184,
+          2.7636,
+          1.5073,
+          1.5
+        ],
+        [
+          29.696,
+          2.995,
+          1.3428,
+          1.5
+        ],
+        [
+          30.208,
+          3.2259,
+          1.1812,
+          1.5
+        ],
+        [
+          30.72,
+          3.4569,
+          1.0214,
+          1.5
+        ],
+        [
+          31.232,
+          3.6881,
+          0.8614,
+          1.5
+        ],
+        [
+          31.744,
+          3.9193,
+          0.7006,
+          1.5
+        ],
+        [
+          32.256,
+          4.1505,
+          0.5394,
+          1.5
+        ],
+        [
+          32.768,
+          4.3816,
+          0.3783,
+          1.5
+        ],
+        [
+          33.28,
+          4.6126,
+          0.2175,
+          1.5
+        ],
+        [
+          33.792,
+          4.8393,
+          0.0599,
+          1.5
+        ],
+        [
+          34.304,
+          5.0291,
+          -0.0721,
+          1.5
+        ],
+        [
+          34.816,
+          5.1437,
+          -0.1519,
+          1.5
+        ],
+        [
+          35.328,
+          5.1857,
+          -0.1812,
+          1.5
+        ],
+        [
+          35.824,
+          5.1918,
+          -0.1854,
+          1.5
+        ]
+      ]
+    },
+    {
+      "case_id": "test-narrow_gap-s41001",
+      "policy": "reactive",
+      "frame": "world_ENU",
+      "source": "privileged_observer_only",
+      "points_txyz": [
+        [
+          0,
+          0.0937,
+          5.9842,
+          1.5
+        ],
+        [
+          0.512,
+          0.0938,
+          5.962,
+          1.5
+        ],
+        [
+          1.024,
+          0.0945,
+          5.7923,
+          1.5
+        ],
+        [
+          1.536,
+          0.096,
+          5.4757,
+          1.5
+        ],
+        [
+          2.048,
+          0.0975,
+          5.1367,
+          1.5
+        ],
+        [
+          2.56,
+          0.0988,
+          4.8427,
+          1.5
+        ],
+        [
+          3.072,
+          0.1,
+          4.5775,
+          1.5
+        ],
+        [
+          3.584,
+          0.1012,
+          4.3082,
+          1.5
+        ],
+        [
+          4.096,
+          0.1025,
+          4.0258,
+          1.5
+        ],
+        [
+          4.608,
+          0.1038,
+          3.7391,
+          1.5
+        ],
+        [
+          5.12,
+          0.1051,
+          3.4555,
+          1.5
+        ],
+        [
+          5.632,
+          0.1064,
+          3.175,
+          1.5
+        ],
+        [
+          6.144,
+          0.1168,
+          2.9031,
+          1.5
+        ],
+        [
+          6.656,
+          0.2462,
+          2.7416,
+          1.5
+        ],
+        [
+          7.168,
+          0.5394,
+          2.7464,
+          1.5
+        ],
+        [
+          7.68,
+          0.8819,
+          2.8201,
+          1.5
+        ],
+        [
+          8.192,
+          1.185,
+          2.858,
+          1.5
+        ],
+        [
+          8.704,
+          1.4375,
+          2.7902,
+          1.5
+        ],
+        [
+          9.216,
+          1.6695,
+          2.6326,
+          1.5
+        ],
+        [
+          9.728,
+          1.9156,
+          2.4789,
+          1.5
+        ],
+        [
+          10.24,
+          2.1859,
+          2.3867,
+          1.5
+        ],
+        [
+          10.752,
+          2.4692,
+          2.3474,
+          1.5
+        ],
+        [
+          11.264,
+          2.7529,
+          2.3262,
+          1.5
+        ],
+        [
+          11.776,
+          3.033,
+          2.3021,
+          1.5
+        ],
+        [
+          12.288,
+          3.312,
+          2.2755,
+          1.5
+        ],
+        [
+          12.8,
+          3.5924,
+          2.2546,
+          1.5
+        ],
+        [
+          13.312,
+          3.8741,
+          2.243,
+          1.5
+        ],
+        [
+          13.824,
+          4.1561,
+          2.238,
+          1.5
+        ],
+        [
+          14.336,
+          4.4377,
+          2.2354,
+          1.5
+        ],
+        [
+          14.848,
+          4.7192,
+          2.233,
+          1.5
+        ],
+        [
+          15.36,
+          5.0007,
+          2.2308,
+          1.5
+        ],
+        [
+          15.872,
+          5.2558,
+          2.1885,
+          1.5
+        ],
+        [
+          16.384,
+          5.3992,
+          1.9902,
+          1.5
+        ],
+        [
+          16.896,
+          5.4748,
+          1.6847,
+          1.5
+        ],
+        [
+          17.408,
+          5.6083,
+          1.4164,
+          1.5
+        ],
+        [
+          17.92,
+          5.8278,
+          1.2317,
+          1.5
+        ],
+        [
+          18.432,
+          6.0479,
+          1.056,
+          1.5
+        ],
+        [
+          18.944,
+          6.2029,
+          0.8978,
+          1.5
+        ],
+        [
+          19.456,
+          6.2367,
+          0.7607,
+          1.5
+        ],
+        [
+          19.968,
+          6.1451,
+          0.529,
+          1.5
+        ],
+        [
+          20.48,
+          6.0273,
+          0.2251,
+          1.5
+        ],
+        [
+          20.992,
+          5.9591,
+          -0.0803,
+          1.5
+        ],
+        [
+          21.504,
+          5.9122,
+          -0.3493,
+          1.5
+        ],
+        [
+          22.016,
+          5.7616,
+          -0.5464,
+          1.5
+        ],
+        [
+          22.528,
+          5.5064,
+          -0.6917,
+          1.5
+        ],
+        [
+          23.04,
+          5.2367,
+          -0.8356,
+          1.5
+        ],
+        [
+          23.552,
+          5.0003,
+          -0.999,
+          1.5
+        ],
+        [
+          24.064,
+          4.7854,
+          -1.1727,
+          1.5
+        ],
+        [
+          24.576,
+          4.5674,
+          -1.3438,
+          1.5
+        ],
+        [
+          25.088,
+          4.3396,
+          -1.5094,
+          1.5
+        ],
+        [
+          25.6,
+          4.1083,
+          -1.6732,
+          1.5
+        ],
+        [
+          26.112,
+          3.8793,
+          -1.8385,
+          1.5
+        ],
+        [
+          26.624,
+          3.6527,
+          -2.0051,
+          1.5
+        ],
+        [
+          27.136,
+          3.4263,
+          -2.1718,
+          1.5
+        ],
+        [
+          27.648,
+          3.1992,
+          -2.3381,
+          1.5
+        ],
+        [
+          28.16,
+          2.9715,
+          -2.5041,
+          1.5
+        ],
+        [
+          28.672,
+          2.7439,
+          -2.6701,
+          1.5
+        ],
+        [
+          29.184,
+          2.5166,
+          -2.8362,
+          1.5
+        ],
+        [
+          29.696,
+          2.2893,
+          -3.0024,
+          1.5
+        ],
+        [
+          30.208,
+          2.062,
+          -3.1686,
+          1.5
+        ],
+        [
+          30.72,
+          1.8346,
+          -3.3348,
+          1.5
+        ],
+        [
+          31.232,
+          1.6072,
+          -3.5009,
+          1.5
+        ],
+        [
+          31.744,
+          1.3799,
+          -3.667,
+          1.5
+        ],
+        [
+          32.256,
+          1.1525,
+          -3.8332,
+          1.5
+        ],
+        [
+          32.768,
+          0.9252,
+          -3.9993,
+          1.5
+        ],
+        [
+          33.28,
+          0.6979,
+          -4.1654,
+          1.5
+        ],
+        [
+          33.792,
+          0.48,
+          -4.3246,
+          1.5
+        ],
+        [
+          34.304,
+          0.3102,
+          -4.4487,
+          1.5
+        ],
+        [
+          34.816,
+          0.2182,
+          -4.516,
+          1.5
+        ],
+        [
+          35.328,
+          0.1901,
+          -4.5365,
+          1.5
+        ],
+        [
+          35.696,
+          0.1873,
+          -4.5385,
+          1.5
+        ]
+      ]
+    }
+  ]
+}

@@ -10,6 +10,7 @@
 
 ## Project boundaries
 - Current milestone: seeded environments, geometric feasibility, frozen splits/protocol and paired Webots evaluation before training. See docs/plans/0004-seeded-environments.md and docs/seeded-environments-v1.md.
+- This stage is validated in CI at source 373b002d0ada514c95ce409cbb87d4bc3d68a388; see docs/research/2026-10-26-seeded-environments.md. Test v1 is now exposed. Baseline failures remain; do not treat pipeline completion as trained-model quality or reuse test v1 as unseen after tuning.
 - First research task: one simulated drone reaches a supplied goal while avoiding static obstacles (level B).
 - Webots is the first simulator. Keep local execution, CI execution and GUI inspection evidence separate; training remains a later milestone.
 - Runtime navigation must use camera-free observations. Training-only camera supervision is optional and must stay outside the deployed observation path.
