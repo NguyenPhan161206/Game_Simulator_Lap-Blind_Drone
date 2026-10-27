@@ -1,6 +1,6 @@
 # Cây phiên bản và nguồn kiểm chứng
 
-Snapshot ngày 2026-10-26. Repo: [Game_Simulator_Lap-Blind_Drone](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone). Có thể xem [commit graph trên GitHub](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/network) và dùng `bash tools/git.sh log --all --graph --decorate --oneline` trong workspace này.
+Snapshot ngày 2026-10-27. Repo: [Game_Simulator_Lap-Blind_Drone](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone). Có thể xem [commit graph trên GitHub](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/network) và dùng `bash tools/git.sh log --all --graph --decorate --oneline` trong workspace này.
 
 ## Lịch sử các mốc
 
@@ -23,6 +23,10 @@ flowchart TD
   I --> H["955378e · bàn giao GitHub"]
   H --> P8["b46dc5d · kế hoạch nghiệm thu tuần tự"]
   P8 --> L8["ea13295 · collector tuần tự / khóa / 82 test"]
+  L8 --> H8["c012ab8 · bàn giao collector"]
+  H8 --> F9["b53f683 · sửa môi trường launcher"]
+  F9 --> H9["39c34af · source nghiệm thu desktop"]
+  H9 --> LOC["Manual 020953 / mapped 022316 · LOC 9/9"]
 ```
 
 | Nhánh/mốc | Tip được đồng bộ hoặc source kiểm chứng | Ý nghĩa |
@@ -31,8 +35,8 @@ flowchart TD
 | feat/navigation-v1 | 555f59fd856f73a3f44018ce334c0faa2ef7c0b6 | Baseline và báo cáo |
 | feat/seeded-environments | 2568f0771c5e591df0089ed3ce2f272637928b64 | Tip tài liệu đã đồng bộ fast-forward từ source chạy 373b002 |
 | feat/navigation-v2 | d7018cb187e6ce9268baa34a5e2fd6f7ab200078 | Tip tài liệu đã đồng bộ fast-forward từ source chạy 2f422e2 |
-| feat/local-acceptance | ea1329520137487b11491304f1f5b421b9f6d1d5 và commit tài liệu sau đó | Collector tuần tự đã kiểm chứng CI; trạng thái desktop còn gate riêng |
-| main | Đã fast-forward 1df11fd → 63298d7; có thêm commit tài liệu bàn giao | Cả bốn CI tại 63298d7 đạt; tip hiện tại xem GitHub/log |
+| feat/local-acceptance | Runtime gần nhất 39c34af875b66ff51f6797ba0872c084b5a3928d và commit tài liệu sau đó | Collector, launcher và nghiệm thu local đã có bằng chứng |
+| main | Source nghiệm thu 39c34af, có commit tài liệu bàn giao sau đó | Cả bốn CI tại source này đạt; tip hiện tại xem GitHub/log |
 
 Nhánh lịch sử không bị xóa hoặc force-push. Source chạy và commit tài liệu khác nhau là có chủ ý; mỗi báo cáo giữ SHA đã chạy. Bảng là snapshot có ngày, không là cơ chế tự động theo dõi remote.
 
@@ -44,5 +48,6 @@ Nhánh lịch sử không bị xóa hoặc force-push. Source chạy và commit 
 - [Kế hoạch và checklist tích hợp](plans/0007-github-integration.md) phân biệt commit kế hoạch, công cụ, kết quả CI và handoff; mỗi mốc phải qua check phù hợp trước push/tích hợp.
 - [Bàn giao tích hợp main](research/2026-10-26-github-integration.md) có bốn workflow đạt tại source 63298d7, gồm 75 unit test và hồi quy Webots v1/v2; ba gate desktop còn thiếu vẫn giữ mở.
 - [Nghiệm thu tuần tự](research/2026-10-26-sequential-acceptance.md) tại ea13295 có 82 test và CI kiểm tra mapped/manual/khóa chống chạy chồng; tiếp tục giữ gate desktop riêng.
+- [Hoàn tất local](research/2026-10-27-local-acceptance-complete.md) tại source 39c34af: manual đủ bốn trục/T/G, mapped success và phiếu phù hợp; LOC-01…09 hoàn tất. Các giới hạn realtime/mô phỏng vẫn được giữ.
 
 Trong workspace managed dùng `tools/git.sh` vì .git gốc chỉ đọc và là metadata rỗng; lịch sử có thật nằm ở .local/git. Clone bình thường dùng .git chuẩn. SSH managed hiện lỗi quyền cấu hình hệ thống; connector GitHub dùng làm kênh xuất bản được cho phép, kiểm tra khớp tree/commit và không đổi remote SSH. Xem [hướng dẫn Git](development.md).

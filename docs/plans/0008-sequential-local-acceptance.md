@@ -22,3 +22,7 @@ Trạng thái ban đầu: đã xác nhận repo sạch tại main 955378e và đ
 ## Đối chiếu ngày 27/10/2026
 
 Batch desktop mới tại source c012ab8 đã có chuyển động ngang/yaw và phiếu smooth/unchanged. Còn thiếu sampled up command cho T/G nên accept dừng đúng ở manual; chưa có mapped của batch này. Xem [audit và bước thử tiếp](../research/2026-10-27-local-acceptance-followup.md). Preflight đạt 82 test, cả hai lock và dependencies; probe display trong phiên sửa lỗi exit 1, tách khỏi bản preflight trước ghi kết nối được :0. LOC-09 đã được ghi nhận kèm giới hạn realtime; LOC-05/06 còn mở. [Kế hoạch sửa launcher/thông báo](0009-local-launcher-followup.md).
+
+## Hoàn tất desktop sau đối chiếu
+
+Hai lượt riêng manual 020953 và mapped 022316 dùng cùng source sạch/helper/binary 39c34af, không chồng thời gian. Mỗi lượt có phiếu và review/evidence_gaps rỗng; [audit cuối](../research/2026-10-27-local-acceptance-complete.md) ghi bằng chứng LOC-01…09. Không sao chép phiếu hoặc tạo batch giả từ các lượt riêng.

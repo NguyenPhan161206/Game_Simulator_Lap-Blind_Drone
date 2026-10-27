@@ -9,3 +9,7 @@ Ngày 2026-10-27. Đầu vào: batch local-acceptance-20261026T224307533989Z t�
 5. Bổ sung audit và checklist: LOC-09 ghi nhận hiệu năng/phiếu phản hồi với giới hạn; LOC-05/06 còn mở. Ghi rõ nguồn và từng lượt nếu người dùng thử bổ sung T/G hoặc chạy mapped riêng; không sao chép phiếu giữa các lượt.
 
 Source cơ sở c012ab8; preflight 82 test đạt. Lần probe display của phiên sửa lỗi trả exit 1; không coi đây là lượt thao tác GUI. Sau sửa, 82 test local đạt. Source b53f683 đã qua [CI 40416478930](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40416478930), job 121899976309: mapped success, manual telemetry/timeout và khóa chạy chồng đạt; hai console mới không còn cảnh báo launcher. Artifact 12696047038; [JSON evidence](../research/2026-10-27-launcher-fix-ci.json).
+
+## Kết quả nghiệm thu cuối
+
+[Manual 020953 và mapped 022316](../research/2026-10-27-local-acceptance-complete.md) tại source 39c34af đã đủ bằng chứng T/G và quan sát mapped; LOC-05/06 đã hoàn tất. Mapping/controller vẫn nguyên bản khóa; giữ nguyên các lượt thiếu lệnh/timeout trước đó để đối chiếu. Mốc tiếp theo là câu hỏi nghiên cứu/protocol mới.

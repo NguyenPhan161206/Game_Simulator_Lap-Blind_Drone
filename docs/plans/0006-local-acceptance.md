@@ -23,3 +23,7 @@ Trạng thái ban đầu: công cụ computer-use báo không có app/browser; p
 ## Cập nhật sau khi người dùng chạy desktop
 
 [Audit lượt mới](../research/2026-10-26-local-acceptance.md) đã đóng LOC-04/07/08. LOC-05 còn mâu thuẫn giữa phiếu và command; LOC-06 thiếu xác nhận đã xem chuyển động/kết thúc; LOC-09 thiếu mô tả độ phản hồi. [Kế hoạch tích hợp GitHub](0007-github-integration.md) đã thêm collector CI thực tại source b324105, 75 test và Webots mapped/manual-timeout đều đạt; không dùng CI để đóng ba gate desktop còn lại.
+
+## Hoàn tất nhánh L — 27/10/2026
+
+[Audit cuối](../research/2026-10-27-local-acceptance-complete.md) tại source runtime 39c34af đóng LOC-01…09: manual 020953 đủ hai chiều của bốn trục và phiếu; mapped 022316 success/0 contact, có quan sát GUI và kết thúc. Raw files, source, ảnh, hash và so sánh CI được lưu riêng. Giữ giới hạn realtime; các trạng thái thiếu bằng chứng ở trên là lịch sử trước mốc này.

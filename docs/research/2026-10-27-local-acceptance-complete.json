@@ -1,0 +1,792 @@
+{
+  "kind": "completed_local_desktop_acceptance",
+  "tested_source": "39c34af875b66ff51f6797ba0872c084b5a3928d",
+  "protocol_v1_sha256": "96872282fc7df5029453ed684d0e73e9305137c3d6907736869b2e04bf64b90f",
+  "protocol_v2_sha256": "0825b3b219fbf6a7f939b3076b79b1c82888c02d71a8ffea36d2e7d5bde1e395",
+  "sessions": {
+    "manual": {
+      "directory": "artifacts/local-manual-20261027T020953592943Z",
+      "session": {
+        "schema_version": 1,
+        "mode": "manual",
+        "started_utc": "2026-10-27T02:09:53.593743+00:00",
+        "source_commit": "39c34af875b66ff51f6797ba0872c084b5a3928d",
+        "working_tree_dirty": false,
+        "protocol_sha256": "0825b3b219fbf6a7f939b3076b79b1c82888c02d71a8ffea36d2e7d5bde1e395",
+        "world": "minimal_lab.wbt",
+        "controllers": [
+          "drone_controller",
+          "lab_supervisor"
+        ],
+        "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+        "distribution": "Ubuntu 26.04.1 LTS",
+        "launcher_python": "3.14.4",
+        "architecture": "x86_64",
+        "webots_version_file": "R2025a",
+        "webots_binary_sha256": "c12c65e8680b579d0f33c34be452f100a302bdecc6d9344becf356db4a675a1a",
+        "logical_cpus": 16,
+        "display": ":0",
+        "wayland_display": "wayland-0",
+        "qt_platform": "xcb",
+        "software_rendering": false,
+        "realtime_requested": true,
+        "rendering_enabled": true,
+        "case": null,
+        "status": "process_exited",
+        "command": [
+          "/home/binhnguyen/Documents/AI_Lap/.local/webots-R2025a/webots/bin/webots-bin",
+          "--batch",
+          "--stdout",
+          "--stderr",
+          "--mode=realtime",
+          "/home/binhnguyen/Documents/AI_Lap/simulation/webots/worlds/minimal_lab.wbt"
+        ],
+        "helper_sha256": "746eb23ae4799cbff07675948f926034883e7a86fc68f33fd8ad1826692d0097",
+        "exit_code": 0,
+        "wall_s": 114.4706187020056,
+        "ended_utc": "2026-10-27T02:11:48.096213+00:00"
+      },
+      "operator": {
+        "recorded_utc": "2026-10-27T02:11:48.128477+00:00",
+        "kind": "operator_self_report",
+        "answers": {
+          "gui_opened": "yes",
+          "correct_world_controllers": "yes",
+          "key_W": "yes",
+          "key_S": "yes",
+          "key_A": "yes",
+          "key_D": "yes",
+          "key_T": "yes",
+          "key_G": "yes",
+          "key_Q": "yes",
+          "key_E": "yes",
+          "key_SPACE": "yes",
+          "key_release": "yes",
+          "key_R": "yes"
+        },
+        "responsiveness": "smooth",
+        "simulation_control_changes": "unchanged",
+        "responsiveness_notes": "",
+        "other_notes": ""
+      },
+      "telemetry_summary": {
+        "packets": 1691,
+        "invalid_lines": 0,
+        "first_sim_s": 0.016,
+        "last_sim_s": 108.816,
+        "command_signs": {
+          "forward_m_s": [
+            "negative",
+            "positive"
+          ],
+          "left_m_s": [
+            "negative",
+            "positive"
+          ],
+          "up_m_s": [
+            "negative",
+            "positive"
+          ],
+          "yaw_rate_rad_s": [
+            "negative",
+            "positive"
+          ]
+        },
+        "note": "Commands support motion evidence; they do not prove physical key presses/reset or GUI responsiveness"
+      },
+      "command_counts": {
+        "forward_m_s": {
+          "minimum": -0.8,
+          "maximum": 0.8,
+          "positive_samples": 354,
+          "negative_samples": 165
+        },
+        "left_m_s": {
+          "minimum": -0.8,
+          "maximum": 0.8,
+          "positive_samples": 205,
+          "negative_samples": 199
+        },
+        "up_m_s": {
+          "minimum": -0.4,
+          "maximum": 0.4,
+          "positive_samples": 391,
+          "negative_samples": 205
+        },
+        "yaw_rate_rad_s": {
+          "minimum": -0.5,
+          "maximum": 0.5,
+          "positive_samples": 35,
+          "negative_samples": 15
+        }
+      },
+      "position_extent_m": [
+        [
+          -4,
+          5.611996331341829
+        ],
+        [
+          -0.9504383673883282,
+          3.006852415754625
+        ],
+        [
+          1.3539729936825684,
+          5.282922656182785
+        ]
+      ],
+      "review": {
+        "mode": "manual",
+        "process_exit_code": 0,
+        "wall_s_including_startup_shutdown": 114.4706187020056,
+        "gui_verified_automatically": false,
+        "operator_record_present": true,
+        "telemetry": {
+          "packets": 1691,
+          "invalid_lines": 0,
+          "first_sim_s": 0.016,
+          "last_sim_s": 108.816,
+          "command_signs": {
+            "forward_m_s": [
+              "negative",
+              "positive"
+            ],
+            "left_m_s": [
+              "negative",
+              "positive"
+            ],
+            "up_m_s": [
+              "negative",
+              "positive"
+            ],
+            "yaw_rate_rad_s": [
+              "negative",
+              "positive"
+            ]
+          },
+          "note": "Commands support motion evidence; they do not prove physical key presses/reset or GUI responsiveness"
+        },
+        "manual_evidence_warnings": [],
+        "files_sha256": {
+          "console.log": "986898929a871ecae11b5f48d8aecb123fe6cadc70c39e5523a9da98f27ba5a0",
+          "operator.json": "677310444ec957d3d823831663f60455f0a374a3bb81b11610705a9bedaf536e",
+          "run/telemetry.jsonl": "917cc8c4c6a7930bba233e9de7c3d9af7da16b129280fab4490b2f567a29fdb6",
+          "session.json": "d307dc4fbdbf90f5ee4552ff9b75ae31099a2ba3122b02fcfb6b697a0075c909"
+        }
+      },
+      "gaps": []
+    },
+    "mapped": {
+      "directory": "artifacts/local-mapped-20261027T022316444291Z",
+      "session": {
+        "schema_version": 1,
+        "mode": "mapped",
+        "started_utc": "2026-10-27T02:23:16.444501+00:00",
+        "source_commit": "39c34af875b66ff51f6797ba0872c084b5a3928d",
+        "working_tree_dirty": false,
+        "protocol_sha256": "0825b3b219fbf6a7f939b3076b79b1c82888c02d71a8ffea36d2e7d5bde1e395",
+        "world": "observed_v2.wbt",
+        "controllers": [
+          "drone_v2",
+          "lab_v2"
+        ],
+        "os": "Linux-7.0.0-38-generic-x86_64-with-glibc2.43",
+        "distribution": "Ubuntu 26.04.1 LTS",
+        "launcher_python": "3.14.4",
+        "architecture": "x86_64",
+        "webots_version_file": "R2025a",
+        "webots_binary_sha256": "c12c65e8680b579d0f33c34be452f100a302bdecc6d9344becf356db4a675a1a",
+        "logical_cpus": 16,
+        "display": ":0",
+        "wayland_display": "wayland-0",
+        "qt_platform": "xcb",
+        "software_rendering": false,
+        "realtime_requested": true,
+        "rendering_enabled": true,
+        "case": "development-u_trap-s21001",
+        "status": "process_exited",
+        "command": [
+          "/home/binhnguyen/Documents/AI_Lap/.local/webots-R2025a/webots/bin/webots-bin",
+          "--batch",
+          "--stdout",
+          "--stderr",
+          "--mode=realtime",
+          "/home/binhnguyen/Documents/AI_Lap/simulation/webots/worlds/observed_v2.wbt"
+        ],
+        "helper_sha256": "746eb23ae4799cbff07675948f926034883e7a86fc68f33fd8ad1826692d0097",
+        "exit_code": 0,
+        "wall_s": 46.774846082000295,
+        "ended_utc": "2026-10-27T02:24:03.259156+00:00"
+      },
+      "operator": {
+        "recorded_utc": "2026-10-27T02:24:03.279447+00:00",
+        "kind": "operator_self_report",
+        "answers": {
+          "gui_opened": "yes",
+          "correct_world_controllers": "yes",
+          "motion_seen": "yes",
+          "completion_seen": "yes"
+        },
+        "responsiveness": "smooth",
+        "simulation_control_changes": "unchanged",
+        "responsiveness_notes": "",
+        "other_notes": ""
+      },
+      "telemetry_summary": {
+        "packets": 668,
+        "invalid_lines": 0,
+        "first_sim_s": 0.016,
+        "last_sim_s": 43.184,
+        "command_signs": {
+          "forward_m_s": [
+            "negative",
+            "positive"
+          ],
+          "left_m_s": [
+            "negative",
+            "positive"
+          ],
+          "up_m_s": [
+            "negative",
+            "positive"
+          ],
+          "yaw_rate_rad_s": [
+            "positive"
+          ]
+        },
+        "note": "Commands support motion evidence; they do not prove physical key presses/reset or GUI responsiveness"
+      },
+      "command_counts": {
+        "forward_m_s": {
+          "minimum": -0.39999991043597877,
+          "maximum": 0.3999976272566356,
+          "positive_samples": 353,
+          "negative_samples": 247
+        },
+        "left_m_s": {
+          "minimum": -0.3999921260550363,
+          "maximum": 0.39999167930462887,
+          "positive_samples": 290,
+          "negative_samples": 310
+        },
+        "up_m_s": {
+          "minimum": -0.0004625234421828495,
+          "maximum": 0.0014025120600376084,
+          "positive_samples": 198,
+          "negative_samples": 21
+        },
+        "yaw_rate_rad_s": {
+          "minimum": 0,
+          "maximum": 0.35,
+          "positive_samples": 619,
+          "negative_samples": 0
+        }
+      },
+      "position_extent_m": [
+        [
+          -3.5959766843259104,
+          5.282276482682611
+        ],
+        [
+          0.10059776381996303,
+          3.625041513436306
+        ],
+        [
+          1.4499584471917983,
+          1.5005781543027286
+        ]
+      ],
+      "review": {
+        "mode": "mapped",
+        "process_exit_code": 0,
+        "wall_s_including_startup_shutdown": 46.774846082000295,
+        "gui_verified_automatically": false,
+        "operator_record_present": true,
+        "comparison": {
+          "identity_valid": true,
+          "ci_url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790",
+          "ci_source": "2f422e253376b589e478ac10f3eee8efa970dc74",
+          "local_outcome": "success",
+          "ci_outcome": "success",
+          "same_outcome": true,
+          "local": {
+            "elapsed_s": 41.216,
+            "path_length_m": 14.858754976240306,
+            "final_distance_m": 0.046151670231428264,
+            "final_speed_m_s": 0.016381392651167736,
+            "contact_count": 0
+          },
+          "ci": {
+            "elapsed_s": 41.21600000000001,
+            "path_length_m": 14.855333972072696,
+            "final_distance_m": 0.04615166647376634,
+            "final_speed_m_s": 0.01638140827271698,
+            "contact_count": 0
+          },
+          "local_minus_ci": {
+            "elapsed_s": -7.105427357601002e-15,
+            "path_length_m": 0.003421004167609709,
+            "final_distance_m": 3.75766192467486e-09,
+            "final_speed_m_s": -1.5621549245142807e-08,
+            "contact_count": 0,
+            "final_position_distance_m": 1.0217509795075862e-08,
+            "initial_position_distance_m": 0.002156186406045091,
+            "initial_yaw_rad": 0
+          },
+          "classification": "numeric_difference_review_required",
+          "note": "1e-6 is a diagnostic label, not a research acceptance threshold; no cause inferred",
+          "policy_cpu": {
+            "decisions": 2575,
+            "range_samples": 1288,
+            "range_values": 12880,
+            "map_updates": 1288,
+            "free_cells": 4926,
+            "occupied_cells": 252,
+            "peak_cells": 5178,
+            "derived_blocked_cells": 2185,
+            "budget_exhausted": false,
+            "guard_events": 0,
+            "scan_decisions": 157,
+            "plans": 76,
+            "cpu_mean_ms": 1.057186660970874,
+            "cpu_max_ms": 32.586333
+          }
+        },
+        "sim_s_over_total_wall_s": 0.9239153865784757,
+        "telemetry": {
+          "packets": 668,
+          "invalid_lines": 0,
+          "first_sim_s": 0.016,
+          "last_sim_s": 43.184,
+          "command_signs": {
+            "forward_m_s": [
+              "negative",
+              "positive"
+            ],
+            "left_m_s": [
+              "negative",
+              "positive"
+            ],
+            "up_m_s": [
+              "negative",
+              "positive"
+            ],
+            "yaw_rate_rad_s": [
+              "positive"
+            ]
+          },
+          "note": "Commands support motion evidence; they do not prove physical key presses/reset or GUI responsiveness"
+        },
+        "files_sha256": {
+          "console.log": "d8e81a8cdb2df2cef940107359591eb36641fd79cd2101efc0724af47da62f7f",
+          "operator.json": "b782bd67b3b667ca720b64a16731111f206010907764b34fceb5a0120e381280",
+          "run/cases.json": "c5b8046cd97d0e63cb32a6b7c1dde363b08c1b9dd8a4c85d841c65d1e908eeb7",
+          "run/development-u_trap-s21001-mapped.jpg": "cd5510f076dfee3e599e964a1cac5304d1cda6039e61ad8d1fedd2c75e9e7838",
+          "run/manifest.json": "75bc0851b06fd747515f197d79fab27e272f385cc4b8b244525ae351cad7f3dc",
+          "run/progress.json": "e554962c353a33d8220d3bfe299c00ced778d5e8d9597f8847649a2315e8b9b3",
+          "run/result.json": "8a9cdbe101e728ef56cf09f00560c6e8e6f542301c272e28a348f5796d6d0c54",
+          "run/scene.jpg": "6df1510913e928523e242f1befeb1cda60af147b569e5d89553e81b9623d5a85",
+          "run/telemetry.jsonl": "98098c8dea5fb265d31bb7ca372ed38e22aba2a36f51da780ee1b8dcc3e38ae7",
+          "run/trajectories.json": "8a0433237ab04ae3cace6680d7552195fab30a193430196a5a8ca7721407ed85",
+          "session.json": "8e468e8887e8af670d0b3b415e708d095b866e6032c43aabe1639cb8454b095d"
+        }
+      },
+      "gaps": [],
+      "result": {
+        "status": "passed",
+        "mode": "navigation",
+        "webots_version": "R2025a",
+        "source_commit": "39c34af875b66ff51f6797ba0872c084b5a3928d",
+        "working_tree_dirty": false,
+        "ci_run_id": null,
+        "algorithm_version": "observed_grid_v2",
+        "lab_config": {
+          "schema_version": 1,
+          "name": "minimal_webots_lab_v1",
+          "status": "engineering_prototype",
+          "runtime_ready": true,
+          "validation_status": "verified_in_ci; see docs/research/2026-10-25-webots-v1-smoke.json",
+          "webots_version": "R2025a",
+          "coordinate_frame": "ENU",
+          "runtime_camera_enabled": false,
+          "runtime_privileged_state_enabled": false,
+          "physical_radar_claim": false,
+          "basic_time_step_ms": 16,
+          "sensor_period_ms": 32,
+          "world": {
+            "size_m": [
+              20,
+              20
+            ],
+            "wall_height_m": 6,
+            "wall_thickness_m": 0.2,
+            "floor_thickness_m": 0.1,
+            "gravity_m_s2": 9.81,
+            "start_m": [
+              -4,
+              0,
+              1.5
+            ],
+            "goal_m": [
+              5,
+              4,
+              1.5
+            ],
+            "goal_radius_m": 0.5,
+            "obstacles": [
+              {
+                "id": "BLOCK_NEAR",
+                "center_m": [
+                  2,
+                  0,
+                  1
+                ],
+                "size_m": [
+                  0.6,
+                  2,
+                  2
+                ]
+              },
+              {
+                "id": "BLOCK_HIDDEN",
+                "center_m": [
+                  4,
+                  0,
+                  1
+                ],
+                "size_m": [
+                  0.6,
+                  1,
+                  2
+                ]
+              },
+              {
+                "id": "BLOCK_SIDE",
+                "center_m": [
+                  0,
+                  4,
+                  1.5
+                ],
+                "size_m": [
+                  2,
+                  0.8,
+                  3
+                ]
+              }
+            ]
+          },
+          "vehicle": {
+            "mass_kg": 1,
+            "body_size_m": [
+              0.6,
+              0.6,
+              0.16
+            ],
+            "inertia_kg_m2": [
+              0.03,
+              0.03,
+              0.05
+            ],
+            "arm_offset_m": 0.25,
+            "thrust_coefficient_n_s2": 1e-05,
+            "torque_to_thrust_m": 0.02,
+            "motor_max_rad_s": 1000,
+            "motor_acceleration_rad_s2": 10000,
+            "motor_max_torque_nm": 10000,
+            "actuator_assumption": "fast ideal velocity actuator; authority limits are not real motor ratings",
+            "horizontal_speed_m_s": 0.8,
+            "vertical_speed_m_s": 0.4,
+            "yaw_rate_rad_s": 0.5,
+            "altitude_bounds_m": [
+              0.4,
+              5
+            ]
+          },
+          "control": {
+            "velocity_gain_s_inv": 1.8,
+            "acceleration_limit_m_s2": 2,
+            "tilt_limit_rad": 0.22,
+            "altitude_p_s_inv2": 5,
+            "altitude_d_s_inv": 3.5,
+            "attitude_p_nm_rad": 0.45,
+            "attitude_d_nm_s_rad": 0.18,
+            "yaw_p_nm_rad": 0.25,
+            "yaw_d_nm_s_rad": 0.14
+          },
+          "sensors": {
+            "model": "geometric_single_ray_generic_distance_sensor",
+            "range_max_m": 8,
+            "horizontal_directions_deg": [
+              0,
+              45,
+              90,
+              135,
+              180,
+              225,
+              270,
+              315
+            ],
+            "horizontal_origin_radius_m": 0.33,
+            "vertical_origin_offset_m": 0.12,
+            "noise_fraction": 0,
+            "latency_s": 0,
+            "localization": "Webots GPS, ideal local Cartesian coordinates",
+            "attitude": "Webots InertialUnit, ideal simulator attitude; no fusion model",
+            "angular_velocity": "Webots Gyro, ideal"
+          },
+          "smoke": {
+            "hover_duration_s": 4,
+            "hover_position_tolerance_m": 0.18,
+            "hover_altitude_tolerance_m": 0.15,
+            "motion_duration_s": 2,
+            "minimum_motion_m": 0.5,
+            "brake_duration_s": 3,
+            "stop_speed_tolerance_m_s": 0.18,
+            "sensor_fixture_m": [
+              0,
+              0,
+              1.5
+            ],
+            "sensor_tolerance_m": 0.08,
+            "collision_timeout_s": 8,
+            "reset_duration_s": 3,
+            "total_timeout_s": 50
+          },
+          "navigation": {
+            "speed_m_s": 0.55,
+            "goal_gain_s_inv": 0.65,
+            "range_max_age_s": 0.12,
+            "avoid_distance_m": 2.2,
+            "follow_distance_m": 1,
+            "brake_margin_m": 0.55,
+            "brake_acceleration_m_s2": 0.6,
+            "leave_progress_m": 0.3
+          },
+          "navigation_v2": {
+            "cell_m": 0.25,
+            "map_radius_m": 12,
+            "max_cells": 16000,
+            "margin_m": 0.12,
+            "planning_margin_m": 0.1,
+            "speed_m_s": 0.4,
+            "scan_yaw_rad_s": 0.35,
+            "initial_scan_s": 2.5,
+            "replan_period_s": 0.5,
+            "lookahead_m": 0.8,
+            "guard_horizon_s": 1.4,
+            "unknown_cost": 1.8,
+            "max_expansions": 20000
+          }
+        },
+        "suite": "observed_v2",
+        "protocol_sha256": "0825b3b219fbf6a7f939b3076b79b1c82888c02d71a8ffea36d2e7d5bde1e395",
+        "manifest_sha256": "14ea5519eea62321c66c21d752834d94e6a9ff08ed189e9a23c9b93430b8477f",
+        "protocol_frozen": true,
+        "rendering_enabled": true,
+        "complete_split": false,
+        "split": "development",
+        "specification_sha256": "6a1773106e680f6d525fe482960a6c4b243d28435d8abd56ffec9a7d00f439b7",
+        "specification": {
+          "split": "development",
+          "evaluation": {
+            "warmup_s": 2,
+            "goal_radius_m": 0.5,
+            "stop_speed_m_s": 0.18,
+            "dwell_s": 1,
+            "timeout_s": 90,
+            "position_bounds_min_m": [
+              -9.5,
+              -9.5,
+              0.4
+            ],
+            "position_bounds_max_m": [
+              9.5,
+              9.5,
+              5
+            ]
+          },
+          "case_ids": [
+            "development-u_trap-s21001"
+          ]
+        },
+        "episodes": [
+          {
+            "case_id": "development-u_trap-s21001",
+            "policy": "mapped",
+            "feasible": true,
+            "family": "u_trap",
+            "seed": 21001,
+            "geometry_sha256": "27621836e2d218d860329de871a0ce8a0cef54b9c6af20cc133981aa3051a61c",
+            "initial_position_m": [
+              -1.064808,
+              0.10064599999999996,
+              1.497843813593955
+            ],
+            "initial_yaw_rad": -0.7185606399999999,
+            "diagnostics": {
+              "decisions": 2575,
+              "range_samples": 1288,
+              "range_values": 12880,
+              "map_updates": 1288,
+              "free_cells": 4926,
+              "occupied_cells": 252,
+              "peak_cells": 5178,
+              "derived_blocked_cells": 2185,
+              "budget_exhausted": false,
+              "guard_events": 0,
+              "scan_decisions": 157,
+              "plans": 76,
+              "cpu_mean_ms": 1.057186660970874,
+              "cpu_max_ms": 32.586333
+            },
+            "final_position_m": [
+              5.282776513523633,
+              0.2952858910273458,
+              1.4999999999999947
+            ],
+            "outcome": "success",
+            "elapsed_s": 41.216,
+            "path_length_m": 14.858754976240306,
+            "final_distance_m": 0.046151670231428264,
+            "min_goal_distance_m": 0.046151670231428264,
+            "final_speed_m_s": 0.016381392651167736,
+            "contact_count": 0
+          }
+        ],
+        "checks": {
+          "all_requested_episodes_recorded": {
+            "passed": true
+          },
+          "negative_controls_never_succeed": {
+            "passed": true
+          }
+        },
+        "assumptions": [
+          "ideal localization and ranges",
+          "horizontal detours at goal altitude",
+          "public fixtures; split isolation relies on frozen protocol, not secrecy",
+          "no learned model"
+        ],
+        "summary": {
+          "mapped": {
+            "feasible": {
+              "episodes": 1,
+              "successes": 1,
+              "success_rate": 1,
+              "outcomes": {
+                "success": 1,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": 41.216,
+              "success_only_mean_path_m": 14.858754976240306
+            },
+            "negative_control": {
+              "episodes": 0,
+              "successes": 0,
+              "success_rate": null,
+              "outcomes": {
+                "success": 0,
+                "collision": 0,
+                "out_of_bounds": 0,
+                "timeout": 0
+              },
+              "success_only_mean_time_s": null,
+              "success_only_mean_path_m": null
+            }
+          }
+        },
+        "by_family": {
+          "u_trap": {
+            "mapped": {
+              "feasible": {
+                "episodes": 1,
+                "successes": 1,
+                "success_rate": 1,
+                "outcomes": {
+                  "success": 1,
+                  "collision": 0,
+                  "out_of_bounds": 0,
+                  "timeout": 0
+                },
+                "success_only_mean_time_s": 41.216,
+                "success_only_mean_path_m": 14.858754976240306
+              },
+              "negative_control": {
+                "episodes": 0,
+                "successes": 0,
+                "success_rate": null,
+                "outcomes": {
+                  "success": 0,
+                  "collision": 0,
+                  "out_of_bounds": 0,
+                  "timeout": 0
+                },
+                "success_only_mean_time_s": null,
+                "success_only_mean_path_m": null
+              }
+            }
+          }
+        }
+      },
+      "trajectory_comparison": {
+        "samples": 82,
+        "maximum_xy_delta_m": 0.00010000000000021103,
+        "maximum_xyz_delta_m": 0.0021999999999999797,
+        "xy_differing_samples": 4
+      },
+      "prior_local_motion_exact_match": true
+    }
+  },
+  "checklist_scope": "LOC-01..LOC-09 complete using these runs and previously linked installer/dependency/display audits",
+  "limits": [
+    "manual SPACE/release/R are operator-confirmed; sampled commands alone do not distinguish them",
+    "controller CPU max exceeds 16ms; smooth operator feedback is not hardware realtime/input-latency proof",
+    "manual altitude target bounds are not physical barriers; recorded overshoot is retained",
+    "same exposed development protocol, reproduction only; no training/hardware/privacy guarantee"
+  ],
+  "observer_image": {
+    "path": "docs/research/figures/local-acceptance-2026-10-27-u21001.jpg",
+    "size": 30832,
+    "sha256": "cd5510f076dfee3e599e964a1cac5304d1cda6039e61ad8d1fedd2c75e9e7838",
+    "blob_sha": "9477a2a161d9a753db3f1302cb1056d9b305ec2f",
+    "original_path": "artifacts/local-mapped-20261027T022316444291Z/run/development-u_trap-s21001-mapped.jpg",
+    "agent_inspected": true,
+    "unchanged_bytes": true,
+    "input_to_policy": false
+  },
+  "runtime_ci": {
+    "source": "39c34af875b66ff51f6797ba0872c084b5a3928d",
+    "unit_tests": 82,
+    "runs": [
+      {
+        "id": 40417019343,
+        "name": "Scaffold checks",
+        "url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40417019343",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 40417019247,
+        "name": "Local session collector",
+        "url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40417019247",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 40417019314,
+        "name": "Navigation v2",
+        "url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40417019314",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 40417019266,
+        "name": "Webots minimal lab",
+        "url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40417019266",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  }
+}

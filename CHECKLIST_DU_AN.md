@@ -191,17 +191,17 @@ Tách riêng phần này để không đánh đồng CI có simulator với GUI 
 - [x] LOC-02 — Chẩn đoán libGLU.so.1/libsndio.so.7; lần audit sau với bundled library path không còn thiếu dependency.
 - [x] LOC-03 — Ghi lần chạy trong phiên managed không kết nối được display :0; không báo đó là chuyến bay local thành công.
 - [x] LOC-04 — Mở Webots bằng terminal desktop; phiếu người thao tác xác nhận GUI/world/controller, console và source khớp ở lượt manual 064254.
-- [ ] LOC-05 — Chạy manual, bấm các phím và reset trực tiếp; ghi việc đã thao tác thay vì chỉ có mapping test.
-- [ ] LOC-06 — Chạy mapped trên development-u_trap-s21001 ở realtime, thấy chuyển động và kết quả kết thúc.
-- [x] LOC-07 — Lưu console/result/source/telemetry/trajectory và JPG của lượt mapped laptop 064328; đã xem ảnh, hash trong evidence rút gọn.
-- [x] LOC-08 — Đối chiếu mapped với CI cùng protocol: cùng success/0 contact, path +3.421 mm, pose đầu khác; ghi riêng khác biệt/giới hạn, chưa quy nguyên nhân.
-- [x] LOC-09 — Đã ghi thời gian/CPU của mapped và phiếu manual mới chọn smooth/unchanged; CPU max 48.68 ms vượt tick 16 ms, chưa chứng minh deadline realtime. Phản ứng riêng T/G còn thuộc LOC-05.
+- [x] LOC-05 — Lượt manual 20261027T020953 có đủ hai chiều của bốn trục, gồm T/G ±0.4 m/s; phiếu xác nhận SPACE/thả phím/R và GUI đúng, không còn warning thiếu phím.
+- [x] LOC-06 — Lượt mapped 20261027T022316 trên development-u_trap-s21001 realtime có result success/0 contact; người thao tác xác nhận đã thấy di chuyển và kết thúc.
+- [x] LOC-07 — Đã lưu console/result/source/telemetry/trajectory/phiếu và JPG đúng lượt mapped 022316; ảnh đã được xem, hash raw files trong evidence.
+- [x] LOC-08 — Cùng protocol/manifest/geometry với CI; success/0 contact, 41.216 s, path +3.421 mm. Motion metrics khớp chính xác lượt laptop trước; giữ delta và giới hạn suy luận.
+- [x] LOC-09 — Mapped 46.774846 s wall, CPU mean/max 1.057187/32.586333 ms; hai phiếu smooth/unchanged. Max CPU > tick 16 ms, chưa chứng minh deadline realtime hoặc FPS/input latency.
 
-Đã có [audit lượt laptop và JSON bằng chứng](docs/research/2026-10-26-local-acceptance.md), [kế hoạch nhánh L](docs/plans/0006-local-acceptance.md) và [hướng dẫn nghiệm thu](docs/local-acceptance.md). Phiếu manual all-yes chưa khớp command toàn 0; mapped chưa có phiếu quan sát, ghi chú độ phản hồi chưa đủ. LOC-05/06/09 giữ mở. Helper có CI riêng theo [kế hoạch tích hợp GitHub](docs/plans/0007-github-integration.md); CI không đóng gate desktop. Hai protocol giữ nguyên.
+**Nhánh L hoàn tất 9/9:** [audit cuối và JSON bằng chứng](docs/research/2026-10-27-local-acceptance-complete.md) tại source runtime 39c34af. Hai lượt manual/mapped mới có source sạch, phiếu/telemetry phù hợp và kết thúc bình thường. [Kế hoạch nhánh L](docs/plans/0006-local-acceptance.md), [hướng dẫn nghiệm thu](docs/local-acceptance.md). Các lượt thiếu lệnh/timeout và [audit cũ](docs/research/2026-10-26-local-acceptance.md) được giữ nguyên; CI và desktop là các nguồn bằng chứng riêng.
 
-**Mốc kết nối GitHub đã hoàn tất:** GH-01…14 trong kế hoạch tích hợp; main 63298d7 đã qua cả bốn workflow (75 unit test và hồi quy simulator v1/v2). [Báo cáo, source và artifact](docs/research/2026-10-26-github-integration.md). Các nhánh lịch sử đã đồng bộ an toàn; không gộp mốc này với việc hoàn thành ba LOC còn mở hoặc roadmap dưới đây.
+**Mốc kết nối GitHub đã hoàn tất:** GH-01…14 trong kế hoạch tích hợp; source runtime 39c34af đã qua cả bốn workflow và 82 unit test. [Báo cáo tích hợp lịch sử](docs/research/2026-10-26-github-integration.md). Các nhánh lịch sử giữ nguyên; roadmap nghiên cứu dưới đây còn là các mốc tiếp theo.
 
-**Công cụ nghiệm thu tiếp theo:** source ea13295 đã qua 82 test và CI Webots/khóa chống chạy chồng. Lệnh accept chạy tuần tự, hỏi rõ độ phản hồi và kiểm tra phiếu trước khi mở lượt kế tiếp. [Bằng chứng công cụ](docs/research/2026-10-26-sequential-acceptance.md). [Audit ngày 27/10](docs/research/2026-10-27-local-acceptance-followup.md) ghi nhận batch mới: ngang/yaw có command, up_m_s vẫn zero dù T/G được đánh yes; collector dừng trước mapped. LOC-09 đã có ghi nhận hiệu năng/giới hạn; LOC-05/06 còn mở. [Kế hoạch sửa launcher và thông báo](docs/plans/0009-local-launcher-followup.md).
+**Công cụ tái lập:** lệnh accept vẫn chạy tuần tự và chặn thiếu bằng chứng; manual/mapped riêng đã được review cùng nhau ở mốc hoàn tất này. [Bằng chứng công cụ](docs/research/2026-10-26-sequential-acceptance.md), [audit lượt chưa đạt](docs/research/2026-10-27-local-acceptance-followup.md), [sửa launcher](docs/plans/0009-local-launcher-followup.md). Hai protocol giữ nguyên.
 
 Chạy từ terminal desktop khi Webots đã cài:
 
@@ -209,7 +209,7 @@ Chạy từ terminal desktop khi Webots đã cài:
 python3 tools/local_session.py accept
 ```
 
-**Gate:** có bằng chứng local riêng, không lấy CI hoặc lần tải thành công thay cho việc đã mở/chạy GUI.
+**Gate đã qua:** có bằng chứng local riêng về GUI/phím/quan sát mapped và số đo; giới hạn mô phỏng/realtime vẫn được ghi trong audit cuối.
 
 ## 9. Mốc 6 đề xuất — khóa câu hỏi nghiên cứu và protocol tiếp theo
 
@@ -447,5 +447,6 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 |---|---|---|
 | 2026-10-26 | Tạo checklist tổng thể theo yêu cầu người dùng; đối chiếu lịch sử, plan, ADR và evidence, tách roadmap đề xuất khỏi phần đã kiểm chứng | Runtime/bàn giao trước checklist: `d7018cb`; v2 tested source: `2f422e2` |
 | 2026-10-27 | Audit batch mới: thiếu lệnh T/G, mapped chưa mở; đóng LOC-09 theo số đo và phiếu smooth/unchanged. Preflight 82 test/locks/dependencies đạt; probe display của phiên sửa lỗi exit 1, được ghi riêng | Source audit `c012ab8`; [evidence](docs/research/2026-10-27-local-acceptance-followup.md) |
+| 2026-10-27 | Manual 020953 và mapped 022316 đủ bằng chứng; hoàn tất LOC-01…09, giữ raw hashes/ảnh/phiếu và các giới hạn | Source runtime `39c34af`; [nghiệm thu cuối](docs/research/2026-10-27-local-acceptance-complete.md) |
 
 Khi cập nhật tiếp, thêm dòng nhật ký, điều chỉnh checkbox và dẫn bằng chứng. Không sửa ngược báo cáo lịch sử hoặc đánh dấu hàng loạt tương lai chỉ vì đã có roadmap này.
