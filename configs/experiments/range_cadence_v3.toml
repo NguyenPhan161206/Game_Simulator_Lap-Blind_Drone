@@ -1,0 +1,96 @@
+schema_version = 3
+name = "range_cadence_v3"
+status = "design_frozen_runtime_pending"
+runtime_ready = false
+question = "Does doubling range acquisition period halve range data rate while preserving mapped navigation quality in fresh same-generator static scenes?"
+branch = "data_reduction_before_ml"
+policy = "mapped"
+reference_period_ms = 32
+candidate_period_ms = 64
+control_period_ms = 16
+pose_period_ms = 32
+range_count = 10
+range_max_age_s = 0.12
+warmup_s = 2.0
+repetitions = 2
+max_infrastructure_retries = 1
+wall_watchdog_s = 600
+
+[quality]
+goal_radius_m = 0.5
+stop_speed_m_s = 0.18
+dwell_s = 1.0
+deadline_s = 90.0
+position_bounds_min_m = [-9.5, -9.5, 0.4]
+position_bounds_max_m = [9.5, 9.5, 5.0]
+minimum_success_rate = 0.95
+maximum_adverse_pair_probability = 0.05
+one_sided_alpha = 0.05
+maximum_observed_collisions = 0
+minimum_range_rate_reduction = 0.50
+maximum_common_success_path_ratio = 1.10
+maximum_penalized_time_ratio = 1.10
+maximum_penalized_path_ratio = 1.10
+failure_time_penalty_s = 90.0
+failure_path_penalty_m = 72.0
+
+[budget]
+range_packet_format = "<dIHH10d"
+range_packet_bytes = 96
+reference_range_values_per_s = 312.5
+candidate_range_values_per_s = 156.25
+reference_range_payload_bytes_per_s = 3000.0
+candidate_range_payload_bytes_per_s = 1500.0
+max_cells = 16000
+max_expansions = 20000
+controller_rss_limit_mib = 512
+maximum_p95_decision_cpu_ratio = 1.10
+control_deadline_ms_report_only = 16
+
+[controls]
+speed_m_s = 0.4
+scan_yaw_rad_s = 0.35
+initial_scan_s = 2.5
+replan_period_s = 0.5
+horizontal_command_limit_m_s = 0.8
+vertical_command_limit_m_s = 0.4
+yaw_command_limit_rad_s = 0.5
+sensor_model = "geometric_single_ray_generic_distance_sensor"
+range_max_m = 8.0
+noise_fraction = 0.0
+latency_s = 0.0
+policy_config_source = "configs/navigation_v2.toml"
+vehicle_config_source = "configs/lab_v1.toml"
+
+[data]
+generator = "seeded_v1_with_v3_independent_case_seeds"
+family_assignment = "sha256_v3_seed_uniform_five_feasible_families"
+feasible_families = ["empty", "single_block", "staggered_blocks", "narrow_gap", "u_trap"]
+negative_family = "blocked_goal"
+witness_step_m = 0.25
+witness_margin_m = 0.12
+witness_bounds_m = [-9.0, 9.0]
+
+[splits.train]
+first_seed = 3100001
+feasible_cases = 50
+negative_cases = 10
+purpose = "reserved_no_training_or_selection"
+
+[splits.development]
+first_seed = 3200001
+feasible_cases = 50
+negative_cases = 10
+purpose = "implementation_debug_only"
+
+[splits.validation]
+first_seed = 3300001
+feasible_cases = 100
+negative_cases = 20
+purpose = "single_fixed_candidate_gate_no_retuning"
+
+[splits.test]
+first_seed = 3400001
+feasible_cases = 200
+negative_cases = 40
+purpose = "single_final_evaluation_after_validation"

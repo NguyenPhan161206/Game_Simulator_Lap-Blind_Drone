@@ -1,0 +1,22 @@
+{
+  "schema_version": 3,
+  "events": [
+    {
+      "event_id": "v3-design-registration",
+      "date": "2026-10-27",
+      "actor": "Codex",
+      "source": "9cf51ade2d11b9c2e1520517b18d6a0947785567",
+      "splits": [
+        "train",
+        "development",
+        "validation",
+        "test"
+      ],
+      "purpose": "design_and_automated_geometry_audit",
+      "access": "spec_and_index_human; geometry_and_certificates_programmatic_only",
+      "outcomes_viewed": false,
+      "navigation_executed": false,
+      "note": "v1/v2 outcomes exposed; v3 public seeds and generator, no v3 outcome/trajectory used for tuning"
+    }
+  ]
+}

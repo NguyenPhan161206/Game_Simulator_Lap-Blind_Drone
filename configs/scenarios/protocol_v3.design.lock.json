@@ -1,0 +1,16 @@
+{
+  "schema_version": 3,
+  "lock_kind": "design_only",
+  "legacy_v2": "0825b3b219fbf6a7f939b3076b79b1c82888c02d71a8ffea36d2e7d5bde1e395",
+  "runtime_ready": false,
+  "ledger_genesis_sha256": "6a7e0df52de9e4cd0528ee73e8299a31e0db1d29c5f99466ead022cf359f0b59",
+  "files": {
+    "configs/experiments/range_cadence_v3.toml": "1f08362b35576744b757118067e466147cca22ba90359d0109df070e8873a4c3",
+    "configs/scenarios/range_cadence_v3.index.json": "c494305fc2e388748df5b7244269536223b38df399be3e8ca795e273f28b65c7",
+    "docs/protocols/range-cadence-v3.md": "d393b83be6a10eb88e6431b78c40cd96e22515c63a61b43ec6604a0db19bd9e1",
+    "docs/decisions/0006-range-cadence-protocol-v3.md": "695c64b544c9bad8fb69a40153e509c90654cd1bea867a871b64868ab762ef52",
+    "docs/research/2026-10-27-range-cadence-related-work.md": "dbfacdbefd671ad964560dd967b6c20eefd6f41c754c379721ee832e9144f3ac",
+    "src/blind_drone/experiments/protocol_v3.py": "ec1a227d72c3cb3fb331a299de4fb796cd3772983eea81b30fcd3a0a0e302e3d",
+    "tools/build_research_v3.py": "277b19b588d441554390b70def4fa71cffa7177b88e45f83c005c47bbf6ef294"
+  }
+}

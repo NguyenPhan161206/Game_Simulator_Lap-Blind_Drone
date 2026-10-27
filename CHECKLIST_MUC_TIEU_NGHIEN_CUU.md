@@ -1,0 +1,44 @@
+# Checklist mục tiêu phát sinh khi hiện thực hóa Blind Drone Lab
+
+Cập nhật: 2026-10-27. Yêu cầu bổ sung của người dùng trong mốc 6.
+
+Đây là sổ mục tiêu cần chứng minh được nhận ra trong quá trình làm hệ thống. [Checklist tổng](CHECKLIST_DU_AN.md) theo dõi tiến độ mốc; file này ghi **vì sao một mục tiêu trở nên cần thiết, tiêu chí đạt và bằng chứng còn thiếu**. Không tự mở rộng mọi đề xuất thành yêu cầu triển khai ngay.
+
+`[x]` chỉ phạm vi đã có chứng cứ; `[ ]` còn mở. P0: bắt buộc trước đánh giá v3; P1: cần trước kết luận nghiên cứu giảm dữ liệu; P2: chỉ mở theo nghiên cứu tương lai. Đóng mục phải thêm source/config/case/report; giữ lịch sử kết quả âm. Không sửa protocol đã khóa để đánh dấu đạt.
+
+## A. Những mục tiêu nền đã được hiện thực hóa
+
+- [x] GOAL-01 — **Chuyển ý tưởng “không thấy” thành hợp đồng runtime có thể audit.** Nhận ra: GUI vẫn cần ảnh cho người xem, nhưng policy không được nhận ảnh hoặc scene. Đạt trong phạm vi core v1/v2: observation whitelist và ranh giới module; [hợp đồng](docs/architecture/data-contracts.md), [v2](docs/research/2026-10-26-navigation-v2.md). Không là sandbox process hoặc bằng chứng riêng tư.
+- [x] GOAL-02 — **Chứng minh môi trường chạy bằng simulator thật.** Nhận ra: scaffold/import test không chứng minh chuyến bay. Đạt cho v1/v2 qua smoke, navigation và CI có outcome; [nguồn kiểm chứng](docs/version-history.md). V3 chưa có bằng chứng này.
+- [x] GOAL-03 — **Nghiệm thu điều khiển và GUI trên laptop riêng với CI.** Nhận ra: display/dependency và lấy mẫu telemetry có thể gây kết luận sai về phím. Đạt LOC-01–09 tại runtime source `39c34af`; [báo cáo](docs/research/2026-10-27-local-acceptance-complete.md). Không suy ra hard realtime.
+- [x] GOAL-04 — **Không dùng lại test đã xem để báo generalization mới.** Nhận ra: v1/v2 đã exposed. Đã lập protocol mới, commitments, split và [sổ exposure v3](configs/scenarios/exposure_v3.json); [quy tắc](docs/protocols/range-cadence-v3.md). Đây là cơ chế đăng ký; tuân thủ khi chạy sau này vẫn phải kiểm tra.
+
+## B. Mục tiêu phát sinh từ thiết kế giảm thu nhận — P0 trước evaluation v3
+
+- [ ] GOAL-05 — **Giảm acquisition thật, không chỉ downsample sau khi đọc.** Nhận ra khi tách sensor output khỏi policy input. Đạt khi adapter v3 đặt/ghi đúng DistanceSensor sampling period, Webots development chứng minh lịch 32/64 ms, đủ packet và không đọc nguồn dự phòng. Bằng chứng cần: source runtime lock, device config, acquisition trace và paired development report.
+- [ ] GOAL-06 — **Giữ đúng timestamp và pose lúc đo.** Nhận ra khi cùng ray cũ được dùng qua nhiều tick nhưng drone vẫn chuyển động. Đạt khi packet có acquisition timestamp và pose cùng thời điểm, range cũ không bị đóng dấu mới hoặc chiếu bằng pose mới; test quay/chuyển động, stale/invalid và Webots xác minh. Giữ freshness 120 ms giống hai arm.
+- [ ] GOAL-07 — **Thay đúng một yếu tố giữa hai arm.** Nhận ra: thay sensor period toàn cục có thể đổi cả GPS/IMU/Gyro. Đạt khi pose 32 ms, control 16 ms, speed/scan/actuation/grid/planner/case giống nhau; cấu hình hiệu lực diff chỉ range acquisition. Cần test/config audit và runtime provenance, không chỉ TOML dự định.
+- [ ] GOAL-08 — **Kế toán bốn tầng dữ liệu độc lập.** Nhận ra: số float của sensor, số policy reads, map cells và JSON file không cùng đại lượng. Đạt khi đo unique acquisitions, reads/reuse, history/map/RSS và bytes payload/file riêng, kể cả invalid/failure/warmup. Đối chiếu chuẩn 96 B/packet; chưa gọi payload là network byte.
+- [ ] GOAL-09 — **Khóa đúng mã thực thi trước mở held-out.** Nhận ra: hash thiết kế không ghim adapter/evaluator chưa có. Đạt khi đủ runtime dependency inventory/hash, design lock được giữ nguyên, runner từ chối source/config/world sai và ledger ghi trước mọi lượt. Cần runtime lock mới và negative tests; mốc 6 hiện chỉ có guard từ chối evaluation.
+- [ ] GOAL-10 — **Chấm đúng deadline/path ở simulation tick.** Nhận ra: render, trajectory downsample hoặc wall clock có thể làm sai điểm. Đạt khi 90 s sau warmup, dwell, contact/bounds priority và path tích lũy 16 ms theo protocol; test biên deadline và Webots development. Không chỉnh frozen evaluator v1/v2.
+- [ ] GOAL-11 — **Phân loại failure mà không bỏ ca xấu.** Nhận ra khi phân biệt timeout thuật toán với loader/display/log failure. Đạt khi collector giữ attempts, chỉ retry infra đúng một lần, không retry algorithm collision/OOM để tìm success, thiếu pair chặn kết luận. Cần fault-injection tests và review provenance.
+
+## C. Mục tiêu cần đạt trước kết luận nghiên cứu — P1
+
+- [ ] GOAL-12 — **Kiểm nghiệm reference trên case mới.** Nhận ra: 10/10 v2 không bảo đảm ≥95% v3. Đạt khi reference đo thật trên development rồi validation với case đã đăng ký; giữ failure. Nếu reference không đủ, báo thiết kế chưa đạt thay vì điều chỉnh test.
+- [ ] GOAL-13 — **Đạt đồng thời giảm range và chất lượng nhiệm vụ.** Đạt khi cả gates trong [protocol](docs/protocols/range-cadence-v3.md) qua validation rồi test: ≥50% rate reduction, success/margin, collision/bounds, path/time/resource; hoặc báo kết luận âm rõ. Chỉ hoàn thành mục khi có nghiên cứu đầy đủ, không vì config ghi đúng 50%.
+- [ ] GOAL-14 — **Không đánh đổi ít byte/giây bằng nhiệm vụ dài hoặc nhiều failure mà giấu đi.** Nhận ra từ khác biệt rate với total volume. Đạt khi báo tổng acquisition/bytes toàn nhiệm vụ, common-success metrics và all-case penalty, bảng paired cùng mọi failure.
+- [ ] GOAL-15 — **Định lượng bất định và tái lập đúng đơn vị.** Nhận ra: tick, ray và hai repeat không là 400 case độc lập. Đạt khi đủ 200 feasible test cases, repeat collapse bảo thủ, exact adverse bound, breakdown family và giải thích cùng-generator; không tuyên bố OOD hoặc power bảo đảm.
+- [ ] GOAL-16 — **Đo chi phí CPU/RAM thực và giới hạn phản hồi.** Nhận ra từ CPU max v2 vượt tick 16 ms. Đạt khi đo cùng host, quyết định mean/p95/max, RSS, map/search và số lần trễ; giải thích simulator chờ controller. Có thể kết luận chưa đạt budget; chưa cần cam kết hard realtime phần cứng.
+- [ ] GOAL-17 — **Đóng nhánh bằng kết quả đạt, âm hoặc thiếu bằng chứng có thể tái lập.** Đạt khi lưu report/source/locks/ledger/raw artifacts và không đổi seed/ngưỡng sau exposure. Nếu validation thất bại, test giữ chưa chạy; phiên bản sau phải có câu hỏi/test mới.
+
+## D. Mục tiêu chỉ mở khi có nghiên cứu tương ứng — P2
+
+- [ ] GOAL-18 — **Đo riêng tư bằng threat model và phép thử suy luận.** Nhận ra: range/map vẫn có thể lộ bố trí không gian. Cần xác định dữ liệu/đối thủ/khả năng suy ra và metric; không suy từ không camera hay ít byte. Chưa thuộc kết quả cadence v3.
+- [ ] GOAL-19 — **Chỉ thêm ML khi có câu hỏi vượt baseline.** Cần đầu ra cần học, train/validation/test/version mới, teacher/reward/observation audit, training seeds và reference ngang điều kiện. Không mở model/framework chỉ vì có thư mục training.
+- [ ] GOAL-20 — **Phân biệt mô hình sensor/physics với thiết bị thật.** Cần calibration/noise/latency và bằng chứng riêng nếu muốn nói radar, pin, gió, motor hoặc drone thật. Geometric single-ray và actuator lý tưởng hiện tại chưa đạt mục tiêu đó.
+- [ ] GOAL-21 — **Mở rộng nhiệm vụ có protocol riêng.** Bay 3D, obstacle động, giao/nhận hàng, logistics hoặc xe phải có domain/KPI/failure/ground truth boundary mới; không cộng tính năng để suy thành đã giải quyết bài toán giao hàng thực.
+
+## E. Cách bổ sung phát hiện mới
+
+Mỗi mục mới ghi: ID → phát hiện/trigger → ưu tiên và mốc phụ thuộc → tiêu chí đạt kiểm tra được → bằng chứng/source → giới hạn. Khi phát hiện đụng protocol frozen: ghi vấn đề, giữ kết quả hiện tại và tạo ADR/version tiếp theo; không sửa ngưỡng trong hồ sơ cũ. Cập nhật file này cùng checklist tổng khi bàn giao mốc.
