@@ -12,6 +12,8 @@ Camera có thể hỗ trợ tạo dữ liệu/huấn luyện ở nhánh nghiên 
 
 V1 được giữ để tái lập: [môi trường](docs/research/2026-10-25-webots-v1-smoke.md), [baseline](docs/research/2026-10-26-navigation-v1.md), [seeded suite](docs/research/2026-10-26-seeded-environments.md). Test v1 và v2 đều đã exposed; thay thuật toán cần protocol/test mới.
 
+Mốc 6 đã có [thiết kế nghiên cứu v3](docs/protocols/range-cadence-v3.md): so acquisition range 32/64 ms trên mapped cố định, 480 case mới, tiêu chí và exposure được khóa. [92 tests và CI đạt](docs/research/2026-10-27-research-protocol-v3.md) chỉ kiểm chứng thiết kế/công cụ; runtime v3 còn phải triển khai, chưa có kết quả giảm dữ liệu hoặc ML.
+
 ## Bắt đầu
 
 Python 3.11+; kiểm tra nền dùng thư viện chuẩn, không cần cài dependency:
@@ -32,6 +34,8 @@ Nghiệm thu desktop bằng một lệnh: `python3 tools/local_session.py accept
 ## Bản đồ tài liệu
 
 - [Checklist tổng thể từ ý tưởng đến roadmap tương lai](CHECKLIST_DU_AN.md)
+- [Checklist mục tiêu phát sinh trong quá trình hiện thực hóa](CHECKLIST_MUC_TIEU_NGHIEN_CUU.md)
+- [Kế hoạch chi tiết mốc 6](docs/plans/0010-research-protocol-v3.md)
 - [Cây phiên bản GitHub, source kiểm chứng và nhánh tích hợp](docs/version-history.md)
 - [Nghiệm thu GUI local, bàn phím và so sánh CI — nhánh L](docs/local-acceptance.md)
 - [Ý tưởng và quyết định từ cuộc trao đổi](docs/01-y-tuong-va-quyet-dinh.md)
@@ -46,6 +50,6 @@ Nghiệm thu desktop bằng một lệnh: `python3 tools/local_session.py accept
 
 ## Hướng phát triển
 
-Đặc tả môi trường → world và điều khiển thủ công → xác minh cảm biến/va chạm → baseline và bộ đánh giá → huấn luyện → khảo sát giảm dữ liệu. Sau core phương tiện mới mở rộng một chuyến giao hàng và điều phối logistics.
+Sau nền tảng v1/v2 và nghiệm thu local: triển khai acquisition/accounting/runner v3 trên development → khóa runtime → validation gate → test cuối theo protocol. Ưu tiên khảo sát giảm dữ liệu trên baseline; ML là nhánh riêng khi có câu hỏi phù hợp. Sau core phương tiện mới mở rộng một chuyến giao hàng và điều phối logistics.
 
 Các preset nghiên cứu level_b vẫn mang `status = "draft"`, `runtime_ready = false`. [lab_v1.toml](configs/lab_v1.toml) là preset kỹ thuật riêng cho môi trường và kiểm tra simulator, không phải cấu hình nghiên cứu đã hoàn thiện.

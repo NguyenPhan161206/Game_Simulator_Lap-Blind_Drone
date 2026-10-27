@@ -48,3 +48,9 @@ Theo [kế hoạch thực hiện](plans/0002-webots-minimal-lab.md) và [hướn
 ## Trạng thái kiểm chứng
 
 CI scaffold kiểm tra cấu trúc, TOML và các bất biến khai báo. Workflow Webots riêng cài R2025a, chạy world thực trên Xvfb và lưu bằng chứng. Các kiểm tra này chưa chứng minh độ chính xác so với phần cứng thật hoặc chất lượng AI. GUI/keyboard local và simulator CI được báo riêng.
+
+## Bước hiện tại sau nghiệm thu local
+
+Mốc 6 đã hoàn tất [thiết kế cadence v3](protocols/range-cadence-v3.md), [92 unit tests/CI](research/2026-10-27-research-protocol-v3.md). Chạy `make check` để kiểm scaffold, v1/v2, 480 case mới/khóa thiết kế và tests; không cần Webots hoặc ML. `python3 tools/build_research_v3.py` tái sinh fixture đầy đủ vào artifacts ignored, không cấp chúng cho navigation. Không chạy lại `--freeze` để cập nhật thiết kế.
+
+Tiếp theo triển khai adapter acquisition 32/64 ms, kế toán dữ liệu và runner/evaluator version mới, chỉ kiểm chứng trên development; giữ [mục tiêu phát sinh](../CHECKLIST_MUC_TIEU_NGHIEN_CUU.md) mở tới khi có runtime evidence. Sau đó tạo runtime lock riêng trước validation/test. Chưa huấn luyện hoặc thực thi đánh giá v3; v1/v2 runtime và test exposure được giữ nguyên. Các mục mốc kế tiếp trong phần đầu tài liệu là lịch sử nền tảng, không thay thứ tự này.

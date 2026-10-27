@@ -9,7 +9,7 @@
 - Delegate only when the user or a higher-priority instruction explicitly authorizes delegation.
 
 ## Project boundaries
-- Current milestone: vehicle baselines, frozen v1/v2 evaluation and local desktop acceptance are complete. LOC-01 through LOC-09 are evidenced at runtime source 39c34af875b66ff51f6797ba0872c084b5a3928d; see docs/research/2026-10-27-local-acceptance-complete.md. Specify the next research question/protocol in checklist section 9 before training or algorithm changes.
+- Current milestone: vehicle baselines, frozen v1/v2 evaluation and local desktop acceptance are complete. LOC-01 through LOC-09 are evidenced at runtime source 39c34af875b66ff51f6797ba0872c084b5a3928d; see docs/research/2026-10-27-local-acceptance-complete.md. Milestone 6 design is now frozen at configs/scenarios/protocol_v3.design.lock.json; see docs/protocols/range-cadence-v3.md and docs/research/2026-10-27-research-protocol-v3.md. Next implement v3 acquisition/accounting/evaluation on development only, then add a runtime source lock before validation/test. Design lock alone never authorizes evaluation or training.
 - Observation memory, hull-aware filtering and online-grid navigation v2 were completed under docs/plans/0005-observation-and-navigation-v2.md. Keep both exposed protocols frozen; further algorithm changes need a new version and fresh evaluation design.
 - Stage 0005 is now verified at source 2f422e253376b589e478ac10f3eee8efa970dc74 with 108 official episodes and 64 unit tests; see docs/research/2026-10-26-navigation-v2.md. V2 validation/test are exposed. Keep both locks valid; further algorithm changes need a new protocol/test version, not silent lock regeneration. Maps/CPU are added costs, not evidence of data minimization/privacy or hardware safety.
 - This stage is validated in CI at source 373b002d0ada514c95ce409cbb87d4bc3d68a388; see docs/research/2026-10-26-seeded-environments.md. Test v1 is now exposed. Baseline failures remain; do not treat pipeline completion as trained-model quality or reuse test v1 as unseen after tuning.
@@ -29,7 +29,7 @@
 - Report scaffold validation, simulator execution, model quality and real-world validation as separate evidence.
 - Keep training, validation and final evaluation scenarios disjoint. Compare methods on the same scenarios and report failures alongside success-only metrics.
 - Record meaningful changes in assumptions in docs/decisions/ and research evidence in docs/research/.
-- Research preset numeric parameters and success thresholds remain open until specified. Keep draft research presets non-runnable. configs/lab_v1.toml contains provisional engineering parameters for simulator validation.
+- Legacy draft research presets remain non-runnable. V3 cadence-study thresholds are prespecified in configs/experiments/range_cadence_v3.toml under ADR 0006; runtime_ready=false until a separately versioned runtime implementation is verified. Do not change the design lock, tune on validation/test, or claim its 50% target as an achieved result. configs/lab_v1.toml contains provisional engineering parameters for simulator validation.
 - Before adding third-party code/assets, record origin, version and license in THIRD_PARTY.md; asset terms may differ from engine terms.
 
 ## Work and verification
@@ -37,6 +37,7 @@
 - For lab changes run python3 tools/build_lab.py --check and python3 -m unittest discover -s tests -p 'test_*.py' -v. Real simulator verification uses python3 tools/run_webots.py --smoke with Webots R2025a; a missing executable must fail rather than skip silently.
 - Navigation changes also require python3 tools/run_webots.py --navigation on real Webots. Keep direct/reactive paired development results, impossible negative controls and later held-out research results distinct.
 - Seed-suite changes require python3 tools/build_scenarios.py --check and the frozen protocol. Do not tune after validation/test exposure or replace the v1 lock silently. Only world/evaluation may read witness paths. A baseline failure is an outcome, not permission to drop a case.
+- Run python3 tools/build_research_v3.py --check for v3 design/data-integrity changes; make check includes it. Maintain CHECKLIST_MUC_TIEU_NGHIEN_CUU.md with evidence at milestone handoff.
 - Add behavior tests when implementing consequential logic; do not invent simulator smoke tests that merely import stubs.
 - Keep generated logs, datasets, models, credentials and large downloaded assets out of Git.
 - Do not reset, clean, stash, rewrite history or force-push as routine cleanup.

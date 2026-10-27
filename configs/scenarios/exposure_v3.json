@@ -17,6 +17,23 @@
       "outcomes_viewed": false,
       "navigation_executed": false,
       "note": "v1/v2 outcomes exposed; v3 public seeds and generator, no v3 outcome/trajectory used for tuning"
+    },
+    {
+      "event_id": "v3-design-checks-local-ci",
+      "date": "2026-10-27",
+      "actor": "Codex and GitHub Actions make-check",
+      "source": "761318df1293c195347f486b0d228f88af10fae1",
+      "splits": [
+        "train",
+        "development",
+        "validation",
+        "test"
+      ],
+      "purpose": "integrity_tests_and_source_ci",
+      "access": "metadata_and_hashes_human; full_geometry_certificates_automated_checks_only",
+      "outcomes_viewed": false,
+      "navigation_executed": false,
+      "note": "480 fixtures regenerated; 92 unit tests; CI 40446508423 success; family counts reviewed; no v3 tuning or outcome exposure"
     }
   ]
 }

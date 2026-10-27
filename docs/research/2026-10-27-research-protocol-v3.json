@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-27",
+  "tested_source": "761318df1293c195347f486b0d228f88af10fae1",
+  "scope": "research_design_and_fixture_integrity_only",
+  "design_hash": "968c59e193336c49a015a62f87bf6f0ac834c6131bdb348105b5fcd950ad1474",
+  "legacy_v1_hash": "96872282fc7df5029453ed684d0e73e9305137c3d6907736869b2e04bf64b90f",
+  "legacy_v2_hash": "0825b3b219fbf6a7f939b3076b79b1c82888c02d71a8ffea36d2e7d5bde1e395",
+  "case_count": 480,
+  "split_counts": {
+    "train": {
+      "feasible": 50,
+      "negative": 10
+    },
+    "development": {
+      "feasible": 50,
+      "negative": 10
+    },
+    "validation": {
+      "feasible": 100,
+      "negative": 20
+    },
+    "test": {
+      "feasible": 200,
+      "negative": 40
+    }
+  },
+  "disjointness_checks": [
+    "unique_seed_and_id",
+    "geometry_sha256_all_v3_and_legacy",
+    "canonical_translation_quarter_rotation_reflection_task_hash"
+  ],
+  "unit_tests": 92,
+  "new_unit_tests": 10,
+  "checks": [
+    "check_scaffold",
+    "build_lab --check",
+    "build_scenarios --check",
+    "build_navigation_v2 --check",
+    "build_research_v3 --check",
+    "unittest discover"
+  ],
+  "ci": {
+    "run_id": 40446508423,
+    "job_id": 121998969583,
+    "conclusion": "success",
+    "url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40446508423"
+  },
+  "runtime_ready": false,
+  "v3_navigation_episodes": 0,
+  "v3_training_runs": 0,
+  "held_out_outcomes_exposed": false,
+  "fixture_location": "artifacts/research-v3-fixtures",
+  "committed_fixture_content": "metadata_and_hash_commitments_only",
+  "remaining": [
+    "v3 acquisition adapter",
+    "acquisition-time pose accounting",
+    "data/resource accounting",
+    "evaluator and retry runner",
+    "Webots development verification",
+    "separate runtime source lock before held-out evaluation"
+  ]
+}

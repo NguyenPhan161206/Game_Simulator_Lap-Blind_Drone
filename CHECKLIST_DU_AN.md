@@ -2,7 +2,7 @@
 
 **Cập nhật:** 2026-10-27, múi giờ Asia/Ho_Chi_Minh.
 
-**Mốc repo được đối chiếu:** `d7018cb187e6ce9268baa34a5e2fd6f7ab200078`, trước khi thêm checklist này.  
+**Mốc repo được đối chiếu:** thiết kế v3 `761318df1293c195347f486b0d228f88af10fae1`; runtime nghiệm thu vẫn là `39c34af`. Mốc checklist gốc `d7018cb` được giữ trong lịch sử.
 **Audit bổ sung nhánh L/GitHub:** source collector `b32410595b26f8ef2d0f8d99dca469797278366b`; xem [cây phiên bản](docs/version-history.md) và evidence liên kết ở mục 8.
 **Mục đích:** theo dõi từ ý tưởng ban đầu, các phần đã triển khai/kiểm chứng, phần còn mở và roadmap tương lai trong một file.
 
@@ -26,8 +26,8 @@
 | 3 | Baseline navigation và evaluator | Đã kiểm chứng CI | Đến đích/dừng/dwell/failure được chấm đúng, có đối chứng |
 | 4 | Môi trường theo seed và protocol v1 | Đã kiểm chứng CI | Case khả thi có witness, split/lock rõ, mọi outcome được giữ |
 | 5 | Quan sát có bộ nhớ, guard, planner v2 | Đã kiểm chứng CI | Khóa trước fresh evaluation, đủ 108 lượt, có chi phí/giới hạn |
-| L | Hoàn tất trải nghiệm local | Còn mở | Mở GUI và chạy thật trên máy người dùng, lưu bằng chứng riêng |
-| 6 | Khóa câu hỏi nghiên cứu và protocol tiếp theo | Chưa làm | Có quyết định, ngưỡng chất lượng, dữ liệu và test mới |
+| L | Hoàn tất trải nghiệm local | Đã nghiệm thu LOC-01–09 | Mở GUI và chạy thật trên máy người dùng, lưu bằng chứng riêng |
+| 6 | Khóa câu hỏi nghiên cứu và protocol tiếp theo | Hoàn tất thiết kế v3; runtime v3 chưa triển khai | Có quyết định, ngưỡng chất lượng, dữ liệu và test mới |
 | 7A | Khảo sát giảm dữ liệu/biểu diễn | Chưa làm | Giảm chi phí nhưng đạt ngưỡng nhiệm vụ đã đặt trước |
 | 7B | Huấn luyện model nếu phù hợp câu hỏi | Chưa làm, nhánh tùy chọn | Train/eval không rò rỉ, tái lập, so sánh với baseline |
 | 8 | Độ vững, cảm biến không lý tưởng, điều hướng khó hơn | Chưa làm | Có protocol và đánh giá riêng cho từng mở rộng |
@@ -211,24 +211,26 @@ python3 tools/local_session.py accept
 
 **Gate đã qua:** có bằng chứng local riêng về GUI/phím/quan sát mapped và số đo; giới hạn mô phỏng/realtime vẫn được ghi trong audit cuối.
 
-## 9. Mốc 6 đề xuất — khóa câu hỏi nghiên cứu và protocol tiếp theo
+## 9. Mốc 6 — khóa câu hỏi nghiên cứu và protocol tiếp theo
 
 Đây là bước chung trước khi sửa baseline, khảo sát giảm dữ liệu hoặc bắt đầu ML. Không tự chọn model/framework chỉ vì đã có thư mục training.
 
-- [ ] EXP-01 — Chọn câu hỏi chính có thể bác bỏ bằng thực nghiệm: giảm dữ liệu nào, giữ chất lượng nhiệm vụ ở mức nào, trong miền nào?
-- [ ] EXP-02 — Đối chiếu nghiên cứu liên quan bằng nguồn chính; phân biệt đóng góp ứng dụng, thuật toán, bộ dữ liệu và hạ tầng.
-- [ ] EXP-03 — Chọn nhánh ưu tiên: giảm thông tin trên baseline, huấn luyện policy, hoặc cả hai theo thí nghiệm tách biệt.
-- [ ] EXP-04 — Khóa success/collision/deadline/path và mức suy giảm chấp nhận trước đánh giá cuối; không lấy 10/10 hiện tại làm bảo đảm chất lượng sản phẩm.
-- [ ] EXP-05 — Xác định cấu hình tham chiếu, budget cảm biến/bộ nhớ/xử lý và biến độc lập của từng ablation.
-- [ ] EXP-06 — Làm bằng nhau các yếu tố cần kiểm soát: tốc độ, quét, sensor cadence, giới hạn actuation và tập case.
-- [ ] EXP-07 — Tạo protocol version mới, giữ v1/v2 để hồi quy; không âm thầm sửa lock hoặc tái gọi test đã xem là unseen.
-- [ ] EXP-08 — Sinh train/development/validation/test mới với provenance và kiểm tra không trùng geometry phù hợp mục tiêu.
-- [ ] EXP-09 — Định nghĩa số case/seed, số lần lặp, cách tổng hợp và xử lý lượt lỗi infrastructure trước chạy.
-- [ ] EXP-10 — Quy định khi nào một lượt hợp lệ, bất khả thi hoặc hỏng hạ tầng; không loại failure chỉ vì thuật toán làm kém.
-- [ ] EXP-11 — Lập sổ exposure: ai/thuật toán nào đã dùng tập nào để thiết kế, tune, chọn cấu hình hoặc báo cáo.
-- [ ] EXP-12 — Ghi lựa chọn kỹ thuật và ngưỡng mới vào ADR/config trước triển khai đánh giá.
+- [x] EXP-01 — Chọn câu hỏi chính có thể bác bỏ bằng thực nghiệm: giảm dữ liệu nào, giữ chất lượng nhiệm vụ ở mức nào, trong miền nào? **Bằng chứng:** [Protocol §1](docs/protocols/range-cadence-v3.md): giảm acquisition rate range ≥50%, margin success 5 điểm phần trăm, miền tĩnh cùng generator.
+- [x] EXP-02 — Đối chiếu nghiên cứu liên quan bằng nguồn chính; phân biệt đóng góp ứng dụng, thuật toán, bộ dữ liệu và hạ tầng. **Bằng chứng:** [Đối chiếu sáu nguồn chính và định vị đóng góp](docs/research/2026-10-27-range-cadence-related-work.md); chưa tuyên bố thuật toán mới.
+- [x] EXP-03 — Chọn nhánh ưu tiên: giảm thông tin trên baseline, huấn luyện policy, hoặc cả hai theo thí nghiệm tách biệt. **Bằng chứng:** [ADR 0006](docs/decisions/0006-range-cadence-protocol-v3.md): ưu tiên cadence trên mapped; ML nghiên cứu riêng.
+- [x] EXP-04 — Khóa success/collision/deadline/path và mức suy giảm chấp nhận trước đánh giá cuối; không lấy 10/10 hiện tại làm bảo đảm chất lượng sản phẩm. **Bằng chứng:** [Config quality](configs/experiments/range_cadence_v3.toml), [protocol §3–4](docs/protocols/range-cadence-v3.md): deadline/dwell, zero observed collision/bounds, path/time penalty và confidence bound đã ghi trước outcome.
+- [x] EXP-05 — Xác định cấu hình tham chiếu, budget cảm biến/bộ nhớ/xử lý và biến độc lập của từng ablation. **Bằng chứng:** [Config budget/controls](configs/experiments/range_cadence_v3.toml): 10 ray, 96 B packet, map/search/RSS/CPU budget; chỉ period 32/64 ms thay đổi.
+- [x] EXP-06 — Làm bằng nhau các yếu tố cần kiểm soát: tốc độ, quét, sensor cadence, giới hạn actuation và tập case. **Bằng chứng:** [Protocol §2](docs/protocols/range-cadence-v3.md): cùng speed/scan/pose cadence/control/actuation/case; range cadence là biến độc lập có chủ đích.
+- [x] EXP-07 — Tạo protocol version mới, giữ v1/v2 để hồi quy; không âm thầm sửa lock hoặc tái gọi test đã xem là unseen. **Bằng chứng:** [Khóa thiết kế v3](configs/scenarios/protocol_v3.design.lock.json) giữ v1/v2 nguyên vẹn. Khóa runtime bổ sung bắt buộc ở mốc 7A; design lock chưa cho phép evaluation.
+- [x] EXP-08 — Sinh train/development/validation/test mới với provenance và kiểm tra không trùng geometry phù hợp mục tiêu. **Bằng chứng:** [Index commitments](configs/scenarios/range_cadence_v3.index.json): đã sinh 480 case/chứng chỉ vào artifacts ignored; đủ bốn split, không trùng raw/canonical task với v1/v2. [Audit](docs/research/2026-10-27-research-protocol-v3.md).
+- [x] EXP-09 — Định nghĩa số case/seed, số lần lặp, cách tổng hợp và xử lý lượt lỗi infrastructure trước chạy. **Bằng chứng:** [Protocol §4–6](docs/protocols/range-cadence-v3.md): 60/60/120/240 case, 2 repeat/arm, case là đơn vị thống kê, CI một phía và retry đã định trước.
+- [x] EXP-10 — Quy định khi nào một lượt hợp lệ, bất khả thi hoặc hỏng hạ tầng; không loại failure chỉ vì thuật toán làm kém. **Bằng chứng:** [Protocol §6](docs/protocols/range-cadence-v3.md): negative có chứng minh, timeout/collision/OOM thuật toán giữ trong mẫu số, infra không phục hồi chặn kết luận.
+- [x] EXP-11 — Lập sổ exposure: ai/thuật toán nào đã dùng tập nào để thiết kế, tune, chọn cấu hình hoặc báo cáo. **Bằng chứng:** [Exposure ledger](configs/scenarios/exposure_v3.json) phân biệt người/agent/CI kiểm metadata/geometry tự động với xem outcome; chưa có v3 policy/evaluation chạy.
+- [x] EXP-12 — Ghi lựa chọn kỹ thuật và ngưỡng mới vào ADR/config trước triển khai đánh giá. **Bằng chứng:** [ADR](docs/decisions/0006-range-cadence-protocol-v3.md) + [config](configs/experiments/range_cadence_v3.toml) + design lock có trước implementation/evaluation v3; 92 tests và CI đạt.
 
 **Gate:** có protocol, baseline, nguồn dữ liệu, ngưỡng và cách chọn cấu hình đủ rõ. Nếu thiếu quyết định, tiếp tục làm rõ thay vì train để có số đẹp.
+
+**Đã qua gate thiết kế mốc 6:** [báo cáo/source/CI](docs/research/2026-10-27-research-protocol-v3.md). Chưa qua gate chạy thí nghiệm mốc 7A: cần adapter acquisition/timestamp, accounting, evaluator/runner, Webots development và khóa runtime. Không có kết quả giảm dữ liệu hay ML mới. [Checklist mục tiêu phát sinh khi hiện thực hóa](CHECKLIST_MUC_TIEU_NGHIEN_CUU.md) giữ các mục này mở.
 
 ## 10. Nhánh 7A đề xuất — nghiên cứu giảm dữ liệu
 

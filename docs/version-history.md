@@ -51,3 +51,7 @@ Nhánh lịch sử không bị xóa hoặc force-push. Source chạy và commit 
 - [Hoàn tất local](research/2026-10-27-local-acceptance-complete.md) tại source 39c34af: manual đủ bốn trục/T/G, mapped success và phiếu phù hợp; LOC-01…09 hoàn tất. Các giới hạn realtime/mô phỏng vẫn được giữ.
 
 Trong workspace managed dùng `tools/git.sh` vì .git gốc chỉ đọc và là metadata rỗng; lịch sử có thật nằm ở .local/git. Clone bình thường dùng .git chuẩn. SSH managed hiện lỗi quyền cấu hình hệ thống; connector GitHub dùng làm kênh xuất bản được cho phép, kiểm tra khớp tree/commit và không đổi remote SSH. Xem [hướng dẫn Git](development.md).
+
+## Mốc 6 — thiết kế nghiên cứu v3, 2026-10-27
+
+Nhánh `feat/research-protocol-v3`: kế hoạch `a85e41b` → thiết kế/công cụ khóa `761318df1293c195347f486b0d228f88af10fae1` → tài liệu bàn giao sau đó. [CI 40446508423](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40446508423) chạy make check, đủ 92 tests và kiểm 480 case. [Báo cáo](research/2026-10-27-research-protocol-v3.md) phân biệt design lock với runtime lock chưa có. Không sửa frozen v1/v2 hoặc bổ sung outcome v3. Main chỉ fast-forward sau các checks liên quan; đây là snapshot source kiểm chứng, tip xem GitHub/log.

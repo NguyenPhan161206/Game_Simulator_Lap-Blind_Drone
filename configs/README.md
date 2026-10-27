@@ -1,6 +1,6 @@
 # Cấu hình
 
-Các preset nghiên cứu trong environments/, vehicles/, sensors/ và experiments/ vẫn là dự thảo, có `runtime_ready = false`. [lab_v1.toml](lab_v1.toml) là cấu hình kỹ thuật riêng của bãi thử Webots, có world/controller được triển khai; trạng thái kiểm chứng được ghi trong hồ sơ nghiên cứu.
+Các preset level_b ban đầu trong environments/, vehicles/, sensors/ và experiments/ vẫn là dự thảo, có `runtime_ready = false`. [lab_v1.toml](lab_v1.toml) là cấu hình kỹ thuật riêng của bãi thử Webots, có world/controller được triển khai; trạng thái kiểm chứng được ghi trong hồ sơ nghiên cứu.
 
 - [project.toml](project.toml): tên dự án, manifest module và các ràng buộc nền.
 - [navigation_v1.toml](navigation_v1.toml): tham số baseline, scoring và fixture development; chỉ bảng navigation được chuyển sang drone. [Kết quả kiểm chứng](../docs/research/2026-10-26-navigation-v1.md).
@@ -13,3 +13,5 @@ Các preset nghiên cứu trong environments/, vehicles/, sensors/ và experimen
 - [agents/codex.toml](agents/codex.toml): cấu hình Codex dùng qua launcher; không phải preset thí nghiệm.
 
 Khi bổ sung tham số số học cần khai báo đơn vị và miền hợp lệ, chạy lại kiểm tra liên quan. Webots được ghim R2025a; chưa chọn dependency huấn luyện. Preset kỹ thuật có thể chạy không có nghĩa các ngưỡng nghiên cứu đã được khóa.
+
+[experiments/range_cadence_v3.toml](experiments/range_cadence_v3.toml) là thiết kế nghiên cứu đã khóa riêng theo [ADR 0006](../docs/decisions/0006-range-cadence-protocol-v3.md), với index commitments, design lock và exposure ledger trong scenarios/. `runtime_ready=false`: có ngưỡng không có nghĩa đã có runner hoặc kết quả v3. Sinh fixture đầy đủ bằng `python3 tools/build_research_v3.py` vào artifacts ignored; `--check` xác minh thiết kế/tính tái lập, `--evaluate` bị từ chối. Không thay design lock hoặc bật runtime_ready trong file frozen.
