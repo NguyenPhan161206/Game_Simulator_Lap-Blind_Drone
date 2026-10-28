@@ -45,3 +45,12 @@ python3 tools/build_runtime_v3.py --check
 Freeze replay raw evidence, đối chiếu hashes với implementation commit và tạo file mới `protocol_v3.runtime.lock.json`; từ chối overwrite. Inventory gồm toàn Python core, runner/builder, các config số học, generated proto/world và entrypoints/runtime.ini. Lock ghim source implementation; commit thêm lock/evidence sau đó vẫn phải có cùng inventory. Khóa runtime không khẳng định các gate chất lượng đã đạt.
 
 Validation/test chỉ chạy sau hai lock hợp lệ; không thuộc bàn giao development 7A. Test còn cần complete validation với tất cả gate đạt trên đúng source/locks. Design builder cũ vẫn từ chối `--evaluate` vì nó không phải runner runtime. Train được giữ dự trữ, không runnable.
+
+
+## Validation sau bàn giao 7A
+
+[Kế hoạch 0012](plans/0012-v3-validation-gate.md) dùng workflow `research-v3-validation.yml`, chỉ `workflow_dispatch`, một host CI/Xvfb, 480 lượt. Không mở Webots local. Trước exposure phải khớp runtime digest đã review, source sạch, không có validation navigation trong ledger, không có dispatch khác và `GITHUB_RUN_ATTEMPT=1`. Không tự rerun job hoặc dispatch lần nữa khi kết quả xấu/thiếu.
+
+`tools/review_research_v3.py` là hậu kiểm offline, không được runtime import và không thuộc thay đổi thuật toán. Nó kiểm identity, raw file hashes, case commitments, provenance, classification/retry và replay qua các hàm evaluator đã khóa. Download artifact được đổi đường dẫn **chỉ trong bản sao bộ nhớ**, giữ hash result gốc. Trường hợp development cũ chưa có runtime lock được ghi rõ và chỉ chấp nhận cho development; validation/test luôn cần digest execution runtime đúng.
+
+Một study complete nhưng `study_outcome=not_met` vẫn là kết quả nghiên cứu hợp lệ, không là simulator job thất bại. `test_qualified` chỉ true nếu validation complete/raw audit và tất cả gate đạt. Workflow validation không thực thi test. Snapshot exposure sau chạy nằm trong artifact để review/đồng bộ về repo; raw logs/datasets không commit.

@@ -163,6 +163,20 @@
       "outcomes_viewed": false,
       "navigation_executed": false,
       "note": "make check and CI regeneration verify all registered commitments; this event records automated checks, not the separate development outcome events. No train/validation/test navigation or outcomes; v3 test/validation remain unexposed."
+    },
+    {
+      "event_id": "v3-validation-plan-20261028",
+      "date": "2026-10-28T04:35:15.073406+00:00",
+      "actor": "Codex",
+      "source": "7c45705df029d4bace983c2fb47270f0aaa5d73d",
+      "splits": [
+        "validation"
+      ],
+      "purpose": "prespecified_validation_intent",
+      "access": "protocol/locks/index metadata only; no validation outcome",
+      "outcomes_viewed": false,
+      "navigation_executed": false,
+      "note": "User continuation authorizes next frozen validation stage. Plan 0012: single-host CI/Xvfb, 480 episodes, no runtime/design changes; test remains closed unless every validation gate passes. Actual CI source/run intent will be recorded by the locked runner before navigation."
     }
   ]
 }
