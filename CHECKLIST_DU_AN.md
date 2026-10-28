@@ -1,8 +1,8 @@
 # Checklist tổng thể — Blind Drone Lab
 
-**Cập nhật:** 2026-10-27, múi giờ Asia/Ho_Chi_Minh.
+**Cập nhật:** 2026-10-28, múi giờ Asia/Ho_Chi_Minh.
 
-**Mốc repo được đối chiếu:** thiết kế v3 `761318df1293c195347f486b0d228f88af10fae1`; runtime nghiệm thu vẫn là `39c34af`. Mốc checklist gốc `d7018cb` được giữ trong lịch sử.
+**Mốc repo được đối chiếu:** thiết kế v3 `761318df1293c195347f486b0d228f88af10fae1`; runtime cadence v3 `0c75ce28f14b8ea881e8c0c7c9335aa4319030c5`; nghiệm thu GUI/manual lịch sử vẫn là `39c34af`. Mốc checklist gốc `d7018cb` được giữ trong lịch sử.
 **Audit bổ sung nhánh L/GitHub:** source collector `b32410595b26f8ef2d0f8d99dca469797278366b`; xem [cây phiên bản](docs/version-history.md) và evidence liên kết ở mục 8.
 **Mục đích:** theo dõi từ ý tưởng ban đầu, các phần đã triển khai/kiểm chứng, phần còn mở và roadmap tương lai trong một file.
 
@@ -27,8 +27,8 @@
 | 4 | Môi trường theo seed và protocol v1 | Đã kiểm chứng CI | Case khả thi có witness, split/lock rõ, mọi outcome được giữ |
 | 5 | Quan sát có bộ nhớ, guard, planner v2 | Đã kiểm chứng CI | Khóa trước fresh evaluation, đủ 108 lượt, có chi phí/giới hạn |
 | L | Hoàn tất trải nghiệm local | Đã nghiệm thu LOC-01–09 | Mở GUI và chạy thật trên máy người dùng, lưu bằng chứng riêng |
-| 6 | Khóa câu hỏi nghiên cứu và protocol tiếp theo | Hoàn tất thiết kế v3; runtime v3 chưa triển khai | Có quyết định, ngưỡng chất lượng, dữ liệu và test mới |
-| 7A | Khảo sát giảm dữ liệu/biểu diễn | Chưa làm | Giảm chi phí nhưng đạt ngưỡng nhiệm vụ đã đặt trước |
+| 6 | Khóa câu hỏi nghiên cứu và protocol tiếp theo | Thiết kế v3 giữ nguyên; runtime được bổ sung ở 7A | Có quyết định, ngưỡng chất lượng, dữ liệu và test mới |
+| 7A | Khảo sát giảm dữ liệu/biểu diễn | Runtime/development hoàn tất; 45/50 và 46/50 chưa đạt 95%; held-out chưa chạy | Giảm chi phí nhưng đạt ngưỡng nhiệm vụ đã đặt trước |
 | 7B | Huấn luyện model nếu phù hợp câu hỏi | Chưa làm, nhánh tùy chọn | Train/eval không rò rỉ, tái lập, so sánh với baseline |
 | 8 | Độ vững, cảm biến không lý tưởng, điều hướng khó hơn | Chưa làm | Có protocol và đánh giá riêng cho từng mở rộng |
 | 9 | Giao diện giải thích/replay như game | Có observer cơ bản; còn mở rộng | Phân biệt live/replay và dữ liệu drone/ground truth |
@@ -225,25 +225,25 @@ python3 tools/local_session.py accept
 - [x] EXP-08 — Sinh train/development/validation/test mới với provenance và kiểm tra không trùng geometry phù hợp mục tiêu. **Bằng chứng:** [Index commitments](configs/scenarios/range_cadence_v3.index.json): đã sinh 480 case/chứng chỉ vào artifacts ignored; đủ bốn split, không trùng raw/canonical task với v1/v2. [Audit](docs/research/2026-10-27-research-protocol-v3.md).
 - [x] EXP-09 — Định nghĩa số case/seed, số lần lặp, cách tổng hợp và xử lý lượt lỗi infrastructure trước chạy. **Bằng chứng:** [Protocol §4–6](docs/protocols/range-cadence-v3.md): 60/60/120/240 case, 2 repeat/arm, case là đơn vị thống kê, CI một phía và retry đã định trước.
 - [x] EXP-10 — Quy định khi nào một lượt hợp lệ, bất khả thi hoặc hỏng hạ tầng; không loại failure chỉ vì thuật toán làm kém. **Bằng chứng:** [Protocol §6](docs/protocols/range-cadence-v3.md): negative có chứng minh, timeout/collision/OOM thuật toán giữ trong mẫu số, infra không phục hồi chặn kết luận.
-- [x] EXP-11 — Lập sổ exposure: ai/thuật toán nào đã dùng tập nào để thiết kế, tune, chọn cấu hình hoặc báo cáo. **Bằng chứng:** [Exposure ledger](configs/scenarios/exposure_v3.json) phân biệt người/agent/CI kiểm metadata/geometry tự động với xem outcome; chưa có v3 policy/evaluation chạy.
+- [x] EXP-11 — Lập sổ exposure: ai/thuật toán nào đã dùng tập nào để thiết kế, tune, chọn cấu hình hoặc báo cáo. **Bằng chứng:** [Exposure ledger](configs/scenarios/exposure_v3.json) phân biệt người/agent/CI kiểm metadata/geometry tự động với xem outcome; nay đã ghi pilot và development 7A, held-out chưa chạy.
 - [x] EXP-12 — Ghi lựa chọn kỹ thuật và ngưỡng mới vào ADR/config trước triển khai đánh giá. **Bằng chứng:** [ADR](docs/decisions/0006-range-cadence-protocol-v3.md) + [config](configs/experiments/range_cadence_v3.toml) + design lock có trước implementation/evaluation v3; 92 tests và CI đạt.
 
 **Gate:** có protocol, baseline, nguồn dữ liệu, ngưỡng và cách chọn cấu hình đủ rõ. Nếu thiếu quyết định, tiếp tục làm rõ thay vì train để có số đẹp.
 
-**Đã qua gate thiết kế mốc 6:** [báo cáo/source/CI](docs/research/2026-10-27-research-protocol-v3.md). Chưa qua gate chạy thí nghiệm mốc 7A: cần adapter acquisition/timestamp, accounting, evaluator/runner, Webots development và khóa runtime. Không có kết quả giảm dữ liệu hay ML mới. [Checklist mục tiêu phát sinh khi hiện thực hóa](CHECKLIST_MUC_TIEU_NGHIEN_CUU.md) giữ các mục này mở.
+**Đã qua gate thiết kế mốc 6:** [báo cáo/source/CI](docs/research/2026-10-27-research-protocol-v3.md). Mốc 7A nay đã có adapter/acquisition/accounting/evaluator, [240 lượt development local + 240 lượt CI và runtime lock](docs/research/2026-10-28-cadence-v3-development.md). Rate range giảm 50% trong development, nhưng success 45/50 và 46/50 chưa đạt 95%; chưa có kết luận giữ chất lượng held-out hoặc ML. [Checklist mục tiêu phát sinh khi hiện thực hóa](CHECKLIST_MUC_TIEU_NGHIEN_CUU.md) giữ các mục này mở.
 
 ## 10. Nhánh 7A đề xuất — nghiên cứu giảm dữ liệu
 
 Ưu tiên sát câu hỏi gốc; có thể làm với thuật toán không học trước. Từng cấu hình phải đánh giá lại chất lượng nhiệm vụ.
 
-- [ ] DATA-01 — Đo riêng đầu ra sensor, observation đưa vào policy, state giữ trong bộ nhớ và dữ liệu truyền/lưu.
-- [ ] DATA-02 — Khai báo encoding/metadata khi báo byte; đo RSS/bộ nhớ thực nếu muốn nói về RAM, không thay bằng cell count.
+- [x] DATA-01 — Đo riêng đầu ra sensor, observation đưa vào policy, state giữ trong bộ nhớ và dữ liệu truyền/lưu. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
+- [x] DATA-02 — Khai báo encoding/metadata khi báo byte; đo RSS/bộ nhớ thực nếu muốn nói về RAM, không thay bằng cell count. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [ ] DATA-03 — Thử guarded chỉ lưu occupied hits thay vì cả free-grid; xác minh hành vi và budget, không suy từ đọc code rằng đã giảm thành công.
 - [ ] DATA-04 — Thử giới hạn lịch sử, vùng nhớ, thời hạn hit và nén/độ phân giải; ghi chi phí mất thông tin.
-- [ ] DATA-05 — Giảm từng yếu tố một: số hướng ray, tần suất cập nhật hoặc độ chính xác số đo.
+- [x] DATA-05 — Giảm từng yếu tố một: số hướng ray, tần suất cập nhật hoặc độ chính xác số đo. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [ ] DATA-06 — Khảo sát quét/chọn phép đo theo tình huống thay vì lấy mọi phép đo cố định.
-- [ ] DATA-07 — Ghi số mẫu duy nhất theo timestamp, không đếm lại cùng sensor packet ở mỗi control tick.
-- [ ] DATA-08 — Đánh giá trên cùng case paired, giữ đầy đủ collision/timeout và không chỉ báo đường đi của success.
+- [x] DATA-07 — Ghi số mẫu duy nhất theo timestamp, không đếm lại cùng sensor packet ở mỗi control tick. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
+- [x] DATA-08 — Đánh giá trên cùng case paired, giữ đầy đủ collision/timeout và không chỉ báo đường đi của success. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [ ] DATA-09 — Tách thử bỏ sensor khi chạy với thử thiết kế/huấn luyện riêng cho cấu hình sensor ít hơn.
 - [ ] DATA-10 — Đo đường biên trade-off chất lượng nhiệm vụ–dữ liệu–CPU/bộ nhớ theo các cấu hình đã thử.
 - [ ] DATA-11 — Chọn cấu hình theo validation và ngưỡng đã khóa, chỉ dùng test mới cho báo cáo cuối.
@@ -441,6 +441,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | Observed navigation v2 | [Kế hoạch 0005](docs/plans/0005-observation-and-navigation-v2.md), [bằng chứng](docs/research/2026-10-26-navigation-v2.md) |
 | Runtime v1 khóa | [Protocol v1](configs/scenarios/protocol_v1.lock.json) |
 | Runtime v2 khóa | [Protocol v2](configs/scenarios/protocol_v2.lock.json) |
+| Runtime v3 development | [Source/CI/số đo](docs/research/2026-10-28-cadence-v3-development.md), [runtime lock](configs/scenarios/protocol_v3.runtime.lock.json) |
 | CI chính thức v2 | [Run 40255492790](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790), runtime source `2f422e2` |
 
 ## 22. Nhật ký cập nhật checklist
@@ -450,5 +451,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | 2026-10-26 | Tạo checklist tổng thể theo yêu cầu người dùng; đối chiếu lịch sử, plan, ADR và evidence, tách roadmap đề xuất khỏi phần đã kiểm chứng | Runtime/bàn giao trước checklist: `d7018cb`; v2 tested source: `2f422e2` |
 | 2026-10-27 | Audit batch mới: thiếu lệnh T/G, mapped chưa mở; đóng LOC-09 theo số đo và phiếu smooth/unchanged. Preflight 82 test/locks/dependencies đạt; probe display của phiên sửa lỗi exit 1, được ghi riêng | Source audit `c012ab8`; [evidence](docs/research/2026-10-27-local-acceptance-followup.md) |
 | 2026-10-27 | Manual 020953 và mapped 022316 đủ bằng chứng; hoàn tất LOC-01…09, giữ raw hashes/ảnh/phiếu và các giới hạn | Source runtime `39c34af`; [nghiệm thu cuối](docs/research/2026-10-27-local-acceptance-complete.md) |
+
+| 2026-10-28 | Hoàn tất runtime 7A, local/CI mỗi nơi 240 lượt development, khóa runtime; giữ kết quả chất lượng chưa đạt và held-out chưa mở | Source `0c75ce2`; [báo cáo](docs/research/2026-10-28-cadence-v3-development.md) |
 
 Khi cập nhật tiếp, thêm dòng nhật ký, điều chỉnh checkbox và dẫn bằng chứng. Không sửa ngược báo cáo lịch sử hoặc đánh dấu hàng loạt tương lai chỉ vì đã có roadmap này.

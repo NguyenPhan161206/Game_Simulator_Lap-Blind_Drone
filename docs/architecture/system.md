@@ -65,3 +65,7 @@ Luồng từ trạng thái thật sang bộ đánh giá/hiển thị không đư
 5. Hardware: nếu mở rộng sau này, cần bằng chứng riêng.
 
 Không dùng kết quả của bước trước để tuyên bố hoàn thành bước sau.
+
+## Runtime v3 — development và provenance
+
+[Mốc 7A](../research/2026-10-28-cadence-v3-development.md) bổ sung adapter/world/entrypoints riêng, acquisition-time observation và evaluator physics-tick. [Hướng dẫn](../runtime-v3.md) mô tả luồng dữ liệu và hai tầng khóa. 240 lượt development local và 240 lượt CI kiểm chứng runtime, không thay bằng chứng v1/v2 hoặc cho phép suy ra chất lượng held-out/phần cứng.

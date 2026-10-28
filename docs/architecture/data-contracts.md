@@ -29,3 +29,7 @@ Không có phát hiện trong tầm đo không đồng nghĩa một hướng lu�
 ## Đo lượng dữ liệu
 
 Báo riêng đầu ra cảm biến, đầu vào mô hình và dữ liệu lưu. Số float/giây hoặc byte/giây cần kèm cách mã hóa, metadata và cửa sổ lịch sử; không tự coi chúng là mức riêng tư hoặc lượng thông tin ngữ nghĩa.
+
+## V3 — pose tại acquisition
+
+`SampledObservation` giữ current state và acquisition state riêng; range timestamp phải khớp acquisition pose. Grid cập nhật theo acquisition pose, guard/lệnh theo current measured state giữ giữa hai lần pose sampling. GPS/IMU/Gyro 32 ms, policy/stabilizer 16 ms; không nội suy bằng ground truth. [Runtime v3](../runtime-v3.md) và [bằng chứng development](../research/2026-10-28-cadence-v3-development.md) mô tả counters, payload 96 B, log bytes, CPU process/wall và RSS riêng. Khóa thiết kế giữ nguyên trạng thái lịch sử `runtime_ready=false`; artifact runtime lock mới quyết định quyền chạy held-out.

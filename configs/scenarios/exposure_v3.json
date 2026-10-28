@@ -118,6 +118,51 @@
       "outcomes_viewed": true,
       "navigation_executed": true,
       "note": "/home/binhnguyen/Documents/AI_Lap/artifacts/v3-runtime-pilot-audit-v2; status=complete; all failures and attempts retained"
+    },
+    {
+      "event_id": "v3-intent-2026-10-28T01:27:26.181187+00:00",
+      "date": "2026-10-28T01:27:26.181187+00:00",
+      "actor": "Codex/runtime_v3",
+      "source": "0c75ce28f14b8ea881e8c0c7c9335aa4319030c5",
+      "splits": [
+        "development"
+      ],
+      "purpose": "intent",
+      "access": "automated geometry and runtime; public observation to policy only",
+      "outcomes_viewed": false,
+      "navigation_executed": false,
+      "note": "/home/binhnguyen/Documents/AI_Lap/artifacts/v3-development-0c75ce2; automated selected geometry only; no held-out outcomes opened"
+    },
+    {
+      "event_id": "v3-result-2026-10-28T01:41:16.293840+00:00",
+      "date": "2026-10-28T01:41:16.293840+00:00",
+      "actor": "Codex/runtime_v3",
+      "source": "0c75ce28f14b8ea881e8c0c7c9335aa4319030c5",
+      "splits": [
+        "development"
+      ],
+      "purpose": "result",
+      "access": "automated geometry and runtime; public observation to policy only",
+      "outcomes_viewed": true,
+      "navigation_executed": true,
+      "note": "/home/binhnguyen/Documents/AI_Lap/artifacts/v3-development-0c75ce2; status=complete; all failures and attempts retained"
+    },
+    {
+      "event_id": "v3-development-handoff-integrity-20261028",
+      "date": "2026-10-28T01:46:30.364258+00:00",
+      "actor": "Codex",
+      "source": "0c75ce28f14b8ea881e8c0c7c9335aa4319030c5",
+      "splits": [
+        "train",
+        "development",
+        "validation",
+        "test"
+      ],
+      "purpose": "automated_fixture_and_lock_integrity_audit",
+      "access": "all-split geometry/certificates programmatic checks only; human/agent reviewed development outcomes only",
+      "outcomes_viewed": false,
+      "navigation_executed": false,
+      "note": "make check and CI regeneration verify all registered commitments; this event records automated checks, not the separate development outcome events. No train/validation/test navigation or outcomes; v3 test/validation remain unexposed."
     }
   ]
 }

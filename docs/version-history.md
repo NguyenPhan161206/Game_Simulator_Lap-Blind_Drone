@@ -55,3 +55,9 @@ Trong workspace managed dùng `tools/git.sh` vì .git gốc chỉ đọc và là
 ## Mốc 6 — thiết kế nghiên cứu v3, 2026-10-27
 
 Nhánh `feat/research-protocol-v3`: kế hoạch `a85e41b` → thiết kế/công cụ khóa `761318df1293c195347f486b0d228f88af10fae1` → tài liệu bàn giao sau đó. [CI 40446508423](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40446508423) chạy make check, đủ 92 tests và kiểm 480 case. [Báo cáo](research/2026-10-27-research-protocol-v3.md) phân biệt design lock với runtime lock chưa có. Không sửa frozen v1/v2 hoặc bổ sung outcome v3. Main chỉ fast-forward sau các checks liên quan; đây là snapshot source kiểm chứng, tip xem GitHub/log.
+
+## Mốc 7A — runtime cadence v3, 2026-10-28
+
+Nhánh `feat/range-cadence-v3-runtime`: kế hoạch `f9fa972` → runtime `0c75ce28f14b8ea881e8c0c7c9335aa4319030c5` → artifact khóa và bàn giao sau đó. [CI 40615141669](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40615141669) đạt 112 tests và đủ 240 lượt development; local có 240 lượt riêng cùng source sạch. [Báo cáo](research/2026-10-28-cadence-v3-development.md) ghi acquisition/accounting, source lock và giới hạn: reference 45/50, candidate 46/50, chưa đạt success 95%; v3 validation/test chưa chạy. Khóa runtime bổ sung không thay design/v1/v2 locks. Bàn giao thêm các tests fault injection, tổng 116 unit tests.
+
+Trong phiên laptop này, normal SSH trong sandbox vẫn bị lỗi quyền cấu hình hệ thống; fetch/push SSH ngoài sandbox đã thành công theo approval và standing authorization. Không đổi remote hoặc quyền metadata để xử lý lỗi đó. Main/nhánh feature chỉ được đồng bộ theo các checks tương ứng, không tự coi tip là source đã chạy.

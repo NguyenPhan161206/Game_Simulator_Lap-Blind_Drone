@@ -1,8 +1,10 @@
 """Behavior checks for the additive v3 runtime; no fake simulator smoke."""
 import ast
 from copy import deepcopy
-from dataclasses import replace
+from dataclasses import asdict, replace
 import inspect
+import contextlib
+import io
 import json
 from math import pi
 from pathlib import Path
@@ -16,6 +18,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'src'))
 from blind_drone.contracts.runtime import VehicleState
 from blind_drone.evaluation.cadence import CadenceEvaluator, aggregate, classify_attempt, pair_order
+from blind_drone.evaluation.cadence_audit import audit_pair, audit_study
 from blind_drone.experiments.protocol_v2 import load_v2_config
 from blind_drone.experiments.protocol_v3 import load_spec, verify_design
 from blind_drone.experiments.runtime_v3 import select_cases, verify_runtime
@@ -182,6 +185,94 @@ class EvaluationTests(unittest.TestCase):
 
 
 class IntegrityTests(unittest.TestCase):
+    def exercise_attempt_failures(self, classifications):
+        # Fault-injection unit test of orchestration; never calls a simulator.
+        sys.path.insert(0,str(ROOT/'tools'))
+        import run_research_v3 as runner
+        with tempfile.TemporaryDirectory() as temporary:
+            base=Path(temporary);wrapper=base/'webots'
+            wrapper.write_text('unit fixture only')
+            (base/'resources').mkdir();(base/'resources/version.txt').write_text('R2025a')
+            pending=iter(classifications)
+            def fault(*args):
+                return {'classification':next(pending),'result':{'status':'incomplete','episodes':[{'outcome':'algorithm_failure'}]},
+                        'wall_s':0.,'returncode':1}
+            with patch.object(runner,'ROOT',base),patch.object(runner,'LOCK',base/'missing.lock'), \
+                 patch.object(runner,'select_cases',return_value=([{'id':'unit-case'}],'design')), \
+                 patch.object(runner,'inventory',return_value={'unit':'hash'}), \
+                 patch.object(runner,'outputs',return_value={}), \
+                 patch.object(runner,'find_webots',return_value=str(wrapper)), \
+                 patch.object(runner,'git',side_effect=lambda *a:'a'*40 if a[0]=='rev-parse' else ''), \
+                 patch.object(runner,'exposure') as exposure,patch.object(runner,'run_pair',side_effect=fault) as launch, \
+                 patch.object(sys,'argv',['run_research_v3','--output',str(base/'run')]), \
+                 contextlib.redirect_stdout(io.StringIO()),contextlib.redirect_stderr(io.StringIO()):
+                self.assertEqual(runner.main(),1)
+                self.assertEqual(launch.call_count,len(classifications))
+                self.assertEqual(exposure.call_count,2)
+            result=json.loads((base/'run/result.json').read_text())
+            self.assertEqual(result['status'],'incomplete');self.assertNotIn('gate',result)
+            self.assertEqual(len(result['attempts']),len(classifications))
+            self.assertTrue(all(a['result']['episodes'][0]['outcome']=='algorithm_failure' for a in result['attempts']))
+
+    def test_algorithm_failure_is_retained_without_retry(self):
+        self.exercise_attempt_failures(['unresolved'])
+
+    def test_infrastructure_retries_pair_only_once_then_blocks(self):
+        self.exercise_attempt_failures(['infrastructure','infrastructure'])
+
+    def raw_fixture(self, directory):
+        directory=Path(directory);spec=load_spec();case={'id':'synthetic','geometry_sha256':'synthetic','goal_m':[0,0,1.5]}
+        result={'status':'complete','repeat':0,'episodes':[]};ticks=[]
+        for arm in pair_order(case['id'],0):
+            period=spec[arm+'_period_ms'];token=arm+'0';rows=[]
+            data=bytearray()
+            for i in range(1,int((3.008+1e-8)/(period/1000))+1):
+                t=round(i*period/1000,9);s=sample(t);encoded=encode_packet(i,s);data.extend(encoded)
+                rows.append({'sequence':i,'time_s':t,'pose_time_s':t,'payload_bytes':96,'invalid_values':0,
+                             'pose':asdict(s['acquisition_state']),'readings':s['readings']})
+            files=[directory/(token+suffix) for suffix in ('-acquisition.jsonl','-range.bin','-decisions.jsonl')]
+            files[0].write_text(''.join(json.dumps(r)+'\n' for r in rows));files[1].write_bytes(data)
+            decisions=[];previous=None;evaluator=CadenceEvaluator(case['goal_m'],spec['quality'])
+            evaluator.update(0,case['goal_m'],(0,0,0),0)
+            for i in range(1,64):
+                t=round(2+i*.016,9)
+                timestamp=round(int((t+1e-8)/(period/1000))*period/1000,9)
+                decisions.append({'time_s':t,'pose_time_s':round(int((t+1e-8)/.032)*.032,9),
+                                  'sample_time_s':timestamp,'reused':timestamp==previous,'cpu_ms':.1,'wall_ms':.2})
+                previous=timestamp
+                tick={'arm':arm,'time_s':round(i*.016,9),'position_m':case['goal_m'],
+                      'velocity_m_s':[0,0,0],'contact_count':0}
+                ticks.append(tick)
+                score=evaluator.update(tick['time_s'],tick['position_m'],tick['velocity_m_s'],0)
+            files[2].write_text(''.join(json.dumps(d)+'\n' for d in decisions))
+            acquisition=acquisition_summary(rows,0,3.008,period,2.)
+            result['episodes'].append({'arm':arm,'repeat':0,'case_id':case['id'],'geometry_sha256':case['geometry_sha256'],
+                'device_periods_ms':{n:period for n in RANGE_NAMES},'pose_periods_ms':{'gps':32,'imu':32,'gyro':32},
+                'epoch_s':0,'score_start_s':2.,'end_s':3.008,'acquisition':acquisition,
+                'cpu':cpu_summary([d['cpu_ms'] for d in decisions]),'decision_wall':cpu_summary([d['wall_ms'] for d in decisions]),
+                'initial_position_m':case['goal_m'],'initial_velocity_m_s':[0,0,0],
+                'observation':{'policy_reads':63,'reused_reads':sum(d['reused'] for d in decisions),
+                               'unique_samples_read':len({d['sample_time_s'] for d in decisions}),
+                               'scored_acquisitions':acquisition['scored']['packets']},
+                'files_bytes':{f.name:f.stat().st_size for f in files},**score})
+        (directory/'evaluation.jsonl').write_text(''.join(json.dumps(t)+'\n' for t in ticks))
+        return case,spec,result
+
+    def test_raw_replay_detects_binary_corruption(self):
+        with tempfile.TemporaryDirectory() as directory:
+            c,s,r=self.raw_fixture(directory)
+            self.assertTrue(audit_pair(directory,c,s,r))
+            p=next(Path(directory).glob('*-range.bin'))
+            data=bytearray(p.read_bytes());data[20]^=1;p.write_bytes(data)
+            with self.assertRaisesRegex(ValueError,'binary mismatch'):audit_pair(directory,c,s,r)
+
+    def test_raw_replay_detects_missing_physics_tick(self):
+        with tempfile.TemporaryDirectory() as directory:
+            c,s,r=self.raw_fixture(directory)
+            p=Path(directory)/'evaluation.jsonl';lines=p.read_text().splitlines();lines.pop(10)
+            p.write_text('\n'.join(lines)+'\n')
+            with self.assertRaisesRegex(ValueError,'Missing physics'):audit_pair(directory,c,s,r)
+
     def test_heldout_requires_runtime_lock_before_reading_fixture(self):
         with patch('blind_drone.experiments.runtime_v3.verify_runtime',side_effect=ValueError('lock missing')):
             for split in ('validation','test'):

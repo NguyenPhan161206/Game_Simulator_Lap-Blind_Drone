@@ -54,3 +54,7 @@ CI scaffold kiểm tra cấu trúc, TOML và các bất biến khai báo. Workfl
 Mốc 6 đã hoàn tất [thiết kế cadence v3](protocols/range-cadence-v3.md), [92 unit tests/CI](research/2026-10-27-research-protocol-v3.md). Chạy `make check` để kiểm scaffold, v1/v2, 480 case mới/khóa thiết kế và tests; không cần Webots hoặc ML. `python3 tools/build_research_v3.py` tái sinh fixture đầy đủ vào artifacts ignored, không cấp chúng cho navigation. Không chạy lại `--freeze` để cập nhật thiết kế.
 
 Tiếp theo triển khai adapter acquisition 32/64 ms, kế toán dữ liệu và runner/evaluator version mới, chỉ kiểm chứng trên development; giữ [mục tiêu phát sinh](../CHECKLIST_MUC_TIEU_NGHIEN_CUU.md) mở tới khi có runtime evidence. Sau đó tạo runtime lock riêng trước validation/test. Chưa huấn luyện hoặc thực thi đánh giá v3; v1/v2 runtime và test exposure được giữ nguyên. Các mục mốc kế tiếp trong phần đầu tài liệu là lịch sử nền tảng, không thay thứ tự này.
+
+## Bàn giao 7A — 2026-10-28
+
+[Runtime v3](runtime-v3.md) đã triển khai/khóa tại source `0c75ce2`; [local/CI development](research/2026-10-28-cadence-v3-development.md) mỗi nơi có 240 lượt, rate giảm 50% nhưng success reference 45/50, candidate 46/50. `make check` kiểm runtime lock riêng; CI checkout đủ history để đối chiếu implementation commit. Validation/test chưa chạy, chưa kết luận giữ chất lượng hoặc ML. Phần “tiếp theo triển khai” phía trên ghi trạng thái mốc 6, nay được thay bằng bàn giao này.
