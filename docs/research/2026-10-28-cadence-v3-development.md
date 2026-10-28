@@ -37,6 +37,12 @@ Bảng paired sau collapse: 45 case cả hai success; 4 case cả hai failure; 1
 
 Ở `narrow_gap-s3200004`, arm chạy đầu timeout trong cả hai repeat; arm chạy sau success. Pose đầu khác nhau trong tolerance reset và đã được lưu. Đây là liên hệ quan sát với thứ tự/khởi tạo, chưa xác định nguyên nhân. Quy tắc collapse vẫn tính cả hai arm failure tại case đó; không chọn repeat tốt. Không tăng warmup hoặc sửa planner sau quan sát để cứu điểm.
 
+## Chẩn đoán public-observation sau khi chạy
+
+[Replay offline](2026-10-28-v3-public-replay.json) đọc lại đúng range/pose và mission goal đã ghi của reference ở năm case timeout, không đưa obstacle/witness vào navigator. Đây là đọc lại dữ liệu development đã exposed, không là lượt Webots hoặc case độc lập mới, không chọn/thay tham số.
+
+Cả năm trace đều có 5625 decisions: 157 initial scan và 5468 `scan_unknown_or_blocked`, không có lệnh ngang khác 0. Planner vẫn có path 42–54 điểm, current cell free và không blocked; nhưng kiểm tra `segment_ok(require_free=True)` từ vị trí hiện tại tới các điểm đầu path đều không đạt. Điều này xác định lý do trực tiếp phương tiện đứng quét thay vì đi theo đường được lập. Chưa đủ để kết luận nguyên nhân vật lý hoặc cách sửa đúng; có thể cần khảo sát riêng coverage của free-grid gần thân/sensor origins. Không tự đánh dấu khoảng chưa đo là trống, không sửa điều kiện free-check trong protocol này.
+
 ## Gate và chi phí
 
 Chỉ số gate tính trên development mang tính chẩn đoán, không là validation/test cuối. Success 90%/92% thấp hơn ngưỡng đăng ký 95%. Với 0 adverse/50 case, upper bound một phía 95% là **5.8155%**, chưa ≤5%; ngay cả development hoàn hảo cũng chưa đủ số case cho gate thống kê này. Không tăng n hoặc thay confidence sau khi xem kết quả. Vì vậy `met=false` không được biến thành tuyên bố candidate đã kém reference ở test; held-out còn chưa được mở.

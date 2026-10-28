@@ -1,0 +1,265 @@
+{
+  "date": "2026-10-28",
+  "source_commit": "8d46e0377dec7983509be103ed927d4f94a5321e",
+  "runtime_implementation_commit": "0c75ce28f14b8ea881e8c0c7c9335aa4319030c5",
+  "kind": "offline_diagnostic_replay_of_already_exposed_development_observations_not_new_Webots_episodes",
+  "new_heldout_access": false,
+  "algorithm_changed": false,
+  "rows": [
+    {
+      "case_id": "development-empty-s3200020",
+      "arm": "reference",
+      "repeat": 0,
+      "replay_source": "recorded public range/pose/mission only; no world obstacles/witness",
+      "decisions": 5625,
+      "statuses": {
+        "initial_scan": 157,
+        "scan_unknown_or_blocked": 5468
+      },
+      "nonzero_horizontal_commands": 0,
+      "last": {
+        "start_cell": [
+          1,
+          18
+        ],
+        "start_free": true,
+        "start_blocked": false,
+        "goal_blocked": false,
+        "path_points": 43,
+        "path_head": [
+          [
+            0.36748500000000256,
+            4.547745999999991,
+            1.4999999999999942
+          ],
+          [
+            0.375,
+            4.375
+          ],
+          [
+            0.375,
+            4.125
+          ],
+          [
+            0.375,
+            3.875
+          ]
+        ],
+        "current_position_m": [
+          0.3674850000000037,
+          4.547745999999991,
+          1.4999999999999942
+        ],
+        "path_segment_free": [
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "case_id": "development-empty-s3200034",
+      "arm": "reference",
+      "repeat": 0,
+      "replay_source": "recorded public range/pose/mission only; no world obstacles/witness",
+      "decisions": 5625,
+      "statuses": {
+        "initial_scan": 157,
+        "scan_unknown_or_blocked": 5468
+      },
+      "nonzero_horizontal_commands": 0,
+      "last": {
+        "start_cell": [
+          1,
+          -21
+        ],
+        "start_free": true,
+        "start_blocked": false,
+        "goal_blocked": false,
+        "path_points": 44,
+        "path_head": [
+          [
+            0.38423600000000446,
+            -5.048738,
+            1.499999999999994
+          ],
+          [
+            0.375,
+            -4.875
+          ],
+          [
+            0.375,
+            -4.625
+          ],
+          [
+            0.375,
+            -4.375
+          ]
+        ],
+        "current_position_m": [
+          0.38423600000000446,
+          -5.048738,
+          1.499999999999994
+        ],
+        "path_segment_free": [
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "case_id": "development-empty-s3200041",
+      "arm": "reference",
+      "repeat": 0,
+      "replay_source": "recorded public range/pose/mission only; no world obstacles/witness",
+      "decisions": 5625,
+      "statuses": {
+        "initial_scan": 157,
+        "scan_unknown_or_blocked": 5468
+      },
+      "nonzero_horizontal_commands": 0,
+      "last": {
+        "start_cell": [
+          1,
+          -18
+        ],
+        "start_free": true,
+        "start_blocked": false,
+        "goal_blocked": false,
+        "path_points": 42,
+        "path_head": [
+          [
+            0.3184790000000224,
+            -4.256297999999976,
+            1.4999999999999944
+          ],
+          [
+            0.375,
+            -4.125
+          ],
+          [
+            0.375,
+            -3.875
+          ],
+          [
+            0.375,
+            -3.625
+          ]
+        ],
+        "current_position_m": [
+          0.3184790000000224,
+          -4.256297999999976,
+          1.4999999999999944
+        ],
+        "path_segment_free": [
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "case_id": "development-narrow_gap-s3200004",
+      "arm": "reference",
+      "repeat": 0,
+      "replay_source": "recorded public range/pose/mission only; no world obstacles/witness",
+      "decisions": 5625,
+      "statuses": {
+        "initial_scan": 157,
+        "scan_unknown_or_blocked": 5468
+      },
+      "nonzero_horizontal_commands": 0,
+      "last": {
+        "start_cell": [
+          -1,
+          21
+        ],
+        "start_free": true,
+        "start_blocked": false,
+        "goal_blocked": false,
+        "path_points": 53,
+        "path_head": [
+          [
+            -0.19279053525944312,
+            5.25259725867951,
+            1.4999999999999947
+          ],
+          [
+            0.125,
+            5.125
+          ],
+          [
+            0.375,
+            4.875
+          ],
+          [
+            0.625,
+            4.625
+          ]
+        ],
+        "current_position_m": [
+          -0.19279053525944245,
+          5.25259725867951,
+          1.4999999999999947
+        ],
+        "path_segment_free": [
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    {
+      "case_id": "development-narrow_gap-s3200029",
+      "arm": "reference",
+      "repeat": 1,
+      "replay_source": "recorded public range/pose/mission only; no world obstacles/witness",
+      "decisions": 5625,
+      "statuses": {
+        "initial_scan": 157,
+        "scan_unknown_or_blocked": 5468
+      },
+      "nonzero_horizontal_commands": 0,
+      "last": {
+        "start_cell": [
+          -1,
+          -24
+        ],
+        "start_free": true,
+        "start_blocked": false,
+        "goal_blocked": false,
+        "path_points": 54,
+        "path_head": [
+          [
+            -0.23515826416915797,
+            -5.831551540890011,
+            1.5000000000000053
+          ],
+          [
+            -0.375,
+            -5.625
+          ],
+          [
+            -0.625,
+            -5.375
+          ],
+          [
+            -0.875,
+            -5.125
+          ]
+        ],
+        "current_position_m": [
+          -0.2351582641691587,
+          -5.831551540890011,
+          1.5000000000000053
+        ],
+        "path_segment_free": [
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  ]
+}
