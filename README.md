@@ -12,7 +12,11 @@ Camera có thể hỗ trợ tạo dữ liệu/huấn luyện ở nhánh nghiên 
 
 V1 được giữ để tái lập: [môi trường](docs/research/2026-10-25-webots-v1-smoke.md), [baseline](docs/research/2026-10-26-navigation-v1.md), [seeded suite](docs/research/2026-10-26-seeded-environments.md). Test v1 và v2 đều đã exposed; thay thuật toán cần protocol/test mới.
 
-Mốc 6 giữ nguyên [thiết kế nghiên cứu v3](docs/protocols/range-cadence-v3.md). [Mốc 7A](docs/research/2026-10-28-cadence-v3-development.md) đã triển khai và khóa runtime: local và CI mỗi nơi đủ 240 lượt development, acquisition 32/64 ms thực, payload rate 3000/1500 B/s. Sau collapse reference đạt 45/50 case, candidate 46/50, chưa đạt ngưỡng 95%; không collision/bounds. Đây chưa là kết luận chất lượng held-out, tiết kiệm điện hoặc riêng tư. Validation/test v3 chưa chạy; chưa ML. [Hướng dẫn runtime](docs/runtime-v3.md).
+Mốc 6 giữ nguyên [thiết kế nghiên cứu v3](docs/protocols/range-cadence-v3.md). [Mốc 7A](docs/research/2026-10-28-cadence-v3-development.md) triển khai và khóa runtime; local và CI mỗi nơi có 240 lượt development. Acquisition 32/64 ms thực cho payload rate 3000/1500 B/s; sau collapse reference đạt 45/50 case và candidate 46/50, chưa đạt 95%.
+
+[Validation v3](docs/research/2026-10-28-cadence-v3-validation.md) đã hoàn tất đúng một lần với 480 lượt trên CI và hậu kiểm local khớp raw evidence: cả hai arm đạt **87/100 case khả thi**, dưới 95%, không collision/bounds. Rate range giảm 50%, nhưng giả thuyết kết hợp **không đạt**. Theo protocol, v3 dừng tại validation; test giữ chưa mở và CLI từ chối chạy test.
+
+Validation v3 đã exposed, chưa ML; thay thuật toán/cảm biến cần version và đánh giá mới. Không suy ra tiết kiệm điện, riêng tư hoặc an toàn phần cứng. [Hướng dẫn runtime](docs/runtime-v3.md).
 
 ## Bắt đầu
 
@@ -50,6 +54,6 @@ Nghiệm thu desktop bằng một lệnh: `python3 tools/local_session.py accept
 
 ## Hướng phát triển
 
-Runtime v3 và development đã có khóa riêng. Bước tiếp theo: giữ nguyên source/thiết kế nếu thực hiện validation gate → test cuối chỉ khi gate đạt. Sửa thuật toán/thiết kế cần version mới; không tune bằng held-out. Ưu tiên khảo sát giảm dữ liệu trên baseline; ML là nhánh riêng khi có câu hỏi phù hợp. Sau core phương tiện mới mở rộng một chuyến giao hàng và điều phối logistics.
+V3 đã dừng đúng protocol ở kết quả validation không đạt; giữ nguyên source, locks, raw evidence và test chưa mở. Bước phát triển thuật toán/cảm biến tiếp theo cần protocol/version và đánh giá mới; không tune bằng validation đã exposed. Ưu tiên khảo sát giảm dữ liệu trên baseline; ML là nhánh riêng khi có câu hỏi phù hợp. Sau core phương tiện mới mở rộng một chuyến giao hàng và điều phối logistics.
 
 Các preset nghiên cứu level_b vẫn mang `status = "draft"`, `runtime_ready = false`. [lab_v1.toml](configs/lab_v1.toml) là preset kỹ thuật riêng cho môi trường và kiểm tra simulator, không phải cấu hình nghiên cứu đã hoàn thiện.

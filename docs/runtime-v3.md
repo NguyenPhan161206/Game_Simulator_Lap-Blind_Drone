@@ -54,3 +54,7 @@ Validation/test chỉ chạy sau hai lock hợp lệ; không thuộc bàn giao d
 `tools/review_research_v3.py` là hậu kiểm offline, không được runtime import và không thuộc thay đổi thuật toán. Nó kiểm identity, raw file hashes, case commitments, provenance, classification/retry và replay qua các hàm evaluator đã khóa. Download artifact được đổi đường dẫn **chỉ trong bản sao bộ nhớ**, giữ hash result gốc. Trường hợp development cũ chưa có runtime lock được ghi rõ và chỉ chấp nhận cho development; validation/test luôn cần digest execution runtime đúng.
 
 Một study complete nhưng `study_outcome=not_met` vẫn là kết quả nghiên cứu hợp lệ, không là simulator job thất bại. `test_qualified` chỉ true nếu validation complete/raw audit và tất cả gate đạt. Workflow validation không thực thi test. Snapshot exposure sau chạy nằm trong artifact để review/đồng bộ về repo; raw logs/datasets không commit.
+
+## Kết thúc nghiên cứu v3 tại validation
+
+[Báo cáo validation](research/2026-10-28-cadence-v3-validation.md) xác nhận đủ 480 lượt, 127 tests và independent raw replay. Cả hai arm 87/100, dưới 95%; các gate còn lại đạt nhưng study `not_met`. Test không đủ điều kiện và chưa chạy; CLI đã khóa từ chối result này trước khi mở executable. Validation đã exposed, không dispatch/rerun để cải thiện outcome hoặc sửa runtime/lock rồi gọi nó là unseen. Công việc tiếp theo phải theo version/protocol thích hợp.

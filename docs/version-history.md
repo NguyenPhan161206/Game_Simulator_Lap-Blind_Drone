@@ -63,3 +63,7 @@ Nhánh `feat/range-cadence-v3-runtime`: kế hoạch `f9fa972` → runtime `0c75
 Trong phiên laptop này, normal SSH trong sandbox vẫn bị lỗi quyền cấu hình hệ thống; fetch/push SSH ngoài sandbox đã thành công theo approval và standing authorization. Không đổi remote hoặc quyền metadata để xử lý lỗi đó. Main/nhánh feature chỉ được đồng bộ theo các checks tương ứng, không tự coi tip là source đã chạy.
 
 Bàn giao runtime lock `8d46e03` đã qua [CI 40617132921](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40617132921): 116 tests và thêm 240 lượt development, cùng 45/50 và 46/50 case success. Commit chẩn đoán `38037f9` chỉ thêm tài liệu/replay evidence và đã qua scaffold CI. Implementation được ghim vẫn là `0c75ce2`; không sửa khóa để cập nhật tài liệu.
+
+## Validation v3 — kết luận âm, 2026-10-28
+
+Nhánh `feat/v3-validation-gate`: kế hoạch `9d030d6` → workflow/manual gate + offline review `0c5f598c512a24db63b0fd19ca259a3b85382ee5` → evidence/docs sau đó. [CI validation 40633617042](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40633617042), job `122635441422`, đã đạt pipeline 127 tests/480 lượt và raw replay, nhưng nghiên cứu `not_met`: reference/candidate đều 87/100, dưới 95%. [Báo cáo](research/2026-10-28-cadence-v3-validation.md) giữ source và kết quả; runtime source vẫn `0c75ce2`, cả bốn lock không đổi. Test chưa mở và CLI từ chối do gate validation fail; validation đã exposed.

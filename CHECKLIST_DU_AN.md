@@ -2,7 +2,7 @@
 
 **Cập nhật:** 2026-10-28, múi giờ Asia/Ho_Chi_Minh.
 
-**Mốc repo được đối chiếu:** thiết kế v3 `761318df1293c195347f486b0d228f88af10fae1`; runtime cadence v3 `0c75ce28f14b8ea881e8c0c7c9335aa4319030c5`; nghiệm thu GUI/manual lịch sử vẫn là `39c34af`. Mốc checklist gốc `d7018cb` được giữ trong lịch sử.
+**Mốc repo được đối chiếu:** thiết kế v3 `761318df1293c195347f486b0d228f88af10fae1`; runtime cadence v3 `0c75ce28f14b8ea881e8c0c7c9335aa4319030c5`, validation `0c5f598c512a24db63b0fd19ca259a3b85382ee5`; nghiệm thu GUI/manual lịch sử vẫn là `39c34af`. Mốc checklist gốc `d7018cb` được giữ trong lịch sử.
 **Audit bổ sung nhánh L/GitHub:** source collector `b32410595b26f8ef2d0f8d99dca469797278366b`; xem [cây phiên bản](docs/version-history.md) và evidence liên kết ở mục 8.
 **Mục đích:** theo dõi từ ý tưởng ban đầu, các phần đã triển khai/kiểm chứng, phần còn mở và roadmap tương lai trong một file.
 
@@ -28,7 +28,7 @@
 | 5 | Quan sát có bộ nhớ, guard, planner v2 | Đã kiểm chứng CI | Khóa trước fresh evaluation, đủ 108 lượt, có chi phí/giới hạn |
 | L | Hoàn tất trải nghiệm local | Đã nghiệm thu LOC-01–09 | Mở GUI và chạy thật trên máy người dùng, lưu bằng chứng riêng |
 | 6 | Khóa câu hỏi nghiên cứu và protocol tiếp theo | Thiết kế v3 giữ nguyên; runtime được bổ sung ở 7A | Có quyết định, ngưỡng chất lượng, dữ liệu và test mới |
-| 7A | Khảo sát giảm dữ liệu/biểu diễn | Runtime/development hoàn tất; 45/50 và 46/50 chưa đạt 95%; held-out chưa chạy | Giảm chi phí nhưng đạt ngưỡng nhiệm vụ đã đặt trước |
+| 7A | Khảo sát giảm dữ liệu/biểu diễn | V3 kết thúc âm: validation 87/100 mỗi arm; test chưa mở | Đạt toàn bộ gate hoặc kết luận âm theo protocol, giữ nguyên bằng chứng |
 | 7B | Huấn luyện model nếu phù hợp câu hỏi | Chưa làm, nhánh tùy chọn | Train/eval không rò rỉ, tái lập, so sánh với baseline |
 | 8 | Độ vững, cảm biến không lý tưởng, điều hướng khó hơn | Chưa làm | Có protocol và đánh giá riêng cho từng mở rộng |
 | 9 | Giao diện giải thích/replay như game | Có observer cơ bản; còn mở rộng | Phân biệt live/replay và dữ liệu drone/ground truth |
@@ -225,12 +225,12 @@ python3 tools/local_session.py accept
 - [x] EXP-08 — Sinh train/development/validation/test mới với provenance và kiểm tra không trùng geometry phù hợp mục tiêu. **Bằng chứng:** [Index commitments](configs/scenarios/range_cadence_v3.index.json): đã sinh 480 case/chứng chỉ vào artifacts ignored; đủ bốn split, không trùng raw/canonical task với v1/v2. [Audit](docs/research/2026-10-27-research-protocol-v3.md).
 - [x] EXP-09 — Định nghĩa số case/seed, số lần lặp, cách tổng hợp và xử lý lượt lỗi infrastructure trước chạy. **Bằng chứng:** [Protocol §4–6](docs/protocols/range-cadence-v3.md): 60/60/120/240 case, 2 repeat/arm, case là đơn vị thống kê, CI một phía và retry đã định trước.
 - [x] EXP-10 — Quy định khi nào một lượt hợp lệ, bất khả thi hoặc hỏng hạ tầng; không loại failure chỉ vì thuật toán làm kém. **Bằng chứng:** [Protocol §6](docs/protocols/range-cadence-v3.md): negative có chứng minh, timeout/collision/OOM thuật toán giữ trong mẫu số, infra không phục hồi chặn kết luận.
-- [x] EXP-11 — Lập sổ exposure: ai/thuật toán nào đã dùng tập nào để thiết kế, tune, chọn cấu hình hoặc báo cáo. **Bằng chứng:** [Exposure ledger](configs/scenarios/exposure_v3.json) phân biệt người/agent/CI kiểm metadata/geometry tự động với xem outcome; nay đã ghi pilot và development 7A, held-out chưa chạy.
+- [x] EXP-11 — Lập sổ exposure: ai/thuật toán nào đã dùng tập nào để thiết kế, tune, chọn cấu hình hoặc báo cáo. **Bằng chứng:** [Exposure ledger](configs/scenarios/exposure_v3.json) phân biệt người/agent/CI kiểm metadata/geometry tự động với xem outcome; nay đã ghi pilot/development và validation chính thức; validation đã exposed, test chưa chạy.
 - [x] EXP-12 — Ghi lựa chọn kỹ thuật và ngưỡng mới vào ADR/config trước triển khai đánh giá. **Bằng chứng:** [ADR](docs/decisions/0006-range-cadence-protocol-v3.md) + [config](configs/experiments/range_cadence_v3.toml) + design lock có trước implementation/evaluation v3; 92 tests và CI đạt.
 
 **Gate:** có protocol, baseline, nguồn dữ liệu, ngưỡng và cách chọn cấu hình đủ rõ. Nếu thiếu quyết định, tiếp tục làm rõ thay vì train để có số đẹp.
 
-**Đã qua gate thiết kế mốc 6:** [báo cáo/source/CI](docs/research/2026-10-27-research-protocol-v3.md). Mốc 7A nay đã có adapter/acquisition/accounting/evaluator, [240 lượt development local + 240 lượt CI và runtime lock](docs/research/2026-10-28-cadence-v3-development.md). Rate range giảm 50% trong development, nhưng success 45/50 và 46/50 chưa đạt 95%; chưa có kết luận giữ chất lượng held-out hoặc ML. [Checklist mục tiêu phát sinh khi hiện thực hóa](CHECKLIST_MUC_TIEU_NGHIEN_CUU.md) giữ các mục này mở.
+**Đã qua gate thiết kế mốc 6:** [báo cáo/source/CI](docs/research/2026-10-27-research-protocol-v3.md). Mốc 7A nay đã có adapter/acquisition/accounting/evaluator, [240 lượt development local + 240 lượt CI và runtime lock](docs/research/2026-10-28-cadence-v3-development.md). Rate range giảm 50% trong development, nhưng success 45/50 và 46/50 chưa đạt 95%; [Validation tiếp theo](docs/research/2026-10-28-cadence-v3-validation.md) đủ 480 lượt nhưng 87/100 mỗi arm không đạt 95%, kết luận âm; test giữ chưa mở, chưa ML. [Checklist mục tiêu phát sinh khi hiện thực hóa](CHECKLIST_MUC_TIEU_NGHIEN_CUU.md) đánh dấu các phép đo/báo cáo đã có bằng chứng; phần phụ thuộc test và nghiên cứu tương lai giữ chưa thực hiện.
 
 ## 10. Nhánh 7A đề xuất — nghiên cứu giảm dữ liệu
 
@@ -246,8 +246,8 @@ python3 tools/local_session.py accept
 - [x] DATA-08 — Đánh giá trên cùng case paired, giữ đầy đủ collision/timeout và không chỉ báo đường đi của success. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [ ] DATA-09 — Tách thử bỏ sensor khi chạy với thử thiết kế/huấn luyện riêng cho cấu hình sensor ít hơn.
 - [ ] DATA-10 — Đo đường biên trade-off chất lượng nhiệm vụ–dữ liệu–CPU/bộ nhớ theo các cấu hình đã thử.
-- [ ] DATA-11 — Chọn cấu hình theo validation và ngưỡng đã khóa, chỉ dùng test mới cho báo cáo cuối.
-- [ ] DATA-12 — Nếu không cấu hình giảm dữ liệu nào đạt ngưỡng, kết luận chưa đạt và giữ nguyên bằng chứng.
+- [ ] DATA-11 — Chọn cấu hình theo validation và ngưỡng đã khóa, chỉ dùng test mới cho báo cáo cuối. **V3:** candidate đã cố định trước outcome, không chọn bằng validation; validation không đạt nên test chưa mở. Phần đánh giá test của mục này chưa thực hiện và không được chạy trái gate.
+- [x] DATA-12 — Nếu không cấu hình giảm dữ liệu nào đạt ngưỡng, kết luận chưa đạt và giữ nguyên bằng chứng. **V3:** candidate 64 ms duy nhất đã đăng ký không đạt gate success ở validation; [kết luận âm](docs/research/2026-10-28-cadence-v3-validation.md) giữ đủ 480 lượt, không chạy test.
 - [ ] DATA-13 — Không tuyên bố tối thiểu tuyệt đối hoặc riêng tư chỉ từ số float, byte hay map cell ít hơn.
 
 **Gate:** có cấu hình giảm chi phí cụ thể đạt ngưỡng nhiệm vụ trong miền thử; hoặc có kết luận âm được chứng minh. Không bắt buộc mọi thử nghiệm phải cải thiện.
@@ -442,6 +442,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | Runtime v1 khóa | [Protocol v1](configs/scenarios/protocol_v1.lock.json) |
 | Runtime v2 khóa | [Protocol v2](configs/scenarios/protocol_v2.lock.json) |
 | Runtime v3 development | [Source/CI/số đo](docs/research/2026-10-28-cadence-v3-development.md), [runtime lock](configs/scenarios/protocol_v3.runtime.lock.json) |
+| Validation v3 âm | [Báo cáo/source/CI 480 lượt](docs/research/2026-10-28-cadence-v3-validation.md), 87/100 mỗi arm; test chưa mở |
 | CI chính thức v2 | [Run 40255492790](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790), runtime source `2f422e2` |
 
 ## 22. Nhật ký cập nhật checklist
@@ -453,5 +454,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | 2026-10-27 | Manual 020953 và mapped 022316 đủ bằng chứng; hoàn tất LOC-01…09, giữ raw hashes/ảnh/phiếu và các giới hạn | Source runtime `39c34af`; [nghiệm thu cuối](docs/research/2026-10-27-local-acceptance-complete.md) |
 
 | 2026-10-28 | Hoàn tất runtime 7A, local/CI mỗi nơi 240 lượt development, khóa runtime; giữ kết quả chất lượng chưa đạt và held-out chưa mở | Source `0c75ce2`; [báo cáo](docs/research/2026-10-28-cadence-v3-development.md) |
+
+| 2026-10-28 | Validation v3 duy nhất hoàn tất 480 lượt/127 tests và independent raw audit; 87/100 mỗi arm dưới 95%, đóng kết luận âm, giữ test chưa mở | Source `0c5f598`; [báo cáo](docs/research/2026-10-28-cadence-v3-validation.md) |
 
 Khi cập nhật tiếp, thêm dòng nhật ký, điều chỉnh checkbox và dẫn bằng chứng. Không sửa ngược báo cáo lịch sử hoặc đánh dấu hàng loạt tương lai chỉ vì đã có roadmap này.

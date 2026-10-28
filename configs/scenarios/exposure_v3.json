@@ -177,6 +177,62 @@
       "outcomes_viewed": false,
       "navigation_executed": false,
       "note": "User continuation authorizes next frozen validation stage. Plan 0012: single-host CI/Xvfb, 480 episodes, no runtime/design changes; test remains closed unless every validation gate passes. Actual CI source/run intent will be recorded by the locked runner before navigation."
+    },
+    {
+      "event_id": "v3-validation-dispatch-40633617042",
+      "date": "2026-10-28T04:41:04.576751+00:00",
+      "actor": "Codex",
+      "source": "0c5f598c512a24db63b0fd19ca259a3b85382ee5",
+      "splits": [
+        "validation"
+      ],
+      "purpose": "CI_validation_dispatch_intent",
+      "access": "workflow run metadata only; no outcome viewed",
+      "outcomes_viewed": false,
+      "navigation_executed": false,
+      "note": "Single dispatch 40633617042 on main; runtime digest bcc938bb18acd9bd829f43e6f0f722f204a5c7702e5fa3b20c82b6171a080c3d. CI locked runner records its own pre-navigation intent and result in artifact exposure snapshot. No local Webots and no test dispatch."
+    },
+    {
+      "event_id": "v3-intent-2026-10-28T04:41:30.437745+00:00",
+      "date": "2026-10-28T04:41:30.437745+00:00",
+      "actor": "Codex/runtime_v3",
+      "source": "0c5f598c512a24db63b0fd19ca259a3b85382ee5",
+      "splits": [
+        "validation"
+      ],
+      "purpose": "intent",
+      "access": "automated geometry and runtime; public observation to policy only",
+      "outcomes_viewed": false,
+      "navigation_executed": false,
+      "note": "/home/runner/work/Game_Simulator_Lap-Blind_Drone/Game_Simulator_Lap-Blind_Drone/artifacts/ci-v3-validation; automated selected geometry only; no held-out outcomes opened"
+    },
+    {
+      "event_id": "v3-result-2026-10-28T05:17:16.891381+00:00",
+      "date": "2026-10-28T05:17:16.891381+00:00",
+      "actor": "Codex/runtime_v3",
+      "source": "0c5f598c512a24db63b0fd19ca259a3b85382ee5",
+      "splits": [
+        "validation"
+      ],
+      "purpose": "result",
+      "access": "automated geometry and runtime; public observation to policy only",
+      "outcomes_viewed": true,
+      "navigation_executed": true,
+      "note": "/home/runner/work/Game_Simulator_Lap-Blind_Drone/Game_Simulator_Lap-Blind_Drone/artifacts/ci-v3-validation; status=complete; all failures and attempts retained"
+    },
+    {
+      "event_id": "v3-validation-review-40633617042",
+      "date": "2026-10-28T09:29:43.665887+00:00",
+      "actor": "Codex/offline_review",
+      "source": "0c5f598c512a24db63b0fd19ca259a3b85382ee5",
+      "splits": [
+        "validation"
+      ],
+      "purpose": "final_validation_review_and_negative_conclusion",
+      "access": "complete validation outcome and raw evidence; independent replay matches CI; no test outcomes",
+      "outcomes_viewed": true,
+      "navigation_executed": false,
+      "note": "CI 40633617042: 480 complete episodes, 240 attempts, 0 retries; 87/100 case success each arm, registered success gate failed. study_outcome=not_met; test_qualified=false. Imported CI intent/result events unchanged: v3-intent-2026-10-28T04:41:30.437745+00:00,v3-result-2026-10-28T05:17:16.891381+00:00. Original result SHA256 8eac93a1697cd10ce2348cc66774080940069aeb8bf831e6b7e96705b0bbe4ee. No runtime/design changes, tuning or second dispatch."
     }
   ]
 }

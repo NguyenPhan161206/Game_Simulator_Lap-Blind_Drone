@@ -58,3 +58,7 @@ Tiếp theo triển khai adapter acquisition 32/64 ms, kế toán dữ liệu v�
 ## Bàn giao 7A — 2026-10-28
 
 [Runtime v3](runtime-v3.md) đã triển khai/khóa tại source `0c75ce2`; [local/CI development](research/2026-10-28-cadence-v3-development.md) mỗi nơi có 240 lượt, rate giảm 50% nhưng success reference 45/50, candidate 46/50. `make check` kiểm runtime lock riêng; CI checkout đủ history để đối chiếu implementation commit. Validation/test chưa chạy, chưa kết luận giữ chất lượng hoặc ML. Phần “tiếp theo triển khai” phía trên ghi trạng thái mốc 6, nay được thay bằng bàn giao này.
+
+## Bàn giao validation v3 — 2026-10-28
+
+[Validation duy nhất](research/2026-10-28-cadence-v3-validation.md) tại source `0c5f598` đã qua 127 tests và 480 lượt CI, local review raw khớp. Success 87/100 mỗi arm không đạt 95%; theo protocol dừng ở kết quả âm, giữ test chưa chạy. Hai lock v3 và legacy v1/v2 không đổi. Không sửa thuật toán v3 hoặc tiếp tục test khi gate chưa đạt; GOAL-22 là đề xuất cho nghiên cứu version mới.
