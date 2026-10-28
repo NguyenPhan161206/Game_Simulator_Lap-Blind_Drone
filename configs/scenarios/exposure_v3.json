@@ -34,6 +34,90 @@
       "outcomes_viewed": false,
       "navigation_executed": false,
       "note": "480 fixtures regenerated; 92 unit tests; CI 40446508423 success; family counts reviewed; no v3 tuning or outcome exposure"
+    },
+    {
+      "event_id": "v3-intent-2026-10-28T01:15:56.399804+00:00",
+      "date": "2026-10-28T01:15:56.399804+00:00",
+      "actor": "Codex/runtime_v3",
+      "source": "f9fa97229c86617a739631da7da623bb03bb78d9",
+      "splits": [
+        "development"
+      ],
+      "purpose": "intent",
+      "access": "automated geometry and runtime; public observation to policy only",
+      "outcomes_viewed": false,
+      "navigation_executed": false,
+      "note": "/home/binhnguyen/Documents/AI_Lap/artifacts/v3-runtime-pilot-empty; automated selected geometry only; no held-out outcomes opened"
+    },
+    {
+      "event_id": "v3-result-2026-10-28T01:16:13.912647+00:00",
+      "date": "2026-10-28T01:16:13.912647+00:00",
+      "actor": "Codex/runtime_v3",
+      "source": "f9fa97229c86617a739631da7da623bb03bb78d9",
+      "splits": [
+        "development"
+      ],
+      "purpose": "result",
+      "access": "automated geometry and runtime; public observation to policy only",
+      "outcomes_viewed": true,
+      "navigation_executed": true,
+      "note": "/home/binhnguyen/Documents/AI_Lap/artifacts/v3-runtime-pilot-empty; status=complete; all failures and attempts retained"
+    },
+    {
+      "event_id": "v3-intent-2026-10-28T01:18:26.118683+00:00",
+      "date": "2026-10-28T01:18:26.118683+00:00",
+      "actor": "Codex/runtime_v3",
+      "source": "f9fa97229c86617a739631da7da623bb03bb78d9",
+      "splits": [
+        "development"
+      ],
+      "purpose": "intent",
+      "access": "automated geometry and runtime; public observation to policy only",
+      "outcomes_viewed": false,
+      "navigation_executed": false,
+      "note": "/home/binhnguyen/Documents/AI_Lap/artifacts/v3-runtime-pilot-audit; automated selected geometry only; no held-out outcomes opened"
+    },
+    {
+      "event_id": "v3-result-2026-10-28T01:18:32.829417+00:00",
+      "date": "2026-10-28T01:18:32.829417+00:00",
+      "actor": "Codex/runtime_v3",
+      "source": "f9fa97229c86617a739631da7da623bb03bb78d9",
+      "splits": [
+        "development"
+      ],
+      "purpose": "result",
+      "access": "automated geometry and runtime; public observation to policy only",
+      "outcomes_viewed": true,
+      "navigation_executed": true,
+      "note": "/home/binhnguyen/Documents/AI_Lap/artifacts/v3-runtime-pilot-audit; status=incomplete; all failures and attempts retained"
+    },
+    {
+      "event_id": "v3-intent-2026-10-28T01:19:48.719454+00:00",
+      "date": "2026-10-28T01:19:48.719454+00:00",
+      "actor": "Codex/runtime_v3",
+      "source": "f9fa97229c86617a739631da7da623bb03bb78d9",
+      "splits": [
+        "development"
+      ],
+      "purpose": "intent",
+      "access": "automated geometry and runtime; public observation to policy only",
+      "outcomes_viewed": false,
+      "navigation_executed": false,
+      "note": "/home/binhnguyen/Documents/AI_Lap/artifacts/v3-runtime-pilot-audit-v2; automated selected geometry only; no held-out outcomes opened"
+    },
+    {
+      "event_id": "v3-result-2026-10-28T01:20:29.677082+00:00",
+      "date": "2026-10-28T01:20:29.677082+00:00",
+      "actor": "Codex/runtime_v3",
+      "source": "f9fa97229c86617a739631da7da623bb03bb78d9",
+      "splits": [
+        "development"
+      ],
+      "purpose": "result",
+      "access": "automated geometry and runtime; public observation to policy only",
+      "outcomes_viewed": true,
+      "navigation_executed": true,
+      "note": "/home/binhnguyen/Documents/AI_Lap/artifacts/v3-runtime-pilot-audit-v2; status=complete; all failures and attempts retained"
     }
   ]
 }
