@@ -7,6 +7,7 @@ Ngày 2026-10-28. **Đã triển khai và kiểm chứng acquisition/accounting/
 - Local Webots R2025a trên laptop: `artifacts/v3-development-0c75ce2`, source sạch lúc bắt đầu, 60 case × 2 arm × 2 repeat = **240 lượt**, 120 pair/attempt hợp lệ, không retry. Từng pair qua independent raw replay; file result gốc có hash trong JSON.
 - [CI 40615141669](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40615141669), job `122575752293`, success tại cùng source: **240 lượt development khác lần chạy local**, 112 unit tests, generation/design checks và raw replay đạt. Không cộng local+CI thành 120 case độc lập.
 - Khóa thiết kế giữ nguyên `968c59e193336c49a015a62f87bf6f0ac834c6131bdb348105b5fcd950ad1474`. Khóa runtime bổ sung `bcc938bb18acd9bd829f43e6f0f722f204a5c7702e5fa3b20c82b6171a080c3d` ghim inventory của implementation commit trên và digest development. Hai khóa v1/v2 vẫn nguyên byte.
+- [CI kiểm chứng khóa runtime 40617132921](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40617132921), job `122582151403`, **success** tại commit bàn giao `8d46e0377dec7983509be103ed927d4f94a5321e`: 116 tests, inventory/implementation commit khớp, thêm 240 lượt development và raw replay đạt. Cùng case success 45/50 và 46/50; đây là tái lập, không tăng n.
 - **Chỉ development được thực thi/xem outcome.** Validation/test v3 chưa chạy. Train vẫn dự trữ; không ANN/RL, radar vật lý, hardware hoặc privacy claim.
 
 ## Runtime đã kiểm chứng

@@ -2237,5 +2237,54 @@
     "navigation": "artifacts/v3-v1-navigation-regression/result.json"
   },
   "heldout_outcomes_viewed": false,
-  "trained_model": false
+  "trained_model": false,
+  "ci_runtime_lock_verification": {
+    "run_id": 40617132921,
+    "job_id": 122582151403,
+    "status": "success",
+    "head_sha": "8d46e0377dec7983509be103ed927d4f94a5321e",
+    "episodes": 240,
+    "unit_tests": 116,
+    "runtime_sha256": "bcc938bb18acd9bd829f43e6f0f722f204a5c7702e5fa3b20c82b6171a080c3d",
+    "gate": {
+      "met": false,
+      "gates": {
+        "success": false,
+        "no_collision_bounds": true,
+        "negative_never_success": true,
+        "adverse_bound": false,
+        "range_reduction": true,
+        "common_success_path": true,
+        "penalized_time": true,
+        "penalized_path": true,
+        "cpu": true,
+        "resources": true
+      },
+      "feasible_cases": 50,
+      "negative_cases": 10,
+      "case_successes": {
+        "reference": 45,
+        "candidate": 46
+      },
+      "adverse_cases": 0,
+      "adverse_upper_bound": 0.058155079116972264,
+      "penalized_ratios": {
+        "path_m": 0.9408123539790707,
+        "elapsed_s": 0.9799069406746803,
+        "cpu_p95_ms": 0.9401173517715774
+      },
+      "common_success_cases": 45,
+      "common_success_path_ratio": 1.0004048461875614,
+      "common_success_time_ratio": 1.0018348623853213,
+      "cpu_p95_ratio": 0.9479444735247359,
+      "paired_table": {
+        "00": 4,
+        "01": 1,
+        "10": 0,
+        "11": 45
+      }
+    },
+    "raw_job_log_sha256": "5ab7b1a6ebd39c5a9b4412d16bd1102982fe82d4c0403e0ee30c4a73dcb87162",
+    "url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40617132921"
+  }
 }

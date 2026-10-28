@@ -39,6 +39,8 @@ Cập nhật: 2026-10-28. Yêu cầu bổ sung của người dùng trong mốc 
 - [ ] GOAL-20 — **Phân biệt mô hình sensor/physics với thiết bị thật.** Cần calibration/noise/latency và bằng chứng riêng nếu muốn nói radar, pin, gió, motor hoặc drone thật. Geometric single-ray và actuator lý tưởng hiện tại chưa đạt mục tiêu đó.
 - [ ] GOAL-21 — **Mở rộng nhiệm vụ có protocol riêng.** Bay 3D, obstacle động, giao/nhận hàng, logistics hoặc xe phải có domain/KPI/failure/ground truth boundary mới; không cộng tính năng để suy thành đã giải quyết bài toán giao hàng thực.
 
+- [ ] GOAL-22 — **Giải thích coverage của free-grid gần vị trí khởi hành.** P2, đề xuất sau 7A: [replay public observation](docs/research/2026-10-28-v3-public-replay.json) của năm reference timeout cho thấy có path nhưng đoạn đầu không qua free-check, lệnh ngang luôn 0. Cần tách ảnh hưởng sensor origins, lượng tử cell và reset pose bằng kiểm tra có mục tiêu; không tự đánh dấu vùng chưa đo là free. Nếu sửa thuật toán hoặc thiết kế phải dùng version/protocol phù hợp, không thay runtime v3 đã khóa.
+
 ## E. Cách bổ sung phát hiện mới
 
 Mỗi mục mới ghi: ID → phát hiện/trigger → ưu tiên và mốc phụ thuộc → tiêu chí đạt kiểm tra được → bằng chứng/source → giới hạn. Khi phát hiện đụng protocol frozen: ghi vấn đề, giữ kết quả hiện tại và tạo ADR/version tiếp theo; không sửa ngưỡng trong hồ sơ cũ. Cập nhật file này cùng checklist tổng khi bàn giao mốc.
