@@ -1,0 +1,153 @@
+{
+  "kind": "first_stall_snapshot_only",
+  "raw_result_sha256": "78ff9c4406f1007dd5797d581f4e8042f9dbcf95e4c5652d4556258275fa2892",
+  "v4_navigation_sha256": "059e3b0bdd33c4ab9180cbf60ff751eb71147ac6eddb7151baa1b5102ba1ff70",
+  "traces": [
+    {
+      "case_id": "development-empty-s3200020",
+      "repeat": 0,
+      "time_s": 4.56,
+      "reference_status": "scan_unknown_or_blocked",
+      "reference_command": {
+        "forward_m_s": -0.0,
+        "left_m_s": 0.0,
+        "up_m_s": 0.0006074092133424359,
+        "yaw_rate_rad_s": 0.35
+      },
+      "v4_status": "follow_observed_detour",
+      "v4_command": {
+        "forward_m_s": 0.11724655570507704,
+        "left_m_s": -0.38243070637083565,
+        "up_m_s": 0.0006074092133424359,
+        "yaw_rate_rad_s": 0.35
+      },
+      "target_m": [
+        0.125,
+        4.625
+      ],
+      "measured_swept_clearance_m": 5.25,
+      "target_segment_observed": true,
+      "detour_points": 35,
+      "search_expansions": 2800,
+      "grid_free_unchanged_from_reference": true,
+      "grid_occupied_unchanged_from_reference": true
+    },
+    {
+      "case_id": "development-empty-s3200034",
+      "repeat": 0,
+      "time_s": 4.56,
+      "reference_status": "scan_unknown_or_blocked",
+      "reference_command": {
+        "forward_m_s": 0.0,
+        "left_m_s": 0.0,
+        "up_m_s": 0.0006074092133422582,
+        "yaw_rate_rad_s": 0.35
+      },
+      "v4_status": "follow_observed_detour",
+      "v4_command": {
+        "forward_m_s": 0.335800568503102,
+        "left_m_s": 0.21734299665044066,
+        "up_m_s": 0.0006074092133422582,
+        "yaw_rate_rad_s": 0.35
+      },
+      "target_m": [
+        0.625,
+        -5.125
+      ],
+      "measured_swept_clearance_m": 4.75,
+      "target_segment_observed": true,
+      "detour_points": 35,
+      "search_expansions": 2678,
+      "grid_free_unchanged_from_reference": true,
+      "grid_occupied_unchanged_from_reference": true
+    },
+    {
+      "case_id": "development-empty-s3200041",
+      "repeat": 0,
+      "time_s": 4.56,
+      "reference_status": "scan_unknown_or_blocked",
+      "reference_command": {
+        "forward_m_s": 0.0,
+        "left_m_s": 0.0,
+        "up_m_s": 0.0006074092133422582,
+        "yaw_rate_rad_s": 0.35
+      },
+      "v4_status": "follow_observed_detour",
+      "v4_command": {
+        "forward_m_s": -0.3664371887610747,
+        "left_m_s": -0.16038636691714334,
+        "up_m_s": 0.0006074092133422582,
+        "yaw_rate_rad_s": 0.35
+      },
+      "target_m": [
+        0.125,
+        -4.375
+      ],
+      "measured_swept_clearance_m": 5.5,
+      "target_segment_observed": true,
+      "detour_points": 35,
+      "search_expansions": 2863,
+      "grid_free_unchanged_from_reference": true,
+      "grid_occupied_unchanged_from_reference": true
+    },
+    {
+      "case_id": "development-narrow_gap-s3200004",
+      "repeat": 0,
+      "time_s": 4.56,
+      "reference_status": "scan_unknown_or_blocked",
+      "reference_command": {
+        "forward_m_s": -0.0,
+        "left_m_s": 0.0,
+        "up_m_s": 0.0005825061872586801,
+        "yaw_rate_rad_s": 0.35
+      },
+      "v4_status": "follow_observed_detour",
+      "v4_command": {
+        "forward_m_s": 0.21921205324401816,
+        "left_m_s": -0.3345834361000881,
+        "up_m_s": 0.0005825061872586801,
+        "yaw_rate_rad_s": 0.35
+      },
+      "target_m": [
+        -0.375,
+        5.375
+      ],
+      "measured_swept_clearance_m": 4.5,
+      "target_segment_observed": true,
+      "detour_points": 18,
+      "search_expansions": 1909,
+      "grid_free_unchanged_from_reference": true,
+      "grid_occupied_unchanged_from_reference": true
+    },
+    {
+      "case_id": "development-narrow_gap-s3200029",
+      "repeat": 1,
+      "time_s": 52.112,
+      "reference_status": "scan_unknown_or_blocked",
+      "reference_command": {
+        "forward_m_s": 0.0,
+        "left_m_s": 0.0,
+        "up_m_s": -3.831482509042416e-09,
+        "yaw_rate_rad_s": 0.35
+      },
+      "v4_status": "follow_observed_detour",
+      "v4_command": {
+        "forward_m_s": 0.3966895680924228,
+        "left_m_s": 0.051355492078716446,
+        "up_m_s": -3.831482509042416e-09,
+        "yaw_rate_rad_s": 0.35
+      },
+      "target_m": [
+        -0.125,
+        -5.125
+      ],
+      "measured_swept_clearance_m": 4.044947930260958,
+      "target_segment_observed": true,
+      "detour_points": 18,
+      "search_expansions": 1822,
+      "grid_free_unchanged_from_reference": true,
+      "grid_occupied_unchanged_from_reference": true
+    }
+  ],
+  "physical_escape_verified": false
+}

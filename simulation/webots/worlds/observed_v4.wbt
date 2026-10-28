@@ -1,0 +1,71 @@
+#VRML_SIM R2025a utf8
+# Generated from configs/lab_v1.toml; no external runtime assets.
+EXTERNPROTO "../protos/BlindDroneV4.proto"
+WorldInfo {
+  title "Blind Drone Lab — minimal environment v1"
+  basicTimeStep 16
+  coordinateSystem "ENU"
+  gravity 9.81
+  randomSeed 11
+}
+Viewpoint { position 12 -16 14 orientation -0.2813879948 0.1406939974 0.9492238911 2.255329311 fieldOfView 1.1 }
+Background { skyColor [ 0.08 0.11 0.16 ] }
+DirectionalLight { direction -0.4 -0.5 -1 ambientIntensity 0.6 intensity 1 castShadows TRUE }
+DEF FLOOR Solid {
+  translation 0 0 -0.05
+  children [ Shape { appearance PBRAppearance { baseColor 0.25 0.3 0.36 roughness 0.75 metalness 0 } geometry Box { size 20 20 0.1 } } ]
+  name "FLOOR"
+  boundingObject Box { size 20 20 0.1 }
+}
+DEF WALL_E Solid {
+  translation 10 0 3
+  children [ Shape { appearance PBRAppearance { baseColor 0.32 0.4 0.46 roughness 0.75 metalness 0 } geometry Box { size 0.2 20 6 } } ]
+  name "WALL_E"
+  boundingObject Box { size 0.2 20 6 }
+}
+DEF WALL_W Solid {
+  translation -10 0 3
+  children [ Shape { appearance PBRAppearance { baseColor 0.32 0.4 0.46 roughness 0.75 metalness 0 } geometry Box { size 0.2 20 6 } } ]
+  name "WALL_W"
+  boundingObject Box { size 0.2 20 6 }
+}
+DEF WALL_N Solid {
+  translation 0 10 3
+  children [ Shape { appearance PBRAppearance { baseColor 0.32 0.4 0.46 roughness 0.75 metalness 0 } geometry Box { size 20 0.2 6 } } ]
+  name "WALL_N"
+  boundingObject Box { size 20 0.2 6 }
+}
+DEF WALL_S Solid {
+  translation 0 -10 3
+  children [ Shape { appearance PBRAppearance { baseColor 0.32 0.4 0.46 roughness 0.75 metalness 0 } geometry Box { size 20 0.2 6 } } ]
+  name "WALL_S"
+  boundingObject Box { size 20 0.2 6 }
+}
+DEF BLOCK_NEAR Solid {
+  translation 2 0 1
+  children [ Shape { appearance PBRAppearance { baseColor 0.85 0.33 0.18 roughness 0.75 metalness 0 } geometry Box { size 0.6 2 2 } } ]
+  name "BLOCK_NEAR"
+  boundingObject Box { size 0.6 2 2 }
+}
+DEF BLOCK_HIDDEN Solid {
+  translation 4 0 1
+  children [ Shape { appearance PBRAppearance { baseColor 0.85 0.33 0.18 roughness 0.75 metalness 0 } geometry Box { size 0.6 1 2 } } ]
+  name "BLOCK_HIDDEN"
+  boundingObject Box { size 0.6 1 2 }
+}
+DEF BLOCK_SIDE Solid {
+  translation 0 4 1.5
+  children [ Shape { appearance PBRAppearance { baseColor 0.85 0.33 0.18 roughness 0.75 metalness 0 } geometry Box { size 2 0.8 3 } } ]
+  name "BLOCK_SIDE"
+  boundingObject Box { size 2 0.8 3 }
+}
+DEF GOAL Pose {
+  translation 5 4 1.5
+  children [ Shape { appearance PBRAppearance { baseColor 0.1 0.9 0.35 transparency 0.55 roughness 1 metalness 0 } geometry Sphere { radius 0.5 } } ]
+}
+DEF DRONE BlindDroneV4 { translation -4 0 1.5 customData "{\"vehicle\":{\"mass_kg\":1.0,\"body_size_m\":[0.6,0.6,0.16],\"inertia_kg_m2\":[0.03,0.03,0.05],\"arm_offset_m\":0.25,\"thrust_coefficient_n_s2\":1e-05,\"torque_to_thrust_m\":0.02,\"motor_max_rad_s\":1000.0,\"motor_acceleration_rad_s2\":10000.0,\"motor_max_torque_nm\":10000.0,\"actuator_assumption\":\"fast ideal velocity actuator; authority limits are not real motor ratings\",\"horizontal_speed_m_s\":0.8,\"vertical_speed_m_s\":0.4,\"yaw_rate_rad_s\":0.5,\"altitude_bounds_m\":[0.4,5.0]},\"control\":{\"velocity_gain_s_inv\":1.8,\"acceleration_limit_m_s2\":2.0,\"tilt_limit_rad\":0.22,\"altitude_p_s_inv2\":5.0,\"altitude_d_s_inv\":3.5,\"attitude_p_nm_rad\":0.45,\"attitude_d_nm_s_rad\":0.18,\"yaw_p_nm_rad\":0.25,\"yaw_d_nm_s_rad\":0.14},\"sensors\":{\"model\":\"geometric_single_ray_generic_distance_sensor\",\"range_max_m\":8.0,\"horizontal_directions_deg\":[0.0,45.0,90.0,135.0,180.0,225.0,270.0,315.0],\"horizontal_origin_radius_m\":0.33,\"vertical_origin_offset_m\":0.12,\"noise_fraction\":0.0,\"latency_s\":0.0,\"localization\":\"Webots GPS, ideal local Cartesian coordinates\",\"attitude\":\"Webots InertialUnit, ideal simulator attitude; no fusion model\",\"angular_velocity\":\"Webots Gyro, ideal\"},\"world\":{\"gravity_m_s2\":9.81},\"sensor_period_ms\":32,\"goal_m\":[5.0,4.0,1.5],\"navigation\":{\"speed_m_s\":0.55,\"goal_gain_s_inv\":0.65,\"range_max_age_s\":0.12,\"avoid_distance_m\":2.2,\"follow_distance_m\":1.0,\"brake_margin_m\":0.55,\"brake_acceleration_m_s2\":0.6,\"leave_progress_m\":0.3},\"sensor_names\":[\"range_000\",\"range_045\",\"range_090\",\"range_135\",\"range_180\",\"range_225\",\"range_270\",\"range_315\",\"range_up\",\"range_down\"],\"navigation_v2\":{\"cell_m\":0.25,\"map_radius_m\":12.0,\"max_cells\":16000,\"margin_m\":0.12,\"planning_margin_m\":0.1,\"speed_m_s\":0.4,\"scan_yaw_rad_s\":0.35,\"initial_scan_s\":2.5,\"replan_period_s\":0.5,\"lookahead_m\":0.8,\"guard_horizon_s\":1.4,\"unknown_cost\":1.8,\"max_expansions\":20000}}" }
+DEF LAB_SUPERVISOR Robot {
+  supervisor TRUE
+  controller "lab_v4"
+  children [ Emitter { name "operator" channel 1 } Receiver { name "telemetry" channel 2 } ]
+}

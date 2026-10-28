@@ -1,0 +1,54 @@
+name: Observed detour v4 development
+on:
+  push:
+    branches: ["feat/navigation-v4-observed-detour"]
+    paths: ["versions/navigation_v4/**", "simulation/webots/controllers/*v4/**", "simulation/webots/protos/BlindDroneV4.proto", "simulation/webots/worlds/observed_v4.wbt", "tools/*navigation_v4.py", "tests/test_navigation_v4.py", "Makefile", ".github/workflows/navigation-v4.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  development:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check all frozen protocols and versioned v4 source
+        run: make check
+      - name: Materialize committed development fixtures only
+        run: python3 tools/build_navigation_v4.py
+      - name: Install simulator display dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb libglu1-mesa libegl1 libopengl0 libgl1-mesa-dri libnss3 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-shape0 libxcb-xfixes0 libxcb-sync1 libxcb-randr0 libxcb-shm0 libx11-xcb1 libxrender1 libxi6 libxrandr2 libxcursor1 libxcomposite1 libxdamage1 libxext6 libsndio7.0 libpulse0 libasound2 libzip4 libgtk-3-0 libatk1.0-0 libdbus-1-3 libfreeimage3 libxaw7 libxslt1.1 ffmpeg
+      - name: Install pinned Webots R2025a
+        run: python3 tools/install_webots.py
+      - name: Real legacy direct/reactive development navigation regression
+        run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_webots.py --navigation --software-rendering --output artifacts/v4-legacy-navigation --timeout 600
+      - name: Paired development at equal 32 ms cadence; preserve failures
+        run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_navigation_v4.py --output artifacts/v4-development
+      - name: Independently review raw acquisition, physics and command clearance
+        run: python3 tools/review_navigation_v4.py artifacts/v4-development --expected-source "$GITHUB_SHA" --output artifacts/v4-review.json
+      - name: Summarize engineering outcomes separately from integrity
+        run: |
+          python3 - <<'PY'
+          import json,os
+          r=json.load(open('artifacts/v4-review.json'))
+          assert r['complete'] and r['raw_audit_passed'] and r['episodes']==352
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('V4 development only, not held-out validation.\n\n')
+              f.write('```json\n'+json.dumps(r['summary'],indent=2)+'\n```\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: navigation-v4-development
+          path: |
+            artifacts/v4-development/
+            artifacts/v4-review.json
+            artifacts/v4-legacy-navigation/
+          if-no-files-found: warn

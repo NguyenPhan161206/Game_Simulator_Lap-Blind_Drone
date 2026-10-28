@@ -1,0 +1,29 @@
+schema_version = 4
+name = "observed_detour_v4_development"
+status = "development_only"
+algorithm = "observed_component_detour_supercover_swept_clearance_v1"
+reference_period_ms = 32
+candidate_period_ms = 32
+pose_period_ms = 32
+control_period_ms = 16
+range_max_age_s = 0.12
+warmup_s = 2.0
+repetitions = 2
+wall_watchdog_s = 600
+max_infrastructure_retries = 1
+
+[quality]
+goal_radius_m = 0.5
+stop_speed_m_s = 0.18
+dwell_s = 1.0
+deadline_s = 90.0
+position_bounds_min_m = [-9.5, -9.5, 0.4]
+position_bounds_max_m = [9.5, 9.5, 5.0]
+
+[engineering_targets]
+five_deadlock_regressions_succeed_both_repeats = true
+candidate_collision_count = 0
+candidate_out_of_bounds_count = 0
+negative_false_success_count = 0
+candidate_scored_polyline_clearance_hull_plus_margin = true
+# This is a development target, not a new prespecified held-out success claim.
