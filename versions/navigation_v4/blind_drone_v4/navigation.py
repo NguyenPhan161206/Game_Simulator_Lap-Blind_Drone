@@ -7,7 +7,14 @@ from blind_drone.navigation.cadence import CadenceNavigator
 
 
 def touches_cell(start, end, cell, size):
-    """Closed segment/AABB intersection: conservatively include corner contacts."""
+    """Supercover including interior corner contacts and endpoint floor cells.
+
+    An adjacent cell touched only at t=0 or t=1 has no traversed interior.
+    Keep the actual endpoints' floor cells, without inventing free neighbours.
+    A segment along a boundary still requires both sides to be observed.
+    """
+    if start[0] == end[0] and start[1] == end[1]:
+        return cell == (floor(start[0]/size), floor(start[1]/size))
     enter, leave = 0., 1.
     for axis in (0, 1):
         low, high = cell[axis]*size, (cell[axis]+1)*size
@@ -20,7 +27,9 @@ def touches_cell(start, end, cell, size):
             enter, leave = max(enter, first), min(leave, last)
             if enter > leave+1e-12:
                 return False
-    return True
+    endpoint_cells={(floor(start[0]/size),floor(start[1]/size)),
+                    (floor(end[0]/size),floor(end[1]/size))}
+    return (enter < 1. and leave > 0.) or cell in endpoint_cells
 
 
 def segment_cells(start, end, size):

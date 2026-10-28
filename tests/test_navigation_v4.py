@@ -40,6 +40,12 @@ class SweptSegmentTests(unittest.TestCase):
         self.assertEqual(segment_cells((.125,.125),(.375,.375),.25), {(0,0),(0,1),(1,0),(1,1)})
         self.assertEqual(segment_cells((0.,.125),(0.,.375),.25), {(-1,0),(-1,1),(0,0),(0,1)})
 
+    def test_stationary_known_endpoint_does_not_invent_free_neighbours(self):
+        self.assertEqual(segment_cells((0.,0.),(0.,0.),.25),{(0,0)})
+        g=grid();g.free={(0,0)}
+        self.assertTrue(observed_segment(g,(0.,0.),(0.,0.)))
+        self.assertEqual(g.free,{(0,0)})
+
     def test_thin_unknown_crossing_missed_by_sampled_predicate_is_rejected(self):
         g=grid();start,end=(.249,.05),(.251,.451)
         cells=segment_cells(start,end,.25)
@@ -90,10 +96,19 @@ class FreeRouteTests(unittest.TestCase):
         g=grid();g.free={(0,0),(1,1),(2,2)}
         self.assertEqual(FreeRoute(g).plan((.125,.125),(.625,.625)),[])
 
-    def test_actual_pose_connection_must_be_observed(self):
+    def test_boundary_pose_can_depart_into_known_side_without_filling_unknown_side(self):
         g=grid();g.free={(x,0) for x in range(8)}
-        # A pose on the lower boundary touches unknown cells below the row.
-        self.assertEqual(FreeRoute(g).plan((.01,0.),(1.5,.125)),[])
+        before=deepcopy(g.free)
+        route=FreeRoute(g).plan((.01,0.),(1.5,.125))
+        self.assertTrue(route)
+        self.assertTrue(all(observed_segment(g,a,b) for a,b in zip(route,route[1:])))
+        self.assertEqual(g.free,before)
+        self.assertNotIn((0,-1),g.free)
+
+    def test_start_or_end_floor_cell_remains_required(self):
+        g=grid();g.free={(1,0),(2,0)}
+        self.assertFalse(observed_segment(g,(.25,.125),(.125,.125)))
+        self.assertEqual(FreeRoute(g).plan((.125,.125),(.625,.125)),[])
 
     def test_bounded_search(self):
         g=grid();g.params=deepcopy(g.params);g.params['max_expansions']=3

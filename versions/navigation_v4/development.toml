@@ -1,7 +1,7 @@
 schema_version = 4
 name = "observed_detour_v4_development"
 status = "development_only"
-algorithm = "observed_component_detour_supercover_swept_clearance_v1"
+algorithm = "observed_component_detour_supercover_swept_clearance_v2_endpoints"
 reference_period_ms = 32
 candidate_period_ms = 32
 pose_period_ms = 32
