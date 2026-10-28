@@ -18,6 +18,8 @@ Mốc 6 giữ nguyên [thiết kế nghiên cứu v3](docs/protocols/range-caden
 
 Validation v3 đã exposed, chưa ML; thay thuật toán/cảm biến cần version và đánh giá mới. Không suy ra tiết kiệm điện, riêng tư hoặc an toàn phần cứng. [Hướng dẫn runtime](docs/runtime-v3.md).
 
+[Chẩn đoán development tiếp theo](docs/research/2026-10-28-navigation-start-diagnostics.md) đã xác định lỗ free-grid gần tâm gây kẹt đoạn đầu ở năm trace: ô chưa quan sát nằm trong vòng sensor origin nên quay thêm không phủ được. Công cụ offline và 141 unit tests đạt; chưa sửa thuật toán hoặc cải thiện tỷ lệ bay. [Kế hoạch 0013](docs/plans/0013-navigation-start-diagnostics.md).
+
 ## Bắt đầu
 
 Python 3.11+; kiểm tra nền dùng thư viện chuẩn, không cần cài dependency:

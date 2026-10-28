@@ -29,6 +29,7 @@
 | L | Hoàn tất trải nghiệm local | Đã nghiệm thu LOC-01–09 | Mở GUI và chạy thật trên máy người dùng, lưu bằng chứng riêng |
 | 6 | Khóa câu hỏi nghiên cứu và protocol tiếp theo | Thiết kế v3 giữ nguyên; runtime được bổ sung ở 7A | Có quyết định, ngưỡng chất lượng, dữ liệu và test mới |
 | 7A | Khảo sát giảm dữ liệu/biểu diễn | V3 kết thúc âm: validation 87/100 mỗi arm; test chưa mở | Đạt toàn bộ gate hoặc kết luận âm theo protocol, giữ nguyên bằng chứng |
+| 7A-D | Chẩn đoán kẹt đoạn đầu trên development | Hoàn tất offline 5 trace, 141 unit tests; chưa sửa thuật toán | [Nguyên nhân origin/cell alignment](docs/research/2026-10-28-navigation-start-diagnostics.md); không là flight evaluation mới |
 | 7B | Huấn luyện model nếu phù hợp câu hỏi | Chưa làm, nhánh tùy chọn | Train/eval không rò rỉ, tái lập, so sánh với baseline |
 | 8 | Độ vững, cảm biến không lý tưởng, điều hướng khó hơn | Chưa làm | Có protocol và đánh giá riêng cho từng mở rộng |
 | 9 | Giao diện giải thích/replay như game | Có observer cơ bản; còn mở rộng | Phân biệt live/replay và dữ liệu drone/ground truth |
@@ -443,6 +444,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | Runtime v2 khóa | [Protocol v2](configs/scenarios/protocol_v2.lock.json) |
 | Runtime v3 development | [Source/CI/số đo](docs/research/2026-10-28-cadence-v3-development.md), [runtime lock](configs/scenarios/protocol_v3.runtime.lock.json) |
 | Validation v3 âm | [Báo cáo/source/CI 480 lượt](docs/research/2026-10-28-cadence-v3-validation.md), 87/100 mỗi arm; test chưa mở |
+| Chẩn đoán kẹt đoạn đầu | [Kế hoạch 0013](docs/plans/0013-navigation-start-diagnostics.md), [báo cáo](docs/research/2026-10-28-navigation-start-diagnostics.md), [JSON](docs/research/2026-10-28-navigation-start-diagnostics.json); offline development, không sửa runtime |
 | CI chính thức v2 | [Run 40255492790](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790), runtime source `2f422e2` |
 
 ## 22. Nhật ký cập nhật checklist
@@ -456,5 +458,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | 2026-10-28 | Hoàn tất runtime 7A, local/CI mỗi nơi 240 lượt development, khóa runtime; giữ kết quả chất lượng chưa đạt và held-out chưa mở | Source `0c75ce2`; [báo cáo](docs/research/2026-10-28-cadence-v3-development.md) |
 
 | 2026-10-28 | Validation v3 duy nhất hoàn tất 480 lượt/127 tests và independent raw audit; 87/100 mỗi arm dưới 95%, đóng kết luận âm, giữ test chưa mở | Source `0c5f598`; [báo cáo](docs/research/2026-10-28-cadence-v3-validation.md) |
+
+| 2026-10-28 | Hoàn tất chẩn đoán GOAL-22: 5 trace development, 27340 unknown rejection, ô nằm trong vòng origin; sweep offset và 141 tests đạt. Bốn khóa nguyên vẹn, bản sửa version mới còn là đề xuất GOAL-23 | Runtime được replay `0c75ce2`; [báo cáo 0013](docs/research/2026-10-28-navigation-start-diagnostics.md) |
 
 Khi cập nhật tiếp, thêm dòng nhật ký, điều chỉnh checkbox và dẫn bằng chứng. Không sửa ngược báo cáo lịch sử hoặc đánh dấu hàng loạt tương lai chỉ vì đã có roadmap này.

@@ -1,0 +1,857 @@
+{
+  "schema_version": 1,
+  "kind": "offline_development_start_diagnostics",
+  "complete": true,
+  "runtime_source_commit": "0c75ce28f14b8ea881e8c0c7c9335aa4319030c5",
+  "raw_result_sha256": "78ff9c4406f1007dd5797d581f4e8042f9dbcf95e4c5652d4556258275fa2892",
+  "design_sha256": "968c59e193336c49a015a62f87bf6f0ac834c6131bdb348105b5fcd950ad1474",
+  "runtime_sha256": "bcc938bb18acd9bd829f43e6f0f722f204a5c7702e5fa3b20c82b6171a080c3d",
+  "locks_file_sha256": {
+    "configs/scenarios/protocol_v1.lock.json": "73ce35a23b6eae3121e61eb797be9338fe243f58379d25026d238b5a393a3407",
+    "configs/scenarios/protocol_v2.lock.json": "a748382e1bdcdd544ae1ffd9410590f122556c4a31d15a53db72c793d2077ca6",
+    "configs/scenarios/protocol_v3.design.lock.json": "4e9ef119b1f4c79b4caede47f80d70501d174141fe77444d9c92dfdb26760e3f",
+    "configs/scenarios/protocol_v3.runtime.lock.json": "0b9cce48ce3bca418f0a8bfa844d0ddf7ac34a7a96e1f75f9fb44d9d4a180926"
+  },
+  "tool_sha256": "fb423c896c53435518ed916994c9a21d28abbd481fc22ffaeb51a80b9a729fbd",
+  "raw_audit_passed": true,
+  "selection": "five previously replayed reference traces; not all development failures",
+  "reference_feasible_failure_episodes_total": 8,
+  "reference_feasible_failure_cases_total": 5,
+  "selected_traces": 5,
+  "traces": [
+    {
+      "case_id": "development-empty-s3200020",
+      "repeat": 0,
+      "arm": "reference",
+      "outcome_recorded": "timeout",
+      "decisions": 5625,
+      "statuses": {
+        "initial_scan": 157,
+        "scan_unknown_or_blocked": 5468
+      },
+      "nonzero_horizontal_commands": 0,
+      "predicate_calls_verified": 5468,
+      "rejected_decisions": 5468,
+      "rejection_calls_by_reason": {
+        "unknown": 5468
+      },
+      "stall_causes": {
+        "segment_rejected": 5468
+      },
+      "original_deterministic_counters_match": true,
+      "deterministic_counters": {
+        "decisions": 5625,
+        "range_samples": 2813,
+        "range_values": 28130,
+        "map_updates": 2813,
+        "free_cells": 3018,
+        "occupied_cells": 52,
+        "peak_cells": 3070,
+        "derived_blocked_cells": 508,
+        "budget_exhausted": false,
+        "guard_events": 0,
+        "scan_decisions": 5625,
+        "plans": 171
+      },
+      "max_horizontal_displacement_m": 9.78572012285475e-15,
+      "max_current_acquisition_horizontal_separation_m": 0.0,
+      "max_range_age_s": 0.016000000000005343,
+      "max_pose_age_s": 0.016000000000005343,
+      "first_rejection": {
+        "case_id": "development-empty-s3200020",
+        "repeat": 0,
+        "time_s": 4.56,
+        "pose_time_s": 4.56,
+        "sample_time_s": 4.56,
+        "acquisition_position_m": [
+          0.36748500000000067,
+          4.547746,
+          1.499240738483322
+        ],
+        "status": "scan_unknown_or_blocked",
+        "path_points": 43,
+        "rejections": [
+          {
+            "ok": false,
+            "reason": "unknown",
+            "cell": [
+              1,
+              17
+            ],
+            "point_m": [
+              0.36999000000000043,
+              4.490164
+            ],
+            "sample_index": 1,
+            "steps": 3,
+            "distance_from_start_m": 0.057636461975038,
+            "start_m": [
+              0.36748500000000067,
+              4.547746,
+              1.499240738483322
+            ],
+            "end_m": [
+              0.375,
+              4.375
+            ],
+            "require_free": true,
+            "allowed_without_free": true,
+            "start_cell_free": true,
+            "start_cell_blocked": false
+          }
+        ]
+      },
+      "last_rejection": {
+        "case_id": "development-empty-s3200020",
+        "repeat": 0,
+        "time_s": 92.032,
+        "pose_time_s": 92.016,
+        "sample_time_s": 92.016,
+        "acquisition_position_m": [
+          0.3674850000000037,
+          4.547745999999991,
+          1.4999999999999942
+        ],
+        "status": "scan_unknown_or_blocked",
+        "path_points": 43,
+        "rejections": [
+          {
+            "ok": false,
+            "reason": "unknown",
+            "cell": [
+              1,
+              17
+            ],
+            "point_m": [
+              0.3699900000000025,
+              4.490163999999994
+            ],
+            "sample_index": 1,
+            "steps": 3,
+            "distance_from_start_m": 0.057636461975035296,
+            "start_m": [
+              0.3674850000000037,
+              4.547745999999991,
+              1.4999999999999942
+            ],
+            "end_m": [
+              0.375,
+              4.375
+            ],
+            "require_free": true,
+            "allowed_without_free": true,
+            "start_cell_free": true,
+            "start_cell_blocked": false
+          }
+        ]
+      },
+      "rejected_cells": [
+        {
+          "cell": [
+            1,
+            17
+          ],
+          "consumed_acquisitions": 2813,
+          "center_retains": 0,
+          "wholly_inside_ring_acquisitions": 2813,
+          "max_corner_distance_m": 0.3259032152971198,
+          "min_projected_origin_radius_m": 0.32999999999999996,
+          "max_corner_minus_origin_m": -0.004096784702880163,
+          "ray_unreachable_for_entire_trace": true,
+          "final_free": false,
+          "final_blocked": false,
+          "rejection_calls": 5468
+        }
+      ]
+    },
+    {
+      "case_id": "development-empty-s3200034",
+      "repeat": 0,
+      "arm": "reference",
+      "outcome_recorded": "timeout",
+      "decisions": 5625,
+      "statuses": {
+        "initial_scan": 157,
+        "scan_unknown_or_blocked": 5468
+      },
+      "nonzero_horizontal_commands": 0,
+      "predicate_calls_verified": 5468,
+      "rejected_decisions": 5468,
+      "rejection_calls_by_reason": {
+        "unknown": 5468
+      },
+      "stall_causes": {
+        "segment_rejected": 5468
+      },
+      "original_deterministic_counters_match": true,
+      "deterministic_counters": {
+        "decisions": 5625,
+        "range_samples": 2813,
+        "range_values": 28130,
+        "map_updates": 2813,
+        "free_cells": 2910,
+        "occupied_cells": 55,
+        "peak_cells": 2965,
+        "derived_blocked_cells": 535,
+        "budget_exhausted": false,
+        "guard_events": 0,
+        "scan_decisions": 5625,
+        "plans": 171
+      },
+      "max_horizontal_displacement_m": 4.884981308350689e-15,
+      "max_current_acquisition_horizontal_separation_m": 0.0,
+      "max_range_age_s": 0.016000000000005343,
+      "max_pose_age_s": 0.016000000000005343,
+      "first_rejection": {
+        "case_id": "development-empty-s3200034",
+        "repeat": 0,
+        "time_s": 4.56,
+        "pose_time_s": 4.56,
+        "sample_time_s": 4.56,
+        "acquisition_position_m": [
+          0.3842360000000023,
+          -5.048738,
+          1.4992407384833222
+        ],
+        "status": "scan_unknown_or_blocked",
+        "path_points": 44,
+        "rejections": [
+          {
+            "ok": false,
+            "reason": "unknown",
+            "cell": [
+              1,
+              -20
+            ],
+            "point_m": [
+              0.38115733333333485,
+              -4.9908253333333334
+            ],
+            "sample_index": 1,
+            "steps": 3,
+            "distance_from_start_m": 0.05799444067226531,
+            "start_m": [
+              0.3842360000000023,
+              -5.048738,
+              1.4992407384833222
+            ],
+            "end_m": [
+              0.375,
+              -4.875
+            ],
+            "require_free": true,
+            "allowed_without_free": true,
+            "start_cell_free": true,
+            "start_cell_blocked": false
+          }
+        ]
+      },
+      "last_rejection": {
+        "case_id": "development-empty-s3200034",
+        "repeat": 0,
+        "time_s": 92.032,
+        "pose_time_s": 92.016,
+        "sample_time_s": 92.016,
+        "acquisition_position_m": [
+          0.38423600000000446,
+          -5.048738,
+          1.499999999999994
+        ],
+        "status": "scan_unknown_or_blocked",
+        "path_points": 44,
+        "rejections": [
+          {
+            "ok": false,
+            "reason": "unknown",
+            "cell": [
+              1,
+              -20
+            ],
+            "point_m": [
+              0.3811573333333363,
+              -4.9908253333333334
+            ],
+            "sample_index": 1,
+            "steps": 3,
+            "distance_from_start_m": 0.05799444067226534,
+            "start_m": [
+              0.38423600000000446,
+              -5.048738,
+              1.499999999999994
+            ],
+            "end_m": [
+              0.375,
+              -4.875
+            ],
+            "require_free": true,
+            "allowed_without_free": true,
+            "start_cell_free": true,
+            "start_cell_blocked": false
+          }
+        ]
+      },
+      "rejected_cells": [
+        {
+          "cell": [
+            1,
+            -20
+          ],
+          "consumed_acquisitions": 2813,
+          "center_retains": 0,
+          "wholly_inside_ring_acquisitions": 2813,
+          "max_corner_distance_m": 0.32751136826071,
+          "min_projected_origin_radius_m": 0.32999999999999996,
+          "max_corner_minus_origin_m": -0.0024886317392899815,
+          "ray_unreachable_for_entire_trace": true,
+          "final_free": false,
+          "final_blocked": false,
+          "rejection_calls": 5468
+        }
+      ]
+    },
+    {
+      "case_id": "development-empty-s3200041",
+      "repeat": 0,
+      "arm": "reference",
+      "outcome_recorded": "timeout",
+      "decisions": 5625,
+      "statuses": {
+        "initial_scan": 157,
+        "scan_unknown_or_blocked": 5468
+      },
+      "nonzero_horizontal_commands": 0,
+      "predicate_calls_verified": 5468,
+      "rejected_decisions": 5468,
+      "rejection_calls_by_reason": {
+        "unknown": 5468
+      },
+      "stall_causes": {
+        "segment_rejected": 5468
+      },
+      "original_deterministic_counters_match": true,
+      "deterministic_counters": {
+        "decisions": 5625,
+        "range_samples": 2813,
+        "range_values": 28130,
+        "map_updates": 2813,
+        "free_cells": 3078,
+        "occupied_cells": 50,
+        "peak_cells": 3128,
+        "derived_blocked_cells": 490,
+        "budget_exhausted": false,
+        "guard_events": 0,
+        "scan_decisions": 5625,
+        "plans": 171
+      },
+      "max_horizontal_displacement_m": 1.944919355667785e-14,
+      "max_current_acquisition_horizontal_separation_m": 0.0,
+      "max_range_age_s": 0.016000000000005343,
+      "max_pose_age_s": 0.016000000000005343,
+      "first_rejection": {
+        "case_id": "development-empty-s3200041",
+        "repeat": 0,
+        "time_s": 4.56,
+        "pose_time_s": 4.56,
+        "sample_time_s": 4.56,
+        "acquisition_position_m": [
+          0.31847900000000123,
+          -4.256297999999976,
+          1.4992407384833222
+        ],
+        "status": "scan_unknown_or_blocked",
+        "path_points": 42,
+        "rejections": [
+          {
+            "ok": false,
+            "reason": "unknown",
+            "cell": [
+              1,
+              -17
+            ],
+            "point_m": [
+              0.34673950000000064,
+              -4.190648999999988
+            ],
+            "sample_index": 1,
+            "steps": 2,
+            "distance_from_start_m": 0.07147340107514404,
+            "start_m": [
+              0.31847900000000123,
+              -4.256297999999976,
+              1.4992407384833222
+            ],
+            "end_m": [
+              0.375,
+              -4.125
+            ],
+            "require_free": true,
+            "allowed_without_free": true,
+            "start_cell_free": true,
+            "start_cell_blocked": false
+          }
+        ]
+      },
+      "last_rejection": {
+        "case_id": "development-empty-s3200041",
+        "repeat": 0,
+        "time_s": 92.032,
+        "pose_time_s": 92.016,
+        "sample_time_s": 92.016,
+        "acquisition_position_m": [
+          0.3184790000000224,
+          -4.256297999999976,
+          1.4999999999999944
+        ],
+        "status": "scan_unknown_or_blocked",
+        "path_points": 42,
+        "rejections": [
+          {
+            "ok": false,
+            "reason": "unknown",
+            "cell": [
+              1,
+              -17
+            ],
+            "point_m": [
+              0.3467395000000112,
+              -4.190648999999988
+            ],
+            "sample_index": 1,
+            "steps": 2,
+            "distance_from_start_m": 0.07147340107513984,
+            "start_m": [
+              0.3184790000000224,
+              -4.256297999999976,
+              1.4999999999999944
+            ],
+            "end_m": [
+              0.375,
+              -4.125
+            ],
+            "require_free": true,
+            "allowed_without_free": true,
+            "start_cell_free": true,
+            "start_cell_blocked": false
+          }
+        ]
+      },
+      "rejected_cells": [
+        {
+          "cell": [
+            1,
+            -17
+          ],
+          "consumed_acquisitions": 2813,
+          "center_retains": 0,
+          "wholly_inside_ring_acquisitions": 2813,
+          "max_corner_distance_m": 0.3140677287544636,
+          "min_projected_origin_radius_m": 0.32999999999999996,
+          "max_corner_minus_origin_m": -0.015932271245536367,
+          "ray_unreachable_for_entire_trace": true,
+          "final_free": false,
+          "final_blocked": false,
+          "rejection_calls": 5468
+        }
+      ]
+    },
+    {
+      "case_id": "development-narrow_gap-s3200004",
+      "repeat": 0,
+      "arm": "reference",
+      "outcome_recorded": "timeout",
+      "decisions": 5625,
+      "statuses": {
+        "initial_scan": 157,
+        "scan_unknown_or_blocked": 5468
+      },
+      "nonzero_horizontal_commands": 0,
+      "predicate_calls_verified": 5468,
+      "rejected_decisions": 5468,
+      "rejection_calls_by_reason": {
+        "unknown": 5468
+      },
+      "stall_causes": {
+        "segment_rejected": 5468
+      },
+      "original_deterministic_counters_match": true,
+      "deterministic_counters": {
+        "decisions": 5625,
+        "range_samples": 2813,
+        "range_values": 28130,
+        "map_updates": 2813,
+        "free_cells": 2432,
+        "occupied_cells": 98,
+        "peak_cells": 2530,
+        "derived_blocked_cells": 967,
+        "budget_exhausted": false,
+        "guard_events": 0,
+        "scan_decisions": 5625,
+        "plans": 171
+      },
+      "max_horizontal_displacement_m": 0.015505939593685932,
+      "max_current_acquisition_horizontal_separation_m": 0.0,
+      "max_range_age_s": 0.016000000000005343,
+      "max_pose_age_s": 0.016000000000005343,
+      "first_rejection": {
+        "case_id": "development-narrow_gap-s3200004",
+        "repeat": 0,
+        "time_s": 4.56,
+        "pose_time_s": 4.56,
+        "sample_time_s": 4.56,
+        "acquisition_position_m": [
+          -0.19177689305533355,
+          5.252465047627001,
+          1.4992718672659266
+        ],
+        "status": "scan_unknown_or_blocked",
+        "path_points": 53,
+        "rejections": [
+          {
+            "ok": false,
+            "reason": "unknown",
+            "cell": [
+              -1,
+              20
+            ],
+            "point_m": [
+              -0.12842151444426686,
+              5.226972038101601
+            ],
+            "sample_index": 1,
+            "steps": 5,
+            "distance_from_start_m": 0.06829200197397746,
+            "start_m": [
+              -0.19177689305533355,
+              5.252465047627001,
+              1.4992718672659266
+            ],
+            "end_m": [
+              0.125,
+              5.125
+            ],
+            "require_free": true,
+            "allowed_without_free": true,
+            "start_cell_free": true,
+            "start_cell_blocked": false
+          }
+        ]
+      },
+      "last_rejection": {
+        "case_id": "development-narrow_gap-s3200004",
+        "repeat": 0,
+        "time_s": 92.032,
+        "pose_time_s": 92.016,
+        "sample_time_s": 92.016,
+        "acquisition_position_m": [
+          -0.19279053525944245,
+          5.25259725867951,
+          1.4999999999999947
+        ],
+        "status": "scan_unknown_or_blocked",
+        "path_points": 53,
+        "rejections": [
+          {
+            "ok": false,
+            "reason": "unknown",
+            "cell": [
+              -1,
+              20
+            ],
+            "point_m": [
+              -0.12923242820755396,
+              5.227077806943608
+            ],
+            "sample_index": 1,
+            "steps": 5,
+            "distance_from_start_m": 0.0684899656075279,
+            "start_m": [
+              -0.19279053525944245,
+              5.25259725867951,
+              1.4999999999999947
+            ],
+            "end_m": [
+              0.125,
+              5.125
+            ],
+            "require_free": true,
+            "allowed_without_free": true,
+            "start_cell_free": true,
+            "start_cell_blocked": false
+          }
+        ]
+      },
+      "rejected_cells": [
+        {
+          "cell": [
+            -1,
+            20
+          ],
+          "consumed_acquisitions": 2813,
+          "center_retains": 0,
+          "wholly_inside_ring_acquisitions": 2813,
+          "max_corner_distance_m": 0.3219437165528066,
+          "min_projected_origin_radius_m": 0.32999521349607186,
+          "max_corner_minus_origin_m": -0.008054626512669416,
+          "ray_unreachable_for_entire_trace": true,
+          "final_free": false,
+          "final_blocked": false,
+          "rejection_calls": 5468
+        }
+      ]
+    },
+    {
+      "case_id": "development-narrow_gap-s3200029",
+      "repeat": 1,
+      "arm": "reference",
+      "outcome_recorded": "timeout",
+      "decisions": 5625,
+      "statuses": {
+        "initial_scan": 157,
+        "scan_unknown_or_blocked": 5468
+      },
+      "nonzero_horizontal_commands": 0,
+      "predicate_calls_verified": 5468,
+      "rejected_decisions": 5468,
+      "rejection_calls_by_reason": {
+        "unknown": 5468
+      },
+      "stall_causes": {
+        "segment_rejected": 5468
+      },
+      "original_deterministic_counters_match": true,
+      "deterministic_counters": {
+        "decisions": 5625,
+        "range_samples": 2813,
+        "range_values": 28130,
+        "map_updates": 2813,
+        "free_cells": 2351,
+        "occupied_cells": 102,
+        "peak_cells": 2453,
+        "derived_blocked_cells": 1003,
+        "budget_exhausted": false,
+        "guard_events": 0,
+        "scan_decisions": 5625,
+        "plans": 171
+      },
+      "max_horizontal_displacement_m": 0.00011062558045673451,
+      "max_current_acquisition_horizontal_separation_m": 0.0,
+      "max_range_age_s": 0.016000000000019554,
+      "max_pose_age_s": 0.016000000000019554,
+      "first_rejection": {
+        "case_id": "development-narrow_gap-s3200029",
+        "repeat": 1,
+        "time_s": 52.112,
+        "pose_time_s": 52.112,
+        "sample_time_s": 52.112,
+        "acquisition_position_m": [
+          -0.23514666717708138,
+          -5.831552031961808,
+          1.5000000047893531
+        ],
+        "status": "scan_unknown_or_blocked",
+        "path_points": 54,
+        "rejections": [
+          {
+            "ok": false,
+            "reason": "unknown",
+            "cell": [
+              -2,
+              -24
+            ],
+            "point_m": [
+              -0.270110000382811,
+              -5.779914023971356
+            ],
+            "sample_index": 1,
+            "steps": 4,
+            "distance_from_start_m": 0.06236119416814281,
+            "start_m": [
+              -0.23514666717708138,
+              -5.831552031961808,
+              1.5000000047893531
+            ],
+            "end_m": [
+              -0.375,
+              -5.625
+            ],
+            "require_free": true,
+            "allowed_without_free": true,
+            "start_cell_free": true,
+            "start_cell_blocked": false
+          }
+        ]
+      },
+      "last_rejection": {
+        "case_id": "development-narrow_gap-s3200029",
+        "repeat": 1,
+        "time_s": 139.584,
+        "pose_time_s": 139.568,
+        "sample_time_s": 139.568,
+        "acquisition_position_m": [
+          -0.2351582641691587,
+          -5.831551540890011,
+          1.5000000000000053
+        ],
+        "status": "scan_unknown_or_blocked",
+        "path_points": 54,
+        "rejections": [
+          {
+            "ok": false,
+            "reason": "unknown",
+            "cell": [
+              -2,
+              -24
+            ],
+            "point_m": [
+              -0.270118698126869,
+              -5.779913655667508
+            ],
+            "sample_index": 1,
+            "steps": 4,
+            "distance_from_start_m": 0.06235946706606621,
+            "start_m": [
+              -0.2351582641691587,
+              -5.831551540890011,
+              1.5000000000000053
+            ],
+            "end_m": [
+              -0.375,
+              -5.625
+            ],
+            "require_free": true,
+            "allowed_without_free": true,
+            "start_cell_free": true,
+            "start_cell_blocked": false
+          }
+        ]
+      },
+      "rejected_cells": [
+        {
+          "cell": [
+            -2,
+            -24
+          ],
+          "consumed_acquisitions": 2813,
+          "center_retains": 0,
+          "wholly_inside_ring_acquisitions": 2813,
+          "max_corner_distance_m": 0.3139411696917128,
+          "min_projected_origin_radius_m": 0.3299999998882868,
+          "max_corner_minus_origin_m": -0.016058830261965862,
+          "ray_unreachable_for_entire_trace": true,
+          "final_free": false,
+          "final_blocked": false,
+          "rejection_calls": 5468
+        }
+      ]
+    }
+  ],
+  "coverage_sweep": {
+    "kind": "synthetic_representation_only",
+    "cell_m": 0.25,
+    "offsets_per_axis_m": [
+      0.025,
+      0.05,
+      0.07500000000000001,
+      0.1,
+      0.125,
+      0.15000000000000002,
+      0.17500000000000002,
+      0.2,
+      0.225
+    ],
+    "yaw_samples_full_turn": 64,
+    "synthetic_horizontal_range_limit_m": 1.0,
+    "obstacle_hits": 0,
+    "interpretation": "origin=0 is a diagnostic control, not an authorized sensor change or safety fix",
+    "arms": [
+      {
+        "origin_radius_m": 0.33,
+        "positions": 81,
+        "positions_with_rejected_adjacent_segment": 32,
+        "rejected_segments_per_position_histogram": {
+          "0": 49,
+          "2": 8,
+          "3": 24
+        },
+        "examples": [
+          {
+            "offset_m": [
+              0.025,
+              0.07500000000000001
+            ],
+            "rejected_adjacent_directions": [
+              [
+                -1,
+                -1
+              ],
+              [
+                -1,
+                0
+              ],
+              [
+                -1,
+                1
+              ]
+            ]
+          },
+          {
+            "offset_m": [
+              0.025,
+              0.1
+            ],
+            "rejected_adjacent_directions": [
+              [
+                -1,
+                -1
+              ],
+              [
+                -1,
+                0
+              ],
+              [
+                -1,
+                1
+              ]
+            ]
+          },
+          {
+            "offset_m": [
+              0.025,
+              0.125
+            ],
+            "rejected_adjacent_directions": [
+              [
+                -1,
+                -1
+              ],
+              [
+                -1,
+                0
+              ],
+              [
+                -1,
+                1
+              ]
+            ]
+          }
+        ]
+      },
+      {
+        "origin_radius_m": 0.0,
+        "positions": 81,
+        "positions_with_rejected_adjacent_segment": 0,
+        "rejected_segments_per_position_histogram": {
+          "0": 81
+        },
+        "examples": []
+      }
+    ]
+  },
+  "rejections_sha256": "2d5f4cfa75282324170d90b660e89d12d83456899de62fee30ff83ee483fe1f8",
+  "limits": [
+    "No new simulator episodes or improved success result",
+    "Reference only; 64 ms range logs lack intermediate 32 ms poses",
+    "Deterministic counters match; no recorded per-tick command equality claim",
+    "No generalization to all validation failures; no free-space safety inference"
+  ]
+}
