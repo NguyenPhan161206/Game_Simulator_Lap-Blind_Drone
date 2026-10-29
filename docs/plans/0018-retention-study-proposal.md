@@ -2,6 +2,8 @@
 
 Ngày: 2026-10-29. **Trạng thái: dự thảo để xem xét.** Người dùng đã cho phép củng cố/phân tích và soạn kế hoạch trong [0017](0017-maintenance-and-retention-audit.md); chưa chốt candidate, ngưỡng hoặc quyền triển khai/chạy nghiên cứu này. Không có runner/config nghiên cứu mới được tạo trong 0017.
 
+**Cập nhật theo yêu cầu tiếp tục mới:** đã cho phép lập kế hoạch chi tiết và thực thi bước khởi tạo A/A theo [0019](0019-initialization-aa-development.md)/[ADR 0011](../decisions/0011-initialization-aa-development.md). Phần candidate/ngưỡng và evaluation retention C–F vẫn là dự thảo, phụ thuộc kết quả A/A; không mở held-out trong mốc A/A.
+
 ## Câu hỏi và lý do ưu tiên
 
 Câu hỏi đề xuất: có thể giảm lịch sử bản đồ được giữ lại mà vẫn duy trì chất lượng điều hướng so với v4 full-history trong cùng miền static/ideal/horizontal hay không?
