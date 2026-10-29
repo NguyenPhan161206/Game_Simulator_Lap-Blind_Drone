@@ -22,6 +22,8 @@ Validation v3 đã exposed, chưa ML; thay thuật toán/cảm biến cần vers
 
 GOAL-23 đã hoàn tất **implementation và kiểm chứng development** theo [kế hoạch 0014](docs/plans/0014-observed-detour-v4.md): [package v4 riêng](versions/navigation_v4/README.md) tìm lối qua free-grid và kiểm supercover/swept clearance, hai arm cùng 32 ms. [Báo cáo nguồn `9503c2c`](docs/research/2026-10-28-observed-detour-v4.md): 165 unit tests, 352 episode Webots, reference 62/74 và v4 74/74 case khả thi; năm regression kẹt đều thành công cả hai repeat, không collision/bounds. Có thêm chi phí CPU; chưa held-out/hardware hoặc giảm acquisition rate mới. V3 vẫn nguyên khóa và test chưa mở; nghiên cứu v4 tiếp theo cần protocol/source lock và split mới.
 
+DATA-03 đang được thực thi như một phép thử phát triển riêng: persistent occupied hits, free evidence chỉ giữ tới acquisition kế tiếp, unknown vẫn chặn lệnh. Kế hoạch/thiết kế nằm ở [0015](docs/plans/0015-data03-occupied-only.md) và [ADR 0008](docs/decisions/0008-data03-occupied-only.md). Chưa có kết quả Webots; không suy từ unit tests hoặc số cell rằng RAM/chất lượng đã cải thiện.
+
 ## Bắt đầu
 
 Python 3.11+; kiểm tra nền dùng thư viện chuẩn, không cần cài dependency:

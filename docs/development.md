@@ -62,3 +62,7 @@ Tiếp theo triển khai adapter acquisition 32/64 ms, kế toán dữ liệu v�
 ## Bàn giao validation v3 — 2026-10-28
 
 [Validation duy nhất](research/2026-10-28-cadence-v3-validation.md) tại source `0c5f598` đã qua 127 tests và 480 lượt CI, local review raw khớp. Success 87/100 mỗi arm không đạt 95%; theo protocol dừng ở kết quả âm, giữ test chưa chạy. Hai lock v3 và legacy v1/v2 không đổi. Không sửa thuật toán v3 hoặc tiếp tục test khi gate chưa đạt; GOAL-22 là đề xuất cho nghiên cứu version mới.
+
+## Thực thi DATA-03 — occupied-only persistent map
+
+Thiết kế/kế hoạch hiện hành ở [ADR 0008](decisions/0008-data03-occupied-only.md) và [plan 0015](plans/0015-data03-occupied-only.md). `make data03` dựng world riêng từ 88 case development đã lộ của v4; Webots cần chạy trong CI/Xvfb. Candidate giữ free evidence tới acquisition tiếp theo, giữ occupied hits trong episode và dừng nếu lối không còn được quan sát. Chưa có runtime outcome; DATA-03 checklist vẫn mở cho tới khi raw evidence được review.

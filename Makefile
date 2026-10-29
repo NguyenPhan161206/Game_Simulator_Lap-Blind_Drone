@@ -7,6 +7,7 @@ check:
 	python3 tools/build_research_v3.py --check
 	python3 tools/build_runtime_v3.py --check
 	python3 tools/build_navigation_v4.py --check
+	python3 tools/build_data03.py --check
 	python3 -m unittest discover -s tests -p 'test_*.py' -v
 
 smoke:
@@ -14,3 +15,7 @@ smoke:
 
 navigation:
 	python3 tools/run_webots.py --navigation
+
+data03:
+	python3 tools/build_navigation_v4.py
+	python3 tools/build_data03.py

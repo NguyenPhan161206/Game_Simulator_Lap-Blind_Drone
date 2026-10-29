@@ -1,0 +1,42 @@
+name: DATA-03 occupied-only persistent map development
+on:
+  push:
+    branches: ["feat/data-03-occupied-only"]
+    paths: ["versions/data_occupied_v1/**", "simulation/webots/controllers/*data03/**", "simulation/webots/protos/BlindDroneData03.proto", "simulation/webots/worlds/occupied_only_data03.wbt", "tools/*data03.py", "tests/test_data03.py", "Makefile", ".github/workflows/data-03.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  development:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check frozen protocols and versioned DATA-03 source
+        run: make check
+      - name: Materialize exposed development fixtures only
+        run: |
+          python3 tools/build_navigation_v4.py
+          python3 tools/build_data03.py
+      - name: Install simulator display dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb libglu1-mesa libegl1 libopengl0 libgl1-mesa-dri libnss3 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-shape0 libxcb-xfixes0 libxcb-sync1 libxcb-randr0 libxcb-shm0 libx11-xcb1 libxrender1 libxi6 libxrandr2 libxcursor1 libxcomposite1 libxdamage1 libxext6 libsndio7.0 libpulse0 libasound2 libzip4 libgtk-3-0 libatk1.0-0 libdbus-1-3 libfreeimage3 libxaw7 libxslt1.1 ffmpeg
+      - name: Install pinned Webots R2025a
+        run: python3 tools/install_webots.py
+      - name: Paired 32 ms development with occupied-only candidate
+        run: xvfb-run -a -s '-screen 0 1280x960x24' python3 tools/run_data03.py --output artifacts/data03-occupied-only
+      - name: Independently replay complete raw evidence
+        run: python3 tools/review_data03.py artifacts/data03-occupied-only --expected-source "$GITHUB_SHA" --output artifacts/data03-review.json
+      - name: Upload raw study for local verification
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: data03-occupied-only-development
+          path: artifacts/data03-occupied-only/
+          if-no-files-found: warn

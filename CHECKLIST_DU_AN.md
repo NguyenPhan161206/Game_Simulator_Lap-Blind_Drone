@@ -240,7 +240,7 @@ python3 tools/local_session.py accept
 
 - [x] DATA-01 — Đo riêng đầu ra sensor, observation đưa vào policy, state giữ trong bộ nhớ và dữ liệu truyền/lưu. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [x] DATA-02 — Khai báo encoding/metadata khi báo byte; đo RSS/bộ nhớ thực nếu muốn nói về RAM, không thay bằng cell count. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
-- [ ] DATA-03 — Thử guarded chỉ lưu occupied hits thay vì cả free-grid; xác minh hành vi và budget, không suy từ đọc code rằng đã giảm thành công.
+- [ ] DATA-03 — Thử guarded chỉ lưu occupied hits thay vì cả free-grid; xác minh hành vi và budget, không suy từ đọc code rằng đã giảm thành công. **Đang thực thi development:** [quyết định 0008](docs/decisions/0008-data03-occupied-only.md), [kế hoạch 0015](docs/plans/0015-data03-occupied-only.md); kết quả runtime chưa có, chưa đánh dấu hoàn thành.
 - [ ] DATA-04 — Thử giới hạn lịch sử, vùng nhớ, thời hạn hit và nén/độ phân giải; ghi chi phí mất thông tin.
 - [x] DATA-05 — Giảm từng yếu tố một: số hướng ray, tần suất cập nhật hoặc độ chính xác số đo. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [ ] DATA-06 — Khảo sát quét/chọn phép đo theo tình huống thay vì lấy mọi phép đo cố định.
