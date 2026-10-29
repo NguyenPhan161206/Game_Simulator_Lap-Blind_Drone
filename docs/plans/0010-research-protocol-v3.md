@@ -1,5 +1,7 @@
 # Kế hoạch 0010 — khóa nghiên cứu giảm thu nhận range, protocol v3
 
+**Trạng thái hiện tại:** Hoàn tất thiết kế v3; thiết kế vẫn đóng băng. [Bằng chứng](../research/2026-10-27-research-protocol-v3.md). Các bước và giới hạn lúc thực thi bên dưới là lịch sử, không là việc đang chờ chạy lại.
+
 Ngày: 2026-10-27. Phạm vi được giao: hoàn thiện EXP-01–EXP-12 trước triển khai đánh giá hoặc ML. Các ngưỡng mới là lựa chọn nghiên cứu được ghi trước kết quả, không phải ngưỡng chất lượng sản phẩm đã được chứng minh.
 
 ## Trình tự và điều kiện chuyển bước

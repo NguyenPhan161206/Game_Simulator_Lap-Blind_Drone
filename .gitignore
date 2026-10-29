@@ -29,6 +29,8 @@ htmlcov/
 !.codex/config.toml.example
 
 # Generated experiment outputs
+# Root-level conversation exports are local records, not project documentation.
+/codex-session-*.md
 artifacts/*
 !artifacts/README.md
 data/*

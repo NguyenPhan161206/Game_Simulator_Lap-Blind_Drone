@@ -1,5 +1,7 @@
 # Kiến trúc hệ thống
 
+Hiện trạng sau DATA-04 (2026-10-29): [README](../../README.md) và [checklist](../../CHECKLIST_DU_AN.md) là điểm vào tiến độ hiện tại. V3 đóng bằng validation âm; v4/DATA-03/04 chỉ hoàn tất development. [0017](../plans/0017-maintenance-and-retention-audit.md) là bảo trì/offline; [0018](../plans/0018-retention-study-proposal.md) còn dự thảo. Kiến trúc và runtime frozen bên dưới không thay đổi trong đợt này.
+
 Trạng thái: Webots v1, baseline và đánh giá nhiệm vụ đã chạy thực. Giai đoạn [môi trường có seed/protocol khóa](../seeded-environments-v1.md) hoàn tất 48 lượt paired trên CI; xem [báo cáo và giới hạn](../research/2026-10-26-seeded-environments.md). Chưa huấn luyện model.
 
 Giai đoạn [v2](../navigation-v2.md) thêm grid từ phép đo, hull guard và planner trên grid tự đo, kiểm chứng 108 lượt theo protocol riêng. World thật/witness không cấp cho planner. V1 runtime giữ nguyên; v2 là các module versioned cạnh nó. [Bằng chứng và chi phí](../research/2026-10-26-navigation-v2.md).

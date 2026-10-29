@@ -1,5 +1,7 @@
 # Kế hoạch 0002 — môi trường Webots tối thiểu
 
+**Trạng thái hiện tại:** Hoàn tất môi trường trên CI. [Bằng chứng](../research/2026-10-25-webots-v1-smoke.md). Các bước và giới hạn lúc thực thi bên dưới là lịch sử, không là việc đang chờ chạy lại.
+
 Ngày bắt đầu: 2026-10-25. Yêu cầu: lập kế hoạch chi tiết rồi thực hiện từng bước để có môi trường, drone điều khiển thủ công, va chạm, cảm biến không camera và reset.
 
 ## Phạm vi và cách ra quyết định

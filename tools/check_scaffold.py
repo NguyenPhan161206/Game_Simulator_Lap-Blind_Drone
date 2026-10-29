@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import fnmatch
 import os
 from pathlib import Path
 import re
@@ -11,6 +12,7 @@ from urllib.parse import unquote
 
 EXCLUDED = {".git", ".codex", ".agents", ".aws", ".local", ".venv", "venv",
             "__pycache__", "node_modules", "build", "dist", ".pytest_cache"}
+GENERATED_ROOTS = {"artifacts", "data", "models"}
 EXPECTED_MODULES = {"contracts", "world", "vehicle", "sensors", "observation",
                     "navigation", "control", "evaluation", "experiments",
                     "visualization", "webots_adapter", "training"}
@@ -30,10 +32,19 @@ PRESETS = [
 
 
 def source_files(root: Path):
+    """Check source and output-directory READMEs, not generated/local exports."""
     for directory, subdirs, names in os.walk(root):
         subdirs[:] = [name for name in subdirs if name not in EXCLUDED]
+        if Path(directory) == root:
+            subdirs[:] = [name for name in subdirs if name not in GENERATED_ROOTS]
         for name in names:
+            if Path(directory) == root and fnmatch.fnmatchcase(name, "codex-session-*.md"):
+                continue
             yield Path(directory) / name
+    for name in sorted(GENERATED_ROOTS):
+        readme = root / name / "README.md"
+        if readme.is_file():
+            yield readme
 
 
 def validate(root: Path) -> tuple[list[str], int]:

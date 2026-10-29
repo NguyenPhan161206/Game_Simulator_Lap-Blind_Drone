@@ -6,6 +6,10 @@ Camera có thể hỗ trợ tạo dữ liệu/huấn luyện ở nhánh nghiên 
 
 ## Trạng thái hiện tại
 
+**Mốc hiện tại: 7A, sau development DATA-04.** Đợt [củng cố 0017](docs/plans/0017-maintenance-and-retention-audit.md) đã hoàn tất local: phục hồi kiểm tra source, đồng bộ checklist và [đối chiếu failure từ log sẵn có](docs/research/2026-10-29-retention-failure-audit.md). [Nghiên cứu retention 0018](docs/plans/0018-retention-study-proposal.md) còn là dự thảo, cần v4 full-history làm đối chứng và kiểm soát khởi tạo/thứ tự; chưa có candidate được chọn hoặc đánh giá held-out mới.
+
+Các đoạn dưới là bằng chứng theo từng mốc; source/giới hạn của mốc cũ được giữ nguyên.
+
 Đã kiểm chứng Webots v1 và [điều hướng v2](docs/navigation-v2.md) không camera: reactive, guarded và mapped từ grid tự đo. [Báo cáo giai đoạn 0005](docs/research/2026-10-26-navigation-v2.md) có 64 unit test và 108 lượt chính thức, protocol khóa trước validation/test mới. Guarded/mapped đạt 10/10 ca khả thi mỗi split; reactive 8/10 với hai U collision.
 
 Đây là kết quả mô phỏng lý tưởng, điều hướng ngang trong tập hữu hạn; chưa ANN/RL, chưa giảm dữ liệu hoặc bảo đảm an toàn/riêng tư. V2 dùng thêm bộ nhớ/CPU. [Nghiệm thu laptop](docs/research/2026-10-27-local-acceptance-complete.md) đã hoàn tất 9/9 mục nhánh L: đủ điều khiển manual gồm T/G, mapped success và phiếu quan sát khớp dữ liệu tại source 39c34af. CPU max vẫn vượt tick 16 ms; chưa chứng minh deadline realtime phần cứng.
@@ -62,6 +66,6 @@ Nghiệm thu desktop bằng một lệnh: `python3 tools/local_session.py accept
 
 ## Hướng phát triển
 
-V3 đã dừng đúng protocol ở kết quả validation không đạt; giữ nguyên source, locks, raw evidence và test chưa mở. Bước phát triển thuật toán/cảm biến tiếp theo cần protocol/version và đánh giá mới; không tune bằng validation đã exposed. Ưu tiên khảo sát giảm dữ liệu trên baseline; ML là nhánh riêng khi có câu hỏi phù hợp. Sau core phương tiện mới mở rộng một chuyến giao hàng và điều phối logistics.
+V3 đã dừng đúng protocol ở kết quả validation không đạt; giữ nguyên source, locks, raw evidence và test chưa mở. Ưu tiên xem xét [0018](docs/plans/0018-retention-study-proposal.md): tách ảnh hưởng retention khỏi khác biệt điều hướng và khởi tạo, rồi mới đăng ký protocol/source lock và tập đánh giá mới. DATA-06/09 là nhánh sau khi có câu hỏi phù hợp; ML vẫn là nhánh riêng. Sau core phương tiện mới mở rộng một chuyến giao hàng và điều phối logistics.
 
 Các preset nghiên cứu level_b vẫn mang `status = "draft"`, `runtime_ready = false`. [lab_v1.toml](configs/lab_v1.toml) là preset kỹ thuật riêng cho môi trường và kiểm tra simulator, không phải cấu hình nghiên cứu đã hoàn thiện.

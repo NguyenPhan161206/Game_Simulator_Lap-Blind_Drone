@@ -1,5 +1,7 @@
 # 0013 — Chẩn đoán đoạn đường đầu bị từ chối
 
+**Trạng thái hiện tại:** Hoàn tất chẩn đoán offline năm trace; không sửa runtime trong mốc này. [Bằng chứng](../research/2026-10-28-navigation-start-diagnostics.md). Các bước và giới hạn lúc thực thi bên dưới là lịch sử, không là việc đang chờ chạy lại.
+
 Ngày: 2026-10-28. Phạm vi được người dùng yêu cầu: lập kế hoạch chi tiết rồi thực thi bước chẩn đoán đã đề xuất. Đây là công cụ phân tích offline trên development, chưa triển khai thuật toán v4.
 
 ## Điểm xuất phát và đích bàn giao

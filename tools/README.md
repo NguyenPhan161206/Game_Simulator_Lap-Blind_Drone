@@ -1,6 +1,6 @@
 # Development tools
 
-- python3 tools/check_scaffold.py: cấu trúc, TOML, ràng buộc khai báo và link nội bộ.
+- python3 tools/check_scaffold.py: cấu trúc, TOML, ràng buộc khai báo và link source; bỏ root conversation exports/generated output, vẫn kiểm README output và source mới chưa tracked.
 - python3 tools/build_lab.py [--check]: tạo hoặc kiểm tra world/PROTO từ cấu hình v1.
 - python3 tools/build_scenarios.py [--check | --freeze]: sinh manifest có chứng cứ hình học hoặc xác minh khóa; từ chối thay lock đã có.
 - python3 tools/check_study.py <dev-result> <validation-result> <test-result>: kiểm tra đủ lượt paired/split/provenance, không bỏ thất bại.
@@ -11,6 +11,8 @@
 - bash tools/git.sh status --short --branch: metadata Git của workspace managed hoặc repo thường.
 
 Các công cụ không huấn luyện model hoặc sửa cấu hình agent toàn máy.
+
+`python3 tools/analyze_retention_failures.py --v4-run <v4-raw> --data03-run <data03-raw> --data04-run <data04-raw> --output <fresh-json>` mô tả failure từ ba run development lịch sử đã xác minh digest. Tool chỉ đọc outcome/decision/physics và hash các file được dùng; không chạy policy, Webots, toàn bộ auditor cũ hoặc nhận held-out data. [Nguồn, lệnh và giới hạn 0017](../docs/research/2026-10-29-retention-failure-audit.md).
 
 V4 riêng ngoài src/: `python3 tools/build_navigation_v4.py [--check]` kiểm asset/index 88 case và giữ bốn khóa cũ; `run_navigation_v4.py --output artifacts/<fresh>` chỉ chạy paired development trên Webots R2025a, nên dùng CI/Xvfb để không mở GUI desktop. `review_navigation_v4.py <run> --expected-source <full-sha> --output <fresh-json>` xác minh hashes/source, replay physics/acquisition và target/command từ public observations. Hai arm cùng 32 ms; CLI không nhận validation/test. [Bằng chứng GOAL-23](../docs/research/2026-10-28-observed-detour-v4.md).
 

@@ -1,6 +1,6 @@
 # ADR 0009 — DATA-04: giới hạn thời hạn occupied hit
 
-Ngày: 2026-10-29. Trạng thái: giao thức development đã khóa; chưa có kết quả simulator.
+Ngày: 2026-10-29. Trạng thái hiện tại: development đã hoàn tất; xem bàn giao cuối tài liệu. Câu “chưa có kết quả simulator” thuộc trạng thái lúc khóa thiết kế; thiết kế/ngưỡng vẫn giữ nguyên.
 
 ## Câu hỏi và biến duy nhất
 

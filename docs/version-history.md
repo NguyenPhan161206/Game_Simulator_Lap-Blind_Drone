@@ -2,6 +2,8 @@
 
 Snapshot ngày 2026-10-29. Repo: [Game_Simulator_Lap-Blind_Drone](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone). Có thể xem [commit graph trên GitHub](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/network) và dùng `bash tools/git.sh log --all --graph --decorate --oneline` trong workspace này.
 
+Đối chiếu remote trong audit checklist ngày 29/10: main `79859cbb6b8a02371bca5b912a05dcae8380f61f` (đóng validation v3); feat/data-04-hit-ttl `d3b5d13cf938727eafe3808e6df31010ccb71595` (bàn giao DATA-04). V4/DATA-03/04 đã có nhánh/bằng chứng riêng, chưa tích hợp main. Đợt [0017](plans/0017-maintenance-and-retention-audit.md) dùng nhánh `fix/checklist-retention-audit`, không thay runtime hoặc tích hợp main. Các bảng nguồn nghiệm thu cũ dưới đây là lịch sử, không đại diện tip mới nhất.
+
 ## Lịch sử các mốc
 
 Sơ đồ sau biểu diễn các mốc nối tiếp trong lịch sử đang dùng; không giả định đây là các nhánh phát triển độc lập hoặc merge commit.

@@ -1,5 +1,7 @@
 # Mốc 7A tiếp — validation cadence v3 đóng băng
 
+**Trạng thái hiện tại:** Hoàn tất validation duy nhất, kết quả âm 87/100 mỗi arm; test giữ đóng. [Bằng chứng](../research/2026-10-28-cadence-v3-validation.md). Các bước và giới hạn lúc thực thi bên dưới là lịch sử, không là việc đang chờ chạy lại.
+
 Ngày 2026-10-28. Tiếp tục source bàn giao `7c45705`; cả năm workflow main đã đạt. Runtime implementation vẫn `0c75ce2`, design hash `968c59e193336c49a015a62f87bf6f0ac834c6131bdb348105b5fcd950ad1474`, runtime hash `bcc938bb18acd9bd829f43e6f0f722f204a5c7702e5fa3b20c82b6171a080c3d`.
 
 1. Giữ nguyên tất cả file trong inventory runtime và các khóa v1/v2/v3. Development 45/50 và 46/50 không đáp ứng 95%; không thay planner, lấy mẫu, seeds hoặc ngưỡng để cải thiện chúng. Thiết kế không đặt development success làm điều kiện cấm validation; điều kiện mở validation là implementation và hai khóa hợp lệ. Validation là phép thử xác nhận độc lập của cấu hình duy nhất đã đăng ký, không là tập tune.

@@ -1,5 +1,7 @@
 # Sửa launcher và làm rõ lượt manual thiếu T/G
 
+**Trạng thái hiện tại:** Hoàn tất sửa launcher và nghiệm thu local. [Bằng chứng](../research/2026-10-27-local-acceptance-complete.md). Các bước và giới hạn lúc thực thi bên dưới là lịch sử, không là việc đang chờ chạy lại.
+
 Ngày 2026-10-27. Đầu vào: batch local-acceptance-20261026T224307533989Z tại c012ab8. Không thay runtime/controller/world hoặc hai protocol đã khóa.
 
 1. Đối chiếu raw telemetry, phiếu, source và console: W/S/A/D/Q/E có command, một bước nhảy phù hợp reset, T/G chưa có up command. Giữ cảnh báo T/G; không tự coi phiếu yes là dữ liệu đầy đủ.

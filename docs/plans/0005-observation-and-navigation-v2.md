@@ -1,5 +1,7 @@
 # Kế hoạch 0005 — quan sát có bộ nhớ và điều hướng v2
 
+**Trạng thái hiện tại:** Hoàn tất v2; validation/test đã exposed. [Bằng chứng](../research/2026-10-26-navigation-v2.md). Các bước và giới hạn lúc thực thi bên dưới là lịch sử, không là việc đang chờ chạy lại.
+
 Ngày: 2026-10-26. Yêu cầu: lập kế hoạch chi tiết rồi thực thi cẩn thận giai đoạn sau seeded v1.
 
 ## Mục tiêu và ranh giới

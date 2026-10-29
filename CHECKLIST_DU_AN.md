@@ -2,7 +2,9 @@
 
 **Cập nhật:** 2026-10-29, múi giờ Asia/Ho_Chi_Minh.
 
-**Mốc repo được đối chiếu:** thiết kế v3 `761318df1293c195347f486b0d228f88af10fae1`; runtime cadence v3 `0c75ce28f14b8ea881e8c0c7c9335aa4319030c5`, validation `0c5f598c512a24db63b0fd19ca259a3b85382ee5`; nghiệm thu GUI/manual lịch sử vẫn là `39c34af`. Mốc checklist gốc `d7018cb` được giữ trong lịch sử.
+**Mốc bàn giao hiện tại:** DATA-04 runtime `8b4e3be`, tài liệu `d3b5d13`; đã hoàn tất củng cố local theo [kế hoạch 0017](docs/plans/0017-maintenance-and-retention-audit.md). [Nghiên cứu retention tiếp theo](docs/plans/0018-retention-study-proposal.md) còn là dự thảo.
+
+**Mốc repo lịch sử được đối chiếu:** thiết kế v3 `761318df1293c195347f486b0d228f88af10fae1`; runtime cadence v3 `0c75ce28f14b8ea881e8c0c7c9335aa4319030c5`, validation `0c5f598c512a24db63b0fd19ca259a3b85382ee5`; nghiệm thu GUI/manual lịch sử vẫn là `39c34af`. Mốc checklist gốc `d7018cb` được giữ trong lịch sử.
 **Audit bổ sung nhánh L/GitHub:** source collector `b32410595b26f8ef2d0f8d99dca469797278366b`; xem [cây phiên bản](docs/version-history.md) và evidence liên kết ở mục 8.
 **Mục đích:** theo dõi từ ý tưởng ban đầu, các phần đã triển khai/kiểm chứng, phần còn mở và roadmap tương lai trong một file.
 
@@ -28,7 +30,7 @@
 | 5 | Quan sát có bộ nhớ, guard, planner v2 | Đã kiểm chứng CI | Khóa trước fresh evaluation, đủ 108 lượt, có chi phí/giới hạn |
 | L | Hoàn tất trải nghiệm local | Đã nghiệm thu LOC-01–09 | Mở GUI và chạy thật trên máy người dùng, lưu bằng chứng riêng |
 | 6 | Khóa câu hỏi nghiên cứu và protocol tiếp theo | Thiết kế v3 giữ nguyên; runtime được bổ sung ở 7A | Có quyết định, ngưỡng chất lượng, dữ liệu và test mới |
-| 7A | Khảo sát giảm dữ liệu/biểu diễn | V3 kết thúc âm (validation 87/100); DATA-03 occupied-only development 67/74 so với reference 62/74; test v3 chưa mở | Mỗi cấu hình cần study/source riêng và quality assessment; DATA-03 chưa held-out/chưa có quality-selection threshold |
+| 7A | Khảo sát giảm dữ liệu/biểu diễn | V3 đóng âm; v4, DATA-03 và DATA-04 hoàn tất development; 0017 đã kiểm tra local/đối chiếu log | DATA-03/04 chưa có held-out selection; kế hoạch 0018 còn dự thảo; test v3 giữ đóng |
 | 7A-D | Chẩn đoán kẹt đoạn đầu trên development | Hoàn tất offline 5 trace, 141 unit tests; chưa sửa thuật toán | [Nguyên nhân origin/cell alignment](docs/research/2026-10-28-navigation-start-diagnostics.md); không là flight evaluation mới |
 | 7A-N4 | GOAL-23: đường thay thế qua vùng đã quan sát | Hoàn tất development v4: 165 tests, 352 episode, 74/74 feasible case | [Nguồn `9503c2c`, raw audit/CI](docs/research/2026-10-28-observed-detour-v4.md); chưa held-out/hardware, CPU tăng |
 | 7B | Huấn luyện model nếu phù hợp câu hỏi | Chưa làm, nhánh tùy chọn | Train/eval không rò rỉ, tái lập, so sánh với baseline |
@@ -39,7 +41,7 @@
 | 12 | Điều phối logistics, mức E | Chưa làm | Có đơn hàng, baseline và KPI vận hành riêng |
 | 13 | Xe, radar vật lý, Unity hoặc phần cứng | Hướng mở rộng có điều kiện | Có nhu cầu, nguồn lực, mô hình và kiểm chứng tương ứng |
 
-**Điểm đứng hiện tại:** đã có reference navigation không học và một thử nghiệm DATA-03 trong mô phỏng lý tưởng. Occupied-only đạt 67/74 so với reference 62/74 trên development đã exposed, nhưng common-success time/path và CPU tăng; RSS chỉ giảm nhẹ. Chưa có held-out selection. Chưa ANN/RL, chưa chứng minh tối thiểu dữ liệu, riêng tư, an toàn tổng quát hoặc khả năng triển khai ngoài đời.
+**Điểm đứng hiện tại:** đang ở 7A, sau development DATA-04. V4 đầy đủ lịch sử đạt 74/74; DATA-03 và DATA-04 đạt 67/74 trong các run đã ghi. Các số này dùng development đã exposed, chưa là lựa chọn cấu hình hoặc bằng chứng held-out. [Đối chiếu offline 0017](docs/research/2026-10-29-retention-failure-audit.md) mô tả timeout khi vẫn di chuyển và độ nhạy với thứ tự/khởi tạo; chưa quy nguyên nhân duy nhất cho retention/TTL. Ưu tiên đối chứng trực tiếp với v4 và kiểm tra khởi tạo theo [dự thảo 0018](docs/plans/0018-retention-study-proposal.md), trước mở thêm biến lấy mẫu. Chưa ANN/RL, phần cứng hoặc bằng chứng tối thiểu dữ liệu/riêng tư/an toàn tổng quát.
 
 ## 2. Mốc 0 — ý tưởng và các quyết định gốc
 
@@ -103,7 +105,7 @@ Nguồn: [kế hoạch 0002](docs/plans/0002-webots-minimal-lab.md), [hướng d
 - [x] LAB-14 — Chạy 12 mục smoke trên simulator thật, không dùng stub để báo đạt.
 - [x] LAB-15 — Ghi rõ actuator chưa hiệu chỉnh theo motor thật, collision mới xét hộp thân, không phải rotor/khí động/pin đầy đủ.
 
-**Gate đã qua:** môi trường và điều khiển cơ bản chạy được trên CI. Việc thao tác GUI/bàn phím local nằm ở mục 8, chưa đánh dấu hoàn thành.
+**Gate đã qua:** môi trường và điều khiển cơ bản chạy được trên CI. GUI/bàn phím local đã được nghiệm thu riêng ở mục 8, tại source lịch sử `39c34af`; không suy rộng sang phiên bản mới.
 
 ## 5. Mốc 3 — baseline navigation và evaluator v1
 
@@ -234,7 +236,7 @@ python3 tools/local_session.py accept
 
 **Đã qua gate thiết kế mốc 6:** [báo cáo/source/CI](docs/research/2026-10-27-research-protocol-v3.md). Mốc 7A nay đã có adapter/acquisition/accounting/evaluator, [240 lượt development local + 240 lượt CI và runtime lock](docs/research/2026-10-28-cadence-v3-development.md). Rate range giảm 50% trong development, nhưng success 45/50 và 46/50 chưa đạt 95%; [Validation tiếp theo](docs/research/2026-10-28-cadence-v3-validation.md) đủ 480 lượt nhưng 87/100 mỗi arm không đạt 95%, kết luận âm; test giữ chưa mở, chưa ML. [Checklist mục tiêu phát sinh khi hiện thực hóa](CHECKLIST_MUC_TIEU_NGHIEN_CUU.md) đánh dấu các phép đo/báo cáo đã có bằng chứng; phần phụ thuộc test và nghiên cứu tương lai giữ chưa thực hiện.
 
-## 10. Nhánh 7A đề xuất — nghiên cứu giảm dữ liệu
+## 10. Nhánh 7A — các phép thử đã hoàn tất và phần nghiên cứu còn đề xuất
 
 Ưu tiên sát câu hỏi gốc; có thể làm với thuật toán không học trước. Từng cấu hình phải đánh giá lại chất lượng nhiệm vụ.
 
@@ -421,11 +423,12 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 
 | Ưu tiên | Việc tiếp theo | Phụ thuộc / lý do |
 |---|---|---|
-| P0 | Đề xuất development DATA-06/09 theo version riêng rồi thiết kế validation mới | DATA-03/04 đã có development trade-off, chưa có selection threshold; không dùng lại exposed cases làm held-out |
-| P0 | Đăng ký câu hỏi/ngưỡng, source lock và fresh validation/test cho phiên bản được chọn | V3 validation exposed và test v3 vẫn đóng; test mới chỉ sau validation gate đạt |
+| Đã xong local | Củng cố tooling/tài liệu và đối chiếu failure theo 0017 | Giữ khóa, source và kết quả lịch sử; xem [báo cáo offline](docs/research/2026-10-29-retention-failure-audit.md) |
+| P0 | Xem xét dự thảo 0018: v4 full-history làm đối chứng; kiểm tra slot/khởi tạo trước thay retention | Có timeout khi vẫn di chuyển và cùng phương pháp đổi outcome giữa các run; chưa thể gán mọi khác biệt cho TTL |
+| Sau quyết định | Chốt một câu hỏi, budget/ngưỡng và protocol/version mới; development trước khóa source và fresh validation/test | Dự thảo chưa cấp quyền triển khai/chạy; test mới chỉ sau validation gate đạt, test v3 vẫn đóng |
 | P1 | Xác định budget phản hồi và khảo sát chi phí CPU/RAM trước yêu cầu realtime | V4/DATA-03 có chi phí CPU cao hơn; CPU max vẫn >16 ms, simulator có thể chờ controller |
 | P1 | Mở rộng Pareto DATA-10 trên các config cùng protocol/host và paired cases | DATA-03 là một điểm development; không trộn tùy tiện với cadence v3/v4 khác host/source |
-| P2 | Mở rộng độ vững/UI theo nhu cầu nghiên cứu | Không suy rộng current success sang noise/dynamic/3D |
+| P2 | DATA-06/09, độ vững/UI theo câu hỏi đã chọn | Chưa ưu tiên thêm biến acquisition trước làm rõ retention; không suy rộng sang noise/dynamic/3D |
 | Sau core | Một chuyến giao hàng, rồi logistics | Giữ ưu tiên phương tiện trước điều phối |
 | Có điều kiện | Xe, sensor vật lý, engine khác, hardware | Cần quyết định/mô hình/nguồn lực và bằng chứng riêng |
 
@@ -447,6 +450,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | Validation v3 âm | [Báo cáo/source/CI 480 lượt](docs/research/2026-10-28-cadence-v3-validation.md), 87/100 mỗi arm; test chưa mở |
 | Chẩn đoán kẹt đoạn đầu | [Kế hoạch 0013](docs/plans/0013-navigation-start-diagnostics.md), [báo cáo](docs/research/2026-10-28-navigation-start-diagnostics.md), [JSON](docs/research/2026-10-28-navigation-start-diagnostics.json); offline development, không sửa runtime |
 | V4 observed detour — GOAL-23 | [Kế hoạch 0014](docs/plans/0014-observed-detour-v4.md), [báo cáo](docs/research/2026-10-28-observed-detour-v4.md), [JSON](docs/research/2026-10-28-observed-detour-v4.json); source `9503c2c`, CI 40684709433, 352 episode development |
+| Củng cố và chẩn đoán retention offline | [Kế hoạch 0017](docs/plans/0017-maintenance-and-retention-audit.md), [báo cáo](docs/research/2026-10-29-retention-failure-audit.md), [dự thảo nghiên cứu 0018](docs/plans/0018-retention-study-proposal.md); không chạy simulator mới |
 | DATA-04 TTL 10 giây | [Kế hoạch 0016](docs/plans/0016-data04-hit-ttl.md), [báo cáo](docs/research/2026-10-29-data04-hit-ttl.md); source `8b4e3be`, CI 40816451698, 352 episode development |
 | CI chính thức v2 | [Run 40255492790](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790), runtime source `2f422e2` |
 
@@ -467,5 +471,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | 2026-10-29 | Bàn giao GOAL-23 sau CI 28/10: v4 riêng ngoài src/, 165 tests và 352 episode; reference 62/74, candidate 74/74, năm regression thoát kẹt cả hai repeat. Giữ CPU cost, bốn khóa và v3 test chưa mở; nghiên cứu v4 held-out còn là đề xuất | Source `9503c2c`; [bằng chứng](docs/research/2026-10-28-observed-detour-v4.md) |
 
 | 2026-10-29 | DATA-04 TTL 10 s hoàn tất CI 176 tests/352 episode; hai arm 67/74, một cải thiện/một kém đi; báo đúng gate DATA-04 và gate v4 kế thừa | Source `8b4e3be`; [báo cáo](docs/research/2026-10-29-data04-hit-ttl.md) |
+
+| 2026-10-29 | Củng cố sau audit: phục hồi đúng byte config v2, checker tách source/generated, đồng bộ trạng thái DATA-04, phân tích log retention và viết dự thảo 0018; giữ nguyên locks/runtime/test exposure | [Báo cáo 0017](docs/research/2026-10-29-retention-failure-audit.md) |
 
 Khi cập nhật tiếp, thêm dòng nhật ký, điều chỉnh checkbox và dẫn bằng chứng. Không sửa ngược báo cáo lịch sử hoặc đánh dấu hàng loạt tương lai chỉ vì đã có roadmap này.

@@ -1,5 +1,7 @@
 # Kế hoạch 0004 — hoàn thiện môi trường và đánh giá trước huấn luyện
 
+**Trạng thái hiện tại:** Hoàn tất seeded protocol v1; validation/test đã exposed. [Bằng chứng](../research/2026-10-26-seeded-environments.md). Các bước và giới hạn lúc thực thi bên dưới là lịch sử, không là việc đang chờ chạy lại.
+
 Ngày: 2026-10-26. Yêu cầu: lập kế hoạch chi tiết rồi thực hiện trọn giai đoạn tiếp theo sau baseline v1.
 
 ## Đầu ra và điều kiện hoàn thành

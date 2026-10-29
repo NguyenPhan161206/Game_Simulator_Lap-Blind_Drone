@@ -1,5 +1,7 @@
 # Kết nối cây phiên bản, kiểm thử và tích hợp GitHub
 
+**Trạng thái hiện tại:** Hoàn tất tích hợp lịch sử; các gate desktop còn mở trong ghi chép dưới đã được đóng ở mốc local sau đó. [Bằng chứng](../research/2026-10-27-local-acceptance-complete.md). Các bước và giới hạn lúc thực thi bên dưới là lịch sử, không là việc đang chờ chạy lại.
+
 Ngày: 2026-10-26. Yêu cầu: lập kế hoạch, thực hiện từng giai đoạn có test/thử nghiệm và commit/push. Phạm vi đang thực hiện: đồng bộ GitHub, kiểm chứng công cụ nhánh L và tích hợp bản đủ điều kiện; không tự biến roadmap nghiên cứu tương lai thành kết quả đã làm.
 
 ## Giai đoạn 1 — kiểm kê và checkpoint kế hoạch

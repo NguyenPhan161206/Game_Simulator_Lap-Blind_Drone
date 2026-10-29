@@ -1,72 +1,60 @@
 # Phát triển và kiểm tra
 
-## Milestone hiện tại
+## Trạng thái hiện tại — 2026-10-29
 
-Bản thử Webots v1 có world primitive, điều khiển thủ công, cảm biến và smoke runner. Mốc kế tiếp là [navigation baseline và evaluator](navigation-v1.md), với [kế hoạch từng bước](plans/0003-navigation-baseline.md). Python 3.11+ đủ cho các kiểm tra core; chưa cần pip install. Webots là dependency riêng khi chạy simulator. Huấn luyện model chưa thuộc mốc này.
+Đang ở mốc 7A, sau development DATA-04: runtime `8b4e3be`, bàn giao `d3b5d13`, [CI/bằng chứng](research/2026-10-29-data04-hit-ttl.md) 176 tests/352 episode/raw replay. V4 đạt 74/74 case khả thi trong development; DATA-03/04 đạt 67/74 trong các run đã ghi. Chưa chọn cấu hình giảm dữ liệu trên held-out; chưa ML hoặc phần cứng.
 
-Mốc hiện tại mở rộng sang [môi trường có seed và protocol khóa](seeded-environments-v1.md). make check kiểm tra cả manifest/checksum. Các case test đã đọc không được dùng để tune rồi báo lại là unseen. [Quy tắc Git](../AGENTS.md#standing-git-authorization-for-this-workspace) cho phép tự commit/push theo milestone, với kiểm tra phù hợp và bảo toàn thay đổi khác.
+Đợt [0017](plans/0017-maintenance-and-retention-audit.md) đã hoàn tất local (181 tests), củng cố kiểm tra/tài liệu và [đối chiếu log retention](research/2026-10-29-retention-failure-audit.md). [0018](plans/0018-retention-study-proposal.md) còn là dự thảo: ưu tiên v4 full-history làm đối chứng, kiểm soát khởi tạo/thứ tự trước nghiên cứu retention. Chưa có quyền triển khai hoặc chạy nghiên cứu mới từ bản dự thảo này.
 
-[Giai đoạn v2](navigation-v2.md) đã kiểm chứng observation grid/guard/planner với lock riêng, 64 unit test và 108 lượt chính thức. make check kiểm tra cả v1/v2; launcher mới là tools/run_navigation_v2.py. Sau exposure không sửa runtime/config đã khóa để tune rồi dùng lại cùng test như unseen.
+V3 đã đóng với validation âm 87/100 mỗi arm, dưới ngưỡng 95%; giữ test chưa mở. Không chạy lại validation/test, sửa frozen runtime hoặc tái sinh lock để cải thiện outcome. V1/v2 validation/test đã exposed; nghiên cứu tiếp dùng version/protocol và split mới.
+
+## Kiểm tra source
+
+Python 3.11+ đủ cho core checks, không cần Webots hoặc ML:
 
 ```bash
-python3 tools/check_scaffold.py
-python3 tools/build_lab.py --check
-python3 -m unittest discover -s tests -p 'test_*.py' -v
+make check
 python3 tools/run_codex.py --dry-run
+bash tools/git.sh diff --check
 ```
 
-## Cấu hình agent
+`make check` kiểm scaffold, TOML/link source, generated assets, bốn khóa v1/v2/v3 và toàn bộ unit tests. Đây không phải bay simulator, thử GUI hoặc bằng chứng hardware.
 
-Đọc [agents/README.md](../agents/README.md). Cấu hình portable dùng launcher; chạy trực tiếp Codex vẫn nhận root AGENTS.md. Model, tài khoản, quyền và trust do môi trường/người dùng quản lý.
+Scaffold checker bỏ phần sinh trong ba thư mục root artifacts/data/models, vẫn kiểm README của mỗi thư mục. File export `codex-session-*.md` tại root được giữ local/ignored và không được diễn giải là tài liệu source. Source/tài liệu mới chưa tracked vẫn được kiểm; thư mục tên artifacts bên trong docs không bị bỏ. Không dùng cơ chế này để che lỗi source hoặc nới kiểm tra khóa.
+
+Hash khóa tính theo byte: thiếu ký tự xuống dòng cuối file cấu hình cũng khiến mismatch. Phục hồi đúng bản đã khóa khi có khác biệt định dạng ngoài ý muốn; không chạy `--freeze` để cập nhật khóa. [Báo cáo 0017](research/2026-10-29-retention-failure-audit.md) ghi lỗi checkout và cách khôi phục.
+
+Webots là dependency riêng. Runtime/lab changes cần simulator checks theo [AGENTS.md](../AGENTS.md); thiếu executable phải báo lỗi. Công việc tooling/tài liệu/offline ở 0017 không thay runtime và không chạy thêm Webots.
 
 ## Git trong workspace managed
 
-Checkout bình thường dùng Git như thường lệ. Trong phiên AI_Lap hiện tại, .git do môi trường quản lý và đặt chỉ đọc; nó có thể xuất hiện dưới dạng metadata khởi tạo rỗng. Không sửa quyền hoặc xóa nó.
+Đọc [quyền Git thường trực](../AGENTS.md#standing-git-authorization-for-this-workspace). Normal Git có thể nhìn thấy metadata .git rỗng/chỉ đọc do môi trường quản lý. Không đổi quyền hoặc xóa nó.
 
-[tools/git.sh](../tools/git.sh) ưu tiên metadata cục bộ đã khởi tạo trong .local/git; nếu không có thì dùng repo chuẩn. Cách này giữ đúng lịch sử của workspace khi môi trường managed tạo thêm .git rỗng/chỉ đọc. Lệnh helper không tự khởi tạo hoặc thay thế repository.
+[tools/git.sh](../tools/git.sh) dùng .local/git nếu có, nếu không dùng repository chuẩn; helper không tự khởi tạo/thay thế repo:
 
 ```bash
 bash tools/git.sh status --short --branch
 bash tools/git.sh diff --check
 ```
 
-Khi clone repo từ GitHub vào thư mục thông thường, helper tự dùng .git bình thường. .local/ không được push.
+Kiểm tra status/diff, collector flock và remote trước sửa/commit/push; stage explicit task-owned paths, giữ công việc khác. Dùng Git/SSH khi có thể; nếu lỗi sandbox/network, xin escalation theo môi trường. Connector GitHub là kênh thay thế được cho phép khi phù hợp; kiểm khớp tree/commit, không đổi remote hoặc force-push. Feature push không đồng nghĩa đã tích hợp main; main chỉ cập nhật sau gates và remote read mới.
 
-[Cây phiên bản và nguồn kiểm chứng](version-history.md) ghi các mốc đã xuất bản. Nhánh feat/local-acceptance có CI kiểm tra collector bằng Webots thật dưới Xvfb, tách khỏi xác nhận GUI/bàn phím laptop. [Kế hoạch tích hợp](plans/0007-github-integration.md) yêu cầu kiểm tra từng mốc rồi commit/push; chỉ fast-forward main khi gate phù hợp đạt. Các nhánh lịch sử được giữ, không force-push hoặc xóa để làm graph trông gọn hơn.
+## Lịch sử và hướng dẫn tái hiện
 
-## Bước triển khai tiếp theo
+Các kế hoạch 0002–0016 ghi phạm vi và trạng thái lúc thực thi. Các bước “tiếp theo/chưa có GUI” trong mốc cũ không thay thế trạng thái hiện tại ở đầu tài liệu này.
 
-Theo [kế hoạch thực hiện](plans/0002-webots-minimal-lab.md) và [hướng dẫn lab v1](lab-v1.md). Các mốc sau vẫn giữ thứ tự:
+| Mốc hoàn tất | Nguồn / giới hạn |
+|---|---|
+| Webots v1, baseline/evaluator | [Lab](research/2026-10-25-webots-v1-smoke.md), [navigation v1](research/2026-10-26-navigation-v1.md); simulator CI, không phải phần cứng |
+| Seeded v1 và observed navigation v2 | [Seeded](research/2026-10-26-seeded-environments.md), [v2](research/2026-10-26-navigation-v2.md); các test đã exposed |
+| Desktop/manual và mapped | [Nghiệm thu cuối](research/2026-10-27-local-acceptance-complete.md), runtime `39c34af`; LOC-01–09 đạt, không hard realtime |
+| Thiết kế/runtime v3 | [Thiết kế](research/2026-10-27-research-protocol-v3.md), [development](research/2026-10-28-cadence-v3-development.md); design lock riêng runtime lock |
+| Validation v3 | [480 episode/127 tests](research/2026-10-28-cadence-v3-validation.md), source `0c5f598`; kết luận âm, test đóng |
+| Chẩn đoán/GOAL-23 v4 | [Offline](research/2026-10-28-navigation-start-diagnostics.md), [v4](research/2026-10-28-observed-detour-v4.md); development, không held-out |
+| DATA-03/04 | [Occupied-only](research/2026-10-29-data03-occupied-only.md), [TTL](research/2026-10-29-data04-hit-ttl.md); development đã exposed |
 
-1. Chốt đặc tả môi trường tối thiểu và các tham số còn mở.
-2. Chọn phiên bản Webots/asset, ghi provenance.
-3. Tạo world và điều khiển thủ công; kiểm tra va chạm.
-4. Kiểm tra đầu ra cảm biến và ranh giới quan sát.
-5. Thêm baseline và đánh giá nhiệm vụ.
-6. Chỉ sau đó tích hợp huấn luyện.
+[Runtime v3](runtime-v3.md), [local acceptance](local-acceptance.md), [cây phiên bản](version-history.md), [tooling](../tools/README.md) và [hai checklist](../CHECKLIST_DU_AN.md) giữ lệnh và nguồn chi tiết. Collector local dùng `python3 tools/local_session.py accept`; nghiệm thu bàn phím/quan sát vẫn là bằng chứng riêng của người thao tác, không tự điền phiếu hoặc sao chép giữa các run.
 
-## Trạng thái kiểm chứng
+## Cấu hình agent
 
-CI scaffold kiểm tra cấu trúc, TOML và các bất biến khai báo. Workflow Webots riêng cài R2025a, chạy world thực trên Xvfb và lưu bằng chứng. Các kiểm tra này chưa chứng minh độ chính xác so với phần cứng thật hoặc chất lượng AI. GUI/keyboard local và simulator CI được báo riêng.
-
-## Bước hiện tại sau nghiệm thu local
-
-Mốc 6 đã hoàn tất [thiết kế cadence v3](protocols/range-cadence-v3.md), [92 unit tests/CI](research/2026-10-27-research-protocol-v3.md). Chạy `make check` để kiểm scaffold, v1/v2, 480 case mới/khóa thiết kế và tests; không cần Webots hoặc ML. `python3 tools/build_research_v3.py` tái sinh fixture đầy đủ vào artifacts ignored, không cấp chúng cho navigation. Không chạy lại `--freeze` để cập nhật thiết kế.
-
-Tiếp theo triển khai adapter acquisition 32/64 ms, kế toán dữ liệu và runner/evaluator version mới, chỉ kiểm chứng trên development; giữ [mục tiêu phát sinh](../CHECKLIST_MUC_TIEU_NGHIEN_CUU.md) mở tới khi có runtime evidence. Sau đó tạo runtime lock riêng trước validation/test. Chưa huấn luyện hoặc thực thi đánh giá v3; v1/v2 runtime và test exposure được giữ nguyên. Các mục mốc kế tiếp trong phần đầu tài liệu là lịch sử nền tảng, không thay thứ tự này.
-
-## Bàn giao 7A — 2026-10-28
-
-[Runtime v3](runtime-v3.md) đã triển khai/khóa tại source `0c75ce2`; [local/CI development](research/2026-10-28-cadence-v3-development.md) mỗi nơi có 240 lượt, rate giảm 50% nhưng success reference 45/50, candidate 46/50. `make check` kiểm runtime lock riêng; CI checkout đủ history để đối chiếu implementation commit. Validation/test chưa chạy, chưa kết luận giữ chất lượng hoặc ML. Phần “tiếp theo triển khai” phía trên ghi trạng thái mốc 6, nay được thay bằng bàn giao này.
-
-## Bàn giao validation v3 — 2026-10-28
-
-[Validation duy nhất](research/2026-10-28-cadence-v3-validation.md) tại source `0c5f598` đã qua 127 tests và 480 lượt CI, local review raw khớp. Success 87/100 mỗi arm không đạt 95%; theo protocol dừng ở kết quả âm, giữ test chưa chạy. Hai lock v3 và legacy v1/v2 không đổi. Không sửa thuật toán v3 hoặc tiếp tục test khi gate chưa đạt; GOAL-22 là đề xuất cho nghiên cứu version mới.
-
-## Thực thi DATA-03 — occupied-only persistent map
-
-Thiết kế/kế hoạch ở [ADR 0008](decisions/0008-data03-occupied-only.md) và [plan 0015](plans/0015-data03-occupied-only.md). `make data03` dựng world riêng từ 88 case development đã lộ của v4; workflow CI/Xvfb đã chạy đủ 352 episode. [Raw review local](research/2026-10-29-data03-occupied-only.md) khớp collector; DATA-03 hoàn tất trong phạm vi development, chưa là held-out/quality selection.
-
-## Bàn giao DATA-04 — occupied-hit TTL 10 giây
-
-Source `8b4e3be` trên `feat/data-04-hit-ttl`: [CI 40816451698 và bằng chứng](research/2026-10-29-data04-hit-ttl.md) đã qua 176 tests/352 episode/raw replay. DATA-03 và TTL cùng 67/74 case, một cải thiện/một kém đi; năm gate DATA-04 đạt, gate deadlock v4 kế thừa chưa đạt. Đây là development đã exposed; nghiên cứu tiếp cần quyết định/protocol riêng. Test v3 vẫn đóng và các khóa cũ giữ nguyên.
+Đọc [agents/README.md](../agents/README.md). Root AGENTS.md là nguồn chung; launcher cấu hình portable không thay model, quyền, trust hoặc tài khoản toàn máy. [Mục tiêu nghiên cứu](../CHECKLIST_MUC_TIEU_NGHIEN_CUU.md) phân biệt hoàn tất phép thử với đạt giả thuyết và phần test không đủ điều kiện thực hiện.

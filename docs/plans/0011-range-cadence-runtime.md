@@ -1,5 +1,7 @@
 # Mốc 7A — runtime cadence v3 trên development
 
+**Trạng thái hiện tại:** Hoàn tất runtime/development và runtime lock v3. [Bằng chứng](../research/2026-10-28-cadence-v3-development.md). Các bước và giới hạn lúc thực thi bên dưới là lịch sử, không là việc đang chờ chạy lại.
+
 Ngày 2026-10-28. Tiếp tục mốc 6 tại `cf55b5d`; không thay thiết kế, thresholds, planner hoặc các file v1/v2 đã khóa.
 
 1. Tạo adapter/world/controller v3 cạnh v2. Đặt range 32/64 ms trên thiết bị; GPS/IMU/Gyro 32 ms và control 16 ms ở cả hai arm. Packet giữ pose tại acquisition; grid chiếu bằng pose đó, điều khiển dùng pose đo gần nhất.

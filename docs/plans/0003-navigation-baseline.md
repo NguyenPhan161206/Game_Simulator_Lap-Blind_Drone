@@ -1,5 +1,7 @@
 # Kế hoạch 0003 — điều hướng tham chiếu và đánh giá nhiệm vụ
 
+**Trạng thái hiện tại:** Hoàn tất baseline/evaluator kỹ thuật trên CI. [Bằng chứng](../research/2026-10-26-navigation-v1.md). Các bước và giới hạn lúc thực thi bên dưới là lịch sử, không là việc đang chờ chạy lại.
+
 Ngày: 2026-10-26. Phạm vi: baseline không học, chỉ cảm biến/đích hợp lệ, chạy trên Webots v1. Chưa huấn luyện, chưa giảm cảm biến, chưa logistics.
 
 ## Lựa chọn kỹ thuật cho mốc này

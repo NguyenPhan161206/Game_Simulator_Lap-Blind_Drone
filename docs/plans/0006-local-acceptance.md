@@ -1,5 +1,7 @@
 # Nhánh L — nghiệm thu chạy và thao tác local
 
+**Trạng thái hiện tại:** Hoàn tất LOC-01–09 tại source 39c34af. [Bằng chứng](../research/2026-10-27-local-acceptance-complete.md). Các bước và giới hạn lúc thực thi bên dưới là lịch sử, không là việc đang chờ chạy lại.
+
 Ngày lập: 2026-10-26. Phạm vi: LOC-04 đến LOC-09 trong [checklist](../../CHECKLIST_DU_AN.md). Không thay thuật toán, world hoặc protocol v1/v2 đã khóa.
 
 1. Kiểm tra khả năng truy cập desktop, Webots và dependency. Không lấy DISPLAY được khai báo làm bằng chứng đã kết nối; không thay quyền truy cập display.

@@ -1,5 +1,7 @@
 # Nghiệm thu local tuần tự và phiếu rõ nghĩa
 
+**Trạng thái hiện tại:** Hoàn tất collector và nghiệm thu local; giữ các lượt thiếu bằng chứng như lịch sử. [Bằng chứng](../research/2026-10-27-local-acceptance-complete.md). Các bước và giới hạn lúc thực thi bên dưới là lịch sử, không là việc đang chờ chạy lại.
+
 Ngày 2026-10-26. Tiếp tục LOC-05/06/09 sau audit ở source 534b83a. Phiên agent không có surface desktop; hai lượt manual/mapped trước đây chạy chồng thời gian, phiếu manual all-yes không khớp telemetry và ghi chú chỉ là “y”. Cải thiện quy trình thu bằng chứng, giữ nguyên runtime/protocol đã khóa.
 
 1. Khóa độc quyền các lượt do local_session.py khởi chạy trong workspace. Khóa phải được OS giải phóng khi tiến trình kết thúc; file khóa tồn tại không có nghĩa là đang bận. Không thay quyền display hoặc kiểm soát ứng dụng mở ngoài launcher.
