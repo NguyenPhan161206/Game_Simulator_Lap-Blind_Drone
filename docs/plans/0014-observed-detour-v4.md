@@ -12,3 +12,5 @@ Ngày: 2026-10-28. Người dùng đã yêu cầu triển khai đề xuất GOAL
 8. Review raw acquisition/physics/command evidence độc lập, giữ hashes/source và bốn khóa. Cập nhật báo cáo/checklists theo bằng chứng thực, commit/push bàn giao. Không tuyên bố chất lượng held-out, hardware, hard realtime hoặc mức giảm dữ liệu mới.
 
 Nếu cần sửa sau pilot development, giữ source/attempt cũ và phiên bản config/source mới; không sửa lịch sử outcome hoặc đánh dấu đạt vì unit tests. Kế hoạch là phạm vi kiểm chứng phát triển, chưa là protocol nghiên cứu xác nhận.
+
+**Bàn giao 2026-10-29:** các bước đã hoàn tất trong phạm vi development; [báo cáo và raw-review](../research/2026-10-28-observed-detour-v4.md), runtime source `9503c2c`, CI 40684709433, 165 unit tests và 352 episode; local review khớp CI. Không mở held-out hoặc thay bốn khóa cũ.

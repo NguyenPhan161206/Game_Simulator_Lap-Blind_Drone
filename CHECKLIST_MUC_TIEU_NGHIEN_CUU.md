@@ -1,6 +1,6 @@
 # Checklist mục tiêu phát sinh khi hiện thực hóa Blind Drone Lab
 
-Cập nhật: 2026-10-28. Yêu cầu bổ sung của người dùng trong mốc 6.
+Cập nhật: 2026-10-29. Yêu cầu bổ sung của người dùng trong mốc 6; bàn giao GOAL-23 sau CI ngày 2026-10-28.
 
 Đây là sổ mục tiêu cần chứng minh được nhận ra trong quá trình làm hệ thống. [Checklist tổng](CHECKLIST_DU_AN.md) theo dõi tiến độ mốc; file này ghi **vì sao một mục tiêu trở nên cần thiết, tiêu chí đạt và bằng chứng còn thiếu**. Không tự mở rộng mọi đề xuất thành yêu cầu triển khai ngay.
 
@@ -42,7 +42,7 @@ V3 đã kết thúc âm tại validation theo protocol. Những mục phụ thu�
 - [ ] GOAL-21 — **Mở rộng nhiệm vụ có protocol riêng.** Bay 3D, obstacle động, giao/nhận hàng, logistics hoặc xe phải có domain/KPI/failure/ground truth boundary mới; không cộng tính năng để suy thành đã giải quyết bài toán giao hàng thực.
 
 - [x] GOAL-22 — **Giải thích coverage của free-grid gần vị trí khởi hành.** [Chẩn đoán theo kế hoạch 0013](docs/research/2026-10-28-navigation-start-diagnostics.md): năm trace development, phủ 5/5 case reference failure (5/8 failure episode), 27340 từ chối đều do unknown; ô vi phạm nằm trọn trong vòng sensor origin ở mọi acquisition và không được center-retain. Sweep 81 offset tách origin/cell alignment; pose/freshness không phải nguyên nhân trong mẫu. 141 unit tests đạt; bốn khóa giữ nguyên. Hoàn tất giải thích cơ chế trong phạm vi mẫu, **chưa sửa điều hướng hoặc giải thích toàn bộ validation failure**; không tự đánh dấu vùng chưa đo là free.
-- [ ] GOAL-23 — **Thoát deadlock giữa đường qua unknown và đoạn thực thi free.** Người dùng đã yêu cầu thực thi; [kế hoạch 0014](docs/plans/0014-observed-detour-v4.md), [ADR 0007](docs/decisions/0007-observed-detour-v4.md). Package/inventory riêng ngoài src/, free-only detour và swept clearance đã có; [năm snapshot](docs/research/2026-10-28-v4-snapshot-decisions.json) cho target hợp lệ/lệnh ngang, free/occupied không đổi. Chờ Webots development 88 case/352 episode để đánh giá thoát kẹt và giữ failure; chưa đánh dấu hoàn tất từ unit/replay. Giữ hai arm 32 ms, không sửa bốn khóa hoặc mở test v3. Held-out phiên bản mới cần protocol/source lock và split mới sau development.
+- [x] GOAL-23 — **Thoát deadlock giữa đường qua unknown và đoạn thực thi free.** Hoàn tất implementation/development theo [kế hoạch 0014](docs/plans/0014-observed-detour-v4.md), [ADR 0007](docs/decisions/0007-observed-detour-v4.md); [bằng chứng source `9503c2c`, CI 40684709433](docs/research/2026-10-28-observed-detour-v4.md). Package/inventory riêng ngoài src/, free-only detour, supercover và swept clearance; 165 unit tests, 88 case/352 episode. Reference 62/74 và v4 74/74 case khả thi, năm case kẹt cũ đều thành công cả hai repeat, không collision/bounds/negative false success. Raw target/command và physics được hậu kiểm, giữ mọi failure reference; khoảng cách tâm-vật cản trên scored polyline tối thiểu 0.863026 m so với hull+margin 0.551741 m. Giữ hai arm 32 ms và cả bốn khóa v1/v2/v3. Đây là development đã dùng để phát triển, chưa held-out/hardware/giảm dữ liệu; CPU có thêm chi phí và max >16 ms. Nghiên cứu tiếp cần protocol/source lock cùng validation/test mới; test v3 vẫn chưa mở.
 
 ## E. Cách bổ sung phát hiện mới
 

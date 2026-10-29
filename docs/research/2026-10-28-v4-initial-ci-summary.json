@@ -1,0 +1,245 @@
+{
+  "kind": "initial_v4_ci_log_summary",
+  "source_commit": "2cf923885e6ac9922ab5a3e3722628815066d777",
+  "ci_run_id": 40674654512,
+  "ci_url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40674654512",
+  "ci_log_sha256": "473c30db042c43f5d33155a2b99ecd0a11fa65e9474154c619d8635bfb0385d6",
+  "scope": "352 development episodes; initial source; CI raw review, not a local artifact replay",
+  "summary": {
+    "scope": "exposed development; no held-out inference",
+    "by_arm": {
+      "reference": {
+        "feasible_case_success": 62,
+        "feasible_cases": 74,
+        "outcomes": {
+          "success": 129,
+          "timeout": 47
+        },
+        "negative_false_success": 0,
+        "failure_episodes": [
+          {
+            "case_id": "development-narrow_gap-s3200004",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200020",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200020",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200029",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200034",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200034",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200041",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200041",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-06",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-06",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-07",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-07",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-10",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-11",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-near_wall-16",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-20",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-20",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-23",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-23",
+            "repeat": 1,
+            "outcome": "timeout"
+          }
+        ],
+        "deadlock_regressions": {
+          "development-empty-s3200020": false,
+          "development-empty-s3200034": false,
+          "development-empty-s3200041": false,
+          "development-narrow_gap-s3200004": false,
+          "development-narrow_gap-s3200029": false
+        },
+        "cpu_mean_ms_weighted": 0.4679118651992315,
+        "cpu_max_ms": 70.539317,
+        "max_episode_p95_cpu_ms": 1.202175,
+        "cpu_over_16_ms": 1838,
+        "rss_peak_mib": 29.20703125,
+        "peak_cells": 5370,
+        "peak_expansions": 3320,
+        "success_only_mean_time_s": 34.41017054263566,
+        "success_only_mean_path_m": 12.137306853640844,
+        "case_success_by_family": {
+          "empty": {
+            "success": 12,
+            "cases": 15
+          },
+          "empty_offset": {
+            "success": 12,
+            "cases": 16
+          },
+          "narrow_gap": {
+            "success": 8,
+            "cases": 12
+          },
+          "near_wall": {
+            "success": 3,
+            "cases": 4
+          },
+          "single_block": {
+            "success": 12,
+            "cases": 12
+          },
+          "staggered_blocks": {
+            "success": 8,
+            "cases": 8
+          },
+          "u_trap": {
+            "success": 7,
+            "cases": 7
+          }
+        }
+      },
+      "candidate": {
+        "feasible_case_success": 74,
+        "feasible_cases": 74,
+        "outcomes": {
+          "success": 148,
+          "timeout": 28
+        },
+        "negative_false_success": 0,
+        "failure_episodes": [],
+        "deadlock_regressions": {
+          "development-empty-s3200020": true,
+          "development-empty-s3200034": true,
+          "development-empty-s3200041": true,
+          "development-narrow_gap-s3200004": true,
+          "development-narrow_gap-s3200029": true
+        },
+        "cpu_mean_ms_weighted": 0.7988135310427374,
+        "cpu_max_ms": 45.768654,
+        "max_episode_p95_cpu_ms": 4.667469,
+        "cpu_over_16_ms": 4743,
+        "rss_peak_mib": 30.43359375,
+        "peak_cells": 5378,
+        "peak_expansions": 4293,
+        "success_only_mean_time_s": 34.54616216216216,
+        "success_only_mean_path_m": 12.18510991735083,
+        "case_success_by_family": {
+          "empty": {
+            "success": 15,
+            "cases": 15
+          },
+          "empty_offset": {
+            "success": 16,
+            "cases": 16
+          },
+          "narrow_gap": {
+            "success": 12,
+            "cases": 12
+          },
+          "near_wall": {
+            "success": 4,
+            "cases": 4
+          },
+          "single_block": {
+            "success": 12,
+            "cases": 12
+          },
+          "staggered_blocks": {
+            "success": 8,
+            "cases": 8
+          },
+          "u_trap": {
+            "success": 7,
+            "cases": 7
+          }
+        }
+      }
+    },
+    "engineering_gates": {
+      "five_deadlock_regressions_succeed_both_repeats": true,
+      "candidate_collision_zero": true,
+      "candidate_bounds_zero": true,
+      "candidate_negative_false_success_zero": true,
+      "candidate_command_checks_passed": true,
+      "candidate_scored_polyline_clearance_target": true
+    },
+    "engineering_targets_met": true,
+    "candidate_minimum_scored_polyline_clearance_m": 0.8630258840319439,
+    "scored_polyline_clearance_target_m": 0.551740662898458,
+    "candidate_commands_checked": 477052,
+    "candidate_detour_decisions": 58404,
+    "paired_case_metrics": {
+      "common_success_cases": 62,
+      "common_success_time_ratio": 1.0012532833020638,
+      "common_success_path_ratio": 1.0012364186385585,
+      "penalized_time_ratio": 0.7967571606475716,
+      "penalized_path_ratio": 0.5586416056890753,
+      "failure_time_penalty_s": 90.0,
+      "failure_path_penalty_m": 72.0,
+      "adverse_cases": 0,
+      "improved_cases": 12
+    }
+  }
+}

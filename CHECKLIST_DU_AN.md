@@ -1,6 +1,6 @@
 # Checklist tổng thể — Blind Drone Lab
 
-**Cập nhật:** 2026-10-28, múi giờ Asia/Ho_Chi_Minh.
+**Cập nhật:** 2026-10-29, múi giờ Asia/Ho_Chi_Minh.
 
 **Mốc repo được đối chiếu:** thiết kế v3 `761318df1293c195347f486b0d228f88af10fae1`; runtime cadence v3 `0c75ce28f14b8ea881e8c0c7c9335aa4319030c5`, validation `0c5f598c512a24db63b0fd19ca259a3b85382ee5`; nghiệm thu GUI/manual lịch sử vẫn là `39c34af`. Mốc checklist gốc `d7018cb` được giữ trong lịch sử.
 **Audit bổ sung nhánh L/GitHub:** source collector `b32410595b26f8ef2d0f8d99dca469797278366b`; xem [cây phiên bản](docs/version-history.md) và evidence liên kết ở mục 8.
@@ -30,6 +30,7 @@
 | 6 | Khóa câu hỏi nghiên cứu và protocol tiếp theo | Thiết kế v3 giữ nguyên; runtime được bổ sung ở 7A | Có quyết định, ngưỡng chất lượng, dữ liệu và test mới |
 | 7A | Khảo sát giảm dữ liệu/biểu diễn | V3 kết thúc âm: validation 87/100 mỗi arm; test chưa mở | Đạt toàn bộ gate hoặc kết luận âm theo protocol, giữ nguyên bằng chứng |
 | 7A-D | Chẩn đoán kẹt đoạn đầu trên development | Hoàn tất offline 5 trace, 141 unit tests; chưa sửa thuật toán | [Nguyên nhân origin/cell alignment](docs/research/2026-10-28-navigation-start-diagnostics.md); không là flight evaluation mới |
+| 7A-N4 | GOAL-23: đường thay thế qua vùng đã quan sát | Hoàn tất development v4: 165 tests, 352 episode, 74/74 feasible case | [Nguồn `9503c2c`, raw audit/CI](docs/research/2026-10-28-observed-detour-v4.md); chưa held-out/hardware, CPU tăng |
 | 7B | Huấn luyện model nếu phù hợp câu hỏi | Chưa làm, nhánh tùy chọn | Train/eval không rò rỉ, tái lập, so sánh với baseline |
 | 8 | Độ vững, cảm biến không lý tưởng, điều hướng khó hơn | Chưa làm | Có protocol và đánh giá riêng cho từng mở rộng |
 | 9 | Giao diện giải thích/replay như game | Có observer cơ bản; còn mở rộng | Phân biệt live/replay và dữ liệu drone/ground truth |
@@ -420,10 +421,10 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 
 | Ưu tiên | Việc tiếp theo | Phụ thuộc / lý do |
 |---|---|---|
-| P0 | Xác nhận chạy và thao tác GUI local nếu muốn dùng lab ngay | CI đã có, local còn thiếu bằng chứng; không cần thay thuật toán để thử |
-| P0 | Khóa câu hỏi nghiên cứu, ngưỡng chất lượng và protocol tiếp theo | V1/v2 test đã exposed, chưa có ngưỡng chất lượng sản phẩm |
-| P1 | Chọn 7A giảm dữ liệu hoặc 7B huấn luyện, hoặc tách thành hai thí nghiệm | Không mặc định train trước khi biết lợi ích cần chứng minh |
-| P1 | Đo trade-off bằng case paired, giữ mọi failure và cost | V2 đã tốt hơn trong tập thử nhưng dùng thêm memory/CPU |
+| P0 | Đăng ký câu hỏi/ngưỡng, source lock và fresh validation/test cho v4 | GOAL-23 mới đủ development; v3 validation exposed và test v3 vẫn đóng |
+| P1 | Xác định budget phản hồi và khảo sát chi phí CPU/RAM trước yêu cầu realtime | V4 có thêm chi phí, CPU max vẫn >16 ms; simulator có thể chờ controller |
+| P1 | Chọn nghiên cứu giảm dữ liệu mới sau khi baseline đủ tin cậy | Hai arm GOAL-23 cùng 32 ms; chưa giảm rate mới hoặc mở ML |
+| P1 | Đo trade-off bằng paired case và giữ mọi failure/cost | Không dùng lại development này làm held-out hoặc cộng các lần rerun thành mẫu độc lập |
 | P2 | Mở rộng độ vững/UI theo nhu cầu nghiên cứu | Không suy rộng current success sang noise/dynamic/3D |
 | Sau core | Một chuyến giao hàng, rồi logistics | Giữ ưu tiên phương tiện trước điều phối |
 | Có điều kiện | Xe, sensor vật lý, engine khác, hardware | Cần quyết định/mô hình/nguồn lực và bằng chứng riêng |
@@ -445,6 +446,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | Runtime v3 development | [Source/CI/số đo](docs/research/2026-10-28-cadence-v3-development.md), [runtime lock](configs/scenarios/protocol_v3.runtime.lock.json) |
 | Validation v3 âm | [Báo cáo/source/CI 480 lượt](docs/research/2026-10-28-cadence-v3-validation.md), 87/100 mỗi arm; test chưa mở |
 | Chẩn đoán kẹt đoạn đầu | [Kế hoạch 0013](docs/plans/0013-navigation-start-diagnostics.md), [báo cáo](docs/research/2026-10-28-navigation-start-diagnostics.md), [JSON](docs/research/2026-10-28-navigation-start-diagnostics.json); offline development, không sửa runtime |
+| V4 observed detour — GOAL-23 | [Kế hoạch 0014](docs/plans/0014-observed-detour-v4.md), [báo cáo](docs/research/2026-10-28-observed-detour-v4.md), [JSON](docs/research/2026-10-28-observed-detour-v4.json); source `9503c2c`, CI 40684709433, 352 episode development |
 | CI chính thức v2 | [Run 40255492790](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790), runtime source `2f422e2` |
 
 ## 22. Nhật ký cập nhật checklist
@@ -460,5 +462,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | 2026-10-28 | Validation v3 duy nhất hoàn tất 480 lượt/127 tests và independent raw audit; 87/100 mỗi arm dưới 95%, đóng kết luận âm, giữ test chưa mở | Source `0c5f598`; [báo cáo](docs/research/2026-10-28-cadence-v3-validation.md) |
 
 | 2026-10-28 | Hoàn tất chẩn đoán GOAL-22: 5 trace development, 27340 unknown rejection, ô nằm trong vòng origin; sweep offset và 141 tests đạt. Bốn khóa nguyên vẹn, bản sửa version mới còn là đề xuất GOAL-23 | Runtime được replay `0c75ce2`; [báo cáo 0013](docs/research/2026-10-28-navigation-start-diagnostics.md) |
+
+| 2026-10-29 | Bàn giao GOAL-23 sau CI 28/10: v4 riêng ngoài src/, 165 tests và 352 episode; reference 62/74, candidate 74/74, năm regression thoát kẹt cả hai repeat. Giữ CPU cost, bốn khóa và v3 test chưa mở; nghiên cứu v4 held-out còn là đề xuất | Source `9503c2c`; [bằng chứng](docs/research/2026-10-28-observed-detour-v4.md) |
 
 Khi cập nhật tiếp, thêm dòng nhật ký, điều chỉnh checkbox và dẫn bằng chứng. Không sửa ngược báo cáo lịch sử hoặc đánh dấu hàng loạt tương lai chỉ vì đã có roadmap này.

@@ -1,0 +1,272 @@
+{
+  "schema_version": 4,
+  "kind": "offline_v4_development_review",
+  "source_commit": "9503c2c2b483d677d7f0ff25f76d7dcca360bc08",
+  "complete": true,
+  "raw_audit_passed": true,
+  "raw_result_sha256": "e7840b636a2c67365a01e185c27214899bcf1328d43db3ee0e147ab82819bb83",
+  "runtime_sha256": "e5c893081bb698d29a1ef853b510db4622b637c0a021bb66320752d8b620b795",
+  "shared_v3_runtime_sha256": "bcc938bb18acd9bd829f43e6f0f722f204a5c7702e5fa3b20c82b6171a080c3d",
+  "development_sha256": "5ff85509e850c0d02ad8e1f0bc8a1af75d7d67f2f695d49c6e4a0148b4219662",
+  "locks_file_sha256": {
+    "configs/scenarios/protocol_v1.lock.json": "73ce35a23b6eae3121e61eb797be9338fe243f58379d25026d238b5a393a3407",
+    "configs/scenarios/protocol_v2.lock.json": "a748382e1bdcdd544ae1ffd9410590f122556c4a31d15a53db72c793d2077ca6",
+    "configs/scenarios/protocol_v3.design.lock.json": "4e9ef119b1f4c79b4caede47f80d70501d174141fe77444d9c92dfdb26760e3f",
+    "configs/scenarios/protocol_v3.runtime.lock.json": "0b9cce48ce3bca418f0a8bfa844d0ddf7ac34a7a96e1f75f9fb44d9d4a180926"
+  },
+  "cases": 88,
+  "episodes": 352,
+  "attempts": 176,
+  "summary": {
+    "scope": "exposed development; no held-out inference",
+    "by_arm": {
+      "reference": {
+        "feasible_case_success": 62,
+        "feasible_cases": 74,
+        "outcomes": {
+          "success": 129,
+          "timeout": 47
+        },
+        "negative_false_success": 0,
+        "failure_episodes": [
+          {
+            "case_id": "development-narrow_gap-s3200004",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200020",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200020",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200029",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200034",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200034",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200041",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200041",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-06",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-06",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-07",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-07",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-10",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-11",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-near_wall-16",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-20",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-20",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-23",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-23",
+            "repeat": 1,
+            "outcome": "timeout"
+          }
+        ],
+        "deadlock_regressions": {
+          "development-empty-s3200020": false,
+          "development-empty-s3200034": false,
+          "development-empty-s3200041": false,
+          "development-narrow_gap-s3200004": false,
+          "development-narrow_gap-s3200029": false
+        },
+        "cpu_mean_ms_weighted": 0.6515744622310158,
+        "cpu_max_ms": 57.826339,
+        "max_episode_p95_cpu_ms": 1.501016,
+        "cpu_over_16_ms": 2323,
+        "rss_peak_mib": 29.21875,
+        "peak_cells": 5370,
+        "peak_expansions": 3320,
+        "success_only_mean_time_s": 34.41017054263566,
+        "success_only_mean_path_m": 12.137306811220919,
+        "case_success_by_family": {
+          "empty": {
+            "success": 12,
+            "cases": 15
+          },
+          "empty_offset": {
+            "success": 12,
+            "cases": 16
+          },
+          "narrow_gap": {
+            "success": 8,
+            "cases": 12
+          },
+          "near_wall": {
+            "success": 3,
+            "cases": 4
+          },
+          "single_block": {
+            "success": 12,
+            "cases": 12
+          },
+          "staggered_blocks": {
+            "success": 8,
+            "cases": 8
+          },
+          "u_trap": {
+            "success": 7,
+            "cases": 7
+          }
+        }
+      },
+      "candidate": {
+        "feasible_case_success": 74,
+        "feasible_cases": 74,
+        "outcomes": {
+          "success": 148,
+          "timeout": 28
+        },
+        "negative_false_success": 0,
+        "failure_episodes": [],
+        "deadlock_regressions": {
+          "development-empty-s3200020": true,
+          "development-empty-s3200034": true,
+          "development-empty-s3200041": true,
+          "development-narrow_gap-s3200004": true,
+          "development-narrow_gap-s3200029": true
+        },
+        "cpu_mean_ms_weighted": 1.1320006180084774,
+        "cpu_max_ms": 58.844088,
+        "max_episode_p95_cpu_ms": 6.430564,
+        "cpu_over_16_ms": 6315,
+        "rss_peak_mib": 30.42578125,
+        "peak_cells": 5378,
+        "peak_expansions": 4293,
+        "success_only_mean_time_s": 34.54508108108108,
+        "success_only_mean_path_m": 12.185109395085794,
+        "case_success_by_family": {
+          "empty": {
+            "success": 15,
+            "cases": 15
+          },
+          "empty_offset": {
+            "success": 16,
+            "cases": 16
+          },
+          "narrow_gap": {
+            "success": 12,
+            "cases": 12
+          },
+          "near_wall": {
+            "success": 4,
+            "cases": 4
+          },
+          "single_block": {
+            "success": 12,
+            "cases": 12
+          },
+          "staggered_blocks": {
+            "success": 8,
+            "cases": 8
+          },
+          "u_trap": {
+            "success": 7,
+            "cases": 7
+          }
+        }
+      }
+    },
+    "engineering_gates": {
+      "five_deadlock_regressions_succeed_both_repeats": true,
+      "candidate_collision_zero": true,
+      "candidate_bounds_zero": true,
+      "candidate_negative_false_success_zero": true,
+      "candidate_command_checks_passed": true,
+      "candidate_scored_polyline_clearance_target": true
+    },
+    "engineering_targets_met": true,
+    "candidate_minimum_scored_polyline_clearance_m": 0.8630258840319439,
+    "scored_polyline_clearance_target_m": 0.551740662898458,
+    "candidate_commands_checked": 477042,
+    "candidate_detour_decisions": 58404,
+    "paired_case_metrics": {
+      "common_success_cases": 62,
+      "common_success_time_ratio": 1.0012082551594748,
+      "common_success_path_ratio": 1.0012364259225646,
+      "penalized_time_ratio": 0.7967272727272728,
+      "penalized_path_ratio": 0.5586416075805529,
+      "failure_time_penalty_s": 90.0,
+      "failure_path_penalty_m": 72.0,
+      "adverse_cases": 0,
+      "improved_cases": 12
+    }
+  },
+  "test_qualified": false,
+  "heldout_protocol_exists": false,
+  "ci_run_id": 40684709433,
+  "ci_url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40684709433",
+  "local_review_matches_ci": true,
+  "local_review_python": "3.12",
+  "previous_source": "2cf923885e6ac9922ab5a3e3722628815066d777",
+  "previous_ci_run_id": 40674654512,
+  "artifact": {
+    "name": "navigation-v4-development",
+    "id": 12815884406,
+    "compressed_bytes": 192682053,
+    "github_declared_zip_sha256": "82b5352605905e058f82e50f11be8afc7e1a71957ffc6490a285c3fc343218fd",
+    "digest_scope": "GitHub upload metadata; archive digest not independently recomputed after gh extraction"
+  }
+}

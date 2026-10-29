@@ -20,7 +20,7 @@ Validation v3 đã exposed, chưa ML; thay thuật toán/cảm biến cần vers
 
 [Chẩn đoán development tiếp theo](docs/research/2026-10-28-navigation-start-diagnostics.md) đã xác định lỗ free-grid gần tâm gây kẹt đoạn đầu ở năm trace: ô chưa quan sát nằm trong vòng sensor origin nên quay thêm không phủ được. Công cụ offline và 141 unit tests đạt; chưa sửa thuật toán hoặc cải thiện tỷ lệ bay. [Kế hoạch 0013](docs/plans/0013-navigation-start-diagnostics.md).
 
-GOAL-23 đang được triển khai theo [kế hoạch 0014](docs/plans/0014-observed-detour-v4.md): [package v4 riêng](versions/navigation_v4/README.md) tìm lối qua free-grid, kiểm supercover và swept clearance, hai arm cùng 32 ms. [Snapshot development](docs/research/2026-10-28-v4-snapshot-decisions.json) có target/lệnh thay thế ở năm điểm kẹt nhưng chưa chứng minh thoát kẹt vật lý; CI Webots development là bước kiểm chứng tiếp theo. V3 vẫn nguyên khóa, test chưa mở.
+GOAL-23 đã hoàn tất **implementation và kiểm chứng development** theo [kế hoạch 0014](docs/plans/0014-observed-detour-v4.md): [package v4 riêng](versions/navigation_v4/README.md) tìm lối qua free-grid và kiểm supercover/swept clearance, hai arm cùng 32 ms. [Báo cáo nguồn `9503c2c`](docs/research/2026-10-28-observed-detour-v4.md): 165 unit tests, 352 episode Webots, reference 62/74 và v4 74/74 case khả thi; năm regression kẹt đều thành công cả hai repeat, không collision/bounds. Có thêm chi phí CPU; chưa held-out/hardware hoặc giảm acquisition rate mới. V3 vẫn nguyên khóa và test chưa mở; nghiên cứu v4 tiếp theo cần protocol/source lock và split mới.
 
 ## Bắt đầu
 
