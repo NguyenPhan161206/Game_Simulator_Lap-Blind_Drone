@@ -5,6 +5,7 @@ reference_period_ms = 32
 candidate_period_ms = 32
 pose_period_ms = 32
 control_period_ms = 16
+range_max_age_s = 0.12
 repetitions = 2
 wall_watchdog_s = 600
 max_infrastructure_retries = 1
