@@ -71,3 +71,7 @@ Nhánh `feat/v3-validation-gate`: kế hoạch `9d030d6` → workflow/manual gat
 ## GOAL-23 và DATA-03 — development versions riêng, 2026-10-29
 
 Nhánh `feat/navigation-v4-observed-detour` bàn giao source v4 `9503c2c`; report [0014](research/2026-10-28-observed-detour-v4.md). Nhánh `feat/data-03-occupied-only` có runtime source `94f8e0b461c01aa18f269e75eb6662ce2d2283df` và tiếp đó commit handoff. [CI run 40796152653](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40796152653) hoàn tất simulator 352 episode/176 pair; overall job bị hủy khi raw-review bước qua giới hạn 60 phút. Artifact `12866482176` được tải và hậu kiểm local độc lập; 88 case, 352 episode, source/inventory/raw hashes và summary khớp collector. [DATA-03 report](research/2026-10-29-data03-occupied-only.md). Không fast-forward main trong bước development; test v3 vẫn đóng.
+
+## DATA-04 — TTL development, 2026-10-29
+
+Nhánh `feat/data-04-hit-ttl`, source `8b4e3bed8a9e86946ca1c7c2a47dcffdf646aca2`: [CI 40816451698](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40816451698) thành công 176 tests, 352 episode và raw replay. [Báo cáo](research/2026-10-29-data04-hit-ttl.md) giữ kết quả hai arm cùng 67/74, một case cải thiện/một kém đi và phạm vi gate. Đây là development, chưa held-out hoặc lựa chọn cấu hình; test v3 vẫn đóng.

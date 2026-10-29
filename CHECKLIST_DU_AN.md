@@ -241,7 +241,7 @@ python3 tools/local_session.py accept
 - [x] DATA-01 — Đo riêng đầu ra sensor, observation đưa vào policy, state giữ trong bộ nhớ và dữ liệu truyền/lưu. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [x] DATA-02 — Khai báo encoding/metadata khi báo byte; đo RSS/bộ nhớ thực nếu muốn nói về RAM, không thay bằng cell count. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [x] DATA-03 — Thử guarded chỉ lưu occupied hits thay vì cả free-grid; xác minh hành vi và budget. **Development:** [báo cáo](docs/research/2026-10-29-data03-occupied-only.md), [raw-review summary](docs/research/2026-10-29-data03-occupied-only.json), source `94f8e0b`; 88 case/352 episode, reference 62/74 và candidate 67/74. Local raw review khớp collector; không collision/bounds/negative false success, command replay đạt, budget 16000 entries không vượt. RSS giảm nhẹ 29.457→28.973 MiB; CPU mean tăng 0.860→1.622 ms. Chỉ case development đã lộ, không là validation/test, không chọn cấu hình hoặc tuyên bố tối thiểu.
-- [ ] DATA-04 — Thử giới hạn lịch sử, vùng nhớ, thời hạn hit và nén/độ phân giải; ghi chi phí mất thông tin. **Đang thực hiện:** giao thức development riêng chỉ khảo sát TTL occupied-hit 10 s so với DATA-03; [ADR 0009](docs/decisions/0009-data04-hit-ttl.md), [kế hoạch 0016](docs/plans/0016-data04-hit-ttl.md). Chưa có Webots evidence; chưa đánh dấu hoàn thành.
+- [x] DATA-04 — Thử giới hạn lịch sử, vùng nhớ, thời hạn hit và nén/độ phân giải; ghi chi phí mất thông tin. **Hoàn tất trong phạm vi TTL occupied-hit 10 s**, không bao gồm quét vùng nhớ/nén/độ phân giải: [report](docs/research/2026-10-29-data04-hit-ttl.md), [kế hoạch 0016](docs/plans/0016-data04-hit-ttl.md), source `8b4e3be`, CI 40816451698; 176 tests/352 episode development. Hai arm 67/74, một case cải thiện/một case kém đi; CPU mean 0.940→0.874 ms, RSS peak 29.180→28.805 MiB, entries 2832→1875. Năm gate DATA-04 đạt, gate deadlock v4 kế thừa chưa đạt; CPU max >16 ms, chưa chọn cấu hình/held-out/hardware.
 - [x] DATA-05 — Giảm từng yếu tố một: số hướng ray, tần suất cập nhật hoặc độ chính xác số đo. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [ ] DATA-06 — Khảo sát quét/chọn phép đo theo tình huống thay vì lấy mọi phép đo cố định.
 - [x] DATA-07 — Ghi số mẫu duy nhất theo timestamp, không đếm lại cùng sensor packet ở mỗi control tick. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
@@ -421,7 +421,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 
 | Ưu tiên | Việc tiếp theo | Phụ thuộc / lý do |
 |---|---|---|
-| P0 | Hoàn tất development DATA-04/06/09 theo version riêng rồi thiết kế validation mới | DATA-03 cho thấy trade-off nhưng chưa có selection threshold; không dùng lại exposed cases làm held-out |
+| P0 | Đề xuất development DATA-06/09 theo version riêng rồi thiết kế validation mới | DATA-03/04 đã có development trade-off, chưa có selection threshold; không dùng lại exposed cases làm held-out |
 | P0 | Đăng ký câu hỏi/ngưỡng, source lock và fresh validation/test cho phiên bản được chọn | V3 validation exposed và test v3 vẫn đóng; test mới chỉ sau validation gate đạt |
 | P1 | Xác định budget phản hồi và khảo sát chi phí CPU/RAM trước yêu cầu realtime | V4/DATA-03 có chi phí CPU cao hơn; CPU max vẫn >16 ms, simulator có thể chờ controller |
 | P1 | Mở rộng Pareto DATA-10 trên các config cùng protocol/host và paired cases | DATA-03 là một điểm development; không trộn tùy tiện với cadence v3/v4 khác host/source |
@@ -447,6 +447,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | Validation v3 âm | [Báo cáo/source/CI 480 lượt](docs/research/2026-10-28-cadence-v3-validation.md), 87/100 mỗi arm; test chưa mở |
 | Chẩn đoán kẹt đoạn đầu | [Kế hoạch 0013](docs/plans/0013-navigation-start-diagnostics.md), [báo cáo](docs/research/2026-10-28-navigation-start-diagnostics.md), [JSON](docs/research/2026-10-28-navigation-start-diagnostics.json); offline development, không sửa runtime |
 | V4 observed detour — GOAL-23 | [Kế hoạch 0014](docs/plans/0014-observed-detour-v4.md), [báo cáo](docs/research/2026-10-28-observed-detour-v4.md), [JSON](docs/research/2026-10-28-observed-detour-v4.json); source `9503c2c`, CI 40684709433, 352 episode development |
+| DATA-04 TTL 10 giây | [Kế hoạch 0016](docs/plans/0016-data04-hit-ttl.md), [báo cáo](docs/research/2026-10-29-data04-hit-ttl.md); source `8b4e3be`, CI 40816451698, 352 episode development |
 | CI chính thức v2 | [Run 40255492790](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790), runtime source `2f422e2` |
 
 ## 22. Nhật ký cập nhật checklist
@@ -464,5 +465,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | 2026-10-28 | Hoàn tất chẩn đoán GOAL-22: 5 trace development, 27340 unknown rejection, ô nằm trong vòng origin; sweep offset và 141 tests đạt. Bốn khóa nguyên vẹn, bản sửa version mới còn là đề xuất GOAL-23 | Runtime được replay `0c75ce2`; [báo cáo 0013](docs/research/2026-10-28-navigation-start-diagnostics.md) |
 
 | 2026-10-29 | Bàn giao GOAL-23 sau CI 28/10: v4 riêng ngoài src/, 165 tests và 352 episode; reference 62/74, candidate 74/74, năm regression thoát kẹt cả hai repeat. Giữ CPU cost, bốn khóa và v3 test chưa mở; nghiên cứu v4 held-out còn là đề xuất | Source `9503c2c`; [bằng chứng](docs/research/2026-10-28-observed-detour-v4.md) |
+
+| 2026-10-29 | DATA-04 TTL 10 s hoàn tất CI 176 tests/352 episode; hai arm 67/74, một cải thiện/một kém đi; báo đúng gate DATA-04 và gate v4 kế thừa | Source `8b4e3be`; [báo cáo](docs/research/2026-10-29-data04-hit-ttl.md) |
 
 Khi cập nhật tiếp, thêm dòng nhật ký, điều chỉnh checkbox và dẫn bằng chứng. Không sửa ngược báo cáo lịch sử hoặc đánh dấu hàng loạt tương lai chỉ vì đã có roadmap này.

@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "complete": true,
+  "raw_audit_passed": true,
+  "source_commit": "8b4e3bed8a9e86946ca1c7c2a47dcffdf646aca2",
+  "development_sha256": "5ff85509e850c0d02ad8e1f0bc8a1af75d7d67f2f695d49c6e4a0148b4219662",
+  "inventory_sha256": "1c0849236ddbac41b6dfdb4412047ad336b14d9288098a1f21f50626413f6aad",
+  "cases": 88,
+  "episodes": 352,
+  "pairs": 176,
+  "summary": {
+    "scope": "exposed v4 development cases; diagnostic only; no held-out inference",
+    "by_arm": {
+      "reference": {
+        "feasible_case_success": 67,
+        "feasible_cases": 74,
+        "outcomes": {
+          "success": 139,
+          "timeout": 37
+        },
+        "negative_false_success": 0,
+        "failure_episodes": [
+          {
+            "case_id": "development-narrow_gap-s3200004",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200027",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200029",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200039",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200039",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-u_trap-s3200046",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-u_trap-s3200048",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-20",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-20",
+            "repeat": 1,
+            "outcome": "timeout"
+          }
+        ],
+        "deadlock_regressions": {
+          "development-empty-s3200020": true,
+          "development-empty-s3200034": true,
+          "development-empty-s3200041": true,
+          "development-narrow_gap-s3200004": false,
+          "development-narrow_gap-s3200029": false
+        },
+        "cpu_mean_ms_weighted": 0.9402411329255042,
+        "cpu_max_ms": 49.005145,
+        "max_episode_p95_cpu_ms": 2.130919,
+        "cpu_over_16_ms": 3422,
+        "rss_peak_mib": 29.1796875,
+        "peak_cells": 534,
+        "peak_expansions": 3624,
+        "success_only_mean_time_s": 53.79234532374101,
+        "success_only_mean_path_m": 14.403180630142296,
+        "case_success_by_family": {
+          "empty": {
+            "success": 15,
+            "cases": 15
+          },
+          "empty_offset": {
+            "success": 16,
+            "cases": 16
+          },
+          "narrow_gap": {
+            "success": 7,
+            "cases": 12
+          },
+          "near_wall": {
+            "success": 4,
+            "cases": 4
+          },
+          "single_block": {
+            "success": 12,
+            "cases": 12
+          },
+          "staggered_blocks": {
+            "success": 8,
+            "cases": 8
+          },
+          "u_trap": {
+            "success": 5,
+            "cases": 7
+          }
+        }
+      },
+      "candidate": {
+        "feasible_case_success": 67,
+        "feasible_cases": 74,
+        "outcomes": {
+          "success": 139,
+          "timeout": 37
+        },
+        "negative_false_success": 0,
+        "failure_episodes": [
+          {
+            "case_id": "development-u_trap-s3200019",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200027",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200029",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200039",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200039",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-u_trap-s3200046",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-u_trap-s3200048",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-20",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-20",
+            "repeat": 1,
+            "outcome": "timeout"
+          }
+        ],
+        "deadlock_regressions": {
+          "development-empty-s3200020": true,
+          "development-empty-s3200034": true,
+          "development-empty-s3200041": true,
+          "development-narrow_gap-s3200004": true,
+          "development-narrow_gap-s3200029": false
+        },
+        "cpu_mean_ms_weighted": 0.8739766297689135,
+        "cpu_max_ms": 51.849504,
+        "max_episode_p95_cpu_ms": 2.017018,
+        "cpu_over_16_ms": 3451,
+        "rss_peak_mib": 28.8046875,
+        "peak_cells": 416,
+        "peak_expansions": 3624,
+        "success_only_mean_time_s": 53.81905035971223,
+        "success_only_mean_path_m": 14.417422035263083,
+        "case_success_by_family": {
+          "empty": {
+            "success": 15,
+            "cases": 15
+          },
+          "empty_offset": {
+            "success": 16,
+            "cases": 16
+          },
+          "narrow_gap": {
+            "success": 8,
+            "cases": 12
+          },
+          "near_wall": {
+            "success": 4,
+            "cases": 4
+          },
+          "single_block": {
+            "success": 12,
+            "cases": 12
+          },
+          "staggered_blocks": {
+            "success": 8,
+            "cases": 8
+          },
+          "u_trap": {
+            "success": 4,
+            "cases": 7
+          }
+        }
+      }
+    },
+    "engineering_gates": {
+      "five_deadlock_regressions_succeed_both_repeats": false,
+      "candidate_collision_zero": true,
+      "candidate_bounds_zero": true,
+      "candidate_negative_false_success_zero": true,
+      "candidate_command_checks_passed": true,
+      "candidate_scored_polyline_clearance_target": true
+    },
+    "engineering_targets_met": false,
+    "candidate_minimum_scored_polyline_clearance_m": 0.8844268773933298,
+    "scored_polyline_clearance_target_m": 0.551740662898458,
+    "candidate_commands_checked": 675678,
+    "candidate_detour_decisions": 172684,
+    "paired_case_metrics": {
+      "common_success_cases": 66,
+      "common_success_time_ratio": 1.0,
+      "common_success_path_ratio": 1.0003695517028013,
+      "penalized_time_ratio": 1.0007559517093536,
+      "penalized_path_ratio": 1.0013438501579561,
+      "failure_time_penalty_s": 90.0,
+      "failure_path_penalty_m": 72.0,
+      "adverse_cases": 1,
+      "improved_cases": 1
+    },
+    "data04": {
+      "free_cell_retention": "latest unique acquisition only",
+      "occupied_hit_retention": "10 seconds after latest hit; refresh on repeated hit",
+      "all_development_candidate_decisions_replayed": 675678,
+      "candidate_peak_persistent_occupied_cells": 165,
+      "candidate_peak_ephemeral_free_cells": 313,
+      "candidate_peak_blocked_cells": 1473,
+      "candidate_peak_retained_cells": 1663,
+      "candidate_peak_map_entries": 1875,
+      "candidate_peak_canonical_occupied_json_bytes": 1424,
+      "gates": {
+        "candidate_collision_zero": true,
+        "candidate_bounds_zero": true,
+        "candidate_negative_false_success_zero": true,
+        "all_commands_verified_from_ttl_replay": true,
+        "map_budget_not_exceeded": true
+      },
+      "engineering_targets_met": true,
+      "interpretation": "Canonical JSON bytes describe an encoding; RSS is the measured process-memory signal."
+    }
+  }
+}

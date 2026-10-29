@@ -22,3 +22,7 @@ DATA-03 giữ occupied hit tới hết episode. DATA-04 kiểm tra một biến:
 ## Phạm vi
 
 Chỉ là development trên suite đã exposed, không validation/test mới, không quality-selection, không an toàn phần cứng, không riêng tư hoặc tối thiểu thông tin. V3 validation đã fail; test v3 vẫn đóng gate. Giữ nguyên DATA-03 report/raw và mọi v1/v2/v3/v4 locks.
+
+## Bàn giao development — 2026-10-29
+
+Thiết kế giữ nguyên. [CI và raw review](../research/2026-10-29-data04-hit-ttl.md) tại source `8b4e3be` hoàn tất 176 tests/352 episode. Hai arm cùng 67/74, một case cải thiện/một kém đi; năm gate riêng DATA-04 đạt, gate v4 deadlock kế thừa chưa đạt. Chưa chọn cấu hình hoặc mở held-out.

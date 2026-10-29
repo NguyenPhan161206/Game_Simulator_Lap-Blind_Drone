@@ -1,6 +1,6 @@
 # 0016 — DATA-04: occupied-hit TTL
 
-Status: development implementation and unit tests complete; Webots study pending.
+Status: development study complete at source `8b4e3be`; CI 40816451698 passed 176 tests, 352 Webots episodes and independent raw replay. See [evidence](../research/2026-10-29-data04-hit-ttl.md). No held-out/configuration selection claim.
 
 1. Freeze the design in [ADR 0009](../decisions/0009-data04-hit-ttl.md): expire each occupied hit after 10.0 simulation seconds since its latest observation; refresh on repeat hit.
 2. Keep DATA-03 as the paired reference. Change no sensor, timing, controller, free retention, planner, case, scoring, or map-budget variable.

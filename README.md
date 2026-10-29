@@ -24,7 +24,7 @@ GOAL-23 đã hoàn tất **implementation và kiểm chứng development** theo 
 
 DATA-03 đã hoàn tất một phép thử development riêng: persistent occupied hits, free evidence chỉ giữ tới acquisition kế tiếp, unknown vẫn chặn lệnh. [Báo cáo](docs/research/2026-10-29-data03-occupied-only.md): 352 episode, reference 62/74 và candidate 67/74; command replay và map budget đạt. Candidate tốn CPU mean cao hơn và thời gian common-success kém hơn; RSS giảm nhẹ. Đây là development đã exposed, chưa chọn cấu hình hoặc kết luận held-out. Xem [kế hoạch 0015](docs/plans/0015-data03-occupied-only.md) và [ADR 0008](docs/decisions/0008-data03-occupied-only.md).
 
-DATA-04 đang được triển khai trong package riêng để đo tác động của TTL 10 giây cho occupied hit, giữ DATA-03 làm đối chứng và cố định các yếu tố còn lại. [ADR 0009](docs/decisions/0009-data04-hit-ttl.md) và [kế hoạch 0016](docs/plans/0016-data04-hit-ttl.md) mô tả protocol; chưa có bằng chứng simulator hoặc kết luận chất lượng.
+DATA-04 đã có [CI Webots và raw replay](docs/research/2026-10-29-data04-hit-ttl.md) tại source `8b4e3be`: 176 tests/352 episode development, TTL 10 giây so với DATA-03 cùng đạt 67/74 case khả thi, một case cải thiện và một case kém đi. CPU mean 0.940→0.874 ms, RSS peak 29.180→28.805 MiB, peak set entries 2832→1875; CPU max vẫn >16 ms. Năm gate riêng DATA-04 đạt, gate deadlock v4 kế thừa chưa đạt. Không chọn cấu hình hoặc suy ra held-out/hardware; test v3 vẫn đóng.
 
 ## Bắt đầu
 

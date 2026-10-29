@@ -66,3 +66,7 @@ Tiếp theo triển khai adapter acquisition 32/64 ms, kế toán dữ liệu v�
 ## Thực thi DATA-03 — occupied-only persistent map
 
 Thiết kế/kế hoạch ở [ADR 0008](decisions/0008-data03-occupied-only.md) và [plan 0015](plans/0015-data03-occupied-only.md). `make data03` dựng world riêng từ 88 case development đã lộ của v4; workflow CI/Xvfb đã chạy đủ 352 episode. [Raw review local](research/2026-10-29-data03-occupied-only.md) khớp collector; DATA-03 hoàn tất trong phạm vi development, chưa là held-out/quality selection.
+
+## Bàn giao DATA-04 — occupied-hit TTL 10 giây
+
+Source `8b4e3be` trên `feat/data-04-hit-ttl`: [CI 40816451698 và bằng chứng](research/2026-10-29-data04-hit-ttl.md) đã qua 176 tests/352 episode/raw replay. DATA-03 và TTL cùng 67/74 case, một cải thiện/một kém đi; năm gate DATA-04 đạt, gate deadlock v4 kế thừa chưa đạt. Đây là development đã exposed; nghiên cứu tiếp cần quyết định/protocol riêng. Test v3 vẫn đóng và các khóa cũ giữ nguyên.
