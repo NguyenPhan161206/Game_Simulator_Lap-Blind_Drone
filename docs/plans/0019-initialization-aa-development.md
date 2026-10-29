@@ -25,5 +25,5 @@ Tolerance cold: position/velocity/attitude/angular-rate và giá trị range/com
 
 - [x] Kiểm kê và ghi thiết kế trước simulator.
 - [x] Triển khai/kiểm thử runtime A/A riêng; `make check` local đạt 189 tests, bốn khóa và inventory lịch sử nguyên vẹn. Chưa là bằng chứng simulator.
-- [ ] CI simulator đủ 96 episode và independent raw review.
-- [ ] Bàn giao bằng chứng và xác định điều kiện bước retention.
+- [x] CI 40911479243 ở source `97be9a0` đủ 96 episode/72 process, legacy smoke/navigation và independent raw review; local replay trên worktree sạch khớp hoàn toàn.
+- [x] [Bàn giao 30/10 và JSON](../research/2026-10-30-initialization-aa.md): năm gate đạt, 36/36 cold comparisons; warm differences được giữ. Chưa thực thi retention C–F, cần thiết kế mới trước triển khai.

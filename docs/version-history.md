@@ -77,3 +77,7 @@ Nhánh `feat/navigation-v4-observed-detour` bàn giao source v4 `9503c2c`; repor
 ## DATA-04 — TTL development, 2026-10-29
 
 Nhánh `feat/data-04-hit-ttl`, source `8b4e3bed8a9e86946ca1c7c2a47dcffdf646aca2`: [CI 40816451698](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40816451698) thành công 176 tests, 352 episode và raw replay. [Báo cáo](research/2026-10-29-data04-hit-ttl.md) giữ kết quả hai arm cùng 67/74, một case cải thiện/một kém đi và phạm vi gate. Đây là development, chưa held-out hoặc lựa chọn cấu hình; test v3 vẫn đóng.
+
+## A/A khởi tạo — 2026-10-30
+
+Nhánh `feat/initialization-aa-v1`: kế hoạch `734996d` → runtime `97be9a0c6882dddd5e7ca58c17bf75ddd6182bf5` → tài liệu bàn giao sau đó. [CI 40911479243](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40911479243) success: 189 tests, legacy smoke/navigation, 96 episode/72 process và raw review. [Báo cáo/local review](research/2026-10-30-initialization-aa.md) khớp CI; cold 36/36 so sánh đạt tolerance, warm khác initial/time/path. Đây là preflight development, không retention treatment/held-out; main và bốn khóa cũ không thay đổi. Hậu kiểm dùng detached worktree đúng source để bảo toàn menu work chưa commit tại checkout chính.

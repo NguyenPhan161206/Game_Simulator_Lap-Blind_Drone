@@ -1,6 +1,6 @@
 # Checklist mục tiêu phát sinh khi hiện thực hóa Blind Drone Lab
 
-Cập nhật: 2026-10-29. Đã bàn giao DATA-04 development; đã củng cố local và đối chiếu log theo [0017](docs/plans/0017-maintenance-and-retention-audit.md). [0018](docs/plans/0018-retention-study-proposal.md) là dự thảo nghiên cứu tiếp, chưa triển khai hoặc mở evaluation.
+Cập nhật: 2026-10-30. [A/A khởi tạo 0019](docs/research/2026-10-30-initialization-aa.md) đã hoàn tất development; bước B của 0018 qua preflight. Retention C–F chưa triển khai, cần thiết kế/version mới; không mở held-out hoặc v3 test.
 
 Đây là sổ mục tiêu cần chứng minh được nhận ra trong quá trình làm hệ thống. [Checklist tổng](CHECKLIST_DU_AN.md) theo dõi tiến độ mốc; file này ghi **vì sao một mục tiêu trở nên cần thiết, tiêu chí đạt và bằng chứng còn thiếu**. Không tự mở rộng mọi đề xuất thành yêu cầu triển khai ngay.
 
@@ -48,6 +48,8 @@ V3 đã kết thúc âm tại validation theo protocol. Những mục phụ thu�
 - [x] DATA-04 — **Đo chi phí và mất thông tin khi giới hạn thời hạn occupied-hit.** Hoàn tất điểm development 10 giây theo [ADR 0009](docs/decisions/0009-data04-hit-ttl.md), [bằng chứng](docs/research/2026-10-29-data04-hit-ttl.md): source `8b4e3be`, CI 40816451698, 176 tests/352 episode. DATA-03 và TTL cùng 67/74; một case cải thiện/một kém đi. CPU mean/RSS peak/set entries giảm trong run, nhưng CPU max >16 ms và gate v4 deadlock kế thừa chưa đạt. Năm gate riêng DATA-04 đạt; không suy ra TTL tối ưu/an toàn hoặc chọn cấu hình từ exposed development.
 
 - [x] GOAL-24 — **Đối chiếu retention failure trước khi thêm biến mới.** [Audit offline 0017](docs/research/2026-10-29-retention-failure-audit.md) và JSON liên kết mô tả chín case hợp, 72 episode sẵn có, hash các file dùng và thay đổi outcome theo repeat/slot. DATA-03/04 timeout khi vẫn di chuyển; độ nhạy khởi tạo/thứ tự cần kiểm soát trước kết luận TTL. Đây là mô tả log, chưa chứng minh nguyên nhân đầy đủ, sửa thuật toán hoặc tăng chất lượng. [0018](docs/plans/0018-retention-study-proposal.md) giữ trạng thái dự thảo.
+
+- [x] GOAL-25 — **Kiểm chứng khởi tạo A/A trước gán tác động cho retention.** [Plan 0019](docs/plans/0019-initialization-aa-development.md), [source/CI/local replay](docs/research/2026-10-30-initialization-aa.md): source `97be9a0`, CI 40911479243, 189 tests, 12 exposed case/96 episode/72 process. Hai arm cùng v4; 36/36 cold comparisons đạt tolerance, warm khác initial/time/path nhưng outcome A/A không đổi. Ghi bootstrap motor targets và stabilizer targets để tách state khởi tạo; chưa chứng minh mọi lỗi retention hoặc chất lượng held-out. Các khóa/runtime cũ giữ nguyên, chưa thực thi retention C–F.
 
 ## E. Cách bổ sung phát hiện mới
 

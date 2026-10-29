@@ -15,3 +15,7 @@ Gate fail đóng kết luận preflight chưa đạt, không tiến sang retenti
 ## Giới hạn
 
 Cold isolation là intervention trên khởi tạo/orchestration, không phải cải tiến navigation. Nó không xác định riêng yếu tố nào trong motor/device/controller/physics gây khác biệt warm; log các trạng thái để phân tích. Không đổi cảm biến, thêm ground truth vào policy, train, radar, hardware hoặc chạy v3 test. Các số case/repeat không là mẫu held-out hay độc lập thống kê mới.
+
+## Bàn giao 2026-10-30
+
+[Source `97be9a0`, CI 40911479243 và local raw review](../research/2026-10-30-initialization-aa.md) hoàn tất 96 episode; 36/36 cold comparisons và cả năm gate đạt. Không thay tolerance/quality sau outcome. Warm khác initial/time/path nhưng outcome không đổi; bootstrap motor targets khác nhau được ghi. Gate chỉ mở việc đăng ký protocol retention tiếp, không tự chứng nhận giảm dữ liệu hoặc mở held-out.

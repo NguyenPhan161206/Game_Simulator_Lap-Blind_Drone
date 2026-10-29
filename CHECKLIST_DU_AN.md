@@ -1,8 +1,8 @@
 # Checklist tổng thể — Blind Drone Lab
 
-**Cập nhật:** 2026-10-29, múi giờ Asia/Ho_Chi_Minh.
+**Cập nhật:** 2026-10-30, múi giờ Asia/Ho_Chi_Minh.
 
-**Mốc bàn giao hiện tại:** DATA-04 runtime `8b4e3be`, tài liệu `d3b5d13`; đã hoàn tất củng cố local theo [kế hoạch 0017](docs/plans/0017-maintenance-and-retention-audit.md). [Nghiên cứu retention tiếp theo](docs/plans/0018-retention-study-proposal.md) còn là dự thảo.
+**Mốc bàn giao hiện tại:** A/A khởi tạo runtime `97be9a0`, [0019/CI/raw review](docs/research/2026-10-30-initialization-aa.md) đạt 189 tests/96 episode và 36/36 so sánh cold. Bước B khởi tạo đã qua; [retention 0018](docs/plans/0018-retention-study-proposal.md) C–F vẫn cần đăng ký thiết kế riêng.
 
 **Mốc repo lịch sử được đối chiếu:** thiết kế v3 `761318df1293c195347f486b0d228f88af10fae1`; runtime cadence v3 `0c75ce28f14b8ea881e8c0c7c9335aa4319030c5`, validation `0c5f598c512a24db63b0fd19ca259a3b85382ee5`; nghiệm thu GUI/manual lịch sử vẫn là `39c34af`. Mốc checklist gốc `d7018cb` được giữ trong lịch sử.
 **Audit bổ sung nhánh L/GitHub:** source collector `b32410595b26f8ef2d0f8d99dca469797278366b`; xem [cây phiên bản](docs/version-history.md) và evidence liên kết ở mục 8.
@@ -30,9 +30,10 @@
 | 5 | Quan sát có bộ nhớ, guard, planner v2 | Đã kiểm chứng CI | Khóa trước fresh evaluation, đủ 108 lượt, có chi phí/giới hạn |
 | L | Hoàn tất trải nghiệm local | Đã nghiệm thu LOC-01–09 | Mở GUI và chạy thật trên máy người dùng, lưu bằng chứng riêng |
 | 6 | Khóa câu hỏi nghiên cứu và protocol tiếp theo | Thiết kế v3 giữ nguyên; runtime được bổ sung ở 7A | Có quyết định, ngưỡng chất lượng, dữ liệu và test mới |
-| 7A | Khảo sát giảm dữ liệu/biểu diễn | V3 đóng âm; v4, DATA-03 và DATA-04 hoàn tất development; 0017 đã kiểm tra local/đối chiếu log | DATA-03/04 chưa có held-out selection; kế hoạch 0018 còn dự thảo; test v3 giữ đóng |
+| 7A | Khảo sát giảm dữ liệu/biểu diễn | V3 đóng âm; v4/DATA-03/04 và A/A 0019 hoàn tất development | DATA-03/04 chưa có held-out selection; kế hoạch 0018 còn dự thảo; test v3 giữ đóng |
 | 7A-D | Chẩn đoán kẹt đoạn đầu trên development | Hoàn tất offline 5 trace, 141 unit tests; chưa sửa thuật toán | [Nguyên nhân origin/cell alignment](docs/research/2026-10-28-navigation-start-diagnostics.md); không là flight evaluation mới |
 | 7A-N4 | GOAL-23: đường thay thế qua vùng đã quan sát | Hoàn tất development v4: 165 tests, 352 episode, 74/74 feasible case | [Nguồn `9503c2c`, raw audit/CI](docs/research/2026-10-28-observed-detour-v4.md); chưa held-out/hardware, CPU tăng |
+| 7A-I | Khởi tạo A/A trước retention | Hoàn tất: 189 tests, 96 episode/12 exposed cases, cold 36/36 so sánh đạt | [Source `97be9a0`, CI/local raw review](docs/research/2026-10-30-initialization-aa.md); gate preflight, chưa là chất lượng retention |
 | 7B | Huấn luyện model nếu phù hợp câu hỏi | Chưa làm, nhánh tùy chọn | Train/eval không rò rỉ, tái lập, so sánh với baseline |
 | 8 | Độ vững, cảm biến không lý tưởng, điều hướng khó hơn | Chưa làm | Có protocol và đánh giá riêng cho từng mở rộng |
 | 9 | Giao diện giải thích/replay như game | Có observer cơ bản; còn mở rộng | Phân biệt live/replay và dữ liệu drone/ground truth |
@@ -41,7 +42,7 @@
 | 12 | Điều phối logistics, mức E | Chưa làm | Có đơn hàng, baseline và KPI vận hành riêng |
 | 13 | Xe, radar vật lý, Unity hoặc phần cứng | Hướng mở rộng có điều kiện | Có nhu cầu, nguồn lực, mô hình và kiểm chứng tương ứng |
 
-**Điểm đứng hiện tại:** đang ở 7A, sau development DATA-04. V4 đầy đủ lịch sử đạt 74/74; DATA-03 và DATA-04 đạt 67/74 trong các run đã ghi. Các số này dùng development đã exposed, chưa là lựa chọn cấu hình hoặc bằng chứng held-out. [Đối chiếu offline 0017](docs/research/2026-10-29-retention-failure-audit.md) mô tả timeout khi vẫn di chuyển và độ nhạy với thứ tự/khởi tạo; chưa quy nguyên nhân duy nhất cho retention/TTL. Ưu tiên đối chứng trực tiếp với v4 và kiểm tra khởi tạo theo [dự thảo 0018](docs/plans/0018-retention-study-proposal.md), trước mở thêm biến lấy mẫu. Chưa ANN/RL, phần cứng hoặc bằng chứng tối thiểu dữ liệu/riêng tư/an toàn tổng quát.
+**Điểm đứng hiện tại:** ở 7A, sau A/A khởi tạo 0019. Cả warm/cold có 44 feasible success và bốn negative timeout; cold đạt equivalence trong tolerance đăng ký, warm vẫn khác initial/time/path. Đây là development đã exposed, không chọn cấu hình giảm dữ liệu hoặc chứng minh held-out. Bước tiếp là đăng ký thí nghiệm retention dùng cold-isolated, v4 full-history làm đối chứng và một candidate/budget/ngưỡng riêng theo [0018](docs/plans/0018-retention-study-proposal.md). V4/DATA-03/04 giữ nguyên kết quả cũ; test v3 đóng, chưa ML/hardware hoặc claim privacy/tối thiểu thông tin.
 
 ## 2. Mốc 0 — ý tưởng và các quyết định gốc
 
@@ -424,7 +425,8 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | Ưu tiên | Việc tiếp theo | Phụ thuộc / lý do |
 |---|---|---|
 | Đã xong local | Củng cố tooling/tài liệu và đối chiếu failure theo 0017 | Giữ khóa, source và kết quả lịch sử; xem [báo cáo offline](docs/research/2026-10-29-retention-failure-audit.md) |
-| P0 | Xem xét dự thảo 0018: v4 full-history làm đối chứng; kiểm tra slot/khởi tạo trước thay retention | Có timeout khi vẫn di chuyển và cùng phương pháp đổi outcome giữa các run; chưa thể gán mọi khác biệt cho TTL |
+| Đã xong | A/A khởi tạo 0019: cold precision gate và raw replay | [96 episode và kết quả](docs/research/2026-10-30-initialization-aa.md); warm differences giữ nguyên |
+| P0 | Đăng ký retention C của 0018: cold-isolated, v4 full-history, cùng budget và một candidate | A/A chỉ xác minh khởi tạo trong suite; chưa chứng minh giảm bộ nhớ giữ chất lượng |
 | Sau quyết định | Chốt một câu hỏi, budget/ngưỡng và protocol/version mới; development trước khóa source và fresh validation/test | Dự thảo chưa cấp quyền triển khai/chạy; test mới chỉ sau validation gate đạt, test v3 vẫn đóng |
 | P1 | Xác định budget phản hồi và khảo sát chi phí CPU/RAM trước yêu cầu realtime | V4/DATA-03 có chi phí CPU cao hơn; CPU max vẫn >16 ms, simulator có thể chờ controller |
 | P1 | Mở rộng Pareto DATA-10 trên các config cùng protocol/host và paired cases | DATA-03 là một điểm development; không trộn tùy tiện với cadence v3/v4 khác host/source |
@@ -450,6 +452,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | Validation v3 âm | [Báo cáo/source/CI 480 lượt](docs/research/2026-10-28-cadence-v3-validation.md), 87/100 mỗi arm; test chưa mở |
 | Chẩn đoán kẹt đoạn đầu | [Kế hoạch 0013](docs/plans/0013-navigation-start-diagnostics.md), [báo cáo](docs/research/2026-10-28-navigation-start-diagnostics.md), [JSON](docs/research/2026-10-28-navigation-start-diagnostics.json); offline development, không sửa runtime |
 | V4 observed detour — GOAL-23 | [Kế hoạch 0014](docs/plans/0014-observed-detour-v4.md), [báo cáo](docs/research/2026-10-28-observed-detour-v4.md), [JSON](docs/research/2026-10-28-observed-detour-v4.json); source `9503c2c`, CI 40684709433, 352 episode development |
+| A/A khởi tạo | [Plan 0019](docs/plans/0019-initialization-aa-development.md), [báo cáo/JSON](docs/research/2026-10-30-initialization-aa.md); source `97be9a0`, CI 40911479243, local review khớp |
 | Củng cố và chẩn đoán retention offline | [Kế hoạch 0017](docs/plans/0017-maintenance-and-retention-audit.md), [báo cáo](docs/research/2026-10-29-retention-failure-audit.md), [dự thảo nghiên cứu 0018](docs/plans/0018-retention-study-proposal.md); không chạy simulator mới |
 | DATA-04 TTL 10 giây | [Kế hoạch 0016](docs/plans/0016-data04-hit-ttl.md), [báo cáo](docs/research/2026-10-29-data04-hit-ttl.md); source `8b4e3be`, CI 40816451698, 352 episode development |
 | CI chính thức v2 | [Run 40255492790](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40255492790), runtime source `2f422e2` |
@@ -473,5 +476,7 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 | 2026-10-29 | DATA-04 TTL 10 s hoàn tất CI 176 tests/352 episode; hai arm 67/74, một cải thiện/một kém đi; báo đúng gate DATA-04 và gate v4 kế thừa | Source `8b4e3be`; [báo cáo](docs/research/2026-10-29-data04-hit-ttl.md) |
 
 | 2026-10-29 | Củng cố sau audit: phục hồi đúng byte config v2, checker tách source/generated, đồng bộ trạng thái DATA-04, phân tích log retention và viết dự thảo 0018; giữ nguyên locks/runtime/test exposure | [Báo cáo 0017](docs/research/2026-10-29-retention-failure-audit.md) |
+
+| 2026-10-30 | Hoàn tất A/A 0019: 189 tests/96 episode/72 process; cold 36/36 so sánh đạt, warm khác initial/time/path; CI và local replay khớp, không đổi retention/locks/test exposure | [Source `97be9a0`, CI 40911479243](docs/research/2026-10-30-initialization-aa.md) |
 
 Khi cập nhật tiếp, thêm dòng nhật ký, điều chỉnh checkbox và dẫn bằng chứng. Không sửa ngược báo cáo lịch sử hoặc đánh dấu hàng loạt tương lai chỉ vì đã có roadmap này.

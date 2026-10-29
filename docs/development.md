@@ -1,10 +1,10 @@
 # Phát triển và kiểm tra
 
-## Trạng thái hiện tại — 2026-10-29
+## Trạng thái hiện tại — 2026-10-30
 
-Đang ở mốc 7A, sau development DATA-04: runtime `8b4e3be`, bàn giao `d3b5d13`, [CI/bằng chứng](research/2026-10-29-data04-hit-ttl.md) 176 tests/352 episode/raw replay. V4 đạt 74/74 case khả thi trong development; DATA-03/04 đạt 67/74 trong các run đã ghi. Chưa chọn cấu hình giảm dữ liệu trên held-out; chưa ML hoặc phần cứng.
+Đang ở mốc 7A, đã hoàn tất [A/A khởi tạo 0019](research/2026-10-30-initialization-aa.md): source `97be9a0`, CI 40911479243, 189 tests và 96 episode/72 process. 36/36 so sánh cold đạt precision gate, raw review local trên worktree sạch khớp CI. Đây là preflight, chưa là quality gate retention/held-out. V4 và DATA-03/04 giữ kết quả development lịch sử; chưa ML hoặc phần cứng.
 
-Đợt [0017](plans/0017-maintenance-and-retention-audit.md) đã hoàn tất local (181 tests), củng cố kiểm tra/tài liệu và [đối chiếu log retention](research/2026-10-29-retention-failure-audit.md). [0018](plans/0018-retention-study-proposal.md) còn là dự thảo: ưu tiên v4 full-history làm đối chứng, kiểm soát khởi tạo/thứ tự trước nghiên cứu retention. Chưa có quyền triển khai hoặc chạy nghiên cứu mới từ bản dự thảo này.
+Đợt [0017](plans/0017-maintenance-and-retention-audit.md) đã hoàn tất củng cố/đối chiếu log; bước A/A B của [0018](plans/0018-retention-study-proposal.md) đã thực thi riêng theo [0019](plans/0019-initialization-aa-development.md). Bước C–F vẫn cần thiết kế retention mới: cold-isolated cho cả hai arm, v4 full-history làm đối chứng, accounting/budget công bằng và một candidate/ngưỡng đăng ký trước chạy. Không suy quyền mở held-out từ việc preflight đạt.
 
 V3 đã đóng với validation âm 87/100 mỗi arm, dưới ngưỡng 95%; giữ test chưa mở. Không chạy lại validation/test, sửa frozen runtime hoặc tái sinh lock để cải thiện outcome. V1/v2 validation/test đã exposed; nghiên cứu tiếp dùng version/protocol và split mới.
 
@@ -51,6 +51,7 @@ Các kế hoạch 0002–0016 ghi phạm vi và trạng thái lúc thực thi. C
 | Thiết kế/runtime v3 | [Thiết kế](research/2026-10-27-research-protocol-v3.md), [development](research/2026-10-28-cadence-v3-development.md); design lock riêng runtime lock |
 | Validation v3 | [480 episode/127 tests](research/2026-10-28-cadence-v3-validation.md), source `0c5f598`; kết luận âm, test đóng |
 | Chẩn đoán/GOAL-23 v4 | [Offline](research/2026-10-28-navigation-start-diagnostics.md), [v4](research/2026-10-28-observed-detour-v4.md); development, không held-out |
+| A/A initialization | [0019/source/CI/raw review](research/2026-10-30-initialization-aa.md); 12 exposed cases, chưa retention treatment |
 | DATA-03/04 | [Occupied-only](research/2026-10-29-data03-occupied-only.md), [TTL](research/2026-10-29-data04-hit-ttl.md); development đã exposed |
 
 [Runtime v3](runtime-v3.md), [local acceptance](local-acceptance.md), [cây phiên bản](version-history.md), [tooling](../tools/README.md) và [hai checklist](../CHECKLIST_DU_AN.md) giữ lệnh và nguồn chi tiết. Collector local dùng `python3 tools/local_session.py accept`; nghiệm thu bàn phím/quan sát vẫn là bằng chứng riêng của người thao tác, không tự điền phiếu hoặc sao chép giữa các run.

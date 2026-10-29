@@ -10,6 +10,8 @@
 - python3 tools/run_codex.py [--dry-run]: launcher Codex với cấu hình dự án.
 - bash tools/git.sh status --short --branch: metadata Git của workspace managed hoặc repo thường.
 
+A/A khởi tạo có package riêng: `python3 tools/build_initialization_aa.py [--check]`, `python3 tools/run_initialization_aa.py --output artifacts/<fresh>` và `python3 tools/review_initialization_aa.py <run> --expected-source <full-sha> --output <fresh-json>`. Chỉ development; hai nhãn đều dùng v4, warm nối tiếp/cold process mới, 96 episode. Reviewer yêu cầu checkout sạch đúng source; dùng worktree riêng nếu checkout chính có công việc khác. [Bằng chứng 0019](../docs/research/2026-10-30-initialization-aa.md).
+
 Các công cụ không huấn luyện model hoặc sửa cấu hình agent toàn máy.
 
 `python3 tools/analyze_retention_failures.py --v4-run <v4-raw> --data03-run <data03-raw> --data04-run <data04-raw> --output <fresh-json>` mô tả failure từ ba run development lịch sử đã xác minh digest. Tool chỉ đọc outcome/decision/physics và hash các file được dùng; không chạy policy, Webots, toàn bộ auditor cũ hoặc nhận held-out data. [Nguồn, lệnh và giới hạn 0017](../docs/research/2026-10-29-retention-failure-audit.md).

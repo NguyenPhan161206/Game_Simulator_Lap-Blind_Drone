@@ -1,6 +1,6 @@
 # Kiến trúc hệ thống
 
-Hiện trạng sau DATA-04 (2026-10-29): [README](../../README.md) và [checklist](../../CHECKLIST_DU_AN.md) là điểm vào tiến độ hiện tại. V3 đóng bằng validation âm; v4/DATA-03/04 chỉ hoàn tất development. [0017](../plans/0017-maintenance-and-retention-audit.md) là bảo trì/offline; [0018](../plans/0018-retention-study-proposal.md) còn dự thảo. Kiến trúc và runtime frozen bên dưới không thay đổi trong đợt này.
+Hiện trạng sau A/A khởi tạo (2026-10-30): [README](../../README.md) và [checklist](../../CHECKLIST_DU_AN.md) là điểm vào tiến độ hiện tại. V3 đóng bằng validation âm; v4/DATA-03/04 chỉ hoàn tất development. [0017](../plans/0017-maintenance-and-retention-audit.md) là bảo trì/offline; [0018](../plans/0018-retention-study-proposal.md) còn dự thảo. [A/A 0019](../research/2026-10-30-initialization-aa.md) đã qua preflight development trên runtime riêng, dùng lại v4 và không đổi retention. Kiến trúc và runtime frozen bên dưới không thay đổi trong đợt này.
 
 Trạng thái: Webots v1, baseline và đánh giá nhiệm vụ đã chạy thực. Giai đoạn [môi trường có seed/protocol khóa](../seeded-environments-v1.md) hoàn tất 48 lượt paired trên CI; xem [báo cáo và giới hạn](../research/2026-10-26-seeded-environments.md). Chưa huấn luyện model.
 

@@ -51,3 +51,9 @@ Ngưỡng 95% của v3 là lịch sử đã khóa; không tự chuyển thành n
 Chỉ sau quyết định mới triển khai package/world/runner/inventory riêng ngoài src/ và các version lịch sử. Giữ bốn khóa và toàn runtime cũ nguyên byte. Không dùng validation v3 đã exposed hoặc test v3 đang đóng làm fresh split. Không train, radar, dynamics/noise/3D/logistics/hardware trong nhánh này. Kết quả âm là đầu ra hợp lệ; kế hoạch không buộc tìm một candidate thắng.
 
 Sản phẩm của bước A phải là ADR, protocol có đầy đủ trường trên và kế hoạch chạy có ngân sách; bản dự thảo này tự nó chưa là protocol có thể chạy.
+
+## Kết quả bước B — bàn giao 2026-10-30
+
+[A/A 0019](../research/2026-10-30-initialization-aa.md) tại source `97be9a0` đã hoàn tất CI/local raw review: 189 tests, 96 episode; cold 36/36 phép so đạt tolerance, cả hai mode 44 feasible success/bốn negative timeout. Warm vẫn khác khởi tạo/time/path. Bước B đã qua trong 12 case development; không tăng cỡ mẫu held-out hoặc chứng minh retention.
+
+Việc gần nhất của C là đăng ký một protocol development riêng: cold-isolated cho cả hai arm, v4 full-history làm đối chứng, chuẩn hóa accounting/budget map và chọn đúng một candidate free-history. Chốt metric giảm history, ngưỡng task/resource và readiness trước implementation; không ghép occupied TTL hoặc adaptive acquisition vào cùng ablation. C–F chưa được thực thi trong 0019.

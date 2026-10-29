@@ -6,7 +6,7 @@ Camera có thể hỗ trợ tạo dữ liệu/huấn luyện ở nhánh nghiên 
 
 ## Trạng thái hiện tại
 
-**Mốc hiện tại: 7A, sau development DATA-04.** Đợt [củng cố 0017](docs/plans/0017-maintenance-and-retention-audit.md) đã hoàn tất local: phục hồi kiểm tra source, đồng bộ checklist và [đối chiếu failure từ log sẵn có](docs/research/2026-10-29-retention-failure-audit.md). [Nghiên cứu retention 0018](docs/plans/0018-retention-study-proposal.md) còn là dự thảo, cần v4 full-history làm đối chứng và kiểm soát khởi tạo/thứ tự; chưa có candidate được chọn hoặc đánh giá held-out mới.
+**Mốc hiện tại: 7A, đã hoàn tất preflight khởi tạo A/A theo [0019](docs/plans/0019-initialization-aa-development.md).** [Bằng chứng](docs/research/2026-10-30-initialization-aa.md) tại source `97be9a0`: 189 tests, 96 episode Webots, 36/36 so sánh cold đạt precision gate và raw review local khớp CI. Warm có chênh khởi tạo/time/path dù outcome không đổi. [Nghiên cứu retention 0018](docs/plans/0018-retention-study-proposal.md) bước C–F chưa triển khai: cần đăng ký cold-isolated, đối chứng v4 và một candidate/ngưỡng riêng; chưa có held-out mới.
 
 Các đoạn dưới là bằng chứng theo từng mốc; source/giới hạn của mốc cũ được giữ nguyên.
 

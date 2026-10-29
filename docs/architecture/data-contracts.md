@@ -33,3 +33,7 @@ Báo riêng đầu ra cảm biến, đầu vào mô hình và dữ liệu lưu. 
 ## V3 — pose tại acquisition
 
 `SampledObservation` giữ current state và acquisition state riêng; range timestamp phải khớp acquisition pose. Grid cập nhật theo acquisition pose, guard/lệnh theo current measured state giữ giữa hai lần pose sampling. GPS/IMU/Gyro 32 ms, policy/stabilizer 16 ms; không nội suy bằng ground truth. [Runtime v3](../runtime-v3.md) và [bằng chứng development](../research/2026-10-28-cadence-v3-development.md) mô tả counters, payload 96 B, log bytes, CPU process/wall và RSS riêng. Khóa thiết kế giữ nguyên trạng thái lịch sử `runtime_ready=false`; artifact runtime lock mới quyết định quyền chạy held-out.
+
+## A/A — provenance khởi tạo, không thêm observation policy
+
+Trong [runtime A/A riêng](../../versions/initialization_aa_v1/README.md), `initialization` ghi motor target velocities và stabilizer targets tại reset từ Robot devices/controller; `measured_initial` ghi pose/state/timestamp đo trước mission. Supervisor ghi initial pose/velocity thật ở đường scoring riêng. Các trường provenance này chỉ vào log/reviewer, không làm giàu SampledObservation hoặc MissionV2 của navigation. Cold so timestamp chuẩn hóa, flag/count và numeric traces theo tolerance đã đăng ký; CPU/RSS không phải tín hiệu tất định. [Bằng chứng 0019](../research/2026-10-30-initialization-aa.md).
