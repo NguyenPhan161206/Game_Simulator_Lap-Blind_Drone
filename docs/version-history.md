@@ -1,6 +1,6 @@
 # Cây phiên bản và nguồn kiểm chứng
 
-Snapshot ngày 2026-10-27. Repo: [Game_Simulator_Lap-Blind_Drone](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone). Có thể xem [commit graph trên GitHub](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/network) và dùng `bash tools/git.sh log --all --graph --decorate --oneline` trong workspace này.
+Snapshot ngày 2026-10-29. Repo: [Game_Simulator_Lap-Blind_Drone](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone). Có thể xem [commit graph trên GitHub](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/network) và dùng `bash tools/git.sh log --all --graph --decorate --oneline` trong workspace này.
 
 ## Lịch sử các mốc
 
@@ -67,3 +67,7 @@ Bàn giao runtime lock `8d46e03` đã qua [CI 40617132921](https://github.com/Ng
 ## Validation v3 — kết luận âm, 2026-10-28
 
 Nhánh `feat/v3-validation-gate`: kế hoạch `9d030d6` → workflow/manual gate + offline review `0c5f598c512a24db63b0fd19ca259a3b85382ee5` → evidence/docs sau đó. [CI validation 40633617042](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40633617042), job `122635441422`, đã đạt pipeline 127 tests/480 lượt và raw replay, nhưng nghiên cứu `not_met`: reference/candidate đều 87/100, dưới 95%. [Báo cáo](research/2026-10-28-cadence-v3-validation.md) giữ source và kết quả; runtime source vẫn `0c75ce2`, cả bốn lock không đổi. Test chưa mở và CLI từ chối do gate validation fail; validation đã exposed.
+
+## GOAL-23 và DATA-03 — development versions riêng, 2026-10-29
+
+Nhánh `feat/navigation-v4-observed-detour` bàn giao source v4 `9503c2c`; report [0014](research/2026-10-28-observed-detour-v4.md). Nhánh `feat/data-03-occupied-only` có runtime source `94f8e0b461c01aa18f269e75eb6662ce2d2283df` và tiếp đó commit handoff. [CI run 40796152653](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40796152653) hoàn tất simulator 352 episode/176 pair; overall job bị hủy khi raw-review bước qua giới hạn 60 phút. Artifact `12866482176` được tải và hậu kiểm local độc lập; 88 case, 352 episode, source/inventory/raw hashes và summary khớp collector. [DATA-03 report](research/2026-10-29-data03-occupied-only.md). Không fast-forward main trong bước development; test v3 vẫn đóng.

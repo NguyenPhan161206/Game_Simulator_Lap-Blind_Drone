@@ -11,3 +11,7 @@ Mục tiêu: đo bằng runtime Webots xem có thể bỏ free-grid lịch sử 
 7. Chỉ kết luận development. Candidate không đạt chất lượng vẫn là kết quả âm; một protocol hoàn toàn mới cần fresh validation/test trước claim tổng quát.
 
 Không đụng validation/test v3 đã exposed/đóng gate; không coi bộ 88 development là unseen hoặc dữ liệu độc lập mới.
+
+## Bàn giao 2026-10-29
+
+Implementation/runtime ở source `94f8e0b461c01aa18f269e75eb6662ce2d2283df`. [Báo cáo](../research/2026-10-29-data03-occupied-only.md), [JSON/raw-review summary](../research/2026-10-29-data03-occupied-only.json), CI 40796152653: simulator step complete 352 episodes; CI job bị hủy ở raw-review vì budget 60 phút. Reviewer chạy lại tại local và khớp chính xác toàn summary/hashes. 67/74 case candidate so với 62/74 reference; không collision/bounds/negative false success; map budget đạt, RSS giảm nhẹ 29.457→28.973 MiB nhưng CPU mean tăng 0.860→1.622 ms. Kết quả chỉ áp dụng cho development đã lộ; không chọn cấu hình hoặc mở validation/test.

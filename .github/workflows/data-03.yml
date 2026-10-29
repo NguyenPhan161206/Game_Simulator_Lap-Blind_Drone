@@ -2,14 +2,14 @@ name: DATA-03 occupied-only persistent map development
 on:
   push:
     branches: ["feat/data-03-occupied-only"]
-    paths: ["versions/data_occupied_v1/**", "simulation/webots/controllers/*data03/**", "simulation/webots/protos/BlindDroneData03.proto", "simulation/webots/worlds/occupied_only_data03.wbt", "tools/*data03.py", "tests/test_data03.py", "Makefile", ".github/workflows/data-03.yml"]
+    paths: ["versions/data_occupied_v1/**", "simulation/webots/controllers/*data03/**", "simulation/webots/protos/BlindDroneData03.proto", "simulation/webots/worlds/occupied_only_data03.wbt", "tools/*data03.py", "tests/test_data03.py", "Makefile"]
   workflow_dispatch:
 permissions:
   contents: read
 jobs:
   development:
     runs-on: ubuntu-22.04
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
         with:

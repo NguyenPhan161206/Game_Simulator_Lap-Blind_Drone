@@ -28,7 +28,7 @@
 | 5 | Quan sát có bộ nhớ, guard, planner v2 | Đã kiểm chứng CI | Khóa trước fresh evaluation, đủ 108 lượt, có chi phí/giới hạn |
 | L | Hoàn tất trải nghiệm local | Đã nghiệm thu LOC-01–09 | Mở GUI và chạy thật trên máy người dùng, lưu bằng chứng riêng |
 | 6 | Khóa câu hỏi nghiên cứu và protocol tiếp theo | Thiết kế v3 giữ nguyên; runtime được bổ sung ở 7A | Có quyết định, ngưỡng chất lượng, dữ liệu và test mới |
-| 7A | Khảo sát giảm dữ liệu/biểu diễn | V3 kết thúc âm: validation 87/100 mỗi arm; test chưa mở | Đạt toàn bộ gate hoặc kết luận âm theo protocol, giữ nguyên bằng chứng |
+| 7A | Khảo sát giảm dữ liệu/biểu diễn | V3 kết thúc âm (validation 87/100); DATA-03 occupied-only development 67/74 so với reference 62/74; test v3 chưa mở | Mỗi cấu hình cần study/source riêng và quality assessment; DATA-03 chưa held-out/chưa có quality-selection threshold |
 | 7A-D | Chẩn đoán kẹt đoạn đầu trên development | Hoàn tất offline 5 trace, 141 unit tests; chưa sửa thuật toán | [Nguyên nhân origin/cell alignment](docs/research/2026-10-28-navigation-start-diagnostics.md); không là flight evaluation mới |
 | 7A-N4 | GOAL-23: đường thay thế qua vùng đã quan sát | Hoàn tất development v4: 165 tests, 352 episode, 74/74 feasible case | [Nguồn `9503c2c`, raw audit/CI](docs/research/2026-10-28-observed-detour-v4.md); chưa held-out/hardware, CPU tăng |
 | 7B | Huấn luyện model nếu phù hợp câu hỏi | Chưa làm, nhánh tùy chọn | Train/eval không rò rỉ, tái lập, so sánh với baseline |
@@ -39,7 +39,7 @@
 | 12 | Điều phối logistics, mức E | Chưa làm | Có đơn hàng, baseline và KPI vận hành riêng |
 | 13 | Xe, radar vật lý, Unity hoặc phần cứng | Hướng mở rộng có điều kiện | Có nhu cầu, nguồn lực, mô hình và kiểm chứng tương ứng |
 
-**Điểm đứng hiện tại:** đã có reference navigation không học trong mô phỏng lý tưởng. Chưa ANN/RL, chưa chứng minh tối thiểu dữ liệu, riêng tư, an toàn tổng quát hoặc khả năng triển khai ngoài đời.
+**Điểm đứng hiện tại:** đã có reference navigation không học và một thử nghiệm DATA-03 trong mô phỏng lý tưởng. Occupied-only đạt 67/74 so với reference 62/74 trên development đã exposed, nhưng common-success time/path và CPU tăng; RSS chỉ giảm nhẹ. Chưa có held-out selection. Chưa ANN/RL, chưa chứng minh tối thiểu dữ liệu, riêng tư, an toàn tổng quát hoặc khả năng triển khai ngoài đời.
 
 ## 2. Mốc 0 — ý tưởng và các quyết định gốc
 
@@ -240,7 +240,7 @@ python3 tools/local_session.py accept
 
 - [x] DATA-01 — Đo riêng đầu ra sensor, observation đưa vào policy, state giữ trong bộ nhớ và dữ liệu truyền/lưu. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [x] DATA-02 — Khai báo encoding/metadata khi báo byte; đo RSS/bộ nhớ thực nếu muốn nói về RAM, không thay bằng cell count. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
-- [ ] DATA-03 — Thử guarded chỉ lưu occupied hits thay vì cả free-grid; xác minh hành vi và budget, không suy từ đọc code rằng đã giảm thành công. **Đang thực thi development:** [quyết định 0008](docs/decisions/0008-data03-occupied-only.md), [kế hoạch 0015](docs/plans/0015-data03-occupied-only.md); kết quả runtime chưa có, chưa đánh dấu hoàn thành.
+- [x] DATA-03 — Thử guarded chỉ lưu occupied hits thay vì cả free-grid; xác minh hành vi và budget. **Development:** [báo cáo](docs/research/2026-10-29-data03-occupied-only.md), [raw-review summary](docs/research/2026-10-29-data03-occupied-only.json), source `94f8e0b`; 88 case/352 episode, reference 62/74 và candidate 67/74. Local raw review khớp collector; không collision/bounds/negative false success, command replay đạt, budget 16000 entries không vượt. RSS giảm nhẹ 29.457→28.973 MiB; CPU mean tăng 0.860→1.622 ms. Chỉ case development đã lộ, không là validation/test, không chọn cấu hình hoặc tuyên bố tối thiểu.
 - [ ] DATA-04 — Thử giới hạn lịch sử, vùng nhớ, thời hạn hit và nén/độ phân giải; ghi chi phí mất thông tin.
 - [x] DATA-05 — Giảm từng yếu tố một: số hướng ray, tần suất cập nhật hoặc độ chính xác số đo. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [ ] DATA-06 — Khảo sát quét/chọn phép đo theo tình huống thay vì lấy mọi phép đo cố định.
@@ -421,10 +421,10 @@ Các ô trống ở phần này là **mẫu cho lượt công việc tiếp theo
 
 | Ưu tiên | Việc tiếp theo | Phụ thuộc / lý do |
 |---|---|---|
-| P0 | Đăng ký câu hỏi/ngưỡng, source lock và fresh validation/test cho v4 | GOAL-23 mới đủ development; v3 validation exposed và test v3 vẫn đóng |
-| P1 | Xác định budget phản hồi và khảo sát chi phí CPU/RAM trước yêu cầu realtime | V4 có thêm chi phí, CPU max vẫn >16 ms; simulator có thể chờ controller |
-| P1 | Chọn nghiên cứu giảm dữ liệu mới sau khi baseline đủ tin cậy | Hai arm GOAL-23 cùng 32 ms; chưa giảm rate mới hoặc mở ML |
-| P1 | Đo trade-off bằng paired case và giữ mọi failure/cost | Không dùng lại development này làm held-out hoặc cộng các lần rerun thành mẫu độc lập |
+| P0 | Hoàn tất development DATA-04/06/09 theo version riêng rồi thiết kế validation mới | DATA-03 cho thấy trade-off nhưng chưa có selection threshold; không dùng lại exposed cases làm held-out |
+| P0 | Đăng ký câu hỏi/ngưỡng, source lock và fresh validation/test cho phiên bản được chọn | V3 validation exposed và test v3 vẫn đóng; test mới chỉ sau validation gate đạt |
+| P1 | Xác định budget phản hồi và khảo sát chi phí CPU/RAM trước yêu cầu realtime | V4/DATA-03 có chi phí CPU cao hơn; CPU max vẫn >16 ms, simulator có thể chờ controller |
+| P1 | Mở rộng Pareto DATA-10 trên các config cùng protocol/host và paired cases | DATA-03 là một điểm development; không trộn tùy tiện với cadence v3/v4 khác host/source |
 | P2 | Mở rộng độ vững/UI theo nhu cầu nghiên cứu | Không suy rộng current success sang noise/dynamic/3D |
 | Sau core | Một chuyến giao hàng, rồi logistics | Giữ ưu tiên phương tiện trước điều phối |
 | Có điều kiện | Xe, sensor vật lý, engine khác, hardware | Cần quyết định/mô hình/nguồn lực và bằng chứng riêng |

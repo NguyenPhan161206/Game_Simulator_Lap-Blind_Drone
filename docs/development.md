@@ -65,4 +65,4 @@ Tiếp theo triển khai adapter acquisition 32/64 ms, kế toán dữ liệu v�
 
 ## Thực thi DATA-03 — occupied-only persistent map
 
-Thiết kế/kế hoạch hiện hành ở [ADR 0008](decisions/0008-data03-occupied-only.md) và [plan 0015](plans/0015-data03-occupied-only.md). `make data03` dựng world riêng từ 88 case development đã lộ của v4; Webots cần chạy trong CI/Xvfb. Candidate giữ free evidence tới acquisition tiếp theo, giữ occupied hits trong episode và dừng nếu lối không còn được quan sát. Chưa có runtime outcome; DATA-03 checklist vẫn mở cho tới khi raw evidence được review.
+Thiết kế/kế hoạch ở [ADR 0008](decisions/0008-data03-occupied-only.md) và [plan 0015](plans/0015-data03-occupied-only.md). `make data03` dựng world riêng từ 88 case development đã lộ của v4; workflow CI/Xvfb đã chạy đủ 352 episode. [Raw review local](research/2026-10-29-data03-occupied-only.md) khớp collector; DATA-03 hoàn tất trong phạm vi development, chưa là held-out/quality selection.

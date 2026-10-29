@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "study": "DATA-03 occupied-only persistent map",
+  "scope": "exposed development only; not validation/test",
+  "runtime_source": "94f8e0b461c01aa18f269e75eb6662ce2d2283df",
+  "workflow_run": 40796152653,
+  "workflow_url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/40796152653",
+  "workflow_conclusion": "cancelled_after_simulator_success_due_to_60_minute_job_budget_during_reviewer",
+  "simulator_step": "success; 352 episodes",
+  "artifact": {
+    "id": 12866482176,
+    "name": "data03-occupied-only-development",
+    "size_bytes": 232909890,
+    "github_sha256_metadata": "54698da35f4c1351d9ee39b56c466d72138ea3c3dfe616c172c97d83ad371e3a",
+    "digest_recomputed_locally": false
+  },
+  "local_raw_review": {
+    "complete": true,
+    "raw_audit_passed": true,
+    "cases": 88,
+    "episodes": 352,
+    "pairs": 176,
+    "inventory_sha256": "e7727cc89eab50740bde94e9c933771cb127b174d3ac80b67a30308648abe8d8",
+    "review_json_sha256": "95b60663f3b0f2c4635e698d854eedcc2a3a076dee840b92de60c79278b7b627",
+    "raw_result_sha256": "bc188514e0d1a862fac548e8340fd8f6e85cc9897b0d08b063fd502f04f83fea",
+    "summary_matches_collector": true
+  },
+  "summary": {
+    "scope": "exposed v4 development cases; diagnostic only; no held-out inference",
+    "by_arm": {
+      "reference": {
+        "feasible_case_success": 62,
+        "feasible_cases": 74,
+        "outcomes": {
+          "success": 129,
+          "timeout": 47
+        },
+        "negative_false_success": 0,
+        "failure_episodes": [
+          {
+            "case_id": "development-narrow_gap-s3200004",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200020",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200020",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200029",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200034",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200034",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200039",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200041",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-empty-s3200041",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-06",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-06",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-07",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-07",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-10",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-empty_offset-11",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-20",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-20",
+            "repeat": 1,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-23",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-23",
+            "repeat": 1,
+            "outcome": "timeout"
+          }
+        ],
+        "deadlock_regressions": {
+          "development-empty-s3200020": false,
+          "development-empty-s3200034": false,
+          "development-empty-s3200041": false,
+          "development-narrow_gap-s3200004": false,
+          "development-narrow_gap-s3200029": false
+        },
+        "cpu_mean_ms_weighted": 0.8600432011920217,
+        "cpu_max_ms": 80.850255,
+        "max_episode_p95_cpu_ms": 1.992665,
+        "cpu_over_16_ms": 2712,
+        "rss_peak_mib": 29.45703125,
+        "peak_cells": 5370,
+        "peak_expansions": 3320,
+        "success_only_mean_time_s": 34.28055813953488,
+        "success_only_mean_path_m": 12.084636195457174,
+        "case_success_by_family": {
+          "empty": {
+            "success": 12,
+            "cases": 15
+          },
+          "empty_offset": {
+            "success": 12,
+            "cases": 16
+          },
+          "narrow_gap": {
+            "success": 7,
+            "cases": 12
+          },
+          "near_wall": {
+            "success": 4,
+            "cases": 4
+          },
+          "single_block": {
+            "success": 12,
+            "cases": 12
+          },
+          "staggered_blocks": {
+            "success": 8,
+            "cases": 8
+          },
+          "u_trap": {
+            "success": 7,
+            "cases": 7
+          }
+        }
+      },
+      "candidate": {
+        "feasible_case_success": 67,
+        "feasible_cases": 74,
+        "outcomes": {
+          "success": 140,
+          "timeout": 36
+        },
+        "negative_false_success": 0,
+        "failure_episodes": [
+          {
+            "case_id": "development-narrow_gap-s3200004",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200017",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200029",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-narrow_gap-s3200039",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-u_trap-s3200046",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-u_trap-s3200048",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-20",
+            "repeat": 0,
+            "outcome": "timeout"
+          },
+          {
+            "case_id": "development-v4-narrow_gap-20",
+            "repeat": 1,
+            "outcome": "timeout"
+          }
+        ],
+        "deadlock_regressions": {
+          "development-empty-s3200020": true,
+          "development-empty-s3200034": true,
+          "development-empty-s3200041": true,
+          "development-narrow_gap-s3200004": false,
+          "development-narrow_gap-s3200029": false
+        },
+        "cpu_mean_ms_weighted": 1.6215637298114662,
+        "cpu_max_ms": 72.812518,
+        "max_episode_p95_cpu_ms": 3.539299,
+        "cpu_over_16_ms": 5104,
+        "rss_peak_mib": 28.97265625,
+        "peak_cells": 534,
+        "peak_expansions": 3624,
+        "success_only_mean_time_s": 53.872571428571426,
+        "success_only_mean_path_m": 14.469757673935199,
+        "case_success_by_family": {
+          "empty": {
+            "success": 15,
+            "cases": 15
+          },
+          "empty_offset": {
+            "success": 16,
+            "cases": 16
+          },
+          "narrow_gap": {
+            "success": 7,
+            "cases": 12
+          },
+          "near_wall": {
+            "success": 4,
+            "cases": 4
+          },
+          "single_block": {
+            "success": 12,
+            "cases": 12
+          },
+          "staggered_blocks": {
+            "success": 8,
+            "cases": 8
+          },
+          "u_trap": {
+            "success": 5,
+            "cases": 7
+          }
+        }
+      }
+    },
+    "engineering_gates": {
+      "five_deadlock_regressions_succeed_both_repeats": false,
+      "candidate_collision_zero": true,
+      "candidate_bounds_zero": true,
+      "candidate_negative_false_success_zero": true,
+      "candidate_command_checks_passed": true,
+      "candidate_scored_polyline_clearance_target": true
+    },
+    "engineering_targets_met": false,
+    "candidate_minimum_scored_polyline_clearance_m": 0.8213683741105638,
+    "scored_polyline_clearance_target_m": 0.551740662898458,
+    "candidate_commands_checked": 673885,
+    "candidate_detour_decisions": 172336,
+    "paired_case_metrics": {
+      "common_success_cases": 59,
+      "common_success_time_ratio": 1.6251592716246512,
+      "common_success_path_ratio": 1.24101403836793,
+      "penalized_time_ratio": 1.3226895301435313,
+      "penalized_path_ratio": 0.912334214302577,
+      "failure_time_penalty_s": 90.0,
+      "failure_path_penalty_m": 72.0,
+      "adverse_cases": 3,
+      "improved_cases": 8
+    },
+    "data03": {
+      "free_cell_retention": "latest unique acquisition only",
+      "occupied_hit_retention": "persistent within episode",
+      "all_development_candidate_decisions_replayed": 673885,
+      "candidate_peak_persistent_occupied_cells": 271,
+      "candidate_peak_ephemeral_free_cells": 313,
+      "candidate_peak_blocked_cells": 2317,
+      "candidate_peak_retained_cells": 2534,
+      "candidate_peak_map_entries": 2832,
+      "candidate_peak_canonical_occupied_json_bytes": 2255,
+      "gates": {
+        "candidate_collision_zero": true,
+        "candidate_bounds_zero": true,
+        "candidate_negative_false_success_zero": true,
+        "all_commands_verified_from_occupied_only_replay": true,
+        "map_budget_not_exceeded": true
+      },
+      "engineering_targets_met": true,
+      "interpretation": "Canonical JSON bytes describe an encoding; RSS is the measured process-memory signal."
+    }
+  }
+}
