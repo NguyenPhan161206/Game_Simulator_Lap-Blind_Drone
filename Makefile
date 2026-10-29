@@ -9,6 +9,7 @@ check:
 	python3 tools/build_navigation_v4.py --check
 	python3 tools/build_data03.py --check
 	python3 tools/build_data04.py --check
+	python3 tools/build_initialization_aa.py --check
 	python3 -m unittest discover -s tests -p 'test_*.py' -v
 
 smoke:

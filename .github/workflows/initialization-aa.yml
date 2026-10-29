@@ -1,0 +1,56 @@
+name: Initialization A/A development
+on:
+  push:
+    branches: ["feat/initialization-aa-v1"]
+    paths: ["versions/initialization_aa_v1/**", "simulation/webots/controllers/*aa/**", "simulation/webots/protos/BlindDroneAA.proto", "simulation/webots/worlds/initialization_aa_v1.wbt", "tools/*initialization_aa.py", "tests/test_initialization_aa.py", ".github/workflows/initialization-aa.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  development:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check frozen protocols and additive A/A source
+        run: make check
+      - name: Materialize exposed development fixtures only
+        run: python3 tools/build_initialization_aa.py
+      - name: Install display dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb libglu1-mesa libegl1 libopengl0 libgl1-mesa-dri libnss3 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-shape0 libxcb-xfixes0 libxcb-sync1 libxcb-randr0 libxcb-shm0 libx11-xcb1 libxrender1 libxi6 libxrandr2 libxcursor1 libxcomposite1 libxdamage1 libxext6 libsndio7.0 libpulse0 libasound2 libzip4 libgtk-3-0 libatk1.0-0 libdbus-1-3 libfreeimage3 libxaw7 libxslt1.1 ffmpeg
+      - name: Install pinned Webots R2025a
+        run: python3 tools/install_webots.py
+      - name: Real legacy smoke and navigation regression
+        run: |
+          xvfb-run -a python3 tools/run_webots.py --smoke --software-rendering --output artifacts/aa-legacy-smoke
+          xvfb-run -a python3 tools/run_webots.py --navigation --software-rendering --output artifacts/aa-legacy-navigation
+      - name: Warm and cold development A/A; preserve all outcomes
+        run: xvfb-run -a python3 tools/run_initialization_aa.py --output artifacts/initialization-aa
+      - name: Independent raw replay and A/A comparison
+        run: python3 tools/review_initialization_aa.py artifacts/initialization-aa --expected-source "$GITHUB_SHA" --output artifacts/initialization-aa-review.json
+      - name: Record pipeline completion separately from equivalence outcome
+        run: |
+          python3 - <<'PY'
+          import json,os
+          result=json.load(open('artifacts/initialization-aa-review.json'))
+          assert result['complete'] and result['raw_audit_passed'] and result['episodes']==96
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as stream:
+              stream.write('Development A/A only.\n\n```json\n'+json.dumps(result['summary'],indent=2)+'\n```\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: initialization-aa-development
+          path: |
+            artifacts/initialization-aa/
+            artifacts/initialization-aa-review.json
+            artifacts/aa-legacy-smoke/
+            artifacts/aa-legacy-navigation/
+          if-no-files-found: warn
