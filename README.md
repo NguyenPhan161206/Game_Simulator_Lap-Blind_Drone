@@ -24,6 +24,8 @@ GOAL-23 đã hoàn tất **implementation và kiểm chứng development** theo 
 
 DATA-03 đã hoàn tất một phép thử development riêng: persistent occupied hits, free evidence chỉ giữ tới acquisition kế tiếp, unknown vẫn chặn lệnh. [Báo cáo](docs/research/2026-10-29-data03-occupied-only.md): 352 episode, reference 62/74 và candidate 67/74; command replay và map budget đạt. Candidate tốn CPU mean cao hơn và thời gian common-success kém hơn; RSS giảm nhẹ. Đây là development đã exposed, chưa chọn cấu hình hoặc kết luận held-out. Xem [kế hoạch 0015](docs/plans/0015-data03-occupied-only.md) và [ADR 0008](docs/decisions/0008-data03-occupied-only.md).
 
+DATA-04 đang được triển khai trong package riêng để đo tác động của TTL 10 giây cho occupied hit, giữ DATA-03 làm đối chứng và cố định các yếu tố còn lại. [ADR 0009](docs/decisions/0009-data04-hit-ttl.md) và [kế hoạch 0016](docs/plans/0016-data04-hit-ttl.md) mô tả protocol; chưa có bằng chứng simulator hoặc kết luận chất lượng.
+
 ## Bắt đầu
 
 Python 3.11+; kiểm tra nền dùng thư viện chuẩn, không cần cài dependency:

@@ -1,0 +1,30 @@
+schema_version = 1
+name = "data04_occupied_hit_ttl_10s"
+status = "development_only"
+reference_period_ms = 32
+candidate_period_ms = 32
+pose_period_ms = 32
+control_period_ms = 16
+range_max_age_s = 0.12
+repetitions = 2
+wall_watchdog_s = 600
+max_infrastructure_retries = 1
+free_cell_retention = "latest_unique_acquisition_only"
+occupied_hit_retention = "expire_10s_after_latest_hit; refresh_on_repeat_hit"
+occupied_hit_ttl_s = 10.0
+unknown_policy = "never_assume_free; stop_if_no_observed_route"
+
+[quality]
+goal_radius_m = 0.5
+stop_speed_m_s = 0.18
+dwell_s = 1.0
+deadline_s = 90.0
+position_bounds_min_m = [-9.5, -9.5, 0.4]
+position_bounds_max_m = [9.5, 9.5, 5.0]
+
+[engineering_targets]
+candidate_collision_count = 0
+candidate_out_of_bounds_count = 0
+negative_false_success_count = 0
+all_candidate_commands_proven_by_current_or_retained_free_evidence = true
+map_budget_not_exceeded = true
