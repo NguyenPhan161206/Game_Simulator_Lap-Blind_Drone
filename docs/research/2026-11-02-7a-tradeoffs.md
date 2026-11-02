@@ -19,7 +19,7 @@ Trong cadence local, 64 ms giảm range payload từ 3000 xuống 1500 B/s, CPU 
 
 Đây là đường biên **rời rạc, quan sát được**, giới hạn ở các cấu hình và điều kiện đã thử; không nội suy thành đường liên tục hoặc tối ưu tuyệt đối. Với retention cold mới, mean free entries sẽ là trục dữ liệu riêng sau raw review; chưa có kết quả thì không thêm điểm giả.
 
-Range packet canonical dùng `<dIHH10d` little-endian, 96 B/packet (timestamp, sequence, validity/limit masks và mười float64). Payload không gồm pose, metadata, log hoặc map. Set entries/cell count không thay cho RAM; RSS cũng là RSS process lấy mẫu, không phải peak phần cứng được bảo đảm.
+Range packet canonical dùng `<dIHH10d` little-endian, 96 B/packet (timestamp, sequence, validity/limit masks và mười float64). Payload không gồm pose, metadata, log hoặc map. Set entries/cell count không thay cho RAM; RSS là process controller lấy mẫu, gồm cả recorder/accounting buffers và không phải RAM riêng của policy, RAM toàn Webots hoặc peak phần cứng được bảo đảm.
 
 **DATA-13 — Giới hạn kết luận:** ít float/byte/cell hơn không chứng minh tối thiểu thông tin tuyệt đối, riêng tư, tiết kiệm điện, radar thật, hard realtime hoặc an toàn phần cứng. Muốn kết luận riêng tư cần threat model và phép thử suy luận riêng (GOAL-18 vẫn mở). Không biến kết quả simulator development thành generalization. V3 kết thúc âm ở validation; test v3 không mở.
 

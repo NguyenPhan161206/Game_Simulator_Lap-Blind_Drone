@@ -99,6 +99,8 @@ def main():
                     for f in files:f.flush()
                     diagnostic=navigator.diagnostics() if navigator else {}
                     resources={'rss_peak_mib':max((r['rss_mib'] for r in scored),default=rss_mib()),
+                               'instrumentation_buffer_samples':len(records),
+                               'instrumentation_buffer_decisions':len(decisions),
                                'peak_cells':diagnostic.get('peak_cells',0),
                                'derived_blocked_cells':diagnostic.get('derived_blocked_cells',0),
                                'peak_expansions':navigator.grid.peak_expansions if navigator else 0,

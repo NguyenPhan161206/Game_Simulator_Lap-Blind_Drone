@@ -53,6 +53,9 @@ def audit_episode(folder, case, spec, row):
     if json.loads((folder / (token + '-initialization.json')).read_text()) != row['initialization']:
         raise ValueError('Initialization metadata mismatch')
     all_decisions = read_rows(folder / (token + '-decisions.jsonl'))
+    if (row['resources']['instrumentation_buffer_samples'] != len(samples) or
+            row['resources']['instrumentation_buffer_decisions'] != len(all_decisions)):
+        raise ValueError('Instrumentation buffer accounting mismatch')
     decisions = [d for d in all_decisions if row['score_start_s']+1e-8 < d['time_s'] <= row['end_s']+1e-8]
     if len(decisions) != round((row['end_s']-row['score_start_s'])/.016):
         raise ValueError('Incomplete decision trace')
