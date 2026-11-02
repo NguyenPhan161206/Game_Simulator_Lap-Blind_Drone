@@ -231,4 +231,3 @@ def summarize(rows, cases, spec):
             'common_success_cases': len(common), 'lost_reference_case_ids': sorted(successes['reference']-successes['candidate']),
             'initialization_comparisons': initialization, 'observed_pareto_arms': frontier(by_arm),
             'commands_checked': sum(r['audit']['commands_checked'] for r in rows)}
-
