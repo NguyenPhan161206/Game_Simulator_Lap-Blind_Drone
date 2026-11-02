@@ -1967,11 +1967,12 @@
   "ci_conclusion": "success",
   "ci_unit_tests": 198,
   "ci_review_sha256": "49f2e552e675aa48e256a9d4a31765a301b01bbdd461dab5042d14277f94c1e5",
-  "local_review_matches_ci": null,
+  "local_review_matches_ci": true,
   "artifact": {
     "id": 13111389470,
     "size_bytes": 205132765,
     "github_digest": "sha256:822c064f97133c65cef551af8212606e02d06c02f9113438c7459bf742e00898",
     "zip_digest_recomputed_locally": false
-  }
+  },
+  "local_review_sha256": "49f2e552e675aa48e256a9d4a31765a301b01bbdd461dab5042d14277f94c1e5"
 }

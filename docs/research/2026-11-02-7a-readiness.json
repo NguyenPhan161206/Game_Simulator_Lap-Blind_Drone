@@ -1,0 +1,13 @@
+{
+  "status": "register_fresh_evaluation",
+  "candidate": "sparse",
+  "candidate_source": "9d1e39031c4560b0889c43046f41e8481cb59457",
+  "validation_authorized": false,
+  "test_authorized": false,
+  "reason": "Freeze a new protocol/source/dataset under plan 0022 before dispatch",
+  "source_reviews_sha256": {
+    "docs/research/2026-11-02-retention-cold.json": "2ab9065bc9cabe46ac9ef021b2b6ec608dc5788fe18aaba34d2c352f36d53b4a",
+    "docs/research/2026-11-02-adaptive-sensors.json": "1ae13e55976fe89675fe654bdb7f621505f32008ce2367add081fcb09a2d0881",
+    "docs/research/2026-11-02-sparse-sensors.json": "6a095583a5a1f0b8da428e4bd94dcc421c6abf762e52be58ce67e6f6e6a5510e"
+  }
+}

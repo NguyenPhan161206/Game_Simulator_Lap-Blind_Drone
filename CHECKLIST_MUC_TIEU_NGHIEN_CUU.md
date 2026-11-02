@@ -1,6 +1,6 @@
 # Checklist mục tiêu phát sinh khi hiện thực hóa Blind Drone Lab
 
-Cập nhật: 2026-11-02. [A/A khởi tạo 0019](docs/research/2026-10-30-initialization-aa.md) đã hoàn tất development; bước B của 0018 qua preflight. Retention C theo0020 đã qua CI41372012516:198 tests,352 cold episode và14 gate; [report](docs/research/2026-11-02-retention-cold.md). Local raw replay đang chờ tải bundle. D–F chưa mở; v3 test giữ đóng.
+Cập nhật: 2026-11-02. [A/A khởi tạo 0019](docs/research/2026-10-30-initialization-aa.md) đã hoàn tất development; bước B của 0018 qua preflight. Retention C theo0020 đã qua CI41372012516:198 tests,352 cold episode và14 gate; [report](docs/research/2026-11-02-retention-cold.md). Local raw replay đã khớp CI. D–F chưa mở; v3 test giữ đóng.
 
 Đây là sổ mục tiêu cần chứng minh được nhận ra trong quá trình làm hệ thống. [Checklist tổng](CHECKLIST_DU_AN.md) theo dõi tiến độ mốc; file này ghi **vì sao một mục tiêu trở nên cần thiết, tiêu chí đạt và bằng chứng còn thiếu**. Không tự mở rộng mọi đề xuất thành yêu cầu triển khai ngay.
 
@@ -53,7 +53,9 @@ V3 đã kết thúc âm tại validation theo protocol. Những mục phụ thu�
 
 - [x] DATA-10/13 — **Tổng hợp trade-off theo điều kiện so sánh và chặn suy rộng.** [Báo cáo/JSON 02/11](docs/research/2026-11-02-7a-tradeoffs.md) giữ source hashes, denominator và failure của bốn nghiên cứu; chỉ tính Pareto trong từng run paired, không gộp CPU/RSS/entry accounting khác nhau. Đây là tái lập từ summary đã hậu kiểm, không chạy lại raw audit lịch sử hoặc chọn cấu hình held-out. Ít dữ liệu không là bằng chứng tối thiểu tuyệt đối/riêng tư.
 
-- [x] GOAL-26 — **Ablation free-history công bằng sau A/A.** [Report/source/CI](docs/research/2026-11-02-retention-cold.md):352 cold episode,14 gate và264 initial comparisons đạt; hai arm74/74 feasible, mean free entries giảm35.28%, CPU mean gần bằng/RSS tăng nhẹ. Chỉ development đã lộ, acquisition32ms không đổi; CI raw review đủ, local transport/replay đang chờ và được báo riêng. DATA-06/09/11 tiếp tục theo gate.
+- [x] GOAL-26 — **Ablation free-history công bằng sau A/A.** [Report/source/CI](docs/research/2026-11-02-retention-cold.md):352 cold episode,14 gate và264 initial comparisons đạt; hai arm74/74 feasible, mean free entries giảm35.28%, CPU mean gần bằng/RSS tăng nhẹ. Chỉ development đã lộ, acquisition32ms không đổi; CI raw review đủ, local raw replay đã khớp CI byte-for-byte. DATA-06/09/11 tiếp tục theo gate.
+
+- [x] DATA-06/09 — [Adaptive48 episode](docs/research/2026-11-02-adaptive-sensors.md) và [sparse/dropout72 episode](docs/research/2026-11-02-sparse-sensors.md), CI/local raw reviews khớp source9d1e390; hai candidate11/11 feasible,14 gate mỗi study đạt. Dropout0/11 được giữ đầy đủ. Chỉ12 exposed pilot cases, không huấn luyện/beam steering/held-out.
 
 ## E. Cách bổ sung phát hiện mới
 

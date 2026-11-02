@@ -10,3 +10,7 @@ Ngày: 2026-11-02. Thiết kế theo [ADR 0013](../decisions/0013-situational-an
 - Gate dữ liệu DATA-06: mean episode scored payload rate candidate/reference <=0.80. Dùng số acquisition duy nhất trên duration scoring, báo cả warmup/total bytes và metadata riêng. DATA-09 sparse/full payload rate <=0.70 (64/96 B mỗi 32 ms; số value giảm 40%, payload giảm 1/3). Không bắt dropout đạt task gate để tránh che outcome âm; dropout là fault-diagnostic control, không là configuration để chọn.
 - Mỗi episode watchdog 600 s, tối đa một retry lỗi hạ tầng rõ trước result; algorithm timeout/error không retry. Mỗi study cap collector 45 phút, incomplete nếu vượt; giữ mọi attempt và source/design/inventory/lock hashes. CI completion khác study gate met.
 - Sau raw audit, cập nhật exposure/checklist/report và DATA-10 theo từng study/host. Pilot âm được đóng nguyên; pilot đạt chỉ mở việc đăng ký readiness/full development hoặc fresh validation protocol riêng, không tự mở test. DATA-11 cần fresh split chống trùng, uncertainty/retry/source lock và gate mới trước evaluation. V3 test không được chạy.
+
+## Bàn giao pilot02/11
+
+[Adaptive](../research/2026-11-02-adaptive-sensors.md)48 episode và [sparse/dropout](../research/2026-11-02-sparse-sensors.md)72 episode tại source9d1e390/CI41383159235 đạt14 gate mỗi study,219 tests; local raw reviews khớp CI byte-for-byte, ZIP SHA-256 đã tính lại. Hai candidate11/11 feasible; dropout0/11 giữ24 timeout. Sparse payload1999.375B/s < adaptive2300.403B/s nên quy tắc0022 chọn sparse. Chưa có fresh validation/test.

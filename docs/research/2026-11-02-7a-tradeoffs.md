@@ -2,7 +2,7 @@
 
 Ngày: 2026-11-02. Bảng này tổng hợp các summary đã hậu kiểm trong repository; không chạy lại simulator hoặc chứng nhận lại raw artifact lịch sử. [JSON tái lập](2026-11-02-7a-tradeoffs.json) giữ SHA-256 các nguồn, mọi failure/outcome và cách tổng hợp.
 
-| Nhóm / arm | Case khả thi đạt | Range payload B/s | CPU mean ms | RSS peak MiB | Pareto trong nhóm |
+| Nhóm / arm | Case khả thi đạt | Range payload B/s | CPU mean ms | RSS mẫu MiB | Pareto trong nhóm |
 |---|---:|---:|---:|---:|---|
 | cadence_v3_local_development / reference | 45/50 | 3000 | 0.553 | 24.547 | Có |
 | cadence_v3_local_development / candidate | 46/50 | 1500 | 0.394 | 24.625 | Có |
@@ -14,6 +14,11 @@ Ngày: 2026-11-02. Bảng này tổng hợp các summary đã hậu kiểm trong
 | occupied_ttl_10s / candidate | 67/74 | 3000 | 0.874 | 28.805 | Có |
 | retention_cold_2s / reference | 74/74 | 3000 | 1.559 | 21.685 | Có |
 | retention_cold_2s / candidate | 74/74 | 3000 | 1.560 | 21.769 | Có |
+| sensor_pilot_adaptive / reference | 11/11 | 2999 | 2.000 | 26.882 | Không |
+| sensor_pilot_adaptive / candidate | 11/11 | 2300 | 1.798 | 25.853 | Có |
+| sensor_pilot_sparse / reference | 11/11 | 2999 | 2.070 | 26.887 | Không |
+| sensor_pilot_sparse / dropout | 0/11 | 2000 | 0.038 | 30.614 | Fault control |
+| sensor_pilot_sparse / sparse | 11/11 | 1999 | 1.623 | 25.803 | Có |
 
 CPU lịch sử là mean theo decision; RSS lịch sử là peak mẫu đo của process. Với retention cold, CPU là mean episode và RSS là mean của sampled peak từng episode; các cách tổng hợp không bị gộp để xếp hạng. Mỗi nhóm paired có cùng điều kiện của chính run đó. Không so trực tiếp CPU/RSS giữa các hàng khác nhóm để chọn thuật toán. DATA-03 và v4 không có cách tính map budget giống nhau; A/A sau đó còn đo được khác biệt warm initialization. Vì vậy không dựng một đường biên toàn cục hay gọi chênh lệch giữa hai run là tác động riêng của retention.
 

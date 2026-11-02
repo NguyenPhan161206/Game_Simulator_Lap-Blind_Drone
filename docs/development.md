@@ -2,7 +2,7 @@
 
 ## Trạng thái hiện tại — 2026-11-02
 
-Đang thực thi [0020](plans/0020-complete-7a.md): [retention cold source `4c8bdee`/CI41372012516](research/2026-11-02-retention-cold.md) đã đạt352 cold episode/14 gate; local raw replay đang chờ bundle tải xong. [0021](plans/0021-sensor-development.md) đã có source/checks, CLI/reviewer chặn chạy khi thiếu raw-review baseline đủ điều kiện. [0022](plans/0022-fresh-7a-evaluation.md) chỉ có commitments/design lock mới, chưa candidate/runtime qualified. [Trade-off](research/2026-11-02-7a-tradeoffs.md) tái lập từ summary lịch sử, không gộp host hoặc chạy lại raw audit.
+Đang thực thi [0020](plans/0020-complete-7a.md): [retention cold source `4c8bdee`/CI41372012516](research/2026-11-02-retention-cold.md) đã đạt352 cold episode/14 gate; local raw review đã khớp CI. [0021](plans/0021-sensor-development.md) đã hoàn tất48+72 pilot episode và local raw reviews khớp CI; sparse được chọn theo0022. Runtime mới0023 cần preflight tương đương48 episode trước mở held-out. [0022](plans/0022-fresh-7a-evaluation.md) chỉ có commitments/design lock mới, chưa candidate/runtime qualified. [Trade-off](research/2026-11-02-7a-tradeoffs.md) tái lập từ summary lịch sử, không gộp host hoặc chạy lại raw audit.
 
 Mốc đã kiểm chứng gần nhất: đã hoàn tất [A/A khởi tạo 0019](research/2026-10-30-initialization-aa.md): source `97be9a0`, CI 40911479243, 189 tests và 96 episode/72 process. 36/36 so sánh cold đạt precision gate, raw review local trên worktree sạch khớp CI. Đây là preflight, chưa là quality gate retention/held-out. V4 và DATA-03/04 giữ kết quả development lịch sử; chưa ML hoặc phần cứng.
 

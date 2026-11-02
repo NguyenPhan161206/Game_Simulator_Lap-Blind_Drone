@@ -6,7 +6,9 @@
     "docs/research/2026-10-28-observed-detour-v4.json": "92a278d8ef87a3290d046bbd461ffc6b979f02f0af50b1301573f05e003bf457",
     "docs/research/2026-10-29-data03-occupied-only.json": "9a12ef39e965391ef4be7efe672fccdce58445c5317ae80383c0afb62df50fff",
     "docs/research/2026-10-29-data04-hit-ttl.json": "9f4a77103fa39f5e29ce723264b8eae702684aa5088f807edfd41d20dc4e01d8",
-    "docs/research/2026-11-02-retention-cold.json": "d5a31dbd4aa5f5241216d4a1b71bf6ad58babd67b4ef99ba2d3a3ef55d02684a"
+    "docs/research/2026-11-02-retention-cold.json": "2ab9065bc9cabe46ac9ef021b2b6ec608dc5788fe18aaba34d2c352f36d53b4a",
+    "docs/research/2026-11-02-adaptive-sensors.json": "1ae13e55976fe89675fe654bdb7f621505f32008ce2367add081fcb09a2d0881",
+    "docs/research/2026-11-02-sparse-sensors.json": "6a095583a5a1f0b8da428e4bd94dcc421c6abf762e52be58ce67e6f6e6a5510e"
   },
   "groups": [
     {
@@ -607,6 +609,143 @@
       "observed_pareto_arms": [
         "reference",
         "candidate"
+      ],
+      "not_a_configuration_selection": true
+    },
+    {
+      "id": "sensor_pilot_adaptive",
+      "source_commit": "9d1e39031c4560b0889c43046f41e8481cb59457",
+      "cases": 12,
+      "episodes": 48,
+      "cpu_aggregation": "equal episode mean",
+      "memory_aggregation": "mean of episode sampled RSS peaks",
+      "points": {
+        "reference": {
+          "case_successes": 11,
+          "feasible_cases": 11,
+          "sensor_payload_B_s": 2999.3769267272455,
+          "mean_free_entries": 3435.7766889639756,
+          "mean_map_entries": 8231.19056352413,
+          "cpu_mean_ms": 1.9997184167106399,
+          "rss_peak_mib": 26.88232421875,
+          "cpu_max_ms": 81.868283,
+          "cpu_over_16_ms": 948,
+          "all_episode_outcomes": {
+            "success": 22,
+            "timeout": 2
+          },
+          "failed_feasible_cases": []
+        },
+        "candidate": {
+          "case_successes": 11,
+          "feasible_cases": 11,
+          "sensor_payload_B_s": 2300.4026284396227,
+          "mean_free_entries": 3452.6269578856522,
+          "mean_map_entries": 8279.668178865031,
+          "cpu_mean_ms": 1.7982470265239456,
+          "rss_peak_mib": 25.852701822916668,
+          "cpu_max_ms": 72.4367,
+          "cpu_over_16_ms": 940,
+          "all_episode_outcomes": {
+            "success": 22,
+            "timeout": 2
+          },
+          "failed_feasible_cases": []
+        }
+      },
+      "diagnostic_only_arms": [],
+      "quality_gate_met": true,
+      "notes": "Cold isolated exposed pilot; real acquisition periods/vocabulary audited. Dropout is a fault control, not a selectable configuration.",
+      "cost_axes": [
+        "sensor_payload_B_s",
+        "cpu_mean_ms",
+        "rss_peak_mib"
+      ],
+      "observed_pareto_arms": [
+        "candidate"
+      ],
+      "not_a_configuration_selection": true
+    },
+    {
+      "id": "sensor_pilot_sparse",
+      "source_commit": "9d1e39031c4560b0889c43046f41e8481cb59457",
+      "cases": 12,
+      "episodes": 72,
+      "cpu_aggregation": "equal episode mean",
+      "memory_aggregation": "mean of episode sampled RSS peaks",
+      "points": {
+        "reference": {
+          "case_successes": 11,
+          "feasible_cases": 11,
+          "sensor_payload_B_s": 2999.3769267272455,
+          "mean_free_entries": 3435.7766889639756,
+          "mean_map_entries": 8231.19056352413,
+          "cpu_mean_ms": 2.0699428476506143,
+          "rss_peak_mib": 26.887369791666668,
+          "cpu_max_ms": 82.646857,
+          "cpu_over_16_ms": 952,
+          "all_episode_outcomes": {
+            "success": 22,
+            "timeout": 2
+          },
+          "failed_feasible_cases": []
+        },
+        "dropout": {
+          "case_successes": 0,
+          "feasible_cases": 11,
+          "sensor_payload_B_s": 1999.6444444444444,
+          "mean_free_entries": 0.0,
+          "mean_map_entries": 0.0,
+          "cpu_mean_ms": 0.03755623854074074,
+          "rss_peak_mib": 30.613932291666668,
+          "cpu_max_ms": 0.271246,
+          "cpu_over_16_ms": 0,
+          "all_episode_outcomes": {
+            "timeout": 24
+          },
+          "failed_feasible_cases": [
+            "development-narrow_gap-s3200004",
+            "development-narrow_gap-s3200017",
+            "development-narrow_gap-s3200027",
+            "development-narrow_gap-s3200029",
+            "development-narrow_gap-s3200039",
+            "development-u_trap-s3200019",
+            "development-u_trap-s3200046",
+            "development-u_trap-s3200048",
+            "development-v4-narrow_gap-20",
+            "development-empty-s3200020",
+            "development-v4-empty_offset-06"
+          ]
+        },
+        "sparse": {
+          "case_successes": 11,
+          "feasible_cases": 11,
+          "sensor_payload_B_s": 1999.3751479848697,
+          "mean_free_entries": 3305.3829038588688,
+          "mean_map_entries": 7934.605735870652,
+          "cpu_mean_ms": 1.6233579578768829,
+          "rss_peak_mib": 25.802897135416668,
+          "cpu_max_ms": 63.346354,
+          "cpu_over_16_ms": 990,
+          "all_episode_outcomes": {
+            "success": 22,
+            "timeout": 2
+          },
+          "failed_feasible_cases": []
+        }
+      },
+      "diagnostic_only_arms": [
+        "dropout"
+      ],
+      "quality_gate_met": true,
+      "notes": "Cold isolated exposed pilot; real acquisition periods/vocabulary audited. Dropout is a fault control, not a selectable configuration.",
+      "cost_axes": [
+        "sensor_payload_B_s",
+        "cpu_mean_ms",
+        "rss_peak_mib"
+      ],
+      "observed_pareto_arms": [
+        "sparse"
       ],
       "not_a_configuration_selection": true
     }
