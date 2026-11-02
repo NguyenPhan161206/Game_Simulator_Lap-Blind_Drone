@@ -1,0 +1,41 @@
+schema_version = 1
+status = "registered_conditional_design"
+runtime_ready = false
+candidate = "pending_development_readiness_0022"
+repetitions = 2
+cold_isolated = true
+confidence_alpha_one_sided = 0.05
+minimum_success_lower_bound = 0.95
+maximum_adverse_cases = 0
+pose_period_ms = 32
+control_period_ms = 16
+warmup_s = 2.0
+goal_radius_m = 0.5
+stop_speed_m_s = 0.18
+dwell_s = 1.0
+deadline_s = 90.0
+max_entries = 16000
+wall_watchdog_s = 600
+collector_wall_budget_s = 5400
+max_infrastructure_retries = 1
+feasible_families = ["empty", "single_block", "staggered_blocks", "narrow_gap", "u_trap"]
+negative_family = "blocked_goal"
+
+[splits.validation]
+first_seed = 5100001
+feasible_cases = 60
+negative_cases = 12
+
+[splits.test]
+first_seed = 5200001
+feasible_cases = 60
+negative_cases = 12
+
+[gates]
+maximum_cpu_mean_ratio = 1.25
+maximum_rss_mean_peak_ratio = 1.10
+maximum_elapsed_mean_ratio = 1.10
+maximum_path_mean_ratio = 1.10
+adaptive_maximum_payload_rate_ratio = 0.80
+sparse_maximum_payload_rate_ratio = 0.70
+retention_maximum_mean_free_ratio = 0.80

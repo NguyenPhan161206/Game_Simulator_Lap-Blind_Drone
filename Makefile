@@ -13,6 +13,7 @@ check:
 	python3 tools/build_retention_cold.py --check
 	python3 tools/build_7a_tradeoffs.py --check
 	python3 tools/build_sensor_pilots.py --check
+	python3 tools/build_efficiency_design.py --check
 	python3 -m unittest discover -s tests -p 'test_*.py' -v
 
 smoke:

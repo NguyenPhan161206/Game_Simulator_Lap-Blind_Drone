@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "scope": "fresh conditional 7A design only",
+  "events": [
+    {
+      "date": "2026-11-02",
+      "purpose": "automated_geometry_certificate_and_disjointness_audit",
+      "access": "new geometry programmatic; metadata and hashes human; old v3 test hashes only",
+      "splits": [
+        "validation",
+        "test"
+      ],
+      "navigation_executed": false,
+      "outcomes_viewed": false,
+      "candidate_selected": false
+    }
+  ]
+}
