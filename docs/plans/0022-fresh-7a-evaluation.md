@@ -13,3 +13,7 @@ Ngày đăng ký: 2026-11-02, trước outcome retention/sensor mới. **Chưa c
 9. Nếu validation fail: ghi kết luận âm và test mới giữ đóng. Nếu đạt: chạy đúng một test mới với candidate/source/threshold nguyên; báo cả kết quả âm hoặc dương, uncertainty và failures. Sau test không chọn candidate khác hoặc quay lại tune rồi gọi test này unseen.
 
 Bổ sung thiết kế trước outcome: `versions/efficiency_eval_v1/` đã có 144 commitments, canonical-disjointness/certificate checks, design lock riêng và exposure metadata. `runtime_ready=false`, candidate pending; không có runner hoặc lượt navigation mới. DATA-11 chưa hoàn tất khi mới có tài liệu/commitments này. [0020](0020-complete-7a.md) và [0021](0021-sensor-development.md) là các gate development trước nó.
+
+## Bàn giao 2026-11-03
+
+Hoàn tất đúng chuỗi gate đã đăng ký. Retention/sensor pilot và preflight có CI/local raw reviews khớp; sparse được chọn trước validation theo quy tắc payload. Source `d51ada1`, CI41399551997 chạy một validation và một test có qualified proof, mỗi split288 episode/72 case, hai arm60/60 feasible; mọi gate đạt. Hai local fresh reviews khớp CI byte-for-byte, ZIP SHA-256 khớp. [Báo cáo cuối](../research/2026-11-03-7a-fresh-evaluation.md). Những câu “chưa chạy” phía trên là trạng thái lúc đăng ký, không phải trạng thái bàn giao. Design snapshot và mọi runtime/legacy lock giữ nguyên; hai tập mới nay exposed, v3 test vẫn đóng. Không ML/radar/hardware hoặc suy tối thiểu thông tin/riêng tư.

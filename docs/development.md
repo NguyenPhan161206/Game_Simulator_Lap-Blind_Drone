@@ -1,12 +1,10 @@
 # Phát triển và kiểm tra
 
-## Trạng thái hiện tại — 2026-11-02
+## Trạng thái hiện tại — 2026-11-03
 
-Đang thực thi [0020](plans/0020-complete-7a.md): [retention cold source `4c8bdee`/CI41372012516](research/2026-11-02-retention-cold.md) đã đạt352 cold episode/14 gate; local raw review đã khớp CI. [0021](plans/0021-sensor-development.md) đã hoàn tất48+72 pilot episode và local raw reviews khớp CI; sparse được chọn theo0022. Runtime mới0023 cần preflight tương đương48 episode trước mở held-out. [0022](plans/0022-fresh-7a-evaluation.md) chỉ có commitments/design lock mới, chưa candidate/runtime qualified. [Trade-off](research/2026-11-02-7a-tradeoffs.md) tái lập từ summary lịch sử, không gộp host hoặc chạy lại raw audit.
+[Fresh validation/test](research/2026-11-03-7a-fresh-evaluation.md) tại source `d51ada1`, CI 41399551997: 225 tests, mỗi split 72 case/288 cold episode; hai arm đều 60/60 feasible, mọi gate đạt. Local raw reviews khớp CI byte-for-byte, hai ZIP digest khớp. Test sparse giảm payload 33.33%, CPU mean 23.91%, RSS mean peak 4.12%; time/path tăng 0.71%/0.76%. Chỉ miền simulator đã đăng ký; CPU max vẫn vượt 16 ms, không hardware/privacy/minimum-information claim. Test v3 vẫn đóng.
 
-Mốc đã kiểm chứng gần nhất: đã hoàn tất [A/A khởi tạo 0019](research/2026-10-30-initialization-aa.md): source `97be9a0`, CI 40911479243, 189 tests và 96 episode/72 process. 36/36 so sánh cold đạt precision gate, raw review local trên worktree sạch khớp CI. Đây là preflight, chưa là quality gate retention/held-out. V4 và DATA-03/04 giữ kết quả development lịch sử; chưa ML hoặc phần cứng.
-
-Đợt [0017](plans/0017-maintenance-and-retention-audit.md) đã hoàn tất củng cố/đối chiếu log; bước A/A B của [0018](plans/0018-retention-study-proposal.md) đã thực thi riêng theo [0019](plans/0019-initialization-aa-development.md). Thiết kế C đã được đăng ký ở 0020; các yêu cầu giữ nguyên: cold-isolated cho cả hai arm, v4 full-history làm đối chứng, accounting/budget công bằng và một candidate/ngưỡng đăng ký trước chạy. Không suy quyền mở held-out từ việc preflight đạt.
+Retention, adaptive và sparse/dropout development đã qua CI/local replay; preflight runtime 48/48 profile tương đương. Candidate sparse được chọn theo 0022 trước outcome validation, runtime khóa riêng theo 0023. Design snapshot `efficiency_eval_v1` vẫn giữ `runtime_ready=false`; không sửa lịch sử để bật quyền chạy. Hai tập fresh nay đã exposed, không dispatch lại hoặc tune theo chúng.
 
 V3 đã đóng với validation âm 87/100 mỗi arm, dưới ngưỡng 95%; giữ test chưa mở. Không chạy lại validation/test, sửa frozen runtime hoặc tái sinh lock để cải thiện outcome. V1/v2 validation/test đã exposed; nghiên cứu tiếp dùng version/protocol và split mới.
 

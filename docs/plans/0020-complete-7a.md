@@ -16,3 +16,7 @@ Trạng thái lúc đăng ký: chỉ A/A lịch sử đã hoàn tất; C và DAT
 ## Kết quả C trên CI (02/11)
 
 [Source `4c8bdee`, CI/raw review](../research/2026-11-02-retention-cold.md) đạt 198 tests, legacy smoke/navigation và 352 cold episode/352 process; hai arm74/74 feasible, negative28 timeout mỗi arm, 264 cold initial comparisons và14 gate đạt. Mean free giảm35.28%, RSS tăng nhẹ, acquisition giữ32ms. Local raw replay đang chờ bundle tải xong; không gộp thành bằng chứng local đã hoàn tất. Baseline task/init đủ gate để chạy hai sensor pilot độc lập; có thể thực hiện đồng thời với local transport/replay verification, nhưng readiness/fresh evaluation phải giữ đầy đủ evidence và dừng nếu audit bất nhất.
+
+## Bàn giao 2026-11-03
+
+Hoàn tất đúng chuỗi gate đã đăng ký. Retention/sensor pilot và preflight có CI/local raw reviews khớp; sparse được chọn trước validation theo quy tắc payload. Source `d51ada1`, CI41399551997 chạy một validation và một test có qualified proof, mỗi split288 episode/72 case, hai arm60/60 feasible; mọi gate đạt. Hai local fresh reviews khớp CI byte-for-byte, ZIP SHA-256 khớp. [Báo cáo cuối](../research/2026-11-03-7a-fresh-evaluation.md). Những câu “chưa chạy” phía trên là trạng thái lúc đăng ký, không phải trạng thái bàn giao. Design snapshot và mọi runtime/legacy lock giữ nguyên; hai tập mới nay exposed, v3 test vẫn đóng. Không ML/radar/hardware hoặc suy tối thiểu thông tin/riêng tư.

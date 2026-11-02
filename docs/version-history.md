@@ -4,6 +4,10 @@ Snapshot ngày 2026-10-29. Repo: [Game_Simulator_Lap-Blind_Drone](https://github
 
 Đối chiếu remote trong audit checklist ngày 29/10: main `79859cbb6b8a02371bca5b912a05dcae8380f61f` (đóng validation v3); feat/data-04-hit-ttl `d3b5d13cf938727eafe3808e6df31010ccb71595` (bàn giao DATA-04). V4/DATA-03/04 đã có nhánh/bằng chứng riêng, chưa tích hợp main. Đợt [0017](plans/0017-maintenance-and-retention-audit.md) dùng nhánh `fix/checklist-retention-audit`, không thay runtime hoặc tích hợp main. Các bảng nguồn nghiệm thu cũ dưới đây là lịch sử, không đại diện tip mới nhất.
 
+## Bàn giao mới — 2026-11-03
+
+7A DATA-01–13 hoàn tất theo phạm vi bằng chứng. [Fresh sparse evaluation](research/2026-11-03-7a-fresh-evaluation.md), source `d51ada1` / CI41399551997:225 tests, validation/test mỗi split288 cold episode, hai arm60/60 feasible và mọi gate đạt; local reviews byte-match CI, ZIP digests verified. Feature branch `feat/7a-fresh-evaluation-v1` tiếp nối main `685033c`; source thử nghiệm cố định được giữ riêng với commit tài liệu bàn giao. Snapshot remote29/10 phía trên và các bảng dưới là lịch sử. Test v3 đóng; fresh split đã exposed, chưa hardware/privacy/minimum information.
+
 ## Lịch sử các mốc
 
 Sơ đồ sau biểu diễn các mốc nối tiếp trong lịch sử đang dùng; không giả định đây là các nhánh phát triển độc lập hoặc merge commit.

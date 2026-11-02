@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "scope": "finite observed within-study development tradeoffs from reviewed summaries",
+  "scope": "finite observed within-study tradeoffs from reviewed development and fresh evaluation summaries",
   "sources_sha256": {
     "docs/research/2026-10-28-cadence-v3-development.json": "92f00417ee94e971f3735d20485dfd9eea35b41b450e8c20e4cc7dc3cbf10dc9",
     "docs/research/2026-10-28-observed-detour-v4.json": "92a278d8ef87a3290d046bbd461ffc6b979f02f0af50b1301573f05e003bf457",
@@ -8,7 +8,9 @@
     "docs/research/2026-10-29-data04-hit-ttl.json": "9f4a77103fa39f5e29ce723264b8eae702684aa5088f807edfd41d20dc4e01d8",
     "docs/research/2026-11-02-retention-cold.json": "2ab9065bc9cabe46ac9ef021b2b6ec608dc5788fe18aaba34d2c352f36d53b4a",
     "docs/research/2026-11-02-adaptive-sensors.json": "1ae13e55976fe89675fe654bdb7f621505f32008ce2367add081fcb09a2d0881",
-    "docs/research/2026-11-02-sparse-sensors.json": "6a095583a5a1f0b8da428e4bd94dcc421c6abf762e52be58ce67e6f6e6a5510e"
+    "docs/research/2026-11-02-sparse-sensors.json": "6a095583a5a1f0b8da428e4bd94dcc421c6abf762e52be58ce67e6f6e6a5510e",
+    "docs/research/2026-11-03-efficiency-validation.json": "5c30768fdfd64b8668161c7c6cfd6cf093c227e585d85575728a15937aa438fa",
+    "docs/research/2026-11-03-efficiency-test.json": "23dfeea28cba33a9938d0ca20eca29dd4945b8cd094ece0bea531fb7e55eaec1"
   },
   "groups": [
     {
@@ -739,6 +741,112 @@
       ],
       "quality_gate_met": true,
       "notes": "Cold isolated exposed pilot; real acquisition periods/vocabulary audited. Dropout is a fault control, not a selectable configuration.",
+      "cost_axes": [
+        "sensor_payload_B_s",
+        "cpu_mean_ms",
+        "rss_peak_mib"
+      ],
+      "observed_pareto_arms": [
+        "sparse"
+      ],
+      "not_a_configuration_selection": true
+    },
+    {
+      "id": "fresh_sparse_validation",
+      "source_commit": "d51ada13b09b96037fc0e81d41ef978beaf1f387",
+      "cases": 72,
+      "episodes": 288,
+      "cpu_aggregation": "equal episode mean",
+      "memory_aggregation": "mean of episode sampled RSS peaks",
+      "points": {
+        "reference": {
+          "case_successes": 60,
+          "feasible_cases": 60,
+          "sensor_payload_B_s": 2999.311182624933,
+          "mean_free_entries": 3599.531983396465,
+          "mean_map_entries": 8355.08303823355,
+          "cpu_mean_ms": 1.6276916120946394,
+          "rss_peak_mib": 26.979329427083332,
+          "cpu_max_ms": 62.470847,
+          "cpu_over_16_ms": 6125,
+          "all_episode_outcomes": {
+            "success": 120,
+            "timeout": 24
+          },
+          "failed_feasible_cases": []
+        },
+        "sparse": {
+          "case_successes": 60,
+          "feasible_cases": 60,
+          "sensor_payload_B_s": 1999.5272349584493,
+          "mean_free_entries": 3475.425664252156,
+          "mean_map_entries": 8060.478803054528,
+          "cpu_mean_ms": 1.2348255018488017,
+          "rss_peak_mib": 25.867757161458332,
+          "cpu_max_ms": 56.375687,
+          "cpu_over_16_ms": 6152,
+          "all_episode_outcomes": {
+            "success": 120,
+            "timeout": 24
+          },
+          "failed_feasible_cases": []
+        }
+      },
+      "quality_gate_met": true,
+      "notes": "Fresh fixed candidate; paired within split/host, case-level uncertainty. No post-test selection or global frontier.",
+      "cost_axes": [
+        "sensor_payload_B_s",
+        "cpu_mean_ms",
+        "rss_peak_mib"
+      ],
+      "observed_pareto_arms": [
+        "sparse"
+      ],
+      "not_a_configuration_selection": true
+    },
+    {
+      "id": "fresh_sparse_test",
+      "source_commit": "d51ada13b09b96037fc0e81d41ef978beaf1f387",
+      "cases": 72,
+      "episodes": 288,
+      "cpu_aggregation": "equal episode mean",
+      "memory_aggregation": "mean of episode sampled RSS peaks",
+      "points": {
+        "reference": {
+          "case_successes": 60,
+          "feasible_cases": 60,
+          "sensor_payload_B_s": 2999.3746401505323,
+          "mean_free_entries": 3571.0169006522938,
+          "mean_map_entries": 8310.476701115696,
+          "cpu_mean_ms": 1.8530088382554903,
+          "rss_peak_mib": 26.893147786458332,
+          "cpu_max_ms": 76.536795,
+          "cpu_over_16_ms": 6260,
+          "all_episode_outcomes": {
+            "success": 120,
+            "timeout": 24
+          },
+          "failed_feasible_cases": []
+        },
+        "sparse": {
+          "case_successes": 60,
+          "feasible_cases": 60,
+          "sensor_payload_B_s": 1999.6012873443121,
+          "mean_free_entries": 3448.641799791848,
+          "mean_map_entries": 8031.576230579517,
+          "cpu_mean_ms": 1.4100255151953203,
+          "rss_peak_mib": 25.78643120659722,
+          "cpu_max_ms": 67.304134,
+          "cpu_over_16_ms": 6302,
+          "all_episode_outcomes": {
+            "success": 120,
+            "timeout": 24
+          },
+          "failed_feasible_cases": []
+        }
+      },
+      "quality_gate_met": true,
+      "notes": "Fresh fixed candidate; paired within split/host, case-level uncertainty. No post-test selection or global frontier.",
       "cost_axes": [
         "sensor_payload_B_s",
         "cpu_mean_ms",

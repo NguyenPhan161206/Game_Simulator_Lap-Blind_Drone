@@ -13,6 +13,52 @@
       "navigation_executed": false,
       "outcomes_viewed": false,
       "candidate_selected": false
+    },
+    {
+      "date": "2026-11-02",
+      "purpose": "registered_pilot_selection_sparse_and_equivalence_preflight",
+      "splits": [],
+      "navigation_executed": true,
+      "outcomes_viewed": false,
+      "candidate_selected": "sparse",
+      "source_commit": "c343599e66adc435349e5f25851b9921f8ce15f2",
+      "evidence": "docs/research/2026-11-03-7a-fresh-evaluation.md"
+    },
+    {
+      "date": "2026-11-02",
+      "purpose": "qualified_validation_once",
+      "splits": [
+        "validation"
+      ],
+      "navigation_executed": true,
+      "outcomes_viewed": true,
+      "candidate_selected": "sparse",
+      "source_commit": "d51ada13b09b96037fc0e81d41ef978beaf1f387",
+      "evidence": "docs/research/2026-11-03-7a-fresh-evaluation.md"
+    },
+    {
+      "date": "2026-11-02",
+      "purpose": "gated_final_test_once",
+      "splits": [
+        "test"
+      ],
+      "navigation_executed": true,
+      "outcomes_viewed": true,
+      "candidate_selected": "sparse",
+      "source_commit": "d51ada13b09b96037fc0e81d41ef978beaf1f387",
+      "evidence": "docs/research/2026-11-03-7a-fresh-evaluation.md"
+    },
+    {
+      "date": "2026-11-03",
+      "purpose": "independent_local_raw_replay_byte_matches_ci",
+      "splits": [
+        "validation",
+        "test"
+      ],
+      "navigation_executed": false,
+      "outcomes_viewed": true,
+      "candidate_selected": "sparse",
+      "ci_run_id": 41399551997
     }
   ]
 }

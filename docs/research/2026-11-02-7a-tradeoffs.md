@@ -1,6 +1,6 @@
 # 7A — Trade-off hữu hạn trong từng nghiên cứu đã thử
 
-Ngày: 2026-11-02. Bảng này tổng hợp các summary đã hậu kiểm trong repository; không chạy lại simulator hoặc chứng nhận lại raw artifact lịch sử. [JSON tái lập](2026-11-02-7a-tradeoffs.json) giữ SHA-256 các nguồn, mọi failure/outcome và cách tổng hợp.
+Ngày: 2026-11-02; cập nhật final evidence 2026-11-03. Bảng này tổng hợp các summary đã hậu kiểm trong repository; không chạy lại simulator hoặc chứng nhận lại raw artifact lịch sử. [JSON tái lập](2026-11-02-7a-tradeoffs.json) giữ SHA-256 các nguồn, mọi failure/outcome và cách tổng hợp.
 
 | Nhóm / arm | Case khả thi đạt | Range payload B/s | CPU mean ms | RSS mẫu MiB | Pareto trong nhóm |
 |---|---:|---:|---:|---:|---|
@@ -19,15 +19,21 @@ Ngày: 2026-11-02. Bảng này tổng hợp các summary đã hậu kiểm trong
 | sensor_pilot_sparse / reference | 11/11 | 2999 | 2.070 | 26.887 | Không |
 | sensor_pilot_sparse / dropout | 0/11 | 2000 | 0.038 | 30.614 | Fault control |
 | sensor_pilot_sparse / sparse | 11/11 | 1999 | 1.623 | 25.803 | Có |
+| fresh_sparse_validation / reference | 60/60 | 2999 | 1.628 | 26.979 | Không |
+| fresh_sparse_validation / sparse | 60/60 | 2000 | 1.235 | 25.868 | Có |
+| fresh_sparse_test / reference | 60/60 | 2999 | 1.853 | 26.893 | Không |
+| fresh_sparse_test / sparse | 60/60 | 2000 | 1.410 | 25.786 | Có |
 
-CPU lịch sử là mean theo decision; RSS lịch sử là peak mẫu đo của process. Với retention cold, CPU là mean episode và RSS là mean của sampled peak từng episode; các cách tổng hợp không bị gộp để xếp hạng. Mỗi nhóm paired có cùng điều kiện của chính run đó. Không so trực tiếp CPU/RSS giữa các hàng khác nhóm để chọn thuật toán. DATA-03 và v4 không có cách tính map budget giống nhau; A/A sau đó còn đo được khác biệt warm initialization. Vì vậy không dựng một đường biên toàn cục hay gọi chênh lệch giữa hai run là tác động riêng của retention.
+CPU lịch sử là mean theo decision; RSS lịch sử là peak mẫu đo của process. Với retention cold, sensor pilots và fresh evaluation, CPU là mean episode và RSS là mean của sampled peak từng episode; các cách tổng hợp không bị gộp để xếp hạng. Mỗi nhóm paired có cùng điều kiện của chính run đó. Không so trực tiếp CPU/RSS giữa các hàng khác nhóm để chọn thuật toán. DATA-03 và v4 không có cách tính map budget giống nhau; A/A sau đó còn đo được khác biệt warm initialization. Vì vậy không dựng một đường biên toàn cục hay gọi chênh lệch giữa hai run là tác động riêng của retention.
 
 Trong cadence local, 64 ms giảm range payload từ 3000 xuống 1500 B/s, CPU mean giảm và RSS tăng nhẹ; task 46/50 so với 45/50 vẫn dưới ngưỡng quality đã khóa. Trong DATA-03, candidate cải thiện outcome quan sát nhưng CPU tăng đáng kể; trong DATA-04, hai arm 67/74 với một case cải thiện/một kém đi dù CPU/RSS giảm. Pareto là tập điểm không bị trội trên các trục được báo, không phải lựa chọn cấu hình hoặc bằng chứng qua gate. Các collision/timeout/negative được giữ trong JSON; không chỉ đưa success-only path.
 
-Đây là đường biên **rời rạc, quan sát được**, giới hạn ở các cấu hình và điều kiện đã thử; không nội suy thành đường liên tục hoặc tối ưu tuyệt đối. Với [retention cold](2026-11-02-retention-cold.md), mean free entries là trục dữ liệu riêng sau CI raw review: 3602.318→2331.511 (−35.28%), trong khi acquisition vẫn3000B/s. RSS tăng nhẹ; hai arm74/74 trên development. Local raw replay được báo riêng khi hoàn tất.
+Đây là đường biên **rời rạc, quan sát được**, giới hạn ở các cấu hình và điều kiện đã thử; không nội suy thành đường liên tục hoặc tối ưu tuyệt đối. Với [retention cold](2026-11-02-retention-cold.md), mean free entries là trục dữ liệu riêng sau CI raw review: 3602.318→2331.511 (−35.28%), trong khi acquisition vẫn3000B/s. RSS tăng nhẹ; hai arm74/74 trên development. Local raw replay đã khớp CI.
 
 Range packet canonical dùng `<dIHH10d` little-endian, 96 B/packet (timestamp, sequence, validity/limit masks và mười float64). Payload không gồm pose, metadata, log hoặc map. Set entries/cell count không thay cho RAM; RSS là process controller lấy mẫu, gồm cả recorder/accounting buffers và không phải RAM riêng của policy, RAM toàn Webots hoặc peak phần cứng được bảo đảm.
 
 **DATA-13 — Giới hạn kết luận:** ít float/byte/cell hơn không chứng minh tối thiểu thông tin tuyệt đối, riêng tư, tiết kiệm điện, radar thật, hard realtime hoặc an toàn phần cứng. Muốn kết luận riêng tư cần threat model và phép thử suy luận riêng (GOAL-18 vẫn mở). Không biến kết quả simulator development thành generalization. V3 kết thúc âm ở validation; test v3 không mở.
 
 Tái lập: `python3 tools/build_7a_tradeoffs.py`; kiểm đồng bộ: `python3 tools/build_7a_tradeoffs.py --check`. Các nguồn: [cadence](2026-10-28-cadence-v3-development.md), [v4](2026-10-28-observed-detour-v4.md), [DATA-03](2026-10-29-data03-occupied-only.md), [DATA-04](2026-10-29-data04-hit-ttl.md).
+
+[Fresh validation/test](2026-11-03-7a-fresh-evaluation.md) bổ sung hai nhóm riêng; sparse đã cố định trước validation. Hai arm mỗi split 60/60 feasible; toàn bộ gate đạt. Pareto chỉ dùng chất lượng case và ba trục cost đã ghi, không thay gate hay bỏ mức tăng time/path (test +0.71%/+0.76%). Hai split đã exposed; không dùng bảng này chọn lại candidate sau test. Range sparse `<dIHH6d` là 64 B/packet, header 16 B giữ nguyên.
