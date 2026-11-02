@@ -5,7 +5,8 @@
     "docs/research/2026-10-28-cadence-v3-development.json": "92f00417ee94e971f3735d20485dfd9eea35b41b450e8c20e4cc7dc3cbf10dc9",
     "docs/research/2026-10-28-observed-detour-v4.json": "92a278d8ef87a3290d046bbd461ffc6b979f02f0af50b1301573f05e003bf457",
     "docs/research/2026-10-29-data03-occupied-only.json": "9a12ef39e965391ef4be7efe672fccdce58445c5317ae80383c0afb62df50fff",
-    "docs/research/2026-10-29-data04-hit-ttl.json": "9f4a77103fa39f5e29ce723264b8eae702684aa5088f807edfd41d20dc4e01d8"
+    "docs/research/2026-10-29-data04-hit-ttl.json": "9f4a77103fa39f5e29ce723264b8eae702684aa5088f807edfd41d20dc4e01d8",
+    "docs/research/2026-11-02-retention-cold.json": "d5a31dbd4aa5f5241216d4a1b71bf6ad58babd67b4ef99ba2d3a3ef55d02684a"
   },
   "groups": [
     {
@@ -550,6 +551,61 @@
         "rss_peak_mib"
       ],
       "observed_pareto_arms": [
+        "candidate"
+      ],
+      "not_a_configuration_selection": true
+    },
+    {
+      "id": "retention_cold_2s",
+      "source_commit": "4c8bdee331c623bd6a40b7bac99c1ff2ea207905",
+      "cases": 88,
+      "episodes": 352,
+      "cpu_aggregation": "equal episode mean",
+      "memory_aggregation": "mean of episode sampled RSS peaks",
+      "points": {
+        "reference": {
+          "case_successes": 74,
+          "feasible_cases": 74,
+          "sensor_payload_B_s": 3000.0,
+          "mean_free_entries": 3602.317837380395,
+          "mean_map_entries": 8224.600922754324,
+          "cpu_mean_ms": 1.5586316095306538,
+          "rss_peak_mib": 21.68472567471591,
+          "cpu_max_ms": 68.83977,
+          "cpu_over_16_ms": 6476,
+          "all_episode_outcomes": {
+            "success": 148,
+            "timeout": 28
+          },
+          "failed_feasible_cases": []
+        },
+        "candidate": {
+          "case_successes": 74,
+          "feasible_cases": 74,
+          "sensor_payload_B_s": 3000.0,
+          "mean_free_entries": 2331.510667753887,
+          "mean_map_entries": 5683.717427944705,
+          "cpu_mean_ms": 1.560411538096598,
+          "rss_peak_mib": 21.76919833096591,
+          "cpu_max_ms": 64.146635,
+          "cpu_over_16_ms": 6271,
+          "all_episode_outcomes": {
+            "success": 148,
+            "timeout": 28
+          },
+          "failed_feasible_cases": []
+        }
+      },
+      "quality_gate_met": true,
+      "notes": "Cold isolated; fair free+occupied+blocked+last-seen entry budget; data axis is retained free history, not acquisition.",
+      "cost_axes": [
+        "sensor_payload_B_s",
+        "cpu_mean_ms",
+        "rss_peak_mib",
+        "mean_free_entries"
+      ],
+      "observed_pareto_arms": [
+        "reference",
         "candidate"
       ],
       "not_a_configuration_selection": true

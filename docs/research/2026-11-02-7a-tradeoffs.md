@@ -12,12 +12,14 @@ Ngày: 2026-11-02. Bảng này tổng hợp các summary đã hậu kiểm trong
 | occupied_only / candidate | 67/74 | 3000 | 1.622 | 28.973 | Có |
 | occupied_ttl_10s / reference | 67/74 | 3000 | 0.940 | 29.180 | Không |
 | occupied_ttl_10s / candidate | 67/74 | 3000 | 0.874 | 28.805 | Có |
+| retention_cold_2s / reference | 74/74 | 3000 | 1.559 | 21.685 | Có |
+| retention_cold_2s / candidate | 74/74 | 3000 | 1.560 | 21.769 | Có |
 
-CPU lịch sử là mean theo decision; RSS lịch sử là peak mẫu đo của process. Mỗi nhóm paired có cùng điều kiện của chính run đó. Không so trực tiếp CPU/RSS giữa các hàng khác nhóm để chọn thuật toán. DATA-03 và v4 không có cách tính map budget giống nhau; A/A sau đó còn đo được khác biệt warm initialization. Vì vậy không dựng một đường biên toàn cục hay gọi chênh lệch giữa hai run là tác động riêng của retention.
+CPU lịch sử là mean theo decision; RSS lịch sử là peak mẫu đo của process. Với retention cold, CPU là mean episode và RSS là mean của sampled peak từng episode; các cách tổng hợp không bị gộp để xếp hạng. Mỗi nhóm paired có cùng điều kiện của chính run đó. Không so trực tiếp CPU/RSS giữa các hàng khác nhóm để chọn thuật toán. DATA-03 và v4 không có cách tính map budget giống nhau; A/A sau đó còn đo được khác biệt warm initialization. Vì vậy không dựng một đường biên toàn cục hay gọi chênh lệch giữa hai run là tác động riêng của retention.
 
 Trong cadence local, 64 ms giảm range payload từ 3000 xuống 1500 B/s, CPU mean giảm và RSS tăng nhẹ; task 46/50 so với 45/50 vẫn dưới ngưỡng quality đã khóa. Trong DATA-03, candidate cải thiện outcome quan sát nhưng CPU tăng đáng kể; trong DATA-04, hai arm 67/74 với một case cải thiện/một kém đi dù CPU/RSS giảm. Pareto là tập điểm không bị trội trên các trục được báo, không phải lựa chọn cấu hình hoặc bằng chứng qua gate. Các collision/timeout/negative được giữ trong JSON; không chỉ đưa success-only path.
 
-Đây là đường biên **rời rạc, quan sát được**, giới hạn ở các cấu hình và điều kiện đã thử; không nội suy thành đường liên tục hoặc tối ưu tuyệt đối. Với retention cold mới, mean free entries sẽ là trục dữ liệu riêng sau raw review; chưa có kết quả thì không thêm điểm giả.
+Đây là đường biên **rời rạc, quan sát được**, giới hạn ở các cấu hình và điều kiện đã thử; không nội suy thành đường liên tục hoặc tối ưu tuyệt đối. Với [retention cold](2026-11-02-retention-cold.md), mean free entries là trục dữ liệu riêng sau CI raw review: 3602.318→2331.511 (−35.28%), trong khi acquisition vẫn3000B/s. RSS tăng nhẹ; hai arm74/74 trên development. Local raw replay được báo riêng khi hoàn tất.
 
 Range packet canonical dùng `<dIHH10d` little-endian, 96 B/packet (timestamp, sequence, validity/limit masks và mười float64). Payload không gồm pose, metadata, log hoặc map. Set entries/cell count không thay cho RAM; RSS là process controller lấy mẫu, gồm cả recorder/accounting buffers và không phải RAM riêng của policy, RAM toàn Webots hoặc peak phần cứng được bảo đảm.
 

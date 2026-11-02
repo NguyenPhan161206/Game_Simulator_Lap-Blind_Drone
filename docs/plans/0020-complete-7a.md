@@ -12,3 +12,7 @@ Ngày: 2026-11-02. Thực thi yêu cầu hoàn thiện DATA-01–13. Không đá
 8. **Bàn giao**: checks, source/runtime hash, raw independent replay, outcome âm/đạt, exposure, cập nhật hai checklist và publish nhánh. Main chỉ sau evidence đủ và remote fast-forward xác minh.
 
 Trạng thái lúc đăng ký: chỉ A/A lịch sử đã hoàn tất; C và DATA-06/09/10/11 chưa có kết quả mới. Đây là kế hoạch thực thi, không phải báo cáo thành công.
+
+## Kết quả C trên CI (02/11)
+
+[Source `4c8bdee`, CI/raw review](../research/2026-11-02-retention-cold.md) đạt 198 tests, legacy smoke/navigation và 352 cold episode/352 process; hai arm74/74 feasible, negative28 timeout mỗi arm, 264 cold initial comparisons và14 gate đạt. Mean free giảm35.28%, RSS tăng nhẹ, acquisition giữ32ms. Local raw replay đang chờ bundle tải xong; không gộp thành bằng chứng local đã hoàn tất. Baseline task/init đủ gate để chạy hai sensor pilot độc lập; có thể thực hiện đồng thời với local transport/replay verification, nhưng readiness/fresh evaluation phải giữ đầy đủ evidence và dừng nếu audit bất nhất.
