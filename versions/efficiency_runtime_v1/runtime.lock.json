@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "runtime_sha256": "0e66cfbb50e8d0d3b7ec443d4a4c31f63e31a8a4e0b6fc1b5b828fc75780e949",
+  "binding_sha256": "3ecee73c3587ce4847002622c36e6c219449dbe1c1fabfa47a40a29ece9ea499",
+  "design_lock_sha256": "3d202158b76990f28b4a2aa13ec473fbffa71fc85e3494146415ff544fce6ee1",
+  "preflight_review_sha256": "e8d90693df9bd23c908a2d3adb54cb036284e65ff209720c92d91cabb80ba38f",
+  "preflight_source_commit": "c343599e66adc435349e5f25851b9921f8ce15f2",
+  "heldout_runtime_ready": true
+}

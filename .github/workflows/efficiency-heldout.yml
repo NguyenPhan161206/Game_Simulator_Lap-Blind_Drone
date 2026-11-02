@@ -1,0 +1,111 @@
+name: Fresh sparse validation and gated test
+on:
+  push:
+    branches: ["feat/7a-fresh-evaluation-v1"]
+    paths: ["versions/efficiency_runtime_v1/runtime.lock.json", ".github/workflows/efficiency-heldout.yml"]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  validation:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 120
+    outputs:
+      test_qualified: ${{ steps.qualify.outputs.test_qualified }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check registered source and runtime authorization
+        run: |
+          test "$GITHUB_RUN_ATTEMPT" = 1
+          make check
+          python3 tools/build_efficiency_runtime.py
+      - name: Install display dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb libglu1-mesa libegl1 libopengl0 libgl1-mesa-dri libnss3 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-shape0 libxcb-xfixes0 libxcb-sync1 libxcb-randr0 libxcb-shm0 libx11-xcb1 libxrender1 libxi6 libxrandr2 libxcursor1 libxcomposite1 libxdamage1 libxext6 libsndio7.0 libpulse0 libasound2 libzip4 libgtk-3-0 libatk1.0-0 libdbus-1-3 libfreeimage3 libxaw7 libxslt1.1 ffmpeg
+      - name: Install pinned Webots R2025a
+        run: python3 tools/install_webots.py
+      - name: Real legacy smoke and navigation regression
+        run: |
+          xvfb-run -a python3 tools/run_webots.py --smoke --software-rendering --output artifacts/aa-legacy-smoke
+          xvfb-run -a python3 tools/run_webots.py --navigation --software-rendering --output artifacts/aa-legacy-navigation
+      - name: Single fresh validation collection
+        run: xvfb-run -a python3 tools/run_efficiency.py --split validation --output artifacts/efficiency-validation
+      - name: Independent validation raw replay
+        run: python3 tools/review_efficiency.py artifacts/efficiency-validation --split validation --expected-source "$GITHUB_SHA" --output artifacts/efficiency-validation-review.json
+      - name: Apply locked validation gates
+        id: qualify
+        run: |
+          python3 - <<'PYCODE'
+          import json,os
+          proof=json.load(open('artifacts/efficiency-validation-review.json'))
+          assert proof['complete'] and proof['raw_audit_passed'] and proof['episodes']==288 and proof['cases']==72
+          eligible=proof['summary']['met'] and all(proof['summary']['gates'].values())
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('test_qualified='+str(eligible).lower()+'\n')
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:f.write('Fresh validation; test qualified: '+str(eligible)+'\n\n```json\n'+json.dumps(proof['summary'],indent=2)+'\n```\n')
+          PYCODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: efficiency-validation-v1
+          path: |
+            artifacts/efficiency-validation/
+            artifacts/efficiency-validation-review.json
+            artifacts/efficiency-exposure/
+  test:
+    needs: validation
+    if: needs.validation.outputs.test_qualified == 'true'
+    runs-on: ubuntu-22.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          name: efficiency-validation-v1
+          path: artifacts/validation-proof
+      - name: Verify fixed source and build exact registered assets
+        run: |
+          test "$GITHUB_RUN_ATTEMPT" = 1
+          make check
+          python3 tools/build_efficiency_runtime.py
+      - name: Install display dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb libglu1-mesa libegl1 libopengl0 libgl1-mesa-dri libnss3 libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xinerama0 libxcb-shape0 libxcb-xfixes0 libxcb-sync1 libxcb-randr0 libxcb-shm0 libx11-xcb1 libxrender1 libxi6 libxrandr2 libxcursor1 libxcomposite1 libxdamage1 libxext6 libsndio7.0 libpulse0 libasound2 libzip4 libgtk-3-0 libatk1.0-0 libdbus-1-3 libfreeimage3 libxaw7 libxslt1.1 ffmpeg
+      - name: Install pinned Webots R2025a
+        run: python3 tools/install_webots.py
+      - name: Real legacy smoke and navigation regression
+        run: |
+          xvfb-run -a python3 tools/run_webots.py --smoke --software-rendering --output artifacts/aa-legacy-smoke
+          xvfb-run -a python3 tools/run_webots.py --navigation --software-rendering --output artifacts/aa-legacy-navigation
+      - name: Single final test after validation proof
+        run: xvfb-run -a python3 tools/run_efficiency.py --split test --validation-review artifacts/validation-proof/efficiency-validation-review.json --output artifacts/efficiency-test
+      - name: Independent test raw replay
+        run: python3 tools/review_efficiency.py artifacts/efficiency-test --split test --validation-review artifacts/validation-proof/efficiency-validation-review.json --expected-source "$GITHUB_SHA" --output artifacts/efficiency-test-review.json
+      - name: Report final result without reselection
+        run: |
+          python3 - <<'PYCODE'
+          import json,os
+          proof=json.load(open('artifacts/efficiency-test-review.json'))
+          assert proof['complete'] and proof['raw_audit_passed'] and proof['episodes']==288 and proof['cases']==72
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:f.write('Final test; preserve all outcomes.\n\n```json\n'+json.dumps(proof['summary'],indent=2)+'\n```\n')
+          PYCODE
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: efficiency-test-v1
+          path: |
+            artifacts/efficiency-test/
+            artifacts/efficiency-test-review.json
+            artifacts/efficiency-exposure/
