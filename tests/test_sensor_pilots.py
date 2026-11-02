@@ -2,9 +2,12 @@
 from copy import deepcopy
 from dataclasses import replace
 from pathlib import Path
+import json
 import struct
 import sys
+import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT/'src'), str(ROOT/'versions/navigation_v4'), str(ROOT/'versions/initialization_aa_v1'),
@@ -15,6 +18,7 @@ from blind_drone.navigation.observed import MissionV2
 from blind_drone.sensors.acquisition import SampledObservation
 from blind_drone_retention.navigation import RetentionNavigator
 from blind_drone_sensor_pilots.protocol import generated_outputs, load_spec, profile_for, schedule, select_cases
+from blind_drone_sensor_pilots import protocol
 from blind_drone_sensor_pilots.sampling import (SensorClock, SparseObservation, acquisition_summary,
     choose_period, encode_packet, names_for, observation_class)
 
@@ -126,6 +130,35 @@ class SensorPilotTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'development only'):
                     select_cases(split, study=study)
         with self.assertRaises(ValueError): profile_for('adaptive', 'sparse')
+
+    def test_sparse_sampling_audit_requires_unused_devices_actually_disabled(self):
+        sample = self.sample('sparse', .032)
+        record = {'sequence': 1, 'time_s': .032, 'pose_time_s': .032, 'payload_bytes': 64,
+            'invalid_values': 0, 'period_ms': 32, 'next_period_ms': 32, 'schedule_reason': 'fixed',
+            'scheduler_status': None, 'readings': sample['readings'],
+            'device_periods_ms': {name: 32 for name in names_for('sparse')},
+            'all_device_periods_ms': {name: 32 if name in names_for('sparse') else 0 for name in names_for('full')}}
+        self.assertTrue(acquisition_summary([record], 0., .048, 'sparse', 0.)['schedule_complete'])
+        record['all_device_periods_ms']['range_045'] = 32
+        self.assertFalse(acquisition_summary([record], 0., .048, 'sparse', 0.)['schedule_complete'])
+
+    def test_absent_changed_or_unqualified_preflight_blocks_pilots(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/'review.json'
+            files = {'registered_source.py': 'hash'}
+            report = {'complete': True, 'raw_audit_passed': True, 'episodes': 352,
+                'runtime_sha256': protocol.digest(files), 'summary': {'gates': {
+                    'reference_task_quality': True, 'initialization_equivalent': True}}}
+            with patch.object(protocol, 'PREFLIGHT', path), patch.object(protocol, 'retention_inventory', return_value=files):
+                with self.assertRaises(FileNotFoundError): protocol.verify_preflight()
+                path.write_text(json.dumps(report))
+                self.assertEqual(len(protocol.verify_preflight()), 64)
+                for mutation in ('source', 'baseline', 'initialization'):
+                    altered = deepcopy(report)
+                    if mutation == 'source': altered['runtime_sha256'] = 'wrong'
+                    else: altered['summary']['gates']['reference_task_quality' if mutation == 'baseline' else 'initialization_equivalent'] = False
+                    path.write_text(json.dumps(altered))
+                    with self.assertRaisesRegex(ValueError, 'preflight required'): protocol.verify_preflight()
 
 
 if __name__ == '__main__':
