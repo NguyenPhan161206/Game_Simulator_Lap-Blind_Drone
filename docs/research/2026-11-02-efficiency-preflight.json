@@ -827,6 +827,13 @@
   },
   "ci_run_id": 41389837671,
   "ci_url": "https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/41389837671",
-  "local_review_matches_ci": null,
-  "ci_review_sha256": "e8d90693df9bd23c908a2d3adb54cb036284e65ff209720c92d91cabb80ba38f"
+  "local_review_matches_ci": true,
+  "ci_review_sha256": "e8d90693df9bd23c908a2d3adb54cb036284e65ff209720c92d91cabb80ba38f",
+  "local_review_sha256": "e8d90693df9bd23c908a2d3adb54cb036284e65ff209720c92d91cabb80ba38f",
+  "artifact": {
+    "id": 13116953377,
+    "size_bytes": 40004541,
+    "sha256": "a3f38bcfd2a030a4a2ebe230988367603c00e216eb93028f478fb38a1f5e1313",
+    "zip_digest_recomputed_locally": true
+  }
 }
