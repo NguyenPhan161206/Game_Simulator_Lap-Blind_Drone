@@ -1,6 +1,6 @@
 # 0021 — Development DATA-06 và DATA-09 riêng biệt
 
-Ngày: 2026-11-02. Thiết kế theo [ADR 0013](../decisions/0013-situational-and-sparse-sensors.md); chỉ chạy sau báo cáo retention C của 0020. Không dùng candidate TTL. Có thể chuẩn bị code/checks trong lúc chờ; không đổi source collector đang chạy hoặc đăng ký ngưỡng sau outcome sensor mới.
+Ngày: 2026-11-02. Thiết kế theo [ADR 0013](../decisions/0013-situational-and-sparse-sensors.md); chỉ chạy sau báo cáo retention C của 0020, với reference task-quality và cold initialization gate đạt. Candidate TTL có thể âm; không bắt TTL thắng để nghiên cứu acquisition riêng. CLI/reviewer kiểm hash runtime preflight, không chỉ CI wrapper. Không dùng candidate TTL. Có thể chuẩn bị code/checks trong lúc chờ; không đổi source collector đang chạy hoặc đăng ký ngưỡng sau outcome sensor mới.
 
 - Giữ v4 full-history, wrapper budget/accounting của retention reference (free + occupied + blocked + last-seen, max 16000 entries), 16 ms physics/control, pose 32 ms, warmup 2 s và scoring 90 s như A/A. Cold isolation cho mọi episode. Không ảnh/scene/object IDs vào observation.
 - Membership: đúng danh sách 12 case của A/A 0019; 11 feasible và một impossible negative. Repeats=2; task case chỉ đạt khi cả hai repeat success. Không coi ray/tick/repeat là sample độc lập; chưa ước lượng generalization từ pilot này.

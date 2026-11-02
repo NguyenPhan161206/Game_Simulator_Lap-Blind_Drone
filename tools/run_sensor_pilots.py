@@ -17,7 +17,7 @@ from blind_drone.evaluation.cadence import classify_attempt
 from blind_drone.experiments.runtime_v3 import git, verify_runtime
 from blind_drone.world.scenarios import digest
 from blind_drone_sensor_pilots.audit import audit_attempt, summarize
-from blind_drone_sensor_pilots.protocol import WORLD, generated_outputs, inventory, load_spec, schedule, select_cases
+from blind_drone_sensor_pilots.protocol import WORLD, generated_outputs, inventory, load_spec, schedule, select_cases, verify_preflight
 from review_research_v3 import sha256_file
 from run_webots import find_webots
 
@@ -65,6 +65,7 @@ def main():
     parser.add_argument('--study', required=True, choices=('adaptive', 'sparse'))
     args = parser.parse_args()
     shared = verify_runtime()
+    verify_preflight()
     cases, design = select_cases(args.split, args.case, args.study)
     spec = load_spec(args.study); outputs, _ = generated_outputs()
     if any(not p.exists() or p.read_text() != value for p, value in outputs.items()):

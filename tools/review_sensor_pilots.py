@@ -10,7 +10,7 @@ from blind_drone.experiments.runtime_v3 import git, verify_runtime
 from blind_drone.evaluation.cadence import classify_attempt
 from blind_drone.world.scenarios import digest
 from blind_drone_sensor_pilots.audit import audit_attempt, summarize
-from blind_drone_sensor_pilots.protocol import inventory, load_spec, schedule, select_cases
+from blind_drone_sensor_pilots.protocol import inventory, load_spec, schedule, select_cases, verify_preflight
 from review_research_v3 import sha256_file
 
 
@@ -30,6 +30,7 @@ def check_attempt_classification(attempt, console):
 
 def review(run, source, study):
     verify_runtime()
+    verify_preflight()
     if len(source) != 40 or any(c not in '0123456789abcdef' for c in source):
         raise ValueError('Full expected source SHA required')
     if git('rev-parse', 'HEAD') != source or git('status', '--porcelain'):

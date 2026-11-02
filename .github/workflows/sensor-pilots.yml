@@ -27,6 +27,7 @@ jobs:
           import json
           result=json.load(open('docs/research/2026-11-02-retention-cold.json'))
           assert result['complete'] and result['raw_audit_passed'] and result['episodes']==352
+          assert result['summary']['gates']['reference_task_quality'] and result['summary']['gates']['initialization_equivalent']
           PY
       - name: Check frozen protocols and additive sensor pilot source
         run: make check

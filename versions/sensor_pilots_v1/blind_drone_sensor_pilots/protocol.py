@@ -13,6 +13,17 @@ VERSION = ROOT/'versions/sensor_pilots_v1'
 INDEX = VERSION/'development.index.json'
 FIXTURE = ROOT/'artifacts/sensor-pilots-fixtures/development.json'
 WORLD = ROOT/'simulation/webots/worlds/sensor_pilots_v1.wbt'
+PREFLIGHT = ROOT/'docs/research/2026-11-02-retention-cold.json'
+
+
+def verify_preflight():
+    report = json.loads(PREFLIGHT.read_text())
+    if (not report['complete'] or not report['raw_audit_passed'] or report['episodes'] != 352
+            or report['runtime_sha256'] != digest(retention_inventory())
+            or not report['summary']['gates']['reference_task_quality']
+            or not report['summary']['gates']['initialization_equivalent']):
+        raise ValueError('Completed, source-matched cold baseline preflight required before sensor pilots')
+    return hashlib.sha256(PREFLIGHT.read_bytes()).hexdigest()
 
 
 def load_spec(study):
@@ -78,7 +89,7 @@ def select_cases(split='development', requested=None, study='adaptive'):
 
 
 def inventory():
-    paths = list(VERSION.rglob('*.py')) + list(VERSION.glob('*.toml')) + [INDEX, WORLD,
+    paths = list(VERSION.rglob('*.py')) + list(VERSION.glob('*.toml')) + [INDEX, WORLD, PREFLIGHT,
             ROOT/'simulation/webots/protos/BlindDroneSensorPilots.proto']
     paths += [ROOT/('tools/'+name+'.py') for name in ('build_sensor_pilots', 'run_sensor_pilots', 'review_sensor_pilots')]
     for name in ('drone_sensor_pilots', 'lab_sensor_pilots'):
