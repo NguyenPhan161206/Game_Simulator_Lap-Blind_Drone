@@ -6,7 +6,9 @@ Camera có thể hỗ trợ tạo dữ liệu/huấn luyện ở nhánh nghiên 
 
 ## Trạng thái hiện tại
 
-**Mốc hiện tại: 7A, đã hoàn tất preflight khởi tạo A/A theo [0019](docs/plans/0019-initialization-aa-development.md).** [Bằng chứng](docs/research/2026-10-30-initialization-aa.md) tại source `97be9a0`: 189 tests, 96 episode Webots, 36/36 so sánh cold đạt precision gate và raw review local khớp CI. Warm có chênh khởi tạo/time/path dù outcome không đổi. [Nghiên cứu retention 0018](docs/plans/0018-retention-study-proposal.md) bước C–F chưa triển khai: cần đăng ký cold-isolated, đối chứng v4 và một candidate/ngưỡng riêng; chưa có held-out mới.
+**Đang thực thi yêu cầu hoàn thiện 7A (02/11):** [0020](docs/plans/0020-complete-7a.md) đã đăng ký và chạy [CI retention cold 41372012516](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/41372012516), source `4c8bdee`; đang chờ outcome/raw review. [DATA-06/09 pilot riêng](docs/plans/0021-sensor-development.md) đã triển khai/checks, chưa chạy simulator trước gate baseline. [Trade-off và giới hạn DATA-10/13](docs/research/2026-11-02-7a-tradeoffs.md) đã bổ sung. [0022](docs/plans/0022-fresh-7a-evaluation.md) có 144 commitments mới/design lock riêng, `runtime_ready=false` và candidate pending; chưa chạy validation/test mới.
+
+**Mốc đã kiểm chứng gần nhất: 7A, đã hoàn tất preflight khởi tạo A/A theo [0019](docs/plans/0019-initialization-aa-development.md).** [Bằng chứng](docs/research/2026-10-30-initialization-aa.md) tại source `97be9a0`: 189 tests, 96 episode Webots, 36/36 so sánh cold đạt precision gate và raw review local khớp CI. Warm có chênh khởi tạo/time/path dù outcome không đổi. [Nghiên cứu retention 0018](docs/plans/0018-retention-study-proposal.md) bước C–F chưa triển khai: cần đăng ký cold-isolated, đối chứng v4 và một candidate/ngưỡng riêng; chưa có held-out mới.
 
 Các đoạn dưới là bằng chứng theo từng mốc; source/giới hạn của mốc cũ được giữ nguyên.
 

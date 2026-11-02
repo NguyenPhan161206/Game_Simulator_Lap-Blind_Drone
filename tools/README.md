@@ -25,3 +25,11 @@ Chẩn đoán offline: `python3 tools/diagnose_navigation_start.py artifacts/v3-
 V2 độc lập: build_navigation_v2.py [--check | --freeze] tạo/check world/manifest/lock; run_navigation_v2.py chạy development/frozen splits; check_navigation_v2.py kiểm tra ba result đủ 108 lượt; report_navigation_v2.py đưa evidence nhỏ và failure snapshot ra CI log. --realtime để xem, --no-rendering để đánh giá số không xuất ảnh. [Chi tiết](../docs/navigation-v2.md).
 
 Seed suite: python3 tools/run_webots.py --navigation --suite seeded --split development (hoặc validation/test). [Protocol và giới hạn](../docs/seeded-environments-v1.md).
+
+## 7A đang thực thi (02/11)
+
+- `python3 tools/build_retention_cold.py --check`: kiểm asset/version riêng, không chạy simulator. `run_retention_cold.py --output ...` chỉ development, source sạch; study 352 cold episode đang được kiểm chứng trước khi báo cáo.
+- `python3 tools/build_sensor_pilots.py --check`: kiểm hai pilot; `run_sensor_pilots.py --study adaptive|sparse --output ...` bị chặn nếu thiếu preflight raw review khớp source/baseline/initialization. `review_sensor_pilots.py` cũng kiểm cùng gate; không có validation/test trong CLI này.
+- `python3 tools/build_7a_tradeoffs.py --check`: kiểm bảng JSON từ summary đã reviewed; không đồng nghĩa audit lại raw artifact cũ.
+- `python3 tools/check_7a_readiness.py`: áp quy tắc lựa chọn đã đăng ký, in pending/âm/cần đăng ký evaluation; không tự cho phép validation hoặc test.
+- `python3 tools/build_efficiency_design.py --check`: kiểm 144 fresh geometry commitments và design lock riêng; `runtime_ready=false`, không phải runner. Dùng hash metadata v3 test để chống trùng, không sinh geometry hoặc chạy v3 test.

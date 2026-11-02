@@ -1,10 +1,12 @@
 # Phát triển và kiểm tra
 
-## Trạng thái hiện tại — 2026-10-30
+## Trạng thái hiện tại — 2026-11-02
 
-Đang ở mốc 7A, đã hoàn tất [A/A khởi tạo 0019](research/2026-10-30-initialization-aa.md): source `97be9a0`, CI 40911479243, 189 tests và 96 episode/72 process. 36/36 so sánh cold đạt precision gate, raw review local trên worktree sạch khớp CI. Đây là preflight, chưa là quality gate retention/held-out. V4 và DATA-03/04 giữ kết quả development lịch sử; chưa ML hoặc phần cứng.
+Đang thực thi [0020](plans/0020-complete-7a.md): retention cold source `4c8bdee` trên CI 41372012516 chưa có kết luận. [0021](plans/0021-sensor-development.md) đã có source/checks, CLI/reviewer chặn chạy khi thiếu raw-review baseline đủ điều kiện. [0022](plans/0022-fresh-7a-evaluation.md) chỉ có commitments/design lock mới, chưa candidate/runtime qualified. [Trade-off](research/2026-11-02-7a-tradeoffs.md) tái lập từ summary lịch sử, không gộp host hoặc chạy lại raw audit.
 
-Đợt [0017](plans/0017-maintenance-and-retention-audit.md) đã hoàn tất củng cố/đối chiếu log; bước A/A B của [0018](plans/0018-retention-study-proposal.md) đã thực thi riêng theo [0019](plans/0019-initialization-aa-development.md). Bước C–F vẫn cần thiết kế retention mới: cold-isolated cho cả hai arm, v4 full-history làm đối chứng, accounting/budget công bằng và một candidate/ngưỡng đăng ký trước chạy. Không suy quyền mở held-out từ việc preflight đạt.
+Mốc đã kiểm chứng gần nhất: đã hoàn tất [A/A khởi tạo 0019](research/2026-10-30-initialization-aa.md): source `97be9a0`, CI 40911479243, 189 tests và 96 episode/72 process. 36/36 so sánh cold đạt precision gate, raw review local trên worktree sạch khớp CI. Đây là preflight, chưa là quality gate retention/held-out. V4 và DATA-03/04 giữ kết quả development lịch sử; chưa ML hoặc phần cứng.
+
+Đợt [0017](plans/0017-maintenance-and-retention-audit.md) đã hoàn tất củng cố/đối chiếu log; bước A/A B của [0018](plans/0018-retention-study-proposal.md) đã thực thi riêng theo [0019](plans/0019-initialization-aa-development.md). Thiết kế C đã được đăng ký ở 0020; các yêu cầu giữ nguyên: cold-isolated cho cả hai arm, v4 full-history làm đối chứng, accounting/budget công bằng và một candidate/ngưỡng đăng ký trước chạy. Không suy quyền mở held-out từ việc preflight đạt.
 
 V3 đã đóng với validation âm 87/100 mỗi arm, dưới ngưỡng 95%; giữ test chưa mở. Không chạy lại validation/test, sửa frozen runtime hoặc tái sinh lock để cải thiện outcome. V1/v2 validation/test đã exposed; nghiên cứu tiếp dùng version/protocol và split mới.
 
