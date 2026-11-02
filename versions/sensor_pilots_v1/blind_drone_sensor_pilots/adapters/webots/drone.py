@@ -153,6 +153,7 @@ def main():
                         'payload_bytes':len(payload),'invalid_values':sum(not r['valid'] for r in readings.values()),
                         'period_ms':clock.period_ms,
                         'device_periods_ms':{name:d.getSamplingPeriod() for name,d in ranges.items()},
+                        'all_device_periods_ms':{name:d.getSamplingPeriod() for name,d in all_ranges.items()},
                         'scheduler_status':navigator.status if navigator else None, 'readings':readings}
                 next_period, reason = choose_period(profile, readings, record['scheduler_status'])
                 record.update(next_period_ms=next_period, schedule_reason=reason)

@@ -103,6 +103,9 @@ def acquisition_summary(records, epoch_s, end_s, profile, score_start_s):
             and record['pose_time_s'] == record['time_s'] and record['period_ms'] == used_period
             and record['payload_bytes'] == size and set(record['device_periods_ms'].values()) == {used_period}
             and set(record['device_periods_ms']) == set(names))
+        complete &= (set(record['all_device_periods_ms']) == set(RANGE_NAMES) and
+            all(value == (used_period if name in names else 0)
+                for name, value in record['all_device_periods_ms'].items()))
         expected, reason = choose_period(profile, record['readings'], record['scheduler_status'])
         complete &= record['next_period_ms'] == expected and record['schedule_reason'] == reason
         used_period = record['next_period_ms']

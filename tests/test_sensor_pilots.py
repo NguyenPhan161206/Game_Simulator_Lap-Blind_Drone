@@ -103,6 +103,7 @@ class SensorPilotTests(unittest.TestCase):
             records.append({'sequence': sequence, 'time_s': stamp, 'pose_time_s': stamp,
                 'payload_bytes': 96, 'invalid_values': 0, 'period_ms': used,
                 'device_periods_ms': {name: used for name in names_for('adaptive')},
+                'all_device_periods_ms': {name: used for name in names_for('adaptive')},
                 'scheduler_status': 'follow_observed_path', 'readings': sample['readings'],
                 'next_period_ms': 64, 'schedule_reason': 'observed_route_and_clear_ranges'})
         self.assertTrue(acquisition_summary(records, 0., .128, 'adaptive', .032)['schedule_complete'])
