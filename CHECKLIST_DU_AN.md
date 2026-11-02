@@ -1,8 +1,10 @@
 # Checklist tổng thể — Blind Drone Lab
 
-**Cập nhật:** 2026-10-30, múi giờ Asia/Ho_Chi_Minh.
+**Cập nhật:** 2026-11-02, múi giờ Asia/Ho_Chi_Minh.
 
-**Mốc bàn giao hiện tại:** A/A khởi tạo runtime `97be9a0`, [0019/CI/raw review](docs/research/2026-10-30-initialization-aa.md) đạt 189 tests/96 episode và 36/36 so sánh cold. Bước B khởi tạo đã qua; [retention 0018](docs/plans/0018-retention-study-proposal.md) C–F vẫn cần đăng ký thiết kế riêng.
+**Mốc đã kiểm chứng gần nhất:** A/A khởi tạo runtime `97be9a0`, [0019/CI/raw review](docs/research/2026-10-30-initialization-aa.md) đạt 189 tests/96 episode và 36/36 so sánh cold. Bước B khởi tạo đã qua; [retention 0018](docs/plans/0018-retention-study-proposal.md) C–F vẫn cần đăng ký thiết kế riêng.
+
+**Đang thực thi 02/11:** [0020](docs/plans/0020-complete-7a.md), source retention `4c8bdee`, [CI development 41372012516](https://github.com/NguyenPhan161206/Game_Simulator_Lap-Blind_Drone/actions/runs/41372012516) đang chạy; chưa có outcome/raw review. DATA-10/13 đã bổ sung tổng hợp và giới hạn.
 
 **Mốc repo lịch sử được đối chiếu:** thiết kế v3 `761318df1293c195347f486b0d228f88af10fae1`; runtime cadence v3 `0c75ce28f14b8ea881e8c0c7c9335aa4319030c5`, validation `0c5f598c512a24db63b0fd19ca259a3b85382ee5`; nghiệm thu GUI/manual lịch sử vẫn là `39c34af`. Mốc checklist gốc `d7018cb` được giữ trong lịch sử.
 **Audit bổ sung nhánh L/GitHub:** source collector `b32410595b26f8ef2d0f8d99dca469797278366b`; xem [cây phiên bản](docs/version-history.md) và evidence liên kết ở mục 8.
@@ -239,7 +241,7 @@ python3 tools/local_session.py accept
 
 ## 10. Nhánh 7A — các phép thử đã hoàn tất và phần nghiên cứu còn đề xuất
 
-Ưu tiên sát câu hỏi gốc; có thể làm với thuật toán không học trước. Từng cấu hình phải đánh giá lại chất lượng nhiệm vụ.
+Ưu tiên sát câu hỏi gốc; có thể làm với thuật toán không học trước. Từng cấu hình phải đánh giá lại chất lượng nhiệm vụ. Yêu cầu hoàn thiện 02/11 được thực thi theo [0020](docs/plans/0020-complete-7a.md)/[ADR 0012](docs/decisions/0012-retention-cold-development.md): retention cold đã triển khai, đang chờ simulator/raw review; DATA-06/09/11 chưa có kết quả mới.
 
 - [x] DATA-01 — Đo riêng đầu ra sensor, observation đưa vào policy, state giữ trong bộ nhớ và dữ liệu truyền/lưu. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [x] DATA-02 — Khai báo encoding/metadata khi báo byte; đo RSS/bộ nhớ thực nếu muốn nói về RAM, không thay bằng cell count. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
@@ -250,10 +252,10 @@ python3 tools/local_session.py accept
 - [x] DATA-07 — Ghi số mẫu duy nhất theo timestamp, không đếm lại cùng sensor packet ở mỗi control tick. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [x] DATA-08 — Đánh giá trên cùng case paired, giữ đầy đủ collision/timeout và không chỉ báo đường đi của success. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [ ] DATA-09 — Tách thử bỏ sensor khi chạy với thử thiết kế/huấn luyện riêng cho cấu hình sensor ít hơn.
-- [ ] DATA-10 — Đo đường biên trade-off chất lượng nhiệm vụ–dữ liệu–CPU/bộ nhớ theo các cấu hình đã thử.
+- [x] DATA-10 — Đo đường biên trade-off chất lượng nhiệm vụ–dữ liệu–CPU/bộ nhớ theo các cấu hình đã thử. **Phạm vi:** [bảng/JSON tái lập](docs/research/2026-11-02-7a-tradeoffs.md) từ summary đã hậu kiểm của cadence local/v4/DATA-03/DATA-04; tập Pareto rời rạc trong từng run paired, giữ task failure và denominator. Không gộp host/initialization/budget khác nhau thành frontier toàn cục hoặc chọn cấu hình từ development.
 - [ ] DATA-11 — Chọn cấu hình theo validation và ngưỡng đã khóa, chỉ dùng test mới cho báo cáo cuối. **V3:** candidate đã cố định trước outcome, không chọn bằng validation; validation không đạt nên test chưa mở. Phần đánh giá test của mục này chưa thực hiện và không được chạy trái gate.
 - [x] DATA-12 — Nếu không cấu hình giảm dữ liệu nào đạt ngưỡng, kết luận chưa đạt và giữ nguyên bằng chứng. **V3:** candidate 64 ms duy nhất đã đăng ký không đạt gate success ở validation; [kết luận âm](docs/research/2026-10-28-cadence-v3-validation.md) giữ đủ 480 lượt, không chạy test.
-- [ ] DATA-13 — Không tuyên bố tối thiểu tuyệt đối hoặc riêng tư chỉ từ số float, byte hay map cell ít hơn.
+- [x] DATA-13 — Không tuyên bố tối thiểu tuyệt đối hoặc riêng tư chỉ từ số float, byte hay map cell ít hơn. [Giới hạn và encoding/RSS](docs/research/2026-11-02-7a-tradeoffs.md) đã nêu rõ; đây là giới hạn diễn giải, không phải bằng chứng bảo vệ riêng tư. GOAL-18 và hardware vẫn mở.
 
 **Gate:** có cấu hình giảm chi phí cụ thể đạt ngưỡng nhiệm vụ trong miền thử; hoặc có kết luận âm được chứng minh. Không bắt buộc mọi thử nghiệm phải cải thiện.
 

@@ -1,0 +1,568 @@
+{
+  "schema_version": 1,
+  "scope": "finite observed within-study development tradeoffs from reviewed summaries",
+  "sources_sha256": {
+    "docs/research/2026-10-28-cadence-v3-development.json": "92f00417ee94e971f3735d20485dfd9eea35b41b450e8c20e4cc7dc3cbf10dc9",
+    "docs/research/2026-10-28-observed-detour-v4.json": "92a278d8ef87a3290d046bbd461ffc6b979f02f0af50b1301573f05e003bf457",
+    "docs/research/2026-10-29-data03-occupied-only.json": "9a12ef39e965391ef4be7efe672fccdce58445c5317ae80383c0afb62df50fff",
+    "docs/research/2026-10-29-data04-hit-ttl.json": "9f4a77103fa39f5e29ce723264b8eae702684aa5088f807edfd41d20dc4e01d8"
+  },
+  "groups": [
+    {
+      "id": "cadence_v3_local_development",
+      "source_commit": "0c75ce28f14b8ea881e8c0c7c9335aa4319030c5",
+      "cases": 60,
+      "episodes": 240,
+      "cpu_aggregation": "decision weighted mean",
+      "memory_aggregation": "maximum sampled episode RSS",
+      "points": {
+        "reference": {
+          "case_successes": 45,
+          "feasible_cases": 50,
+          "sensor_payload_B_s": 3000.0,
+          "cpu_mean_ms": 0.5534035853556245,
+          "rss_peak_mib": 24.546875,
+          "cpu_max_ms": 48.649539,
+          "cpu_over_16_ms": 1360,
+          "feasible_episode_outcomes": {
+            "success": 92,
+            "timeout": 8,
+            "collision": 0,
+            "out_of_bounds": 0
+          },
+          "negative_episode_outcomes": {
+            "success": 0,
+            "timeout": 20,
+            "collision": 0,
+            "out_of_bounds": 0
+          },
+          "peak_cells_free_plus_occupied_only": 5370
+        },
+        "candidate": {
+          "case_successes": 46,
+          "feasible_cases": 50,
+          "sensor_payload_B_s": 1500.0,
+          "cpu_mean_ms": 0.3937639852749558,
+          "rss_peak_mib": 24.625,
+          "cpu_max_ms": 46.316563,
+          "cpu_over_16_ms": 1209,
+          "feasible_episode_outcomes": {
+            "success": 93,
+            "timeout": 7,
+            "collision": 0,
+            "out_of_bounds": 0
+          },
+          "negative_episode_outcomes": {
+            "success": 0,
+            "timeout": 20,
+            "collision": 0,
+            "out_of_bounds": 0
+          },
+          "peak_cells_free_plus_occupied_only": 5362
+        }
+      },
+      "quality_gate_met": false,
+      "notes": "32/64 ms, mapped v3, warm sequential. Payload encoding <dIHH10d, 96 B/packet; excludes pose/log/metadata.",
+      "cost_axes": [
+        "sensor_payload_B_s",
+        "cpu_mean_ms",
+        "rss_peak_mib"
+      ],
+      "observed_pareto_arms": [
+        "reference",
+        "candidate"
+      ],
+      "not_a_configuration_selection": true
+    },
+    {
+      "id": "navigation_v4",
+      "source_commit": "9503c2c2b483d677d7f0ff25f76d7dcca360bc08",
+      "cases": 88,
+      "episodes": 352,
+      "cpu_aggregation": "decision weighted mean",
+      "memory_aggregation": "maximum sampled episode RSS",
+      "points": {
+        "reference": {
+          "case_successes": 62,
+          "feasible_cases": 74,
+          "sensor_payload_B_s": 3000.0,
+          "cpu_mean_ms": 0.6515744622310158,
+          "rss_peak_mib": 29.21875,
+          "cpu_max_ms": 57.826339,
+          "cpu_over_16_ms": 2323,
+          "all_episode_outcomes": {
+            "success": 129,
+            "timeout": 47
+          },
+          "negative_false_success": 0,
+          "failed_feasible_episodes": [
+            {
+              "case_id": "development-narrow_gap-s3200004",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-empty-s3200020",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-empty-s3200020",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200029",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-empty-s3200034",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-empty-s3200034",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-empty-s3200041",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-empty-s3200041",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-empty_offset-06",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-empty_offset-06",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-empty_offset-07",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-empty_offset-07",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-empty_offset-10",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-empty_offset-11",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-near_wall-16",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-20",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-20",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-23",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-23",
+              "repeat": 1,
+              "outcome": "timeout"
+            }
+          ]
+        },
+        "candidate": {
+          "case_successes": 74,
+          "feasible_cases": 74,
+          "sensor_payload_B_s": 3000.0,
+          "cpu_mean_ms": 1.1320006180084774,
+          "rss_peak_mib": 30.42578125,
+          "cpu_max_ms": 58.844088,
+          "cpu_over_16_ms": 6315,
+          "all_episode_outcomes": {
+            "success": 148,
+            "timeout": 28
+          },
+          "negative_false_success": 0,
+          "failed_feasible_episodes": []
+        }
+      },
+      "quality_gate_met": true,
+      "notes": "32 ms, warm sequential. Entry accounting differs across historical studies; no cross-study cell frontier.",
+      "cost_axes": [
+        "sensor_payload_B_s",
+        "cpu_mean_ms",
+        "rss_peak_mib"
+      ],
+      "observed_pareto_arms": [
+        "reference",
+        "candidate"
+      ],
+      "not_a_configuration_selection": true
+    },
+    {
+      "id": "occupied_only",
+      "source_commit": "94f8e0b461c01aa18f269e75eb6662ce2d2283df",
+      "cases": 88,
+      "episodes": 352,
+      "cpu_aggregation": "decision weighted mean",
+      "memory_aggregation": "maximum sampled episode RSS",
+      "points": {
+        "reference": {
+          "case_successes": 62,
+          "feasible_cases": 74,
+          "sensor_payload_B_s": 3000.0,
+          "cpu_mean_ms": 0.8600432011920217,
+          "rss_peak_mib": 29.45703125,
+          "cpu_max_ms": 80.850255,
+          "cpu_over_16_ms": 2712,
+          "all_episode_outcomes": {
+            "success": 129,
+            "timeout": 47
+          },
+          "negative_false_success": 0,
+          "failed_feasible_episodes": [
+            {
+              "case_id": "development-narrow_gap-s3200004",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-empty-s3200020",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-empty-s3200020",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200029",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-empty-s3200034",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-empty-s3200034",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200039",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-empty-s3200041",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-empty-s3200041",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-empty_offset-06",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-empty_offset-06",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-empty_offset-07",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-empty_offset-07",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-empty_offset-10",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-empty_offset-11",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-20",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-20",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-23",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-23",
+              "repeat": 1,
+              "outcome": "timeout"
+            }
+          ]
+        },
+        "candidate": {
+          "case_successes": 67,
+          "feasible_cases": 74,
+          "sensor_payload_B_s": 3000.0,
+          "cpu_mean_ms": 1.6215637298114662,
+          "rss_peak_mib": 28.97265625,
+          "cpu_max_ms": 72.812518,
+          "cpu_over_16_ms": 5104,
+          "all_episode_outcomes": {
+            "success": 140,
+            "timeout": 36
+          },
+          "negative_false_success": 0,
+          "failed_feasible_episodes": [
+            {
+              "case_id": "development-narrow_gap-s3200004",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200017",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200029",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200039",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-u_trap-s3200046",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-u_trap-s3200048",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-20",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-20",
+              "repeat": 1,
+              "outcome": "timeout"
+            }
+          ]
+        }
+      },
+      "quality_gate_met": false,
+      "notes": "32 ms, warm sequential. Entry accounting differs across historical studies; no cross-study cell frontier.",
+      "cost_axes": [
+        "sensor_payload_B_s",
+        "cpu_mean_ms",
+        "rss_peak_mib"
+      ],
+      "observed_pareto_arms": [
+        "reference",
+        "candidate"
+      ],
+      "not_a_configuration_selection": true
+    },
+    {
+      "id": "occupied_ttl_10s",
+      "source_commit": "8b4e3bed8a9e86946ca1c7c2a47dcffdf646aca2",
+      "cases": 88,
+      "episodes": 352,
+      "cpu_aggregation": "decision weighted mean",
+      "memory_aggregation": "maximum sampled episode RSS",
+      "points": {
+        "reference": {
+          "case_successes": 67,
+          "feasible_cases": 74,
+          "sensor_payload_B_s": 3000.0,
+          "cpu_mean_ms": 0.9402411329255042,
+          "rss_peak_mib": 29.1796875,
+          "cpu_max_ms": 49.005145,
+          "cpu_over_16_ms": 3422,
+          "all_episode_outcomes": {
+            "success": 139,
+            "timeout": 37
+          },
+          "negative_false_success": 0,
+          "failed_feasible_episodes": [
+            {
+              "case_id": "development-narrow_gap-s3200004",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200027",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200029",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200039",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200039",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-u_trap-s3200046",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-u_trap-s3200048",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-20",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-20",
+              "repeat": 1,
+              "outcome": "timeout"
+            }
+          ]
+        },
+        "candidate": {
+          "case_successes": 67,
+          "feasible_cases": 74,
+          "sensor_payload_B_s": 3000.0,
+          "cpu_mean_ms": 0.8739766297689135,
+          "rss_peak_mib": 28.8046875,
+          "cpu_max_ms": 51.849504,
+          "cpu_over_16_ms": 3451,
+          "all_episode_outcomes": {
+            "success": 139,
+            "timeout": 37
+          },
+          "negative_false_success": 0,
+          "failed_feasible_episodes": [
+            {
+              "case_id": "development-u_trap-s3200019",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200027",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200029",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200039",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-narrow_gap-s3200039",
+              "repeat": 1,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-u_trap-s3200046",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-u_trap-s3200048",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-20",
+              "repeat": 0,
+              "outcome": "timeout"
+            },
+            {
+              "case_id": "development-v4-narrow_gap-20",
+              "repeat": 1,
+              "outcome": "timeout"
+            }
+          ]
+        }
+      },
+      "quality_gate_met": false,
+      "notes": "32 ms, warm sequential. Entry accounting differs across historical studies; no cross-study cell frontier.",
+      "cost_axes": [
+        "sensor_payload_B_s",
+        "cpu_mean_ms",
+        "rss_peak_mib"
+      ],
+      "observed_pareto_arms": [
+        "candidate"
+      ],
+      "not_a_configuration_selection": true
+    }
+  ],
+  "global_frontier": null,
+  "limitations": [
+    "Historical summaries are consumed; this tool does not repeat their raw audits.",
+    "Do not pool different hosts, initializations, budgets, case sets or CPU aggregations.",
+    "Pareto membership does not qualify a task/safety/validation gate or establish causality.",
+    "Repeats and geometry/yaw variants are not independent new tasks for inference.",
+    "Payload excludes pose/metadata/logging; cell entries and encoded bytes are not process RAM.",
+    "No absolute information minimum, semantic privacy, energy, radar or hardware safety inference.",
+    "v3 validation was negative; v3 test remains closed."
+  ]
+}
