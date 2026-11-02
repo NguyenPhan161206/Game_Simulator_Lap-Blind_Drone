@@ -90,12 +90,35 @@ def build_report():
             'memory_aggregation': 'mean of episode sampled RSS peaks', 'points': points,
             'quality_gate_met': report['summary']['met'],
             'notes': 'Cold isolated; fair free+occupied+blocked+last-seen entry budget; data axis is retained free history, not acquisition.'})
+    for study, count in (('adaptive', 48), ('sparse', 72)):
+        path = ROOT/'docs/research'/('2026-11-02-'+study+'-sensors.json')
+        if not path.exists():
+            continue
+        report = read(path.name)
+        if (not report['complete'] or not report['raw_audit_passed'] or report['episodes'] != count
+                or report['study'] != study or report['cases'] != 12):
+            raise ValueError('Sensor pilot review incomplete or mismatched')
+        points = {}
+        for arm, metrics in report['summary']['by_arm'].items():
+            points[arm] = {'case_successes': metrics['feasible_case_success'], 'feasible_cases': metrics['feasible_cases'],
+                'sensor_payload_B_s': metrics['payload_rate_mean_B_s'], 'mean_free_entries': metrics['mean_free_entries'],
+                'mean_map_entries': metrics['mean_map_entries'], 'cpu_mean_ms': metrics['cpu_mean_ms'],
+                'rss_peak_mib': metrics['rss_peak_mean_mib'], 'cpu_max_ms': metrics['cpu_max_ms'],
+                'cpu_over_16_ms': metrics['cpu_over_16_ms'], 'all_episode_outcomes': metrics['outcomes'],
+                'failed_feasible_cases': metrics['failed_feasible_case_ids']}
+        groups.append({'id': 'sensor_pilot_'+study, 'source_commit': report['source_commit'],
+            'cases': 12, 'episodes': count, 'cpu_aggregation': 'equal episode mean',
+            'memory_aggregation': 'mean of episode sampled RSS peaks', 'points': points,
+            'diagnostic_only_arms': report['summary']['diagnostic_only_arms'],
+            'quality_gate_met': report['summary']['met'],
+            'notes': 'Cold isolated exposed pilot; real acquisition periods/vocabulary audited. Dropout is a fault control, not a selectable configuration.'})
     for group in groups:
         costs = ['sensor_payload_B_s', 'cpu_mean_ms', 'rss_peak_mib']
         if group['id'] == 'retention_cold_2s':
             costs.append('mean_free_entries')
         group['cost_axes'] = costs
-        group['observed_pareto_arms'] = pareto(group['points'], costs)
+        group['observed_pareto_arms'] = pareto({arm: point for arm, point in group['points'].items()
+            if arm not in group.get('diagnostic_only_arms', [])}, costs)
         group['not_a_configuration_selection'] = True
     return {'schema_version': 1, 'scope': 'finite observed within-study development tradeoffs from reviewed summaries',
         'sources_sha256': sources, 'groups': groups, 'global_frontier': None,
