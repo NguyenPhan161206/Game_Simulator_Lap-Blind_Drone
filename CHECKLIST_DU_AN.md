@@ -241,7 +241,7 @@ python3 tools/local_session.py accept
 
 ## 10. Nhánh 7A — các phép thử đã hoàn tất và phần nghiên cứu còn đề xuất
 
-Ưu tiên sát câu hỏi gốc; có thể làm với thuật toán không học trước. Từng cấu hình phải đánh giá lại chất lượng nhiệm vụ. Yêu cầu hoàn thiện 02/11 được thực thi theo [0020](docs/plans/0020-complete-7a.md)/[ADR 0012](docs/decisions/0012-retention-cold-development.md): retention cold đã qua CI simulator/raw review 352 episode/14 gate, local replay đã khớp; DATA-06/09/11 chưa có kết quả mới.
+Ưu tiên sát câu hỏi gốc; có thể làm với thuật toán không học trước. Từng cấu hình phải đánh giá lại chất lượng nhiệm vụ. **Bàn giao 03/11:** DATA-01–13 hoàn tất trong từng phạm vi nêu dưới đây; retention, adaptive và sparse có CI/local raw review, fresh validation/test sparse đạt toàn bộ gate. [Báo cáo cuối và giới hạn](docs/research/2026-11-03-7a-fresh-evaluation.md). Các mục đã hoàn tất không bao hàm mọi biến thể nén/độ phân giải, beam steering, ML hoặc phần cứng.
 
 - [x] DATA-01 — Đo riêng đầu ra sensor, observation đưa vào policy, state giữ trong bộ nhớ và dữ liệu truyền/lưu. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
 - [x] DATA-02 — Khai báo encoding/metadata khi báo byte; đo RSS/bộ nhớ thực nếu muốn nói về RAM, không thay bằng cell count. **Phạm vi đã kiểm chứng:** cadence 32/64 ms trên mapped cố định, development 7A tại `0c75ce2`; [bằng chứng](docs/research/2026-10-28-cadence-v3-development.md). Chưa là kết luận validation/test, hardware hoặc tối thiểu thông tin.
